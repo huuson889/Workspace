@@ -66,3 +66,15 @@ GitHub Releases thích hợp lưu ZIP phát hành lâu dài, nhưng **deploy key
 - Cache Git/tệp tạm còn chiếm ổ đĩa sandbox, nhưng `.cache` không nằm trong snapshot Arena. Không lưu công việc duy nhất ở đó.
 - Mốc nguồn cố định và kiểm hash tránh phụ thuộc URL nhánh `main` thay đổi âm thầm. Nếu HEAD mới có vendor khác mốc, script dừng yêu cầu duyệt lock.
 - Không thay đổi kết quả QA hoặc nâng trạng thái nghiệm thu app; các giới hạn unpacked/ảnh/video của bản 3.5.616 vẫn giữ nguyên.
+
+
+## Kiểm chứng triển khai
+
+- 7/7 kiểm thử an toàn công cụ: hash Git đúng, phát hiện thiếu tệp, từ chối xóa asset đã sửa/tệp mới và từ chối đường dẫn lock không an toàn.
+- Tải lại đủ 804/804 tệp từ GitHub, đối chiếu toàn bộ Git blob hash thành công.
+- Đóng ZIP thử 3.5.616 và kiểm độc lập đủ 413 entry, từng byte nội dung khớp lock, CRC hợp lệ và manifest ở gốc. Đã xóa ZIP thử sau kiểm tra; không khôi phục ZIP cũ đã xóa.
+- Bỏ vendor và bản gốc, sau đó giả lập mất toàn bộ Git cache. Bootstrap khôi phục metadata partial/sparse thành công, giữ nguyên byte của 200 tệp cục bộ, kể cả thay đổi công cụ chưa commit; không tự tải lại vendor/original.
+- Sau cùng: 194 tệp nguồn nhỏ của mốc khóa ở Arena, 220 tệp vendor và 390 tệp bản gốc chỉ ở GitHub khi chưa hydrate. Workspace chiếm khoảng 7.1 MiB theo `du`, Git metadata mới khoảng 213 KiB trong cache.
+- Đã xóa cache Git đầy đủ dùng lúc publish (khoảng 131 MiB). Không sửa tệp app, không thay version, không chạy lại nghiệm thu UI/OCR của app vì đây chỉ là thay đổi công cụ lưu trữ.
+
+Private deploy key cũng nằm trong cache và có thể mất giữa các phiên. Khi đó việc đọc repo công khai vẫn hoạt động; muốn push cần tạo/cấp lại deploy key, không chuyển private key vào source để giữ lâu.

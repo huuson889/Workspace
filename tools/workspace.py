@@ -3,10 +3,8 @@
 import argparse
 import hashlib
 import json
-import os
 from pathlib import Path
 import re
-import shutil
 import subprocess
 import sys
 import zipfile
@@ -69,11 +67,14 @@ def ensure_repo():
         git('config', 'core.bare', 'false')
         git('config', 'core.worktree', str(ROOT))
         git('config', 'remote.origin.url', data['repository'])
+        git('config', 'remote.origin.fetch', '+refs/heads/main:refs/remotes/origin/main')
         git('config', 'remote.origin.promisor', 'true')
         git('config', 'remote.origin.partialclonefilter', 'blob:none')
         git('fetch', '--filter=blob:none', '--depth=1', 'origin', 'main', capture=False)
         git('update-ref', 'refs/heads/main', 'FETCH_HEAD')
         git('symbolic-ref', 'HEAD', 'refs/heads/main')
+        git('config', 'branch.main.remote', 'origin')
+        git('config', 'branch.main.merge', 'refs/heads/main')
         git('read-tree', 'HEAD')
         # These flags prepare sparse checkout without initially materializing all blobs.
         git('config', 'core.sparseCheckout', 'true')
@@ -92,6 +93,12 @@ def selected_groups():
 
 
 def select(groups):
+    # A reconstructed index has no stat cache. Refresh it so Git recognizes
+    # already-verified local files as clean rather than retaining them as unsafe.
+    refresh = subprocess.run(['git', '--git-dir=' + str(GITDIR), '--work-tree=' + str(ROOT),
+                              'update-index', '--refresh', '-q'], capture_output=True, text=True)
+    if refresh.returncode not in (0, 1):
+        raise RuntimeError('Unable to refresh sparse index: ' + refresh.stderr)
     patterns = BASE_PATTERNS + [GROUP_PATHS[g] for g in sorted(groups)]
     subprocess.run(['git', '--git-dir=' + str(GITDIR), '--work-tree=' + str(ROOT),
                     'sparse-checkout', 'set', '--no-cone', '--stdin'],
