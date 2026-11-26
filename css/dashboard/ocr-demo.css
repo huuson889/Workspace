@@ -348,7 +348,7 @@ html.dark .keepitOcr .selToolbar button:hover{background:#00000010}
 .keepitOcr .layer{position:absolute;inset:0;overflow:hidden;line-height:1;user-select:text;z-index:3}
 .keepitOcr .layer>span{position:absolute;white-space:pre;transform-origin:top left;color:transparent;cursor:text;line-height:1;font-family:sans-serif;user-select:text}
 .keepitOcr .layer>span::selection{background:#7662ed70;color:transparent}
-.keepitOcr .layer.boxes span{outline:1.5px solid var(--boxLine);background:var(--boxFill);border-radius:2px}
+.keepitOcr .ocrWordBox{position:absolute;outline:1.5px solid var(--boxLine);background:var(--boxFill);border-radius:2px}
 .keepitOcr .rail .mini-pg canvas{display:block;width:100%;height:100%;object-fit:contain}
 .keepitOcr #ko-regionSurface{position:absolute;inset:0;z-index:6;cursor:crosshair;touch-action:none}
 .keepitOcr #ko-regionRect{position:absolute;z-index:7;border:2px solid var(--red);background:#e5484d1f;border-radius:2px;pointer-events:none;display:none;box-shadow:0 0 0 1px #e5484d59,0 0 0 3px #e5484d26}
@@ -394,7 +394,7 @@ html.dark .keepitOcr .regionEditor{border-color:#3b3b46}
 @keyframes markSweep{from{transform:translateY(0);opacity:.35}15%{opacity:1}85%{opacity:1}to{transform:translateY(100%);opacity:.35}}
 .keepitOcr #ko-hl{position:absolute;inset:0;pointer-events:none;z-index:5}
 .keepitOcr .hlBox{position:absolute;border:2px solid var(--brand);background:#7262df1f;border-radius:3px;box-shadow:0 0 0 1px #7262df59,0 0 12px #7262df59}
-.keepitOcr .layer.boxes span:hover{outline-color:var(--brand);background:#7262df1a}
+.keepitOcr .ocrWordBox.hover{outline-color:var(--brand);background:#7262df1a}
 .keepitOcr .trHover{position:absolute;border:1.5px solid var(--brand);background:#7262df1a;border-radius:6px;pointer-events:none;z-index:2}
 .keepitOcr .trHover[hidden]{display:none}
 .keepitOcr .regionEditor:has(#ko-regionText:placeholder-shown) #ko-ocrRegion{background:var(--brand);border-color:transparent;color:#fff}
@@ -443,12 +443,18 @@ html.dark .keepitOcr .vbanner .bnoAsk input{accent-color:var(--nt-ink)}
 .keepitOcr{display:contents;font:14px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 .keepitOcr .ocrModal{z-index:2147483647}.keepitOcr .ocrScrim{z-index:2147483646}
 html.ocrDialogOpen #lhn-sidebar-edge-toggle{visibility:hidden;pointer-events:none}
-.keepitOcr .ocrCanvasOverlay{position:absolute;inset:0;pointer-events:none}
+.keepitOcr .ocrCanvasOverlay{position:absolute;inset:0;pointer-events:none;padding:0;min-width:0}
+/* Keep selection text in native page units, but paint UI in display pixels.
+   --source-scale belongs to the app renderer and updates on zoom/layout changes. */
+.keepitOcr .ocrVisualSurface{position:absolute;left:0;top:0;width:calc(100% * var(--source-scale,1));height:calc(100% * var(--source-scale,1));transform:scale(calc(1 / var(--source-scale,1)));transform-origin:top left;pointer-events:none;z-index:4}
+.keepitOcr .boxLayer{position:absolute;inset:0;pointer-events:none;display:none;z-index:3}
+.keepitOcr .layer.boxes+.ocrVisualSurface .boxLayer{display:block}
+.keepitOcr .ocrVisualSurface>.hl{position:absolute;inset:0;z-index:4;pointer-events:none}
 .keepitOcr .ocrCanvasOverlay>.layer{pointer-events:auto}
 .keepitOcr .ocrCanvasOverlay>.layer.nativeText{pointer-events:none}
 .keepitOcr .layer>span>.en{position:static;font:inherit;line-height:inherit;color:inherit;white-space:inherit}
-.keepitOcr .ocrCanvasOverlay>.regionSurface{position:absolute;inset:0;z-index:6;cursor:crosshair;touch-action:none;pointer-events:auto}
-.keepitOcr .ocrCanvasOverlay>.regionSurface[hidden]{display:none}
+.keepitOcr .ocrCanvasOverlay .regionSurface{position:absolute;inset:0;z-index:6;cursor:crosshair;touch-action:none;pointer-events:auto}
+.keepitOcr .ocrCanvasOverlay .regionSurface[hidden]{display:none}
 .keepitOcr .ocrCanvasOverlay .regionRect{position:absolute;z-index:7;border:2px solid var(--red);background:#e5484d1f;border-radius:2px;pointer-events:none;display:none}
 .keepitOcr .ocrCanvasOverlay .regionMarks{position:absolute;inset:0;pointer-events:none;z-index:6}
 .keepitOcr .ocrCanvasOverlay .hl{pointer-events:none}

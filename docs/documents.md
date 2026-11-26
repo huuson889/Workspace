@@ -2,7 +2,7 @@
 
 ## Phạm vi
 
-Tài liệu dùng bố cục demo v13 nhưng phải gọi module app có sẵn cho Reader, chọn chữ, Ghi chú và AI; không mang bản mô phỏng vào ứng dụng. Hỗ trợ PDF/DOCX/PPTX/JPG/PNG/WebP, không sửa file gốc. Chưa có OCR, XFA, sửa form PDF hoặc hiệu ứng Office nâng cao.
+Tài liệu dùng bố cục demo v13 nhưng phải gọi module app có sẵn cho Reader, chọn chữ, Ghi chú và AI; không mang bản mô phỏng vào ứng dụng. Hỗ trợ PDF/DOCX/PPTX/JPG/PNG/WebP, không sửa file gốc. OCR cục bộ Tesseract được mô tả bên dưới; chưa hỗ trợ XFA, sửa form PDF hoặc hiệu ứng Office nâng cao.
 
 ## Điểm vào
 
@@ -59,7 +59,7 @@ Chromium extension thật cần kiểm selection/composer/sidebar/dictionary, no
 
 ### Nguồn và ranh giới
 
-Chỉ sử dụng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt. Không đọc/đối chiếu/tái dùng mã từ các bản OCR bị người dùng loại. Mã nguồn riêng ở `Workspace/Keepit-OCR`; manifest 3.5.614 là bản test được người dùng cho phép đóng gói dù chưa đủ QA unpacked/ảnh bắt buộc; không phải xác nhận đạt 100%.
+Chỉ sử dụng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt. Không đọc/đối chiếu/tái dùng mã từ các bản OCR bị người dùng loại. Mã nguồn riêng ở `Workspace/Keepit-OCR`; manifest 3.5.615 tiếp tục bản test với giới hạn đã công khai, bản 3.5.614 trước đó được người dùng cho phép đóng gói dù chưa đủ QA unpacked/ảnh bắt buộc; không phải xác nhận đạt 100%.
 
 - `ocr-controller.mjs` lấy trực tiếp DOM/luồng OCR, hover, vùng và Tesseract preprocessing của demo, nhưng không nạp viewer hoặc các công cụ giả của demo. `ocr-demo.css` scope các declaration demo; đổi lớp tích hợp/stacking, fallback font thực tế và reset CSS gốc trùng tên. Vùng không nhận `margin-bottom:18px` của `.row` thư viện; notice không nhận căn giữa/font weight gốc. Thanh viewer dọc cao 52px theo demo; vẫn dùng các controller/nút app.
 - `KeepitOcrDocumentHost` trong `documents.js` cung cấp state/getters và cùng renderer đang mở. Renderer thêm `ocrCanvas` dùng PDFDocument/ảnh có sẵn; không fingerprint/import/parse tệp lần hai.
@@ -73,6 +73,10 @@ Chỉ sử dụng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt. Không đ�
 - `ocr-localize.mjs` lấy nhãn từ `languages.js` en/vi/ko; giữ chuỗi protocol nội bộ để parse trạng thái demo và không dịch nội dung OCR của tài liệu. Theme theo setting app; không có theme riêng của OCR.
 
 ### Bằng chứng và giới hạn
+
+3.5.615 sửa lớp vẽ UI: `.layer` chữ chọn được giữ native page units; `.ocrVisualSurface` inverse-scale và mở kích thước theo `--source-scale`, giữ scan/word/hover/region ở display pixels. Overlay bỏ padding `.paper` app; `.ocrWordBox` dùng rect chuẩn hóa thay outline span chữ/nested `.en`. Reverse hover khớp cụm chữ theo geometry trước fallback offset, giữ đúng dòng sau bổ sung vùng.
+
+QA mới 3.5.615: fixture PDF 72×96pt thực sự OCR, 64/64 trường hợp 1512/390 × theme app sáng/tối × 4 flow × fit/50/100/800 zoom; sourceScale 0.5–10.5556, visual scale 1, scan 2px/trail120px/region2px/radius2px, đúng giữa chu kỳ và thời gian 2.8s/5.6s. Node16/16, static29/29, regression15/15; ESLint/console.error/pageerror HTTP rỗng. Scan trong lượt OCR thật beam running 2800ms, visualScale≈1, line2px/trail120px. Chuột thật kéo vùng, OCR tiêu đề, Apply, hover và chọn chữ/tool. Đây vẫn chỉ là HTTP, không phải nghiệm thu bằng ảnh extension. Kết quả 976 style cũ dưới đây **không kiểm đủ các overlay này** và đã bỏ sót lỗi người dùng báo.
 
 Harness mới nằm ngoài source: `/home/user/qa-clean`. Có 13/13 Node, 15/15 regression, 13/13 current/range/native PDF, 14/14 export/Office tổng hợp, 9/9 retry/partial; bốn flow PDF/cancel, region/hover bằng chuột thật và pypdf đọc bản xuất. 7 DOM component khớp sau namespace/version normalization. Audit 20 trạng thái × cỡ/theme, 976 mẫu style không lệch thuộc tính đang đo; normalize nhãn số trang/version, bỏ chênh khai báo font-family vì fallback thực tế giống nhau, chờ transition xong. Đây **không phải pixel diff hay kiểm unpacked**. Cùng PNG đầu vào cho text/boxes Việt/Hàn giống hệt demo, gồm cả lỗi đọc Hàn; không hứa OCR chính xác tuyệt đối. PDF được raster trực tiếp thay vì lấy canvas đang hiển thị rồi scale lại nên kết quả/box không byte-identical với demo trên một số mẫu.
 

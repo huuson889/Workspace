@@ -1,14 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.614 từ nền 3.5.612**, mã riêng `Workspace/Keepit-OCR`; `Keep-it` gốc không đổi. Người dùng đã cho phép tăng version/commit/đóng ZIP dù còn giới hạn QA unpacked và ảnh; không phải bản đã nghiệm thu 100%.
-- Chỉ nguồn gốc 3.5.612 + demo 2.9.7.33; các bản OCR đã bị người dùng loại tuyệt đối không được tham khảo/tái sử dụng, kể cả harness/bằng chứng cũ.
-- Tesseract/eng/vie/kor cục bộ; DOM/controls/hover/vùng/progress từ demo, renderer/kho/tool dùng app. PP/Fusor hoãn, bị khóa; DB v3 thêm OCR scoped theo document/page.
-- QA mới `qa-clean`: 13/13 Node, 15/15 regression, 13/13 scope/native PDF, 14/14 export/Office, 9/9 retry/partial; vùng/hover bằng chuột. 7 DOM component khớp; 976 mẫu style trên 20 trạng thái/cỡ/theme không lệch thuộc tính đang đo. Đây chỉ là HTTP, không phải ảnh/pixel QA.
-- **Chưa nghiệm thu 100%:** bị chặn unpacked tại chrome://extensions; chưa có PNG/crop 4×/pixel diff, CSP/permission thực, tệp/profile/thiết bị/voice/AI thật. Người dùng cho phép đóng gói bản test với các giới hạn này; không coi xác nhận đóng gói là đã kiểm các mục còn thiếu.
+- **Bản test 3.5.615**, sửa UI scan/khung OCR của 3.5.614 trong `Workspace/Keepit-OCR`; `Keep-it` gốc 3.5.612 không đổi. Không phải bản nghiệm thu 100%.
+- Chỉ nguồn gốc + demo 2.9.7.33 được duyệt; Tesseract/eng/vie/kor cục bộ, PP/Fusor hoãn. Renderer/kho/tool app giữ nguyên.
+- UI scan/word/region được tách khỏi native page scale; lớp chữ `.para/.en` tiếp tục dùng chọn chữ/tool app. Reset padding `.paper`, bỏ outline trùng span `.en`; hover sau OCR vùng khớp cụm chữ theo geometry.
+- QA HTTP mới: 64/64 tổ hợp 1512/390 × sáng/tối × 4 flow × fit/50/100/800 zoom; scale 0.5–10.5556, đường scan/viền vùng 2px, trail 120px, bán kính khung 2px; 16/16 Node, 29/29 static, 15/15 regression; ESLint rỗng, console.error/pageerror HTTP rỗng. Chuột thật: kéo vùng, OCR tiêu đề, Apply, hover và chọn chữ/tool. Các phép đo không thay thế pixel QA.
+- **Chưa nghiệm thu 100%:** unpacked bị chặn; chưa có PNG/crop 4×/pixel diff, CSP/permission thực, tệp/profile/thiết bị/voice/AI thật. Kế thừa phạm vi bản test với giới hạn đã công khai; không coi phép đo HTTP là xác nhận đầy đủ hình thức demo.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
+- Cần người dùng thử lại scan/khung của 3.5.615 trên PDF gây lỗi trong extension thật; số đo HTTP đã sửa nhưng chưa có nghiệm thu từ ảnh extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -158,11 +159,17 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 
 ### OCR clean rebuild — ranh giới module mới
 
-`documents.js` → getter host `KeepitOcrDocumentHost` → `ocr-controller.mjs`; canvas dùng `ocrCanvas` trên renderer hiện tại, không viewer/file-store song song. `vendor/ocr` chứa Tesseract worker/core/data, preprocessing demo và PDF exporter deps. `ocr-localize.mjs` dùng catalogue `languages.js`; theme theo setting app. Store `ocr` trong DB Documents v3; purge theo index document. Lớp `.para`/`.en` quay lại controller app. CSS demo scope dưới `.keepitOcr`; chặn root ẩn bắt pointer, reset xung đột `.row`/`.vbanner`, thanh viewer dọc cao 52px theo demo. Không bê toolbar/Reader/Notes giả của demo. Tesseract retry trang lỗi một lần rồi đi tiếp; kết quả một phần đếm đúng lượt hiện tại. Đóng tài liệu đợi PDF export cleanup và chặn tải muộn; ảnh OCR tối đa 16 megapixel. Harness, bằng chứng và script tạm ngoài source.
+`documents.js` → getter host `KeepitOcrDocumentHost` → `ocr-controller.mjs`; canvas dùng `ocrCanvas` trên renderer hiện tại, không viewer/file-store song song. `vendor/ocr` chứa Tesseract worker/core/data, preprocessing demo và PDF exporter deps. `ocr-localize.mjs` dùng catalogue `languages.js`; theme theo setting app. Store `ocr` trong DB Documents v3; purge theo index document. Lớp `.para`/`.en` quay lại controller app. CSS demo scope dưới `.keepitOcr`; chặn root ẩn bắt pointer, reset xung đột `.row`/`.vbanner`, thanh viewer dọc cao 52px theo demo. Không bê toolbar/Reader/Notes giả của demo. Tesseract retry trang lỗi một lần rồi đi tiếp; kết quả một phần đếm đúng lượt hiện tại. Đóng tài liệu đợi PDF export cleanup và chặn tải muộn; ảnh OCR tối đa 16 megapixel. Harness, bằng chứng và script tạm ngoài source. Từ 3.5.615: `.layer` chữ vẫn ở native page units; `.ocrVisualSurface` giãn kích thước và inverse-scale theo `--source-scale` để scan/word/hover/region được vẽ bằng display pixels. `.ocrWordBox` lấy rect chuẩn hóa, không outline text span đã transform; không style nested `.en`. Overlay reset padding/min-width của `.paper` app. Reverse hover khớp cụm geometry/text trước fallback offset để không sai sau vùng append.
 
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.615 | Arena sửa:**
+
+- Tóm tắt: sửa đúng nguyên nhân UI scan/word/region bị phóng theo native PDF: tách visual surface inverse-scale, reset padding của `.paper`, vẽ box từ rect chuẩn hóa thay outline span text/nested `.en`. Giữ lớp chữ native và công cụ app; khớp reverse-hover theo cụm chữ trước fallback để region append không làm sáng nhầm. Không đổi engine, schema, labels, theme hay renderer.
+- File: `js/dashboard/ocr-controller.mjs`, `css/dashboard/ocr-demo.css`, `manifest.json`, `PROJECT.md`, `README.md`, `docs/documents.md`, `THIRD_PARTY_NOTICES.md`.
+- Kiểm tra: HTTP fixture PDF 3 trang 72×96pt, OCR thật; trước sửa 0/16 ca, sourceScale 10.5556 làm scan 2→21.11px/trail 120→1266.67px/region 2→21.11px và overlay vượt trang; sau sửa 64/64 ca 1512/390 × sáng/tối (nút app) × 4 flow × fit/50/100/800 zoom, scale 0.5–10.5556; visual rect khớp trang, scan 2px/trail120px/region2px/radius2px, nested outline none, scan giữa chu kỳ khớp 50%, thời gian 2.8s/5.6s. Node 16/16, static 29/29, regression 15/15; ESLint/console.error/pageerror HTTP rỗng. Scan trong lượt OCR thật visualScale≈1, beam running 2800ms, line2px/trail120px. Chuột thật kéo vùng 360×36px, nhận đúng tiêu đề, Apply đóng/clear scan, hover thuận/ngược và chọn chữ/tool app. QA chỉ HTTP; chưa unpacked/PNG/crop4×/pixel diff/CSP/permission thật; không tuyên bố đạt 100% demo. Bản 3.5.614 có 976 mẫu style nhưng bỏ sót lỗi overlay, không dùng kết quả đó làm bằng chứng phủ nhận phản hồi người dùng.
 
 **2026-11-26 | v3.5.614 | Arena sửa:**
 

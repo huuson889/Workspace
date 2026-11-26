@@ -40,3 +40,5 @@ The Word class model (`jdp8/bert-english-uncased-finetuned-pos`, ONNX export of 
 | Noto Sans KR Thin | Font metadata: 2.004-H2; approved demo `fusor/vendor/font.ttf` | Unicode PDF text | SIL OFL-1.1; `licenses/ocr-demo/LICENSE-NotoSansKR.txt` |
 
 OCR markup, scoped style declarations, hover/region helpers and image preprocessing are derived directly from the approved OCR demo, not rejected Keepit test builds. PP-OCR/Fusor runtimes/models are not bundled by this integration.
+
+Integration UI correction (3.5.615): scan and rectangle layers are rendered in display pixels independently of native document scale; selectable text remains in the app layer. No third-party runtime/model changes.

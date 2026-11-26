@@ -54,16 +54,18 @@ function changed(page,result){
 function paint(target,page){
  if(!target||!target.isConnected||host.state().mode!=='orig')return;
  let root=target.querySelector(':scope>.keepitOcr');
- if(!root){root=document.createElement('div');root.className='keepitOcr';root.innerHTML='<div class="ocrCanvasOverlay paper"><div class="scanFx fxDir"><i class="beam"><b class="tUp"></b><b class="tDn"></b><b class="ln"></b></i></div><div class="layer"></div><div class="hl" aria-hidden="true"></div><div class="regionSurface" hidden><div class="regionMarks"></div><div class="regionRect"></div></div></div>';target.append(root);bindRegionSurface(root.querySelector('.regionSurface'));}
+ if(!root){root=document.createElement('div');root.className='keepitOcr';root.innerHTML='<div class="ocrCanvasOverlay paper"><div class="layer"></div><div class="ocrVisualSurface"><div class="scanFx fxDir"><i class="beam"><b class="tUp"></b><b class="tDn"></b><b class="ln"></b></i></div><div class="boxLayer" aria-hidden="true"></div><div class="hl" aria-hidden="true"></div><div class="regionSurface" hidden><div class="regionMarks"></div><div class="regionRect"></div></div></div></div>';target.append(root);bindRegionSurface(root.querySelector('.regionSurface'));}
  const cover=root.firstElementChild;Object.assign(cover.style,{width:'100%',height:'100%',minHeight:'0',border:0,borderRadius:0,boxShadow:'none',background:'none',overflow:'hidden'});
  cover.classList.toggle('scanning',busy&&scanPage===page);
  const layer=cover.querySelector('.layer');layer.classList.toggle('boxes',$('showBoxes').checked&&$('trPanel').classList.contains('open'));
- const r=results.get(page);if(layer._ocrResult===r)return;layer._ocrResult=r;layer.replaceChildren();if(!r)return;
+ const r=results.get(page);if(layer._ocrResult===r)return;layer._ocrResult=r;layer.replaceChildren();const boxes=cover.querySelector('.boxLayer');boxes.replaceChildren();if(!r)return;
  const native=!!host.state().engine?.pages[page-1]?.texts?.length;layer.classList.toggle('nativeText',native);
  const grouping=grouped(r),mapping=new Map();grouping.forEach((g,line)=>g.items.forEach((item,i)=>mapping.set(item.index,{line,first:i===0})));
  const w=target.clientWidth,h=target.clientHeight,measure=makeCanvas(1,1).getContext('2d');
  for(const [i,box]of r.boxes.entries()){
   const [x0,y0,x1,y1]=box.rect;if(!box.text?.trim()||x1<=x0||y1<=y0)continue;
+  const visibleBox=document.createElement('div');visibleBox.className='ocrWordBox';visibleBox.dataset.i=i;
+  Object.assign(visibleBox.style,{left:x0*100+'%',top:y0*100+'%',width:(x1-x0)*100+'%',height:(y1-y0)*100+'%'});boxes.append(visibleBox);
   const span=document.createElement('span');span.dataset.i=i;
   if(!native){const map=mapping.get(i);span.className='para';span.dataset.page=page;span.dataset.paragraphIndex=map?.line||0;if(map?.first)span.dataset.paragraphStart='true';const en=document.createElement('span');en.className='en';en.textContent=box.text+' ';span.append(en);}else{span.textContent=box.text+' ';span.setAttribute('aria-hidden','true');}
   const height=Math.max(1,(y1-y0)*h),width=Math.max(1,(x1-x0)*w);measure.font=`${height}px sans-serif`;const raw=measure.measureText(box.text+' ').width||1;
@@ -801,6 +803,12 @@ function boxesForLine(text, boxes, lineIdx, ratio){
   if (direct.length) return direct;
   const part = boxes.filter(b => normText(b.text).includes(target));
   if (part.length) return part;
+  // Region OCR appends replacement boxes: resolve a complete visual line before
+  // the demo's character-offset fallback, which assumes the original box order.
+  for(const cluster of clustersOf(boxes)){
+    const indices=cluster.items.slice().sort((a,b)=>boxes[a].rect[0]-boxes[b].rect[0]);
+    if(normText(indices.map(i=>boxes[i].text||'').join(' '))===target)return indices.map(i=>boxes[i]);
+  }
   /* không khớp chữ: lấy mọi khung nằm cùng băng ngang với con trỏ (giống Paddle tô cả dòng) */
   if (typeof ratio === 'number'){
     const band = boxes.filter(b => {
@@ -949,6 +957,7 @@ function lineForBox(text, boxes, i){
   return li;
 }
 function clearHoverHighlight(){
+  overlay(current)?.querySelectorAll('.ocrWordBox.hover').forEach(el=>el.classList.remove('hover'));
   const hl = hook()?.getHighlightLayer?.() || $('hl'); if (hl) hl.replaceChildren();
   const line = $('trHover'); if (line) line.hidden = true;
 }
@@ -974,6 +983,8 @@ function syncLayerBoxes(){
   if (!trOpen()) clearHoverHighlight();
 }
 function paintHoverHighlight(list){
+  const active=new Set((list||[]).map(box=>box?.rect?.join(',')));
+  overlay(current)?.querySelectorAll('.ocrWordBox').forEach(el=>el.classList.toggle('hover',active.has(results.get(current)?.boxes[Number(el.dataset.i)]?.rect?.join(','))));
   const hl = hook()?.getHighlightLayer?.() || $('hl'); if (!hl) return;
   hl.replaceChildren();
   /* mỗi khung chữ một khung tím ĐÚNG BẰNG khung xanh — không gộp thành khung bao */
