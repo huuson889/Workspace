@@ -1,0 +1,13 @@
+# Workspace development rules
+
+- This root is a GitHub-backed sparse working copy of `huuson889/Workspace`.
+- Read `GITHUB-WORKSPACE.md` before modifying checkout layout or packaging.
+- Application rules remain in `Keepit-OCR/AGENTS.md`; application version is still 3.5.616 until an actual app change is requested.
+- Missing `Keepit-OCR/vendor/` and `Keep-it/` are intentional local omissions, NOT remote deletions.
+- Run `python tools/workspace.py hydrate ocr-assets` before extension tests/packaging. Thin source alone is not runnable.
+- To consult the original source, run `python tools/workspace.py hydrate original`; evict only after verifying no changes.
+- Never replace local OCR model/runtime paths with GitHub URLs: delivered extensions must remain offline-capable.
+- Never stage sparse omissions as deletions or force-push. If cache metadata disappeared, run `python tools/workspace.py bootstrap`, inspect status and hydrate as needed.
+- Save changes to GitHub before relying on cache eviction. `~/.cache` is transient, not a backup.
+- Private SSH keys remain outside Workspace, never in commits, ZIPs, logs or chat. SSH deploy keys do not grant GitHub Releases API access.
+- Keep app-specific historical source restrictions and user instructions unchanged. Repository storage work does not authorize app redesign or engine changes.

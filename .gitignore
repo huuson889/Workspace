@@ -1,0 +1,11 @@
+# Local-only artifacts. Do not use this file to remove source assets from GitHub.
+__pycache__/
+*.pyc
+*.zip
+*.part
+*.pem
+*.key
+.env
+.env.*
+node_modules/
+.workspace-local.json
