@@ -2,6 +2,7 @@
 
 **Trạng thái:** Đề xuất — chưa triển khai, chưa có quyết định nghiệm thu UI hoặc engine OCR.  
 **Keep-it hiện tại:** v3.5.612.  
+**Version phát hành đích:** v3.5.613 — gộp toàn bộ phạm vi đã chốt vào một bản; không tăng version trung gian. Chỉ tăng version sau khi hoàn tất và nghiệm thu.
 **Nguồn tham khảo:** `Keepit-Demo-Zip/Keepit-OCR-demo-2.9.7.33.zip`. Tài liệu trong ZIP nói UI được giữ từ demo 2.9.7.28; bản 2.9.7.33 chủ yếu bổ sung adapter tích hợp và hành vi theo trang khi OCR liên tục/hai trang.
 
 ## 1. Mục tiêu
@@ -81,7 +82,7 @@ Không tuyên bố “đúng 100%” trước khi qua cả tiêu chí hình ản
 - Kiểm tra hiệu ứng scan ở đúng trang engine đang xử lý trong chế độ từng trang/cuộn liên tục/hai trang; xác nhận hiệu ứng chuyển theo từng lượt OCR và được dừng/dọn khi hoàn tất, hủy, lỗi, đổi tệp hoặc đóng viewer.
 - Chụp/đo UI tại 1512 px và 390 px, sáng/tối; thêm ảnh 4× cho chi tiết 1–2 px. `console.error` và `pageerror` phải rỗng.
 - Báo riêng điều đã xác minh và chưa kiểm được (profile thật, tệp người dùng, thiết bị/trình duyệt thật, cảm giác dùng, tốc độ).
-- Chỉ khi nghiệm thu mới tăng version `manifest.json`, cập nhật snapshot và nhật ký mục 5 trong `PROJECT.md`, tạo ZIP đúng tên/đúng version và commit theo quy ước.
+- Chỉ sau khi toàn bộ phạm vi được nghiệm thu mới tăng `manifest.json` một lần từ **3.5.612 lên 3.5.613**; không phát hành/tăng version trung gian. Sau đó cập nhật snapshot và nhật ký mục 5 trong `PROJECT.md`, tạo ZIP đúng tên `Keepit - Optimize Test-v3.5.613.zip` và commit theo quy ước.
 
 ## 5. Tiêu chí nghiệm thu đề xuất
 
