@@ -61,6 +61,9 @@ Không tuyên bố “đúng 100%” trước khi qua cả tiêu chí hình ản
 
 - Nhận tài liệu đang mở, trang hiện tại, trang đang render và trạng thái viewer từ Documents.
 - Cấp canvas/ảnh đúng trang cho engine; hỗ trợ từng trang, cuộn liên tục và hai trang mà không OCR nhầm trang.
+- Khi OCR chạy, hiện đúng hiệu ứng scan của demo trên **trang engine đang xử lý**, không chỉ trang viewer đang chọn; ở cuộn liên tục/hai trang, hiệu ứng phải chuyển theo page đích của từng lượt OCR.
+- Khớp hiệu ứng bề mặt scan của demo (nền/texture trang, lớp chữ scan và vệt ngang); giữ đúng ở theme sáng/tối.
+- Khi OCR hoàn tất, bị hủy, lỗi, đổi tệp hoặc đóng viewer, dừng hiệu ứng và xóa trạng thái scan khỏi trang cũ; không để hiệu ứng mắc kẹt hoặc hiện sai trang.
 - Xử lý đổi tài liệu/trang, đóng viewer, hủy OCR và giải phóng worker/model/tài nguyên.
 - Sửa hoặc thay adapter để khớp renderer hiện hành; tránh parse, fingerprint, import hoặc ghi đè metadata lần hai.
 
@@ -75,6 +78,7 @@ Không tuyên bố “đúng 100%” trước khi qua cả tiêu chí hình ản
 
 - Chạy kiểm thử logic/adapter và UI trên extension thật, không chỉ trên demo/mockup.
 - Kiểm tra PDF có text layer, PDF scan nhiều trang, ảnh, tệp mật khẩu, giới hạn kích thước, ngôn ngữ được chọn, lỗi tải model, hủy giữa chừng, chọn/sửa vùng, lưu sau reload và không làm hỏng annotations/ghi chú.
+- Kiểm tra hiệu ứng scan ở đúng trang engine đang xử lý trong chế độ từng trang/cuộn liên tục/hai trang; xác nhận hiệu ứng chuyển theo từng lượt OCR và được dừng/dọn khi hoàn tất, hủy, lỗi, đổi tệp hoặc đóng viewer.
 - Chụp/đo UI tại 1512 px và 390 px, sáng/tối; thêm ảnh 4× cho chi tiết 1–2 px. `console.error` và `pageerror` phải rỗng.
 - Báo riêng điều đã xác minh và chưa kiểm được (profile thật, tệp người dùng, thiết bị/trình duyệt thật, cảm giác dùng, tốc độ).
 - Chỉ khi nghiệm thu mới tăng version `manifest.json`, cập nhật snapshot và nhật ký mục 5 trong `PROJECT.md`, tạo ZIP đúng tên/đúng version và commit theo quy ước.
@@ -83,6 +87,7 @@ Không tuyên bố “đúng 100%” trước khi qua cả tiêu chí hình ản
 
 - UI nằm trong Documents hiện có, không còn trang OCR demo/DOM độc lập cần mở riêng.
 - Các trạng thái và luồng đã chốt có bố cục/điều khiển tương ứng với demo; không mất chức năng Documents hiện tại.
+- Hiệu ứng scan khớp demo, chỉ phủ trang engine đang xử lý, chuyển đúng trang trong mọi chế độ xem và được dọn sạch sau khi hoàn tất, hủy, lỗi, đổi tệp hoặc đóng viewer; xác minh ở sáng/tối.
 - Nhãn, aria-label, theme và bố cục tuân thủ hệ thống Keep-it.
 - OCR chỉ bật với loại tệp/engine thực sự hỗ trợ; kết quả và trạng thái lỗi/hủy không giả lập.
 - Không import hoặc lưu trùng tài liệu; kết quả không bị mất sau reload nếu phạm vi đã chốt yêu cầu lưu.
