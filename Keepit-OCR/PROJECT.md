@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.616**, sửa chuyển trang khi OCR cuộn liên tục của 3.5.615 trong `Workspace/Keepit-OCR`; `Keep-it` gốc 3.5.612 và ZIP cũ giữ nguyên. Chưa nghiệm thu 100%.
-- Chỉ nguồn gốc + demo 2.9.7.33 được duyệt; Tesseract/eng/vie/kor cục bộ, PP/Fusor hoãn. Không đổi engine/kho/nhãn/theme/CSS scan/khung 3.5.615.
-- Host OCR dùng cuộn native smooth cho continuous/facingContinuous; giữ đích khi đi qua trang trước, không restart lệnh trùng, resize không ghi đè vị trí/ngắt animation. Điều hướng app khác vẫn auto; wheel/touch/pointer/key nhả đích theo dõi.
-- QA HTTP mới: 8/8 so chuyển trang với demo ở 1512/390 × sáng/tối × 2 flow; 8/8 OCR thật 3 trang (scan đúng cả 3, lưu đúng page, không dựng lại pageStack, có khung cuộn trung gian); 24/24 Node, 29/29 static, 64/64 scan/khung, 18/18 bốn flow/hủy, 15/15 hồi quy, 13/13 range/current/native-PDF; cú pháp/undefined checks sạch, console.error/pageerror HTTP rỗng. Wheel thật có trusted event và đổi trang hiện tại theo vị trí cuộn.
-- **Giới hạn:** unpacked vẫn bị chặn, chưa PNG/crop4×/pixel/video QA/CSP/permission/profile/tệp/thiết bị thật. Có trace rAF/scrollTop HTTP, không cam kết số khung hình/timing giống tuyệt đối demo hay hiệu năng mọi PDF.
+- **Bản test 3.5.617**, chỉ sửa độ rộng mặc định sidebar OCR và lớp popup tiến độ trong `Workspace/Keepit-OCR`; bản gốc không đổi. Chưa nghiệm thu 100%.
+- Tesseract/eng/vie/kor cục bộ, PP/Fusor hoãn; giữ nguyên engine, dữ liệu, flow, kéo resize, vị trí popup và UI khác.
+- Sidebar ngang mặc định cùng popup 380px (vẫn ưu tiên độ rộng đã lưu); chế độ dọc vẫn toàn màn hình như trước. Popup nằm trên host Back to top, dưới sheet đang mở của thanh Keepit.
+- QA HTTP: đối chiếu trước/sau 6/6 ở 1512/800/390 × nút theme sáng/tối, popup không đổi rect, hit-test chuyển từ Back to top sang popup; kéo thật 380→500px và khôi phục 500px sau reload; OCR ảnh thật hoàn tất/lưu IndexedDB; console.error/pageerror rỗng. Kiểm công cụ lưu trữ 7/7.
+- **Giới hạn:** trình duyệt công cụ chặn chrome://extensions, chưa unpacked/CSP/permission/PNG/crop4×/pixel/profile/tệp/thiết bị thật. Các kiểm HTTP không thay thế QA ảnh extension bắt buộc; giới hạn cuộn/scan bản trước vẫn giữ.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử lại cuộn OCR 3.5.616 và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.617: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -164,6 +164,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.617 | Arena sửa:**
+
+- Tóm tắt: sidebar OCR ngang bỏ giới hạn mặc định 42vw, dùng cùng giới hạn 380px/viewport với popup; giữ ưu tiên `--trW` đã lưu và kéo resize. Popup tăng z-index trên host Back to top (Shadow DOM), dưới sheet thanh Keepit; không dịch vị trí, không đổi portrait toàn màn hình, engine, flow hay UI khác.
+- File: `css/dashboard/ocr-demo.css`, `manifest.json`, `PROJECT.md`, `README.md`, `docs/documents.md`, `THIRD_PARTY_NOTICES.md`; root `AGENTS.md` bỏ version snapshot cố định để tra manifest hiện hành.
+- Kiểm tra: HTTP app thật với shim extension API (không phải unpacked), 6/6 trường hợp 1512/800/390 × theme app sáng/tối: ở ngang sidebar/popup 380px (800px trước là336px), dọc giữ sidebar390px/popup374px; rect popup trước/sau không đổi. Cuộn stage thật để Back to top hiện: hit-test tại vùng chồng trước trúng host thanh, sau trúng popup cả6/6. Kéo chuột thật 380→500px, reload khôi phục500px; OCR Tesseract ảnh tổng hợp hoàn tất, có chữ và1 bản ghi OCR, scan được dọn. console.error/pageerror HTTP rỗng; công cụ storage7/7. Chưa QA ảnh/PNG/crop4×/pixel/CSP/permission hay extension thật vì chrome://extensions bị chặn; không đánh dấu đạt nghiệm thu UI bắt buộc.
 
 **2026-11-26 | v3.5.616 | Arena sửa:**
 

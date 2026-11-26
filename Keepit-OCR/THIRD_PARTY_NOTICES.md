@@ -44,3 +44,5 @@ OCR markup, scoped style declarations, hover/region helpers and image preprocess
 Integration UI correction (3.5.615): scan and rectangle layers are rendered in display pixels independently of native document scale; selectable text remains in the app layer. No third-party runtime/model changes.
 
 Continuous OCR navigation correction (3.5.616) uses the browser’s native smooth scrolling; no additional runtime, animation library, model or third-party dependency is bundled.
+
+OCR sidebar width and progress-popup layering adjustment (3.5.617) changes first-party UI CSS only; no third-party dependency, runtime, model or license changes.

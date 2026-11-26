@@ -2,7 +2,7 @@
 
 - This root is a GitHub-backed sparse working copy of `huuson889/Workspace`.
 - Read `GITHUB-WORKSPACE.md` before modifying checkout layout or packaging.
-- Application rules remain in `Keepit-OCR/AGENTS.md`; application version is still 3.5.616 until an actual app change is requested.
+- Application rules remain in `Keepit-OCR/AGENTS.md`; read `Keepit-OCR/manifest.json` for the current application version.
 - Missing `Keepit-OCR/vendor/` and `Keep-it/` are intentional local omissions, NOT remote deletions.
 - Run `python tools/workspace.py hydrate ocr-assets` before extension tests/packaging. Thin source alone is not runnable.
 - To consult the original source, run `python tools/workspace.py hydrate original`; evict only after verifying no changes.
