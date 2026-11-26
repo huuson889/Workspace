@@ -170,11 +170,12 @@ def pack(output, evict_after):
     version = json.loads((ROOT / 'Keepit-OCR/manifest.json').read_text())['version']
     if not re.fullmatch(r'[0-9]+(?:\.[0-9]+){1,3}', version):
         raise RuntimeError('Unsafe app version')
-    destination = Path(output).resolve() if output else CACHE / 'packages' / f'Keepit - Optimize Test-v{version}.zip'
+    package_folder = ROOT / 'Keepit-OCR-Zip'
+    destination = Path(output).resolve() if output else package_folder / f'Keepit - Optimize Test-v{version}.zip'
+    if destination.parent != package_folder.resolve() or destination.suffix != '.zip':
+        raise RuntimeError('Publish OCR packages in Workspace/Keepit-OCR-Zip/')
     if destination.exists():
         raise RuntimeError('Refusing to overwrite existing package: ' + str(destination))
-    if destination.is_relative_to(ROOT):
-        raise RuntimeError('Keep packages outside Workspace: use a cache path')
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_suffix('.zip.part')
     try:
@@ -193,6 +194,7 @@ def pack(output, evict_after):
         if temporary.exists():
             temporary.unlink()
     print('Created full offline package:', destination)
+    print('Required: git add --sparse this ZIP, commit and push to GitHub main; packaging alone does not upload it.')
     print('SHA256:', hashlib.sha256(destination.read_bytes()).hexdigest())
     if evict_after:
         evict('ocr-assets')

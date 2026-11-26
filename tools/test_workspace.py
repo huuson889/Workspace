@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import zipfile
 from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('workspace_tool', Path(__file__).with_name('workspace.py'))
@@ -67,6 +68,40 @@ class WorkspaceSafetyTests(unittest.TestCase):
                 w.evict('ocr-assets')
             select.assert_not_called()
         self.assertTrue(extra.exists())
+
+    def prepare_package(self):
+        app = self.root / 'Keepit-OCR'
+        (app / 'manifest.json').write_text(json.dumps({'version': '3.5.617'}))
+        for name in ['AGENTS.md', 'PROJECT.md']:
+            (app / name).write_text('Packaging fixture')
+        paths = [str(p.relative_to(self.root)) for p in app.rglob('*') if p.is_file()]
+        return '\n'.join(paths)
+
+    def test_package_defaults_to_matching_github_folder(self):
+        paths = self.prepare_package()
+        with patch.object(w, 'hydrate'), patch.object(w, 'git', return_value=paths):
+            w.pack(None, False)
+        destination = self.root / 'Keepit-OCR-Zip/Keepit - Optimize Test-v3.5.617.zip'
+        with zipfile.ZipFile(destination) as archive:
+            self.assertIsNone(archive.testzip())
+            self.assertEqual(json.loads(archive.read('manifest.json'))['version'], '3.5.617')
+            self.assertIn('vendor/test.bin', archive.namelist())
+
+    def test_package_refuses_cache_only_destination(self):
+        paths = self.prepare_package()
+        with patch.object(w, 'hydrate'), patch.object(w, 'git', return_value=paths):
+            with self.assertRaisesRegex(RuntimeError, 'Keepit-OCR-Zip'):
+                w.pack(str(self.root / 'cache-only.zip'), False)
+
+    def test_package_does_not_overwrite_published_zip(self):
+        paths = self.prepare_package()
+        destination = self.root / 'Keepit-OCR-Zip/Keepit - Optimize Test-v3.5.617.zip'
+        destination.parent.mkdir()
+        destination.write_bytes(b'existing release')
+        with patch.object(w, 'hydrate'), patch.object(w, 'git', return_value=paths):
+            with self.assertRaisesRegex(RuntimeError, 'overwrite'):
+                w.pack(None, False)
+        self.assertEqual(destination.read_bytes(), b'existing release')
 
     def test_lock_rejects_parent_traversal(self):
         self.data['files'][0]['path'] = '../outside'

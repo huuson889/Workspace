@@ -1,7 +1,7 @@
 # Workspace nhẹ — GitHub là bản lưu chính
 
 Repo: https://github.com/huuson889/Workspace — nhánh `main`.
-Ứng dụng vẫn **3.5.616**; thay đổi này chỉ là công cụ phát triển, không sửa code/app/engine.
+Version app hiện hành xem `Keepit-OCR/manifest.json`; thay đổi quy trình lưu ZIP không sửa code/app/engine và không tăng version app.
 
 ## Mặc định lưu gì tại Arena?
 
@@ -56,9 +56,18 @@ Lịch sử Git riêng của bản OCR 3.5.614–616 được lưu ở nhánh `a
 python tools/workspace.py pack --evict
 ```
 
-Lệnh tải đủ vendor, kiểm hash, tạo ZIP có manifest ở gốc, kiểm CRC, rồi bỏ vendor cục bộ nếu không có chỉnh sửa. ZIP mặc định ở `~/.cache/keepit-workspace/packages/`, không nằm trong snapshot source. Không ghi đè ZIP cùng tên.
+Lệnh tải đủ vendor, kiểm hash, tạo ZIP có manifest ở gốc, kiểm CRC, rồi bỏ vendor cục bộ nếu không có chỉnh sửa. ZIP mặc định ở `Workspace/Keepit-OCR-Zip/Keepit - Optimize Test-v<version>.zip`. Không ghi đè ZIP cùng tên.
 
-GitHub Releases thích hợp lưu ZIP phát hành lâu dài, nhưng **deploy key SSH chỉ cho Git, không cấp quyền API upload Releases**. Chưa tự động tạo Release/upload ZIP; cần đăng nhập API/GitHub CLI phù hợp hoặc người dùng tự upload. Không yêu cầu gửi token vào chat.
+**Quy tắc người dùng:** mọi ZIP giao phải được commit/push lên GitHub `main` trong thư mục tương ứng `<thư-mục-nguồn>-Zip`; ví dụ `Keepit-OCR` → `Keepit-OCR-Zip`. Không chỉ lưu cache, không dùng GitHub Releases thay thế. Không tạo lại ZIP cũ đã xóa. Công cụ `pack` tạo gói nhưng không tự commit/push:
+
+```bash
+git add --sparse 'Keepit-OCR-Zip/Keepit - Optimize Test-v<version>.zip'
+# Commit cùng thay đổi nguồn hoặc commit riêng nếu app đã được lưu.
+git commit -m 'Publish Keepit-OCR ZIP v<version>'
+git push origin main
+```
+
+Thư mục ZIP không nằm trong sparse checkout mặc định để Arena vẫn nhẹ; file vừa tạo cần `--sparse` khi stage. Sau push, đối chiếu blob ZIP với GitHub trước khi bỏ bản local (có thể chạy `python tools/workspace.py bootstrap` để áp lại layout thưa). Không coi việc bỏ bản local đã xác minh là yêu cầu xóa ZIP trên GitHub. Deploy key SSH hiện có đủ quyền Git để đẩy ZIP vào repo; không cần API Releases.
 
 ## Giới hạn thực tế
 
@@ -78,3 +87,8 @@ GitHub Releases thích hợp lưu ZIP phát hành lâu dài, nhưng **deploy key
 - Đã xóa cache Git đầy đủ dùng lúc publish (khoảng 131 MiB). Không sửa tệp app, không thay version, không chạy lại nghiệm thu UI/OCR của app vì đây chỉ là thay đổi công cụ lưu trữ.
 
 Private deploy key cũng nằm trong cache và có thể mất giữa các phiên. Khi đó việc đọc repo công khai vẫn hoạt động; muốn push cần tạo/cấp lại deploy key, không chuyển private key vào source để giữ lâu.
+
+## Cập nhật quy tắc ZIP — 2026-11-26
+
+- Bản OCR 3.5.617 được đưa vào `Keepit-OCR-Zip/`, giữ nguyên byte ZIP đã kiểm offline; không đổi version/code app.
+- Công cụ đóng gói mặc định dùng thư mục tương ứng trên repo thay vì cache; Git ignore cho phép ZIP trong thư mục `*-Zip`. Quy trình bắt buộc push và kiểm chứng remote trước khi bỏ bản local.

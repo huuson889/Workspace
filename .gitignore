@@ -2,6 +2,8 @@
 __pycache__/
 *.pyc
 *.zip
+# Published packages belong to the matching sibling folder, e.g. Keepit-OCR-Zip.
+!/*-Zip/*.zip
 *.part
 *.pem
 *.key
