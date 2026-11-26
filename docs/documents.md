@@ -59,7 +59,7 @@ Chromium extension thật cần kiểm selection/composer/sidebar/dictionary, no
 
 ### Nguồn và ranh giới
 
-Chỉ sử dụng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt. Không đọc/đối chiếu/tái dùng mã từ các bản OCR bị người dùng loại. Mã nguồn riêng ở `Workspace/Keepit-OCR`; manifest 3.5.615 tiếp tục bản test với giới hạn đã công khai, bản 3.5.614 trước đó được người dùng cho phép đóng gói dù chưa đủ QA unpacked/ảnh bắt buộc; không phải xác nhận đạt 100%.
+Chỉ sử dụng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt. Không đọc/đối chiếu/tái dùng mã từ các bản OCR bị người dùng loại. Mã nguồn riêng ở `Workspace/Keepit-OCR`; manifest 3.5.616 tiếp tục bản test với giới hạn đã công khai, bản 3.5.614 trước đó được người dùng cho phép đóng gói dù chưa đủ QA unpacked/ảnh bắt buộc; không phải xác nhận đạt 100%.
 
 - `ocr-controller.mjs` lấy trực tiếp DOM/luồng OCR, hover, vùng và Tesseract preprocessing của demo, nhưng không nạp viewer hoặc các công cụ giả của demo. `ocr-demo.css` scope các declaration demo; đổi lớp tích hợp/stacking, fallback font thực tế và reset CSS gốc trùng tên. Vùng không nhận `margin-bottom:18px` của `.row` thư viện; notice không nhận căn giữa/font weight gốc. Thanh viewer dọc cao 52px theo demo; vẫn dùng các controller/nút app.
 - `KeepitOcrDocumentHost` trong `documents.js` cung cấp state/getters và cùng renderer đang mở. Renderer thêm `ocrCanvas` dùng PDFDocument/ảnh có sẵn; không fingerprint/import/parse tệp lần hai.
@@ -73,6 +73,10 @@ Chỉ sử dụng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt. Không đ�
 - `ocr-localize.mjs` lấy nhãn từ `languages.js` en/vi/ko; giữ chuỗi protocol nội bộ để parse trạng thái demo và không dịch nội dung OCR của tài liệu. Theme theo setting app; không có theme riêng của OCR.
 
 ### Bằng chứng và giới hạn
+
+3.5.616 sửa riêng điều hướng OCR: `KeepitOcrDocumentHost.goTo` yêu cầu native smooth cho continuous/facingContinuous, cùng cơ chế demo (không tự viết easing hay đổi CSS toàn app). `setPage` mặc định auto cho các caller khác. Đích cuộn tạm giữ current ổn định khi qua các trang trước; lệnh trùng không restart, resize tính lại đích mà không ghi scrollTop ngắt animation, input người dùng nhả tracking đích. Không đổi engine/storage/scan/word/region UI của 3.5.615.
+
+QA 3.5.616: 8/8 trace điều hướng app/demo cùng PDF ở origin tách biệt, 1512/390 × sáng/tối × hai flow; trước sửa nhảy ngay100% ở frame đầu, sau có nhiều frame trung gian/đơn điệu/current không lùi/giữ pageStack. 8/8 OCR thật ba trang, bắt đầu ở trang1 cả sau resize, scan/lưu đúng từng trang và clear scan; Node24/24, static29/29, scan/khung64/64, bốn flow/hủy18/18, hồi quy15/15, range/current/native-PDF13/13; cú pháp/undefined checks sạch với shared globals khai báo, console.error/pageerror HTTP rỗng. Wheel thật trusted đã kiểm current3→2 theo cuộn thủ công. Trace rAF không phải video hay chứng nhận FPS; quãng đường/layout app và demo khác nên timing/frame count không hứa tuyệt đối trùng nhau.
 
 3.5.615 sửa lớp vẽ UI: `.layer` chữ chọn được giữ native page units; `.ocrVisualSurface` inverse-scale và mở kích thước theo `--source-scale`, giữ scan/word/hover/region ở display pixels. Overlay bỏ padding `.paper` app; `.ocrWordBox` dùng rect chuẩn hóa thay outline span chữ/nested `.en`. Reverse hover khớp cụm chữ theo geometry trước fallback offset, giữ đúng dòng sau bổ sung vùng.
 

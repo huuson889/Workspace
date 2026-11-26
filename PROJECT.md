@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.615**, sửa UI scan/khung OCR của 3.5.614 trong `Workspace/Keepit-OCR`; `Keep-it` gốc 3.5.612 không đổi. Không phải bản nghiệm thu 100%.
-- Chỉ nguồn gốc + demo 2.9.7.33 được duyệt; Tesseract/eng/vie/kor cục bộ, PP/Fusor hoãn. Renderer/kho/tool app giữ nguyên.
-- UI scan/word/region được tách khỏi native page scale; lớp chữ `.para/.en` tiếp tục dùng chọn chữ/tool app. Reset padding `.paper`, bỏ outline trùng span `.en`; hover sau OCR vùng khớp cụm chữ theo geometry.
-- QA HTTP mới: 64/64 tổ hợp 1512/390 × sáng/tối × 4 flow × fit/50/100/800 zoom; scale 0.5–10.5556, đường scan/viền vùng 2px, trail 120px, bán kính khung 2px; 16/16 Node, 29/29 static, 15/15 regression; ESLint rỗng, console.error/pageerror HTTP rỗng. Chuột thật: kéo vùng, OCR tiêu đề, Apply, hover và chọn chữ/tool. Các phép đo không thay thế pixel QA.
-- **Chưa nghiệm thu 100%:** unpacked bị chặn; chưa có PNG/crop 4×/pixel diff, CSP/permission thực, tệp/profile/thiết bị/voice/AI thật. Kế thừa phạm vi bản test với giới hạn đã công khai; không coi phép đo HTTP là xác nhận đầy đủ hình thức demo.
+- **Bản test 3.5.616**, sửa chuyển trang khi OCR cuộn liên tục của 3.5.615 trong `Workspace/Keepit-OCR`; `Keep-it` gốc 3.5.612 và ZIP cũ giữ nguyên. Chưa nghiệm thu 100%.
+- Chỉ nguồn gốc + demo 2.9.7.33 được duyệt; Tesseract/eng/vie/kor cục bộ, PP/Fusor hoãn. Không đổi engine/kho/nhãn/theme/CSS scan/khung 3.5.615.
+- Host OCR dùng cuộn native smooth cho continuous/facingContinuous; giữ đích khi đi qua trang trước, không restart lệnh trùng, resize không ghi đè vị trí/ngắt animation. Điều hướng app khác vẫn auto; wheel/touch/pointer/key nhả đích theo dõi.
+- QA HTTP mới: 8/8 so chuyển trang với demo ở 1512/390 × sáng/tối × 2 flow; 8/8 OCR thật 3 trang (scan đúng cả 3, lưu đúng page, không dựng lại pageStack, có khung cuộn trung gian); 24/24 Node, 29/29 static, 64/64 scan/khung, 18/18 bốn flow/hủy, 15/15 hồi quy, 13/13 range/current/native-PDF; cú pháp/undefined checks sạch, console.error/pageerror HTTP rỗng. Wheel thật có trusted event và đổi trang hiện tại theo vị trí cuộn.
+- **Giới hạn:** unpacked vẫn bị chặn, chưa PNG/crop4×/pixel/video QA/CSP/permission/profile/tệp/thiết bị thật. Có trace rAF/scrollTop HTTP, không cam kết số khung hình/timing giống tuyệt đối demo hay hiệu năng mọi PDF.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử lại scan/khung của 3.5.615 trên PDF gây lỗi trong extension thật; số đo HTTP đã sửa nhưng chưa có nghiệm thu từ ảnh extension.
+- Cần người dùng thử lại cuộn OCR 3.5.616 và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -159,11 +159,17 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 
 ### OCR clean rebuild — ranh giới module mới
 
-`documents.js` → getter host `KeepitOcrDocumentHost` → `ocr-controller.mjs`; canvas dùng `ocrCanvas` trên renderer hiện tại, không viewer/file-store song song. `vendor/ocr` chứa Tesseract worker/core/data, preprocessing demo và PDF exporter deps. `ocr-localize.mjs` dùng catalogue `languages.js`; theme theo setting app. Store `ocr` trong DB Documents v3; purge theo index document. Lớp `.para`/`.en` quay lại controller app. CSS demo scope dưới `.keepitOcr`; chặn root ẩn bắt pointer, reset xung đột `.row`/`.vbanner`, thanh viewer dọc cao 52px theo demo. Không bê toolbar/Reader/Notes giả của demo. Tesseract retry trang lỗi một lần rồi đi tiếp; kết quả một phần đếm đúng lượt hiện tại. Đóng tài liệu đợi PDF export cleanup và chặn tải muộn; ảnh OCR tối đa 16 megapixel. Harness, bằng chứng và script tạm ngoài source. Từ 3.5.615: `.layer` chữ vẫn ở native page units; `.ocrVisualSurface` giãn kích thước và inverse-scale theo `--source-scale` để scan/word/hover/region được vẽ bằng display pixels. `.ocrWordBox` lấy rect chuẩn hóa, không outline text span đã transform; không style nested `.en`. Overlay reset padding/min-width của `.paper` app. Reverse hover khớp cụm geometry/text trước fallback offset để không sai sau vùng append.
+`documents.js` → getter host `KeepitOcrDocumentHost` → `ocr-controller.mjs`; canvas dùng `ocrCanvas` trên renderer hiện tại, không viewer/file-store song song. `vendor/ocr` chứa Tesseract worker/core/data, preprocessing demo và PDF exporter deps. `ocr-localize.mjs` dùng catalogue `languages.js`; theme theo setting app. Store `ocr` trong DB Documents v3; purge theo index document. Lớp `.para`/`.en` quay lại controller app. CSS demo scope dưới `.keepitOcr`; chặn root ẩn bắt pointer, reset xung đột `.row`/`.vbanner`, thanh viewer dọc cao 52px theo demo. Không bê toolbar/Reader/Notes giả của demo. Tesseract retry trang lỗi một lần rồi đi tiếp; kết quả một phần đếm đúng lượt hiện tại. Đóng tài liệu đợi PDF export cleanup và chặn tải muộn; ảnh OCR tối đa 16 megapixel. Harness, bằng chứng và script tạm ngoài source. Từ 3.5.615: `.layer` chữ vẫn ở native page units; `.ocrVisualSurface` giãn kích thước và inverse-scale theo `--source-scale` để scan/word/hover/region được vẽ bằng display pixels. `.ocrWordBox` lấy rect chuẩn hóa, không outline text span đã transform; không style nested `.en`. Overlay reset padding/min-width của `.paper` app. Reverse hover khớp cụm geometry/text trước fallback offset để không sai sau vùng append. Từ 3.5.616: host `goTo` riêng OCR truyền `smooth` vào `setPage`; `scrollToPage` giữ đích tạm trong hai flow cuộn, bỏ lệnh trùng cùng đích/pixel, retarget khi resize đổi hình học. Scroll observer không đổi current về trang đi ngang qua; input người dùng nhả đích. `sizePages` không gán scrollTop đè native animation. Điều hướng khác và kiểu xem rời giữ mặc định auto.
 
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.616 | Arena sửa:**
+
+- Tóm tắt: sửa chuyển trang giật khi OCR cuộn liên tục: thay nhảy `scrollTop` bằng native smooth riêng host OCR, cùng cơ chế cuộn mượt demo; giữ current ở trang đích trong quá trình cuộn, tránh boot/engine gọi trùng làm restart, không để resize-preserve ngắt animation hoặc giữ tọa độ cũ khi kích thước đổi. Wheel/touch/pointer/key trả lại tracking thủ công; điều hướng app khác, single/facing rời, engine, lưu trữ, scan/khung/CSS của 3.5.615 không đổi.
+- File: `js/dashboard/documents.js`, `manifest.json`, `PROJECT.md`, `README.md`, `docs/documents.md`, `THIRD_PARTY_NOTICES.md`; chuyển nguyên văn hai bản ghi cũ sang `docs/changelog/ocr-clean-base-history.md` để giữ 30 mục log mới nhất.
+- Kiểm tra: harness HTTP mới trace rAF/scrollTop, cùng byte PDF với demo 2.9.7.33 ở origin riêng. Trước sửa 0/8, nhảy trọn quãng ngay khung đầu, không frame trung gian; sau sửa 8/8 ở 1512/390 × nút theme sáng/tối × continuous/facingContinuous, native smooth có nhiều frame trung gian, đơn điệu, current không lùi, pageStack giữ nguyên. 8/8 lượt OCR thật 3 trang: bắt đầu ở trang1 sau resize, scan đủ 1/2/3, lưu đúng từng page, chuyển mượt và dọn scan. Node24/24, static29/29, scan/khung64/64, bốn flow/hủy18/18, hồi quy15/15, range/current/native-PDF13/13; cú pháp/undefined checks (khai báo shared globals) sạch, console.error/pageerror HTTP rỗng. Wheel thật trusted đã kiểm đổi current3→2 theo cuộn thủ công. Đây không phải bộ ảnh/video/pixel/unpacked; giới hạn môi trường vẫn còn, không đánh dấu 100% hay hứa timing/FPS tuyệt đối.
 
 **2026-11-26 | v3.5.615 | Arena sửa:**
 
@@ -343,16 +349,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: tam giác `#lhn-panel` dịch theo tâm vùng chữ sau khi hộp đã được đẩy ngang; giới hạn 20 px bên trong cạnh hộp để tránh góc bo. Khi lật lên, tam giác ở cạnh dưới và vẫn trỏ về chữ. Không đổi vị trí, kích thước, cách đẩy của hộp hoặc Trang tối.
 - File: `js/content/content.js`, `manifest.json`, `PROJECT.md`.
 - Kiểm tra: extension unpacked Chromium 159, 1512/390 sáng/tối, hai mép, ảnh + crop 4× (`qa/v585-edges.log`): tâm chữ/tam giác 60,16/60,16 px bên trái và 1451,84/1451,84 px bên phải tại 1512; chữ ngắn sát mép dừng trước góc bo (`qa/v585-short.log`). Sát đáy lật lên, tâm chữ/tam giác khớp trong 0,02 px (`qa/v585-bottom.log`); bộ 4 kịch bản 72 ảnh + crop (`qa/v585-regression.log`); Trang tối bật/tắt vùng màu rực (`qa/v585-toggle.log`); console.error/pageerror rỗng. Chưa kiểm profile Chrome thật, Wikipedia trên máy người dùng, các website khác và cảm ứng trên thiết bị thật.
-
-**2026-11-17 | v3.5.584 | Arena.ai Agent sửa:**
-
-- Tóm tắt: sửa cơ chế đẩy ngang của ô tô sáng và popup note; bỏ ngoại lệ bỏ kẹp ngang trong `positionPopupAtAnchor`, dùng chung `position()` với popup dịch/Full Dictionary. Khi đủ chỗ vẫn căn giữa toàn vùng chọn; khi tràn mép, đẩy vào trong với lề 10 px. Không thay đổi tầng, lật dọc, kích thước, cách chọn, sheet, icon/tiện ích hay cơ chế Trang tối.
-- File: `js/content/content.js`, `manifest.json`, `PROJECT.md`.
-- Kiểm tra: extension unpacked Chromium 159; ca sát hai mép 1512/390 sáng/tối cho cả ô tô sáng và popup note, ảnh + crop 4× (`qa/v584-edges.log`): ô 270 px, 1512 trái 10–280/phải 1232–1502; 390 trái 10–280/phải 110–380. Chụp/đo hai đoạn, sát đáy và cuộn ra ngoài (`qa/v584-multi.log`, `qa/v584-bottom.log`); bộ 4 kịch bản 72 ảnh + crop (`qa/v584-regression.log`); Trang tối bật/tắt vùng màu rực (`qa/v584-toggle.log`) và sheet dịch/từ điển 390 (`qa/v584-sheet.log`); console.error/pageerror rỗng. Chưa kiểm profile Chrome thật, Wikipedia thật trên máy người dùng, các website khác, PDF/Office của người dùng, cảm ứng/vận hành trên thiết bị thật.
-
-**2026-11-17 | v3.5.583 | Arena.ai Agent sửa:**
-
-- Tóm tắt: làm mới từ **3.5.574 (`3ab24bf`)**, không lấy mã 3.5.575–3.5.582. Các lớp nổi bám tầng stacking context của chữ và bám chữ khi cuộn ra ngoài khung nhìn; sát đáy lật lên; popup tô sáng neo toàn vùng chọn, căn giữa tuyệt đối, không kẹp ngang, không thay chiều cao/cách chọn. Popup dịch giữ đẩy ngang. Composer neo qua dấu preview vì Range bị DOM thay thế; ResizeObserver tính lại vị trí khi ô thay đổi kích thước. Hàng tiện ích vẫn ở trên chữ và bám chữ. Popup mũi tên composer theo phía và nằm giữa.
-- Trang tối: giữ nguyên `page-dark.js` và các file Trang tối; chỉ khi lớp phủ thật đang hiện, các popup nổi ở trên lớp phủ (người dùng chấp nhận có thể đè header khi đó). Không dùng lọc bù màu. Touch sheet giữ nguyên tầng và cơ chế.
-- File: `js/content/content.js`, `css/content/content.css`, `manifest.json`, `PROJECT.md`.
-- Kiểm tra: Chromium 159, extension unpacked, 1512/390 sáng/tối, 72 ảnh + crop 4× (`qa/v583-visual.log`); highlight hai đoạn (`qa/v583-multi.log`), 1512 tâm 246=246 và 390 tâm 195=195, sát đáy lật lên và cuộn 1200 px theo chữ; popup dịch và composer sát đáy cùng theo cuộn 1200 (`qa/v583-bottom.log`); header z20 che thanh trong stacking context lồng (`qa/v583-stack.log`); Trang tối bật/tắt có popup z2147482001→0, vùng màu rực giữ màu tối (`qa/v583-toggle.log`); sheet dịch và từ điển 390/coarse z2147483647 sát đáy (`qa/v583-sheet.log`); đầu mút chọn PDF (`qa/v583-selection.log`), console.error/pageerror rỗng trong các bộ kiểm. Chưa kiểm profile Chrome thật, trang web thật đa dạng, PDF/Office người dùng, hiệu năng/cảm giác dùng và mọi stacking context.

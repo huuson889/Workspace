@@ -42,3 +42,5 @@ The Word class model (`jdp8/bert-english-uncased-finetuned-pos`, ONNX export of 
 OCR markup, scoped style declarations, hover/region helpers and image preprocessing are derived directly from the approved OCR demo, not rejected Keepit test builds. PP-OCR/Fusor runtimes/models are not bundled by this integration.
 
 Integration UI correction (3.5.615): scan and rectangle layers are rendered in display pixels independently of native document scale; selectable text remains in the app layer. No third-party runtime/model changes.
+
+Continuous OCR navigation correction (3.5.616) uses the browser’s native smooth scrolling; no additional runtime, animation library, model or third-party dependency is bundled.

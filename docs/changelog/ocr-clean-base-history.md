@@ -1,5 +1,18 @@
 # Nhật ký nền giữ nguyên văn trước OCR clean rebuild
 
+**2026-11-17 | v3.5.584 | Arena.ai Agent sửa:**
+
+- Tóm tắt: sửa cơ chế đẩy ngang của ô tô sáng và popup note; bỏ ngoại lệ bỏ kẹp ngang trong `positionPopupAtAnchor`, dùng chung `position()` với popup dịch/Full Dictionary. Khi đủ chỗ vẫn căn giữa toàn vùng chọn; khi tràn mép, đẩy vào trong với lề 10 px. Không thay đổi tầng, lật dọc, kích thước, cách chọn, sheet, icon/tiện ích hay cơ chế Trang tối.
+- File: `js/content/content.js`, `manifest.json`, `PROJECT.md`.
+- Kiểm tra: extension unpacked Chromium 159; ca sát hai mép 1512/390 sáng/tối cho cả ô tô sáng và popup note, ảnh + crop 4× (`qa/v584-edges.log`): ô 270 px, 1512 trái 10–280/phải 1232–1502; 390 trái 10–280/phải 110–380. Chụp/đo hai đoạn, sát đáy và cuộn ra ngoài (`qa/v584-multi.log`, `qa/v584-bottom.log`); bộ 4 kịch bản 72 ảnh + crop (`qa/v584-regression.log`); Trang tối bật/tắt vùng màu rực (`qa/v584-toggle.log`) và sheet dịch/từ điển 390 (`qa/v584-sheet.log`); console.error/pageerror rỗng. Chưa kiểm profile Chrome thật, Wikipedia thật trên máy người dùng, các website khác, PDF/Office của người dùng, cảm ứng/vận hành trên thiết bị thật.
+
+**2026-11-17 | v3.5.583 | Arena.ai Agent sửa:**
+
+- Tóm tắt: làm mới từ **3.5.574 (`3ab24bf`)**, không lấy mã 3.5.575–3.5.582. Các lớp nổi bám tầng stacking context của chữ và bám chữ khi cuộn ra ngoài khung nhìn; sát đáy lật lên; popup tô sáng neo toàn vùng chọn, căn giữa tuyệt đối, không kẹp ngang, không thay chiều cao/cách chọn. Popup dịch giữ đẩy ngang. Composer neo qua dấu preview vì Range bị DOM thay thế; ResizeObserver tính lại vị trí khi ô thay đổi kích thước. Hàng tiện ích vẫn ở trên chữ và bám chữ. Popup mũi tên composer theo phía và nằm giữa.
+- Trang tối: giữ nguyên `page-dark.js` và các file Trang tối; chỉ khi lớp phủ thật đang hiện, các popup nổi ở trên lớp phủ (người dùng chấp nhận có thể đè header khi đó). Không dùng lọc bù màu. Touch sheet giữ nguyên tầng và cơ chế.
+- File: `js/content/content.js`, `css/content/content.css`, `manifest.json`, `PROJECT.md`.
+- Kiểm tra: Chromium 159, extension unpacked, 1512/390 sáng/tối, 72 ảnh + crop 4× (`qa/v583-visual.log`); highlight hai đoạn (`qa/v583-multi.log`), 1512 tâm 246=246 và 390 tâm 195=195, sát đáy lật lên và cuộn 1200 px theo chữ; popup dịch và composer sát đáy cùng theo cuộn 1200 (`qa/v583-bottom.log`); header z20 che thanh trong stacking context lồng (`qa/v583-stack.log`); Trang tối bật/tắt có popup z2147482001→0, vùng màu rực giữ màu tối (`qa/v583-toggle.log`); sheet dịch và từ điển 390/coarse z2147483647 sát đáy (`qa/v583-sheet.log`); đầu mút chọn PDF (`qa/v583-selection.log`), console.error/pageerror rỗng trong các bộ kiểm. Chưa kiểm profile Chrome thật, trang web thật đa dạng, PDF/Office người dùng, hiệu năng/cảm giác dùng và mọi stacking context.
+
 **2026-11-17 | v3.5.574 | Arena.ai Agent sửa:**
 - Base: vẫn từ **v3.5.564** (`ddffbaa`, nhánh `fix-35571`) + các bản vá 3.5.571–3.5.572. Bản này **gỡ công cụ chẩn đoán** của 3.5.573 và sửa đúng nguyên nhân tìm được từ log máy thật.
 - Tóm tắt: log 3.5.573 trên máy người dùng chỉ ra **đầu mút vùng chọn rơi vào nút trang trí**: 4 lần "nháy" đều có `focus` là ô chữ bên trong **neo loa** (`SPAN@0` / `SPAN@1`) hoặc ranh giới đoạn (`SPAN.para@0`), kèm `lastLine:-1` (khung tô không nằm trên dòng chữ nào) và độ dài vùng chọn nhảy từ ~660–1 000 lên **2 055–2 225 ký tự** rồi bật lại ngay. Nguyên nhân: các nút đè lên trang (`.docsReaderSpeakerAnchor` 18×18, `pointer-events:auto`, chứa chữ) để `user-select:auto`, mà chúng nằm **ngoài dòng chữ** nên Chrome lấy làm đầu mút ⇒ vùng chọn phình hết phần còn lại của trang. Ba việc:
