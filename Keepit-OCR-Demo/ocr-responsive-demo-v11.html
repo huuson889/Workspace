@@ -2,13 +2,13 @@
 <html lang="vi" translate="no">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Keepit · OCR responsive demo v10</title>
+<title>Keepit · OCR responsive demo v11</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#16161c;color:#eeeef5;font:13px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;height:100dvh;display:flex;flex-direction:column}button,select{font:inherit;color:inherit}button,select{border:1px solid #3b3949;background:#252430;border-radius:8px;min-height:34px;padding:5px 10px;cursor:pointer}button:hover,select:hover{border-color:#a69bed}button:focus-visible,select:focus-visible{outline:2px solid #b5a9ff;outline-offset:2px}header{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#1c1b24;border-bottom:1px solid #35333f;z-index:2}header strong{font-size:14px;margin-right:4px}.tag{font-size:10px;color:#c0b4ff;background:#8b7bea21;border:1px solid #8b7bea55;border-radius:5px;padding:2px 6px;letter-spacing:.08em}.grow{flex:1}.hint{color:#a9a5bb;font-size:11px}#preview{flex:1;min-height:0;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 30%,#2a273a,#15151b 75%)}#viewport{position:absolute;left:50%;top:50%;transform-origin:center;border:0;background:#08080a;box-shadow:0 20px 70px #0007}footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 16px;color:#aaa6ba;font-size:11px;border-top:1px solid #34313e}#metrics{color:#cec7e9;font-variant-numeric:tabular-nums}footer span:last-child{margin-left:auto}#statusDot{width:6px;height:6px;background:#6ed6b1;border-radius:50%;display:inline-block;margin-right:5px}
 </style>
 </head>
 <body>
-<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V10 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
+<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V11 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
 <main id="preview"><iframe id="viewport" title="Demo toàn màn hình OCR Keepit"></iframe></main>
 <footer><span id="metrics">Đang mở giao diện…</span><span><i id="statusDot"></i>Nền Documents 3.5.618 · Khung trống · Chỉ demo UI</span></footer>
 <!-- Offline demo: shared Keepit sources embedded verbatim: js/shared/theme-tokens.js, js/shared/sheet-kit.js, js/shared/icons.js. One portrait presentation adapter maps existing panels to Keepit panel geometry/glass/motion. Page lists retain native select models and createFlowSelect. Integration must import those shared modules, not fork these demo adapters. -->
@@ -1411,8 +1411,7 @@ html,body{overflow:hidden}button,input,select,textarea{font-family:inherit}butto
 #ko-ocrModal .editablePageInput:focus-visible,.pager .editablePageInput:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
 #ko-ocrScopePick .editablePage .flow-select-option,.pageJump .editablePage .flow-select-option{justify-content:center;text-align:center;padding-left:0;padding-right:0}
 #ko-ocrScopePick .editablePage .flow-select-option>span,.pageJump .editablePage .flow-select-option>span{text-align:center}
-.flow-select-list{box-sizing:border-box;min-width:100%;background:var(--kp-glass-l);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur)}
-html.dark .flow-select-list{background:var(--kp-glass-d)}
+.flow-select-list{box-sizing:border-box;min-width:100%}
 #ko-ocrScopePick .flow-select-list{max-height:224px}
 .keepitOcr .fRow .ocrResultSelect{flex:1;min-width:0;width:100%!important}
 .keepitOcr .fRow .ocrResultSelect>.flow-select-trigger{width:100%;min-width:0;min-height:34px;height:34px;font-size:12.5px;padding:0 10px;background:var(--soft);border-radius:9px}
@@ -1444,13 +1443,13 @@ html.dark .flow-select-list{background:var(--kp-glass-d)}
 :is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor).kpSheet{
  z-index:2147483030!important;position:fixed!important;inset:auto 0 0!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;max-width:none!important;margin:0!important;box-sizing:border-box;
  display:flex!important;flex-direction:column;border:0!important;border-radius:22px 22px 0 0!important;
- background:var(--kp-glass-l)!important;-webkit-backdrop-filter:var(--kp-blur)!important;backdrop-filter:var(--kp-blur)!important;
+ background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
  color:var(--ink);box-shadow:none!important;
  transform:translateY(105%)!important;opacity:1!important;visibility:hidden;pointer-events:none;
  transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s .26s!important;
  max-height:96dvh!important;overflow:hidden;isolation:isolate;padding-bottom:env(safe-area-inset-bottom,0px);
 }
-html.dark :is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor).kpSheet{background:var(--kp-glass-d)!important;box-shadow:none!important}
+html.dark :is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor).kpSheet{background:transparent!important;box-shadow:none!important}
 :is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor).kpSheet.kpSheetOpen{visibility:visible;pointer-events:auto;transform:none!important;transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s!important}
 /* OCR and page grid use one height; other sheets size naturally to their contents. */
 #ko-ocrModal.kpSheet,#demoPagesSheet.kpSheet,#ko-trPanel.kpSheet,#trPanel.kpSheet{height:92dvh!important;max-height:92dvh!important}
@@ -1459,8 +1458,8 @@ html.dark :is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-
 #ko-regionEditor.kpSheet{overflow-y:auto;padding-left:14px;padding-right:14px}
 #ko-trPanel.kpSheet .trBody{flex:1;min-height:0}
 .kpSheet :is(.ocrHead,.ocrBody,.ocrFoot,.progHead,.progBody,.trBody,.trToolbar,.moreHead,.moreBody,.demoPanelFoot){background:transparent!important}
-.kpSheet .ocrFoot,.kpSheet .demoPanelFoot{background:rgba(255,255,255,.35)!important}
-html.dark .kpSheet .ocrFoot,html.dark .kpSheet .demoPanelFoot{background:rgba(255,255,255,.04)!important}
+
+
 .kpSheet,.kpSheet *{scrollbar-width:none}
 .kpSheet::-webkit-scrollbar,.kpSheet *::-webkit-scrollbar{display:none}
 :is(#ko-ocrScrim,#demoPageScrim,#moreScrim,#demoSheetScrim).kpScrim{z-index:2147483029!important;display:block!important;position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:none;-webkit-backdrop-filter:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,visibility 0s .26s}
@@ -1471,20 +1470,12 @@ html.dark .kpSheet .ocrFoot,html.dark .kpSheet .demoPanelFoot{background:rgba(25
 /* A scrim dims only. Blurring this scaled standalone viewer corrupts its painted sidebar. */
 #ko-ocrScrim,#moreScrim,#demoPageScrim,#demoSheetScrim{backdrop-filter:none;-webkit-backdrop-filter:none}
 
-#ko-vOcr{display:inline-flex;align-items:center;justify-content:center;gap:5px}#ko-vOcr svg{flex:none}#ko-trPanel>header .ocrActionIcon{width:16px;height:16px;flex:none}
-/* Keepit's shared glass/tile/line tokens, for both dialog and bottom sheets. */
-.kpSheet,.kpGlass{--demo-field:var(--kp-tile-l);--demo-field-line:var(--kp-line-l);--demo-pick:color-mix(in srgb,var(--brand) 14%,transparent)}
-html.dark :is(.kpSheet,.kpGlass){--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line-d);--demo-pick:color-mix(in srgb,var(--brand) 20%,transparent)}
-.keepitOcr :is(.kpSheet,.kpGlass) :is(.fset,.langBox,.langSearch,.editablePage,.flow-select-trigger,.ocrResultSelect>.flow-select-trigger,.regionEditor textarea),.keepitOcr :is(.kpSheet,.kpGlass) textarea,.kpSheet .demoPanelFoot button{background:var(--demo-field);border-color:var(--demo-field-line)}
-.keepitOcr :is(.kpSheet,.kpGlass) :is(.radios label.on,.radios label:hover,.rangeRow.on,.kpick:hover){background:var(--demo-field)}
-.keepitOcr :is(.kpSheet,.kpGlass) .kpick.on{background:var(--demo-pick)}
-:is(.kpSheet,.kpGlass) #ko-ocrScopePick .rangeRow.on{background:var(--demo-field)}
-
+#ko-vOcr svg{flex:none}#ko-trPanel>header .ocrActionIcon{width:16px;height:16px;flex:none}
 .kpDragging,.kpDragging *{user-select:none!important;-webkit-user-select:none!important}
 
 /* Center desktop glass without translate(-50%): stable text rasterization on hover. */
-#ko-ocrModal.kpGlass{background:var(--kp-glass-l);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur);box-shadow:none;border-color:var(--kp-line-l)}
-html.dark #ko-ocrModal.kpGlass{background:var(--kp-glass-d);border-color:var(--kp-line-d);box-shadow:none}
+
+
 .kpGlass :is(.ocrHead,.ocrBody,.ocrFoot){background:transparent!important}
 .kpSheetGrip{display:none}
 @media(orientation:landscape){#ko-ocrModal.kpGlass{inset:0;margin:auto;height:fit-content;transform:none;transition:opacity .16s}}
@@ -1494,6 +1485,47 @@ html.dark #ko-ocrModal.kpGlass{background:var(--kp-glass-d);border-color:var(--k
 #vMorePanel.kpSheet .moreHead{padding-top:6px}
 #ko-trPanel.kpSheet>header{padding-top:6px;height:50px;min-height:50px}
 }
+/* Shared material roles: values missing from theme-tokens.js are copied from
+   Keepit settings.css. One backing layer, exactly as dashboardSettingsDialog. */
+:root{--kp-glass:var(--kp-glass-l);--kp-tile:var(--kp-tile-l);--kp-line:rgba(0,0,0,.12);--kp-field:rgba(255,255,255,.6);--kp-field-line:rgba(0,0,0,.14);--kp-pop:rgba(255,255,255,.94);--kp-hover:rgba(0,0,0,.05);--kp-subtext:var(--kp-tx2-l)}
+html.dark{--kp-glass:var(--kp-glass-d);--kp-tile:var(--kp-tile-d);--kp-line:var(--kp-line-d);--kp-field:rgba(255,255,255,.08);--kp-field-line:rgba(255,255,255,.14);--kp-pop:rgba(38,38,43,.96);--kp-hover:rgba(255,255,255,.06);--kp-subtext:var(--kp-tx2-d)}
+.kpSurface{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;isolation:isolate;border-color:var(--kp-line)!important;--brandSoft:color-mix(in srgb,var(--brand) 14%,transparent)}
+:is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor,.pager,#ko-vBanner,#ko-vBulb).kpSurface::before{content:"";position:absolute;inset:0;width:auto;height:auto;transform:none;z-index:-1;border-radius:inherit;background:var(--kp-glass);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur);pointer-events:none}
+.kpSurface :is(.ocrHead,.ocrBody,.ocrFoot,.progHead,.progBody,.trBody,.trToolbar,.moreHead,.moreBody,.demoPanelFoot,.transList,.transTip){background:transparent!important}
+/* Containers never add a second white/black film over their rows. */
+#ko-ocrModal :is(.fset,.langBox){background:transparent;border-color:var(--kp-line)}
+#ko-ocrModal :is(.radios label.on,.radios label:hover,.rangeRow.on){background:var(--kp-hover)}
+#ko-ocrScopePick .rangeRow.on{background:var(--kp-hover)}
+#ko-ocrModal .kpick:hover{background:var(--kp-hover)}
+#ko-ocrModal .kpick.on{background:var(--brandSoft);color:var(--brand)}
+/* One field surface per control. Editable picker input and arrow stay clear. */
+:is(#ko-ocrModal,#ko-regionEditor,#ko-trPanel,#trPanel,#vMorePanel) :is(.langSearch,.editablePage,.flow-select-trigger,textarea,select:not([hidden])){background:var(--kp-field);border-color:var(--kp-field-line)}
+#ko-ocrModal .fRow .ocrResultSelect>.flow-select-trigger{background:var(--kp-field);border-color:var(--kp-field-line)}
+#ko-ocrScopePick .editablePage>.flow-select-trigger,.kpSurface .editablePage>.flow-select-trigger,.kpSurface .editablePageInput,.kpSurface .langSearch input{background:transparent}
+.kpSurface :is(.vseg,.demoPanelFoot button){background:var(--kp-tile);border-color:var(--kp-line)}
+.kpSurface .vseg button{background:transparent}#vMorePanel .vseg button.on{background:var(--kp-hover);box-shadow:none}
+.kpSurface button:not(.primary):not(.flow-select-option):hover{background-color:var(--kp-hover)}
+#ko-ocrModal .ocrFoot button:not(.primary),.kpSurface .progFoot button:not(.primary),.kpSurface.regionEditor .row button:not(.primary),#ko-folder{background:var(--kp-tile);border-color:var(--kp-line)}
+#ko-ocrModal .ocrFoot button:not(.primary):hover{background:var(--kp-field)}
+/* The settings popover surface is intentionally more legible than a field;
+   selected/hovered items remain translucent, not opaque black/white. */
+.flow-select .flow-select-list{background:var(--kp-pop);border-color:var(--kp-line);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur)}
+.flow-select .flow-select-option{background:transparent}
+.flow-select .flow-select-option:is(:hover,:focus-visible){background:var(--kp-hover)}
+.flow-select .flow-select-option[aria-selected=true]{background:color-mix(in srgb,var(--brand) 14%,transparent);color:var(--brand)}
+/* Same native OCR hint card, fitted to the available document area. */
+#ko-vBanner,#ko-vBulb{box-shadow:none;color:var(--ink);border-color:var(--kp-line)}
+#ko-vBanner{max-height:calc(100% - 24px);overflow-y:auto}
+#ko-vBanner .nicon{background:var(--kp-tile);color:var(--brand)}
+#ko-vBanner .blink,#ko-vBanner .bnoAsk input{color:var(--brand);accent-color:var(--brand)}
+#ko-vBanner .bhead button:hover{background:var(--kp-hover);color:var(--ink)}
+#ko-vBanner .demoNoticeNote{display:block;font-size:11px;margin-top:6px;color:var(--kp-subtext)}
+#ko-vBulb:hover{background:transparent;transform:none}
+/* Settings uses the same orientation-based dimming, never a blurred scrim. */
+:is(#ko-ocrScrim,#demoPageScrim,#moreScrim,#demoSheetScrim).kpScrim{background:rgba(0,0,0,.4)}
+@media(orientation:landscape){:is(#ko-ocrScrim,#demoPageScrim,#moreScrim,#demoSheetScrim).kpScrim{background:rgba(0,0,0,.16)}}
+
+.kpSurface :is(input,textarea)::placeholder{color:var(--kp-subtext);opacity:1}
 </style></head><body><div class="viewer show" id="viewer">
 <div class="vbar" id="vBar">
 <button aria-label="Về thư viện Keepit" class="vbtn" data-doc-title="back" id="vBack" title="Về thư viện"><svg aria-hidden="true" class="i" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg><span class="viewerBrand"><img alt="" aria-hidden="true" height="26" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibWFyayIgeDE9IjAiIHkxPSIxIiB4Mj0iMSIgeTI9IjAiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0ZjQ2ZTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI1Y2Y2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0ic2hhZG93IiB4PSItMjUlIiB5PSItMTUlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTUlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjEuNSIvPgogICAgICA8ZmVPZmZzZXQgZHk9IjIiLz4KICAgICAgPGZlQ29tcG9uZW50VHJhbnNmZXI+PGZlRnVuY0EgdHlwZT0ibGluZWFyIiBzbG9wZT0iMC4yIi8+PC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9InVybCgjbWFyaykiIGZpbHRlcj0idXJsKCNzaGFkb3cpIiByeD0iOCIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyIDApIHNjYWxlKC0xIDEpIj4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNC4xODcgLTIuMzkzKSBzY2FsZSgwLjI5OTA2NSkiPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTSAzNSAzMiBDIDM0IDMyIDMzLjUgMzQgMzMuMiAzNyBDIDMxLjMgNTEgMzQuMyA2NSA0MiA3NCBDIDQ4LjUgODEuNSA1NyA4NC42IDY3IDg0LjUgQyA3Ny41IDg0LjQgODQuMiA4MC4zIDg5LjcgNzMuNCBDIDkyLjUgNzcuMyA5NC4zIDgxLjUgOTUuNCA4Ni44IEMgOTUuOSA4OS42IDk3LjggOTAuOSA5OS45IDkwLjIgQyAxMDIuMSA4OS41IDEwMi45IDg3LjUgMTAxLjggODQuNyBDIDk4LjYgNzUuOSA5My4zIDY5LjQgODUuNCA2NS4xIEMgNzkuNyA2MiA3Mi45IDYxLjEgNjYuMSA1OS42IEMgNTguOSA1OCA1My4xIDU0LjkgNTEuNiA0OS40IEMgNTUuMyA1Mi44IDYwLjIgNTQuOCA2Ny41IDU1LjggQyA3OC43IDU3LjMgODcuNyA1OC4zIDk0LjcgNjUgQyA5Ny4zIDU0LjEgOTIgNDQuNSA4Mi41IDM5LjkgQyA3NS40IDM2LjQgNjggMzYuOCA1OS43IDM3LjYgQyA0OC42IDM4LjggNDEuOSAzOC42IDM2LjUgMzIuOCBDIDM2IDMyLjMgMzUuNSAzMiAzNSAzMiBaIi8+CiAgPC9nPgogIDwvZz4KPC9zdmc+Cg==" width="26"/><span>Keepit</span></span></button>
@@ -1535,8 +1567,18 @@ html.dark #ko-ocrModal.kpGlass{background:var(--kp-glass-d);border-color:var(--k
 <div class="vbody">
 <div class="rail" id="rail"></div><div aria-controls="rail" aria-orientation="vertical" class="railResize" data-doc-aria="resize" data-doc-title="resize" id="railResize" role="separator" tabindex="0"></div>
 <div class="stageWrap">
+<div class="keepitOcr" data-ocr-root="vBanner"><div aria-label="Nhận dạng chữ" class="vbanner kpSurface" id="ko-vBanner" role="dialog">
+<div class="bhead"><span class="nicon"><svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M9.6 18h4.8M10.4 21h3.2M12 3a6 6 0 0 0-3.7 10.7c.4.3.7.8.7 1.3v.5h6v-.5c0-.5.3-1 .7-1.3A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg></span><b>Nhận dạng chữ</b><span class="sp"></span><button aria-label="Thu gọn thông báo" id="ko-bannerClose" title="Thu gọn">✕</button></div>
+<p class="bbody" id="ko-bannerText">Trang này là ảnh quét nên chưa có lớp chữ — Dịch, Đọc to và Ghi chú chưa dùng được. Chạy nhận dạng để chọn, sao chép và tìm kiếm được chữ.<small class="demoNoticeNote">Minh họa UI · khung trống, không phân tích tệp.</small></p>
+<div class="bfoot">
+<button class="blink" id="ko-bannerAct">Nhận dạng chữ</button>
+<label class="bnoAsk"><input id="ko-bannerNoAsk" type="checkbox"/><span>Không hiện lại</span></label>
+</div>
+</div></div><div class="keepitOcr" data-ocr-root="vBulb"><button aria-label="Thông báo nhận dạng chữ" class="vbulb kpSurface" hidden="" id="ko-vBulb" title="Trang này chưa có lớp chữ — bấm để xem">
+<svg aria-hidden="true" height="18" viewbox="0 0 24 24" width="18"><path d="M9.6 18h4.8M10.4 21h3.2M12 3a6 6 0 0 0-3.7 10.7c.4.3.7.8.7 1.3v.5h6v-.5c0-.5.3-1 .7-1.3A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
+</button></div>
 <div class="stage" id="stage"><div class="demoBlank" id="demoBlank"><div><svg class="i" viewbox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Z"></path><path d="M14 3v6h6"></path></svg><b>Khung tài liệu</b><p>Khung trống để xem bố cục responsive.<br/>Không tải PDF, ảnh hay chạy OCR thật.</p></div><span hidden="" id="demoRegionBox"></span></div></div>
-<div class="pager"><div class="pageNav"><button aria-keyshortcuts="ArrowLeft" data-doc-title="previous" id="pPrev" title="Trang trước (←)"><svg class="i" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg></button><span class="pageJump"><label data-doc-label="page" for="pNum" id="pLbl"><span data-doc-label="page">Trang</span></label><select id="pNum" aria-label="Đi đến trang"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option></select><span id="pTotal">/ 16</span></span><button aria-keyshortcuts="ArrowRight" data-doc-title="next" id="pNext" title="Trang sau (→)"><svg class="i" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button></div><div class="docControls" id="docControls">
+<div class="pager kpSurface"><div class="pageNav"><button aria-keyshortcuts="ArrowLeft" data-doc-title="previous" id="pPrev" title="Trang trước (←)"><svg class="i" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg></button><span class="pageJump"><label data-doc-label="page" for="pNum" id="pLbl"><span data-doc-label="page">Trang</span></label><select id="pNum" aria-label="Đi đến trang"><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option></select><span id="pTotal">/ 16</span></span><button aria-keyshortcuts="ArrowRight" data-doc-title="next" id="pNext" title="Trang sau (→)"><svg class="i" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button></div><div class="docControls" id="docControls">
 <div class="flowGroup" data-dock="flow" id="flowGroup">
 <span class="viewSelect"><select aria-label="Cách xem trang" data-doc-aria="pageFlow" id="vFlow"><option value="single">Từng trang</option><option value="continuous">Cuộn liên tục</option><option value="facing">Hai trang</option><option value="facingContinuous">Hai trang liên tục</option></select></span>
 </div>
@@ -1601,7 +1643,7 @@ html.dark #ko-ocrModal.kpGlass{background:var(--kp-glass-d);border-color:var(--k
 <header class="ocrHead">
 <span class="ocrIco"><span aria-hidden="true" class="logoDot"><svg aria-hidden="true" height="22" viewbox="0 0 32 32" width="22"><defs><lineargradient id="ko-kpDlg" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#4f46e5"></stop><stop offset="1" stop-color="#8b5cf6"></stop></lineargradient></defs><rect fill="url(#ko-kpDlg)" height="32" rx="8" width="32"></rect><g transform="translate(32 0) scale(-1 1)"><g transform="translate(-4.187 -2.393) scale(0.299065)"><path d="M 35 32 C 34 32 33.5 34 33.2 37 C 31.3 51 34.3 65 42 74 C 48.5 81.5 57 84.6 67 84.5 C 77.5 84.4 84.2 80.3 89.7 73.4 C 92.5 77.3 94.3 81.5 95.4 86.8 C 95.9 89.6 97.8 90.9 99.9 90.2 C 102.1 89.5 102.9 87.5 101.8 84.7 C 98.6 75.9 93.3 69.4 85.4 65.1 C 79.7 62 72.9 61.1 66.1 59.6 C 58.9 58 53.1 54.9 51.6 49.4 C 55.3 52.8 60.2 54.8 67.5 55.8 C 78.7 57.3 87.7 58.3 94.7 65 C 97.3 54.1 92 44.5 82.5 39.9 C 75.4 36.4 68 36.8 59.7 37.6 C 48.6 38.8 41.9 38.6 36.5 32.8 C 36 32.3 35.5 32 35 32 Z" fill="#fff"></path></g></g></svg></span></span>
 <div class="tt"><b id="ko-ocrTitle">Nhận dạng chữ (OCR)</b><small id="ko-ocrSub">Tài liệu mẫu.pdf · 16 trang · chỉ thử giao diện</small></div>
-<span class="ver" id="ko-ocrVer">DEMO V10</span>
+<span class="ver" id="ko-ocrVer">DEMO V11</span>
 <button aria-label="Đóng" class="vbtn" id="ko-ocrClose">✕</button>
 </header>
 <div class="ocrBody" id="ko-ocrBody">
@@ -2031,11 +2073,32 @@ function layout(){const orientChanged=wasPortrait!==portrait();wasPortrait=portr
 function hideOcrSheet(){if(portrait()){id('ko-trPanel').classList.remove('open');id('viewer').classList.remove('transOpen');}}
 function showResults(){if(portrait())id('viewer').classList.remove('transOpen');setMore(false,false);pagesClose();if(portrait()){activeFloat=null;panelWanted=false;id('ko-trPanel').classList.add('open');id('ko-text').focus();}else{panelWanted=!id('ko-trPanel').classList.contains('open');id('ko-trPanel').classList.toggle('open',panelWanted);}placeFloats();requestFit();}
 function closeResults(){panelWanted=false;id('ko-trPanel').classList.remove('open');requestFit();placeFloats();}
-function placeFloats(){const top=id('vBar').getBoundingClientRect().bottom;document.body.style.setProperty('--demo-top',top+'px');const rect=pageBar.getBoundingClientRect(),w=Math.min(380,innerWidth),overlap=rect.right>innerWidth-w&&rect.left<innerWidth;const bottom=overlap?Math.max(8,innerHeight-rect.top+8):8;document.body.style.setProperty('--demo-popup-bottom',bottom+'px');const overlayOpen=id('ko-ocrModal').classList.contains('show')||!id('vMorePanel').hidden||!id('demoPagesSheet').hidden;const sheetOpen=portrait()&&(id('ko-trPanel').classList.contains('open')||id('viewer').classList.contains('transOpen'));id('ko-ocrProg').classList.toggle('show',activeFloat==='progress'&&progressWanted&&!overlayOpen&&!sheetOpen);id('ko-regionEditor').hidden=!(activeFloat==='region'&&!overlayOpen&&!sheetOpen);updateSheetScrim();}
+function placeFloats(){const top=id('vBar').getBoundingClientRect().bottom;document.body.style.setProperty('--demo-top',top+'px');const rect=pageBar.getBoundingClientRect(),w=Math.min(380,innerWidth),overlap=rect.right>innerWidth-w&&rect.left<innerWidth;const bottom=overlap?Math.max(8,innerHeight-rect.top+8):8;document.body.style.setProperty('--demo-popup-bottom',bottom+'px');const overlayOpen=id('ko-ocrModal').classList.contains('show')||!id('vMorePanel').hidden||!id('demoPagesSheet').hidden;const sheetOpen=portrait()&&(id('ko-trPanel').classList.contains('open')||id('viewer').classList.contains('transOpen'));id('ko-ocrProg').classList.toggle('show',activeFloat==='progress'&&progressWanted&&!overlayOpen&&!sheetOpen);id('ko-regionEditor').hidden=!(activeFloat==='region'&&!overlayOpen&&!sheetOpen);updateSheetScrim();refreshNotice();}
 function showProgress(){hideOcrSheet();setMore(false,false);pagesClose();activeFloat='progress';progressWanted=true;placeFloats();}
 function setMore(open,focus=true){id('vMorePanel').hidden=!open;id('moreScrim').hidden=!open;id('vMore').setAttribute('aria-expanded',String(open));id('vMore').classList.toggle('on',open);if(open){hideOcrSheet();pagesClose();}placeFloats();if(open&&focus)id('moreClose').focus();}
 // Same docking homes, measured fit, compact pass and move priority as current Documents.
 const toolbarItems=$$('#vControls > [data-dock], #vTools > [data-dock], #docControls > [data-dock]');const toolbarHomes=new Map(toolbarItems.map(el=>{const anchor=document.createComment('toolbar '+el.dataset.dock);el.after(anchor);return[el,anchor];}));const moreSlots={mode:id('moreMode'),flow:id('moreFlow'),zoom:id('moreZoom'),tools:id('moreTools')};const moveOrder=[$('[data-t="wc"]'),id('ko-vOcr'),$('[data-t="ai"]'),$('[data-t="notes"]'),id('vMode'),$('[data-t="tts"]'),$('[data-t="translate"]')];let fitRAF=0;function fitToolbar(){fitRAF=0;const focused=document.activeElement;if(focused===id('vFlow')||focused===id('vZoom'))return;const bar=id('vBar'),title=$('.vtitle'),more=id('vMore'),dock=id('docControls');toolbarItems.forEach(el=>toolbarHomes.get(el).before(el));dock.hidden=false;pageBar.classList.remove('simple');const bottomFits=!portrait()&&!id('viewer').classList.contains('ttsOn')&&pageBar.scrollWidth<=$('.stageWrap').clientWidth-24;if(!bottomFits){moreSlots.flow.append(id('flowGroup'));moreSlots.zoom.append(id('zoomWrap'));}dock.hidden=![...dock.children].some(el=>el.dataset.dock&&el.style.display!=='none');pageBar.classList.toggle('simple',dock.hidden);bar.classList.remove('compact');more.hidden=false;const minTitle=Math.min(240,Math.max(100,bar.clientWidth*.18));const cramped=()=>title.clientWidth<minTitle||bar.scrollWidth>bar.clientWidth+1;if(cramped())bar.classList.add('compact');if(cramped()){for(const el of moveOrder){if(!cramped())break;moreSlots[el.dataset.dock].append(el);}}toolbarItems.filter(el=>el.parentNode===moreSlots.tools).forEach(el=>moreSlots.tools.append(el));more.hidden=!id('vMorePanel').querySelector('[data-dock]');placeFloats();report();}function requestFit(){if(!fitRAF)fitRAF=requestAnimationFrame(fitToolbar);}
+// Keepit's native notice card/bulb and ten-second collapse lifecycle.
+// This standalone sample has no file/text layer; preferences apply to this demo only.
+let noticeCollapsed=false,noticeForcedOpen=false,noticeNoAsk=false,noticeTimer=0,noticeExpanded=false,noticeHeld=false;
+function scheduleNoticeHide(){clearTimeout(noticeTimer);if(noticeHeld)return;noticeTimer=setTimeout(()=>{noticeCollapsed=true;noticeForcedOpen=false;refreshNotice();},10000);}
+function refreshNotice(){
+ const banner=id('ko-vBanner'),bulb=id('ko-vBulb');if(!banner||!bulb)return;
+ const overlay=id('ko-ocrModal').classList.contains('show')||!id('vMorePanel').hidden||!id('demoPagesSheet').hidden||running||(portrait()&&(id('ko-trPanel').classList.contains('open')||id('viewer').classList.contains('transOpen')||!id('ko-regionEditor').hidden));
+ const narrow=id('stage').clientWidth<640,expanded=!overlay&&!noticeCollapsed&&(noticeForcedOpen||(!noticeNoAsk&&!narrow));
+ banner.classList.toggle('show',expanded);banner.setAttribute('aria-hidden',String(!expanded));banner.inert=!expanded;bulb.hidden=overlay||expanded;bulb.setAttribute('aria-expanded',String(expanded));id('ko-bannerNoAsk').checked=noticeNoAsk;
+ if(expanded&&!noticeExpanded)scheduleNoticeHide();if(!expanded){clearTimeout(noticeTimer);noticeHeld=false;}noticeExpanded=expanded;
+}
+function collapseNotice(){noticeCollapsed=true;noticeForcedOpen=false;refreshNotice();}
+function expandNotice(){noticeForcedOpen=true;noticeCollapsed=false;refreshNotice();}
+id('ko-vBulb').onclick=expandNotice;
+id('ko-bannerClose').onclick=()=>{collapseNotice();id('ko-vBulb').focus();};
+id('ko-bannerAct').onclick=()=>{collapseNotice();openOCR();};
+id('ko-bannerNoAsk').onchange=e=>{noticeNoAsk=e.target.checked;noticeForcedOpen=false;if(noticeNoAsk)noticeCollapsed=true;refreshNotice();};
+for(const type of ['mouseenter','focusin'])id('ko-vBanner').addEventListener(type,()=>{noticeHeld=true;clearTimeout(noticeTimer);});
+for(const type of ['mouseleave','focusout'])id('ko-vBanner').addEventListener(type,()=>{noticeHeld=id('ko-vBanner').matches(':hover')||id('ko-vBanner').contains(document.activeElement);if(noticeExpanded)scheduleNoticeHide();});
+new ResizeObserver(refreshNotice).observe(id('stage'));
+
 const LANGS = [
   { c: 'eng', n: 'Anh', native: 'English', on: true },
   { c: 'vie', n: 'Việt', native: 'Tiếng Việt', on: true },
@@ -2064,7 +2127,7 @@ id('ko-langSearch').addEventListener('input', e => renderLangs(e.target.value));
 id('ko-langSearch').addEventListener('focus', () => id('ko-langSearch').select());
 renderLangs();
 function syncForm(){const range=$('[name="ko-scopePick"]:checked').value==='range';id('ko-from').disabled=id('ko-to').disabled=false;syncPageSelects();id('ko-wrapFrom').classList.remove('disabled');id('ko-wrapTo').classList.remove('disabled');document.querySelector('#ko-ocrScopePick .rangeRow').classList.toggle('on',range);const f=+id('ko-from').value,t=+id('ko-to').value;id('ko-run').disabled=!LANGS.some(l=>l.on)||(range&&!(Number.isInteger(f)&&Number.isInteger(t)&&f>=1&&t<=16&&f<=t));$$('#ko-ocrScopePick>label').forEach(l=>l.classList.toggle('on',!!l.querySelector(':checked')));id('ko-langSummary').textContent=LANGS.filter(l=>l.on).map(l=>l.n).join(' + ')||'chưa chọn';}
-function openOCR(){lastFocus=document.activeElement;setMore(false,false);pagesClose();hideOcrSheet();id('ko-vOcr').classList.add('on');id('ko-vOcr').setAttribute('aria-expanded','true');id('ko-ocrModal').classList.add('show');id('ko-ocrScrim').classList.add('show');id('viewer').inert=true;syncForm();placeFloats();id('ko-ocrClose').focus();}
+function openOCR(){collapseNotice();lastFocus=document.activeElement;setMore(false,false);pagesClose();hideOcrSheet();id('ko-vOcr').classList.add('on');id('ko-vOcr').setAttribute('aria-expanded','true');id('ko-ocrModal').classList.add('show');id('ko-ocrScrim').classList.add('show');id('viewer').inert=true;syncForm();placeFloats();id('ko-ocrClose').focus();}
 function closeOCR(){id('ko-vOcr').classList.remove('on');id('ko-vOcr').setAttribute('aria-expanded','false');id('ko-ocrModal').classList.remove('show');id('ko-ocrScrim').classList.remove('show');id('viewer').inert=false;placeFloats();if(lastFocus?.getClientRects().length)lastFocus.focus();else if(lastFocus===id('ko-vOcr'))id('vMore').focus();}
 function updateTextButtons(){const text=!!id('ko-text').value;id('ko-copy').disabled=id('ko-save').disabled=!text;id('ko-textApply').disabled=!text;}
 function stop(){clearInterval(timer);running=false;id('ko-progTitle').textContent='Đã dừng mô phỏng';id('ko-pTitle').textContent='Đã dừng tại '+count+'%';id('ko-stop').hidden=true;id('ko-pAgain').hidden=id('ko-pRegion').hidden=false;placeFloats();}
@@ -2086,7 +2149,7 @@ const sheetEntries=[
 ];
 // Keepit shared sheet gestures + one presentation lifecycle for all demo sheets.
 for(const entry of sheetEntries){
- entry.el.classList.add('kpSheet');const grip=document.createElement('div');grip.className='kpSheetGrip';grip.setAttribute('aria-hidden','true');entry.el.prepend(grip);
+ entry.el.classList.add('kpSheet','kpSurface');const grip=document.createElement('div');grip.className='kpSheetGrip';grip.setAttribute('aria-hidden','true');entry.el.prepend(grip);
  // Root-level host prevents the viewer stacking context from trapping a sheet under its scrim.
  const nested=entry.el.closest('#viewer'),host=entry.el.parentElement.classList.contains('keepitOcr')?entry.el.parentElement:entry.el;
  const home=nested?document.createComment('Keepit sheet home '+entry.el.id):null;if(home)host.before(home);
@@ -2197,7 +2260,7 @@ document.addEventListener('document-select-visibility',e=>{
 
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(e.defaultPrevented)return;if(id('ko-ocrModal').classList.contains('show'))closeOCR();else if(!id('demoPagesSheet').hidden){pagesClose();placeFloats();}else if(!id('vMorePanel').hidden)setMore(false);else if(portrait())sheetEntries.find(s=>s.open())?.close();}if(e.key==='Tab'&&id('ko-ocrModal').classList.contains('show')){const els=$$('#ko-ocrModal button:not(:disabled),#ko-ocrModal input:not(:disabled),#ko-ocrModal select:not(:disabled)').filter(x=>x.getClientRects().length),first=els[0],last=els.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
-addEventListener('resize',()=>{pagesClose();layout();});matchMedia('(pointer:coarse)').addEventListener('change',requestFit);addEventListener('message',e=>{if(e.source!==parent)return;if(e.data?.type==='toggle-theme')theme();if(e.data?.type==='reset-demo'){clearInterval(timer);running=false;count=0;id('ko-text').value='';id('ko-regionText').value='';id('demoRegionBox').hidden=true;id('ko-progress').value=0;id('ko-progTitle').textContent='Sẵn sàng thử OCR';id('ko-pTitle').textContent='Chỉ mô phỏng giao diện';id('ko-pClock').textContent='DEMO';id('ko-stop').hidden=true;id('ko-pAgain').hidden=id('ko-pRegion').hidden=false;id('viewer').classList.remove('transOpen');savedWidth=380;railWanted=panelWanted=true;progressWanted=false;activeFloat='progress';closeOCR();setMore(false,false);goPage(1);layout();updateTextButtons();}});new ResizeObserver(()=>{requestFit();}).observe($('.stageWrap'));id('pageFullscreen').querySelector('svg').innerHTML='<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>';id('ko-pDone').hidden=true;goPage(1);layout();syncForm();updateTextButtons();
+addEventListener('resize',()=>{pagesClose();layout();});matchMedia('(pointer:coarse)').addEventListener('change',requestFit);addEventListener('message',e=>{if(e.source!==parent)return;if(e.data?.type==='toggle-theme')theme();if(e.data?.type==='reset-demo'){noticeCollapsed=false;noticeForcedOpen=false;noticeNoAsk=false;clearInterval(timer);running=false;count=0;id('ko-text').value='';id('ko-regionText').value='';id('demoRegionBox').hidden=true;id('ko-progress').value=0;id('ko-progTitle').textContent='Sẵn sàng thử OCR';id('ko-pTitle').textContent='Chỉ mô phỏng giao diện';id('ko-pClock').textContent='DEMO';id('ko-stop').hidden=true;id('ko-pAgain').hidden=id('ko-pRegion').hidden=false;id('viewer').classList.remove('transOpen');savedWidth=380;railWanted=panelWanted=true;progressWanted=false;activeFloat='progress';closeOCR();setMore(false,false);goPage(1);layout();updateTextButtons();}});new ResizeObserver(()=>{requestFit();}).observe($('.stageWrap'));id('pageFullscreen').querySelector('svg').innerHTML='<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>';id('ko-pDone').hidden=true;goPage(1);layout();syncForm();updateTextButtons();
 })();
 </script></body></html></template>
 <script>
