@@ -50,3 +50,5 @@ OCR sidebar width and progress-popup layering adjustment (3.5.617) changes first
 Right-edge alignment of OCR progress and region-editing popups (3.5.618) changes first-party CSS only; no third-party runtime, model or license changes.
 
 Responsive OCR integration (3.5.619) changes first-party presentation, controls, localized labels and draft lifecycle only. No third-party runtime, model, asset or license has changed.
+
+Presentation corrections (3.5.620) use the already approved OCR SVG geometry and first-party shared controls/materials. No third-party runtime, model or license changes.

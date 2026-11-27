@@ -286,10 +286,9 @@ async function refreshPageHint(){
   $('scopePage').textContent = `trang ${n}`;
   $('scopeAll').textContent = `${total} trang`;
   $('ofTotal').textContent = total;
+  const rangeTotal=$('rangeTotal'),totalLabel=LHN_LANGUAGES.t('ocr_rangeTotal',{total},'vi');rangeTotal.setAttribute('aria-label',totalLabel);rangeTotal.title=totalLabel;
 
   refreshNotice(!has);
-  const dot = $('vOcrDot');
-  dot.style.background = has ? 'var(--green)' : 'var(--red)';
   $('pNum').value = n;
 
 }

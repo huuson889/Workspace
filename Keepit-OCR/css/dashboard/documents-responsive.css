@@ -3,10 +3,9 @@
 .moreBody{min-height:0}.morePanel{overflow:hidden}
 #ko-trPanel:not(.open){border-left:0}#ko-trResize{touch-action:none}
 .keepitOcr .ocrProg,.keepitOcr .regionEditor{max-height:calc(100dvh - 72px)}
-.keepitOcr .ocrProg .progBody{overflow:auto;min-height:0}.keepitOcr .ocrProg .progHead{flex:none}
+.keepitOcr .ocrProg .progBody{overflow:auto;min-height:0}.keepitOcr .ocrProg .progHead{flex:none}.keepitOcr .regionEditor{z-index:2147483001}
 .keepitOcr .ocrProg .pLog{min-height:0;white-space:normal;margin-bottom:12px}
-#ko-ocrModes label:has(input:disabled){opacity:.4}#ko-ocrModal{max-height:calc(100dvh - 24px)}#ko-ocrModal .ocrBody{min-height:0}#ko-ocrModal .ocrFoot{flex:none;justify-content:flex-end}#ko-text{min-height:0}
-#ko-vOcr{position:relative}#ko-vOcr .dot{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--red)}
+#ko-ocrModes label:has(input:disabled){opacity:.4}#ko-ocrModal{max-height:calc(100dvh - 24px)}#ko-ocrModal .ocrBody{min-height:0}#ko-ocrModal .ocrFoot{flex:none;justify-content:flex-end}#ko-ocrModal .ver{font-size:9px}#ko-text{min-height:0}
 /* Keepit select models/list renderer, with an editable centered numeric face. */
 #ko-ocrScopePick .rangeRow{display:grid;grid-template-columns:max-content minmax(44px,112px) max-content minmax(44px,112px) max-content;justify-content:start;align-items:center;gap:6px;min-width:0;padding:4px 8px 4px 0}
 #ko-ocrScopePick .rangeRow .rlab{min-width:0;padding-right:0;white-space:nowrap;gap:7px}
@@ -160,7 +159,5 @@ html.dark{--kp-glass:var(--kp-glass-d);--kp-tile:var(--kp-tile-d);--kp-line:var(
 #ko-ocrProg .progFoot{flex-wrap:wrap}
 #ko-pResults{white-space:nowrap}
 
-#ko-ocrScopePick .pgWrap{width:100%;min-width:0;display:block}
-#ko-ocrScopePick .pgWrap>.editablePage{width:100%!important}
 #docsPagesSheet .mini-pg{aspect-ratio:720/1018;overflow:hidden}#docsPagesSheet .mini-pg img{width:100%;height:100%;object-fit:contain}
 @media(orientation:portrait){#docsPageStrip #rail{height:auto;max-height:none;flex:none;transform:none;border:0}#ko-ocrModal.kpSheet{padding:0}#ko-regionEditor.kpSheet,#ko-ocrProg.kpSheet{z-index:2147483031!important}.kpSurface{box-shadow:none!important}#trPanel.kpSheet .transList{flex:1;min-height:0}#ko-ocrProg.kpSheet{height:auto;max-height:85dvh!important}}

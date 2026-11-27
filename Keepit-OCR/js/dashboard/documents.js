@@ -509,6 +509,7 @@ function setMore(open, focus = true) {
   else { armPagerFade(); if (focus && $('#viewer').classList.contains('show') && !$('#vMore').hidden) $('#vMore').focus({ preventScroll:true }); }
 }
 function updateDocLabels() {
+  if(V.doc)$('#docsPagesSummary').textContent=V.doc.pages+' '+unit(V.doc);
   const flow=$('#vFlow'); flow.value=V.flow;for(const option of flow.options)option.disabled=!!V.doc&&V.doc.pages===1&&option.value!=='single';
   for(const option of flow.options){const key={single:'single',continuous:'continuous',facing:'facing',facingContinuous:'facingContinuous'}[option.value];option.dataset.full=t(key);option.dataset.short=t(option.value==='continuous'?'continuousShort':key);}
   const fit=$('#vZoom option[value="fit"]');fit.dataset.full=t('fitWidth');fit.dataset.short=t('fitShort');const fitImage=$('#vZoom option[value="fitImage"]');fitImage.dataset.full=fitImage.dataset.short=t('fitImage');

@@ -1,14 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.619**: tích hợp giao diện OCR responsive đã duyệt ở standalone demo v14; không đưa canvas/kết quả/tiến độ giả vào app. Chưa nghiệm thu 100%.
-- Giữ luồng Keepit: mở tệp không tự bật OCR; bấm OCR mở cả sidebar văn bản và cài đặt; đóng cài đặt giữ sidebar. Hai nút mở lại kết quả giữ nguyên; bản nháp riêng từng trang, chỉ Áp dụng mới ghi kết quả.
-- Nút OCR sau Hỏi AI, dùng docking/Thêm thật. Các sheet dùng shared LHN_SHEET/kính Settings, scrim chỉ dim, grip chung; ô số/chọn danh sách dùng createFlowSelect. Gợi ý giữ tím/vàng và mở được ở vùng hẹp.
-- Tesseract/model eng-vie-kor, renderer, DB schema, xuất PDF và đường cuộn OCR không đổi; PP/Fusor vẫn khóa. HTTP app thật đã chạy UI, bản nháp/Apply, dropdown, cử chỉ/ngôn ngữ và OCR current/all/range trên PDF tổng hợp. Giới hạn: HTTP dùng shim extension API, không phải unpacked; chưa đủ bộ ảnh extension/PNG/crop4×/pixel/CSP/permission/profile/tệp người dùng/thiết bị thật, không dùng kiểm demo hoặc HTTP thay nghiệm thu bắt buộc.
+- **Bản test 3.5.620**: sửa các chỗ tích hợp responsive v14 bị bỏ sót trong 3.5.619 theo ảnh extension người dùng gửi. Không coi bộ kiểm DOM 619 là bằng chứng khớp toàn bộ demo.
+- Bỏ wrapper số cũ/viền-nền kép; mặt nhập giữa 112px/co đều và tổng `/ N`; dùng đúng sáu SVG v14 trên bảng văn bản. Bỏ chấm OCR và CSS riêng; sheet dùng tiêu đề “Danh sách trang” + tổng trang thật, dịch en/vi/ko.
+- Theo xác nhận mới của người dùng, nút Nhận dạng vùng dùng nền kính/viền trung tính như Hủy ở cả trạng thái trống/có chữ; Apply vẫn tím khi khả dụng. Sửa lại layer vùng trên native bottom bar. Không đổi chức năng của ba nút.
+- Giữ Tesseract/model/renderer/DB/export/native navigation và luồng mở đồng thời settings + result, bản nháp/Apply. QA mới đối chiếu app và demo cùng kích thước, không chỉ kiểm class/trạng thái; kết quả chi tiết trong log bản này.
+- **Giới hạn:** chỉ HTTP với shim extension API. Chưa có nghiệm thu ảnh extension/pixel/crop4×/CSP/permission/profile/tệp người dùng/thiết bị thật; ảnh người dùng gửi chứng minh lỗi 619, không chứng nhận 620 đã đạt.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.619: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.620: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -167,6 +168,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.620 | Arena sửa:**
+
+- Tóm tắt: người dùng gửi sáu ảnh extension 619 và báo chưa khớp v14. Đối chiếu trực tiếp tìm wrapper .pgWrap cũ đè input mới (nền/viền kép, font700/padding lệch/height28), tổng còn dài, sáu SVG cũ, chấm OCR/CSS riêng, sheet chỉ hiện nhãn đơn vị “trang”. Thay đúng nguồn markup/CSS, xóa rule số cũ thay vì thêm lớp vá. Thêm tiêu đề Danh sách trang/tổng thật + en/vi/ko. Người dùng xác nhận hàng vùng đã giống demo nhưng yêu cầu Nhận dạng vùng giống Hủy: bỏ fill tự đổi tím/đen riêng, dùng neutral shared tile và giữ Apply tím/disabled logic; layer vùng lại trên bottom bar. Không đổi engine/model/data flow/docking/native navigation/export/schema.
+- File: `pages/documents.html`, `css/dashboard/ocr-demo.css`, `documents-responsive.css`, `js/dashboard/ocr-controller.mjs`, `documents.js`, `js/core/languages.js`; manifest/tài liệu, ZIP mới `Keepit-OCR-Zip`. Không sửa demo hoặc ZIP619/618.
+- Kiểm tra: đối chiếu trực tiếp HTTP app/v14 trên PDF scan16 trang:58 trạng thái ở1512×900/604×696/673×696/390×844/320×640 × sáng/tối; slot/field range và6SVG hết lệch đã nêu. Không giả đồng nhất toàn trang: font/docking theo trạng thái toolbar thật, version, summary thật và footer mô phỏng khác có chủ đích; max-height vùng còn theo giới hạn toolbar app. Kiểm sửa lỗi51 nhóm (neutral button trống/có chữ/sáng/tối, no dot, title/count3 ngôn ngữ, field widths112/94.5/59.5) không có cờ lỗi. Hồi quy UI13, lifecycle29, shared gestures/ngôn ngữ14 và OCR batch2 đều không cờ lỗi; current/all/range3 trang Tesseract thật thành công, scan dọn, có store. Chuột thật chọn vùng tiêu đề→Nhận dạng vùng trả chữ thật→Apply đóng; quan sát nút Nhận dạng vùng/Hủy cùng nền kính ở sáng/tối, Apply tím. Syntax5 file, vendor220/220, tools10/10, duplicate IDs/console.error/pageerror rỗng. Bộ QA619 đã bỏ sót lỗi hình thức; không dùng các số này thay nghiệm thu unpacked/ảnh extension620/crop4×/pixel/CSP/permission/thiết bị thật.
 
 **2026-11-26 | v3.5.619 | Arena sửa:**
 

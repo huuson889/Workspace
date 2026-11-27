@@ -68,7 +68,7 @@
 <button class="vbtn" data-doc-title="wordClass" data-dock="tools" data-t="wc" title="Loại từ (Alt+G)"><svg class="i" viewbox="0 0 24 24"><path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg><span class="lbl"><span data-doc-label="wordClass">Loại từ</span></span></button>
 <button class="vbtn" data-doc-title="notes" data-dock="tools" data-t="notes" title="Ghi chú"><svg class="i" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg><span class="lbl"><span data-doc-label="notes">Ghi chú</span></span></button>
 <button class="vbtn" data-doc-title="askAI" data-dock="tools" data-t="ai" title="Hỏi AI (Alt+X)"><svg class="i" viewbox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path></svg><span class="lbl"><span data-doc-label="askAI">Hỏi AI</span></span></button>
-<button aria-controls="ko-ocrModal ko-trPanel" aria-expanded="false" aria-label="Nhận dạng chữ (OCR)" class="vbtn" data-dock="tools" data-ocr-root="toolbar" id="ko-vOcr" title="Nhận dạng chữ (OCR)"><span class="dot" id="ko-vOcrDot"></span><svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="scan-text" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<button aria-controls="ko-ocrModal ko-trPanel" aria-expanded="false" aria-label="Nhận dạng chữ (OCR)" class="vbtn" data-dock="tools" data-ocr-root="toolbar" id="ko-vOcr" title="Nhận dạng chữ (OCR)"><svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="scan-text" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
 <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
 <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
@@ -118,25 +118,52 @@
 <header>
 <b>Văn bản nhận dạng</b>
 <button aria-label="Sao chép văn bản" class="ibtn" disabled="" id="ko-copy" title="Sao chép văn bản">
-<svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><rect fill="none" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7" width="11" x="9" y="9"></rect><path d="M15 5.5A2.5 2.5 0 0 0 12.5 4H6.5A2.5 2.5 0 0 0 4 6.5v6A2.5 2.5 0 0 0 5.5 15" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path></svg>
+<svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="copy" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect>
+<path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+</svg>
 </button>
 <button aria-label="Tải tệp TXT" class="ibtn" disabled="" id="ko-save" title="Tải tệp TXT">
-<svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path><path d="M14 3v5h5M8.5 13h7M8.5 16.5h4.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path></svg>
+<svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="file-text" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path>
+<path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+<path d="M10 9H8"></path>
+<path d="M16 13H8"></path>
+<path d="M16 17H8"></path>
+</svg>
 </button>
 <button aria-label="Tải PDF có lớp chữ" class="ibtn" disabled="" id="ko-savePdf" title="Tải PDF có lớp chữ">
-<svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"></path><path d="M12 11.5v6m0 0 2.2-2.2M12 17.5l-2.2-2.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path></svg>
+<svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="file-down" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path>
+<path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+<path d="M12 18v-6"></path>
+<path d="m9 15 3 3 3-3"></path>
+</svg>
 </button>
 <button aria-label="Chọn vùng để bổ sung chữ" class="ibtn" id="ko-trRegion" title="Chọn vùng để bổ sung chữ">
-<svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><rect fill="none" height="13" rx="2" stroke="currentColor" stroke-dasharray="3.2 2.6" stroke-width="1.7" width="17" x="3.5" y="5.5"></rect><path d="M9.5 12h5M12 9.5v5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"></path></svg>
+<svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="scan-line" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+<path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+<path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+<path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+<path d="M7 12h10"></path>
+</svg>
 </button>
 <button aria-label="Áp dụng phần chữ đã sửa" class="ibtn primary" disabled="" id="ko-textApply" title="Áp dụng phần chữ đã sửa">
-<svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="m5 12.5 4.6 4.6L19 7.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.1"></path></svg>
+<svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="save" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path>
+<path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path>
+<path d="M7 3v4a1 1 0 0 0 1 1h7"></path>
+</svg>
 </button>
 <button aria-label="Đóng bảng văn bản" class="ibtn" id="ko-trClose" title="Đóng bảng văn bản">
-<svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.9"></path></svg>
+<svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="x" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 6 6 18"></path>
+<path d="m6 6 12 12"></path>
+</svg>
 </button>
 </header>
-<div class="trBody"><div class="trHover" hidden="" id="ko-trHover"></div><textarea id="ko-text" placeholder="Văn bản nhận dạng của trang sẽ hiện ở đây. Sửa trực tiếp được."></textarea></div>
+<div class="trBody"><div class="trHover" hidden="" id="ko-trHover"></div><textarea aria-label="Văn bản nhận dạng" id="ko-text" placeholder="Văn bản nhận dạng của trang sẽ hiện ở đây. Sửa trực tiếp được."></textarea></div>
 </aside></div></div>
 </div>
 <div class="dropAll" id="dropAll"><div><span class="dzIcon" style="display:grid;place-items:center"><svg class="i" style="width:30px;height:30px" viewbox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg></span><span data-doc-label="drop">Thả tệp để mở bằng Keepit</span><small><span data-doc-label="private">PDF · Word · PowerPoint · JPG, PNG, WebP — mở trên máy, không tải lên</span></small></div></div>
@@ -158,7 +185,7 @@
 <p id="errMsg"></p><div class="pdfAccessSteps" hidden="" id="errAccessSteps"><div class="pdfAccessStep"><span class="accessNum">1</span><span><span data-doc-label="pdfAccessStep1Before">Mở </span><b data-doc-label="pdfAccessExtensions">Tiện ích</b><span data-doc-label="pdfAccessStep1After"> trên Chrome, chọn </span><b data-doc-label="pdfAccessKeepit">Keepit.</b></span></div><div class="pdfAccessStep"><span class="accessNum">2</span><span><span data-doc-label="pdfAccessStep2Before">Bật </span><b data-doc-label="pdfAccessFileUrls">Cho phép truy cập URL tệp.</b></span></div></div><div class="hint" id="errHint"></div>
 <div class="mBtns"><button class="btnP" hidden="" id="errChoose"><span data-doc-label="pdfChooseFile">Chọn PDF</span></button><button class="btnG" id="errOk"><span data-doc-label="understood">Đã hiểu</span></button></div>
 </div></div>
-<div class="toast" id="toast"></div><div class="docsPageScrim" id="docsPageScrim" hidden></div><section id="docsPagesSheet" class="docsPagesSheet" role="dialog" aria-modal="true" aria-labelledby="docsPagesTitle" hidden><header><b id="docsPagesTitle" data-doc-label="pages">Trang</b><button class="vbtn" id="docsPagesClose" data-doc-aria="close" data-doc-title="close" aria-label="Đóng">✕</button></header><div id="docsPageStrip"></div></section><div id="docsSheetScrim" class="docsSheetScrim" hidden></div>
+<div class="toast" id="toast"></div><div class="docsPageScrim" id="docsPageScrim" hidden></div><section id="docsPagesSheet" class="docsPagesSheet" role="dialog" aria-modal="true" aria-labelledby="docsPagesTitle" hidden><header><div><b id="docsPagesTitle" data-doc-label="pageList">Danh sách trang</b><small id="docsPagesSummary"></small></div><button class="vbtn" id="docsPagesClose" data-doc-aria="close" data-doc-title="close" aria-label="Đóng">✕</button></header><div id="docsPageStrip"></div></section><div id="docsSheetScrim" class="docsSheetScrim" hidden></div>
 <script src="../js/core/browser-polyfill.js"></script><script src="../js/core/messaging.js"></script><script src="../js/core/defaults.js"></script><script src="../js/core/config.js"></script><script src="../js/core/settings.js"></script><script src="../js/core/languages.js"></script><script src="../js/core/shortcuts.js"></script><script src="../js/shared/theme-tokens.js"></script><script src="../js/content/keepit-bar-css.js"></script><script src="../js/shared/sheet-kit.js"></script><script src="../js/shared/selection-toolbar.js"></script><script src="../js/shared/search.js"></script><script src="../js/shared/icons.js"></script><script src="../js/shared/thumbnails.js"></script><script src="../js/shared/site-icons.js"></script><script src="../js/reader/tts-engine.js"></script><script src="../js/translate/study-translation.js"></script><script src="../js/translate/dictionary.js"></script><script src="../js/content/web-highlighter.js"></script><script src="../js/content/sentence-note.js"></script><script src="../js/content/ui-components.js"></script><script src="../js/content/page-layout.js"></script><script src="../js/content/sidebar.js"></script><script src="../js/content/note-composer.js"></script><script src="../js/content/annotation-restore.js"></script><script src="../js/ask-ai/sheet.js"></script><script src="../js/dashboard/documents-context.js"></script><script src="../js/shared/heart-effects.js"></script><script src="../js/content/content.js"></script><script src="../vendor/readability/Readability.js"></script><script src="../vendor/readability/Readability-readerable.js"></script><script src="../js/reader/bilingual-flags.js"></script><script src="../js/reader/reader-css.js"></script><script src="../js/reader/bilingual-reader.js"></script><script src="../js/word-class/core.js"></script><script src="../js/dashboard/documents-store.js"></script><script src="../js/dashboard/documents-renderers.js"></script><script src="../js/content/keepit-bar.js"></script><script src="../js/dashboard/documents.js"></script><div class="keepitOcr" data-ocr-root="ocrModal"><section aria-labelledby="ko-ocrTitle" aria-modal="true" class="ocrModal" id="ko-ocrModal" role="dialog">
 <header class="ocrHead">
 <span class="ocrIco"><span aria-hidden="true" class="logoDot"><svg aria-hidden="true" height="22" viewbox="0 0 32 32" width="22"><defs><lineargradient id="ko-kpDlg" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#4f46e5"></stop><stop offset="1" stop-color="#8b5cf6"></stop></lineargradient></defs><rect fill="url(#ko-kpDlg)" height="32" rx="8" width="32"></rect><g transform="translate(32 0) scale(-1 1)"><g transform="translate(-4.187 -2.393) scale(0.299065)"><path d="M 35 32 C 34 32 33.5 34 33.2 37 C 31.3 51 34.3 65 42 74 C 48.5 81.5 57 84.6 67 84.5 C 77.5 84.4 84.2 80.3 89.7 73.4 C 92.5 77.3 94.3 81.5 95.4 86.8 C 95.9 89.6 97.8 90.9 99.9 90.2 C 102.1 89.5 102.9 87.5 101.8 84.7 C 98.6 75.9 93.3 69.4 85.4 65.1 C 79.7 62 72.9 61.1 66.1 59.6 C 58.9 58 53.1 54.9 51.6 49.4 C 55.3 52.8 60.2 54.8 67.5 55.8 C 78.7 57.3 87.7 58.3 94.7 65 C 97.3 54.1 92 44.5 82.5 39.9 C 75.4 36.4 68 36.8 59.7 37.6 C 48.6 38.8 41.9 38.6 36.5 32.8 C 36 32.3 35.5 32 35 32 Z" fill="#fff"></path></g></g></svg></span></span>
@@ -182,16 +209,16 @@
 <label><input name="ko-scopePick" type="radio" value="all"/><span>Tất cả các trang</span><em id="ko-scopeAll">1 trang</em></label>
 <div class="rangeRow">
 <label class="rlab"><input name="ko-scopePick" type="radio" value="range"/><span>Từ trang</span></label>
-<span class="pgWrap" id="ko-wrapFrom">
+<span class="pageRangeSlot" id="ko-wrapFrom">
 <input aria-label="Từ trang" disabled="" id="ko-from" min="1" type="number" value="1"/>
 
 </span>
 <span class="to">đến</span>
-<span class="pgWrap" id="ko-wrapTo">
+<span class="pageRangeSlot" id="ko-wrapTo">
 <input aria-label="Đến trang" disabled="" id="ko-to" min="1" type="number" value="1"/>
 
 </span>
-<span class="of">trong <b id="ko-ofTotal">—</b> trang</span>
+<span class="of" id="ko-rangeTotal">/ <b id="ko-ofTotal">—</b></span>
 </div>
 </div>
 </div>
