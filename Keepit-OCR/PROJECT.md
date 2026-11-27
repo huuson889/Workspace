@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.621**: người dùng xác nhận giao diện 620 đã ổn, yêu cầu chỉ sửa cụm số trang bị cắt và quá đen trong thanh điều hướng. Không sửa phần OCR đã chốt.
-- CSS scoped pager: ô72px với lane nhập riêng, chừa24px cho chevron; reset width/height input và min-width arrow của rule cảm ứng cũ. Giữ32px chuột/44px cảm ứng; nền dùng Settings field/line thay soft đen đặc.
-- Không sửa JavaScript, OCR/model, renderer, chuyển trang, lưu trữ hay các ô phạm vi OCR. Manifest/tài liệu/gói phát hành được đồng bộ.
-- HTTP app thật + Chrome device toolbar pointer:coarse đã tái hiện lỗi620 (text area4px, arrow44px). Sau sửa,84 nhóm coarse +84 fine không cờ lỗi hình học/list/native controls; số1/5/16 rõ, vùng chữ40px đủ đo chuỗi2000 (~31.2px). Chuột thật chọn16 trong list và quan sát16/16.
-- **Giới hạn:** đây là HTTP với shim extension API, không unpacked/ảnh extension621/pixel/crop4×/CSP/permission/thiết bị thật; người dùng chấp nhận phần UI620 không thay các điều kiện nghiệm thu còn mở.
+- **Bản test 3.5.622**: người dùng chấp nhận621; thêm OCR vào lưới Công cụ của main sheet Documents và đồng bộ icon thanh trên với sheet. Giữ pager621 và OCR620.
+- Sáu glyph Dịch/Đọc/Loại từ/Ghi chú/Hỏi AI/OCR dùng một nguồn `LHN_ICONS` (`tool-*`); giữ nút/handler/overflow/CSS native, không thêm nhóm OCR riêng trong Thêm.
+- OCR tile chỉ khi viewer tài liệu đang mở + controller có sẵn; gọi lại nút OCR thật qua facade, đóng main sheet rồi mở cả cài đặt và kết quả, không tự chạy nhận dạng. Không đổi engine/model/storage/navigation.
+- HTTP app thật với shim extension API:54 nhóm ở6 kích thước × sáng/tối, icon paths, entry/both-open/draft/active, ba ngôn ngữ, ảnh và thư viện; không cờ lỗi. Kiểm website riêng và thứ tự nạp shared icons ở manifest/home/dashboard/documents.
+- **Giới hạn:** không unpacked/ảnh extension622/pixel/crop4×/CSP/permission/thiết bị thật; kiểm HTTP không thay nghiệm thu đó. Không chạy lại OCR engine vì chỉ đổi entry/icon.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.621: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.622: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -106,7 +106,7 @@ Có 6 entry `content_scripts`: base `document_start`/`all_frames` nạp browser 
 - Blob/metadata/progress ở `keepit-documents`. Notes/Flashcards mới ở annotations chung; legacy v314 migration giữ nội dung/ngày/anchor, idempotent và không tái tạo note đã xóa. JSON backup có Notes nhưng không blob; import rewrite đúng owned extension origin.
 - `LHN_SELECTION_TOOLBAR.installTouchSelectionBridge` là bridge touch duy nhất. `LHN_SIDEBAR.attachTouchSheet` dùng chung setup grow/scroll/drag. `js/ask-ai/sheet.js` là AI sheet đã chuyển nguyên component từ web bar, dùng cho web và Documents; parent Dashboard chuyển message top-frame cho source active.
 - `LHN_READER_API` chỉ facade của Reader gốc: không queue/UI khác; host cung cấp chữ tệp/chuyển trang/vị trí native card, pager nhường khi bar mở. AI dùng native panel/sheet và Send policy hiện có, không upload/read toàn bộ file tự động.
-- Documents main sheet đặt Dịch/Đọc to ở footer cố định cạnh Cài đặt qua `LHN_DOCUMENTS_MAIN_ACTIONS`; callbacks chia sẻ handler với viewer topbar. Điều khiển Ẩn/Hiện thanh không hiện riêng ở sheet này.
+- Documents main sheet đặt Dịch/Đọc to ở footer cố định cạnh Cài đặt qua `LHN_DOCUMENTS_MAIN_ACTIONS`; callbacks chia sẻ handler với viewer topbar. Điều khiển Ẩn/Hiện thanh không hiện riêng ở sheet này. OCR là tile trong lưới Công cụ, dùng facade `ocr/ocrAvailable/ocrLabel/ocrOn` gọi nút native; chỉ có khi viewer đang mở. Sáu glyph `tool-*` chia sẻ từ `LHN_ICONS` với toolbar.
 - Renderer/vendored licences/giới hạn v314 giữ nguyên; details ở `docs/documents.md` và trang module tương ứng.
 
 ### 4.2. Luồng tương tác giữa các module
@@ -131,7 +131,7 @@ Content/commands ── AI provider route workflow ──> Background exact-URL 
 Content selection ── generic page ──> popup/dictionary unchanged; video overlay ── primary transcript only ──> translation/Full Dict
 Dashboard ── Overview / Dictation / Highlights & Notes (LR) / Documents / Flashcards / Settings / Account / Backup ──> giao diện quản lý
 Browser PDF tab (`file:`/HTTP(S) `.pdf`, kể cả URL nguồn bọc trong viewer) ──> Background đặt badge `PDF` + inject iframe overlay (20px dưới viewer bar) và action popup card ──> X thu icon/mở lại; cả hai CTA gửi `OPEN_DASHBOARD_DOCUMENTS` với source URL ──> Dashboard Documents fetch/import/mở PDF; local file cần Allow access to file URLs và picker fallback; không redirect tab
-Documents main sheet ── `doc:translate` / `doc:read` ──> `LHN_DOCUMENTS_MAIN_ACTIONS` ──> same `setPanel('translation')` / `startNativeReader()` used by viewer topbar
+Documents main sheet ── `doc:translate` / `doc:read` / `doc:ocr` ──> `LHN_DOCUMENTS_MAIN_ACTIONS` ──> same `setPanel('translation')` / `startNativeReader()` / native OCR button used by viewer topbar
 Dictation title observer ──> debounced session-index title update ──> popup bridge storage listener ──> live `context-source` refresh; popup fixed-height body scrolls at 3px
 Dictation detailed-stats button ──> same-origin popup bridge ──> local Dictation schema v3 (per-attempt category + example context) ──> approved v7 global / critical / per-web views
 Highlights & Notes + Dictation stats popup ──> shared/site-icons.js (LHN_SITE_ICONS) ──> origin-based browser.storage.local favicon cache
@@ -168,6 +168,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.622 | Arena sửa:**
+
+- Tóm tắt: thêm một tile OCR vào đúng lưới Công cụ trong main sheet Documents, sau các tools hiện có; không thêm nhóm More riêng, không rò sang web/home/Reader. Gate viewer đang mở và OCR controller riêng với gate có chữ của Dịch/Đọc, nên ảnh/PDF scan vẫn dùng được. Reuse dispatcher doc: đóng sheet rồi gọi nút OCR thật để giữ both-open, active state và bản nháp. Chuyển5 glyph sheet và glyph OCR sang shared/icons,6 nút toolbar hydrate từ cùng nguồn, không CSS/layout/handler mới. Giữ pager621 và engine/model/renderer/navigation/store/export.
+- File: `js/shared/icons.js`, `js/content/keepit-bar.js`, `js/dashboard/documents.js`, `js/core/languages.js`, `pages/documents.html`, manifest và tài liệu liên quan; gói mới đúng tên trong `Keepit-OCR-Zip`, không đổi ZIP cũ.
+- Kiểm tra: HTTP app thật + shim extension API, PDF scan3 trang tổng hợp và PNG thật:54 nhóm ở1512×900/1233×696/900×600/673×696/390×844/320×640 × sáng/tối. Sáu bộ SVG paths giống nhau, một tile native trong grid, mở cả2/đóng main sheet/không tự run, active và draft giữ khi vào lại; en/vi/ko đúng label/tooltip; ảnh không có lớp chữ vẫn hiện/mở, thư viện không tile. Quan sát desktop HTTP và chuột thật bấm OCR tile mở cả2. Website HTTP riêng không OCR, glyph native vẫn có; syntax/diff và vendor220 hash kiểm lại. Chưa unpacked/ảnh extension622/crop4×/pixel/CSP/permission/profile/thiết bị; không dùng HTTP thay nghiệm thu. Không chạy lại nhận dạng vì engine không đổi.
 
 **2026-11-26 | v3.5.621 | Arena sửa:**
 
@@ -342,44 +348,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: tách đường viền popup Tô sáng và chừa vị trí chân tam giác theo neo, không còn đường viền chạy qua phần giao; giữ màu kính và tương tác.
 - File: `css/content/content-theme.css`, `js/content/content.js`, `manifest.json`.
 - Kiểm tra: Chromium unpacked 1512/390 sáng/tối, ảnh/crop 4× và số đo tại giữa, hai mép, lật popup lên; chọn màu, nhập và lưu ghi chú thật trong IndexedDB; console/pageerror rỗng. Chưa kiểm thiết bị, trang và tài liệu của người dùng.
-
-
-**2026-11-17 | v3.5.591 | Arena:**
-
-- Tóm tắt: sửa tam giác ô Tô sáng bị chồng nền kính thành hình thoi, giữ màu kính chung; loại lớp đậm–mờ ở tay kéo các sheet, giữ cuộn ẩn thanh.
-- File: `css/content/content-theme.css`, `css/content/content.css`, `css/content/notes.css`, `css/dashboard/settings.css`, `js/ask-ai/sheet.js`, `js/content/keepit-bar-css.js`, `js/overlay/ui/overlay-css.js`, `js/reader/reader-css.js`, `js/shared/theme-tokens.js`, `docs/ui-layout.md`, `manifest.json`.
-- Kiểm tra: Chromium unpacked 1512/390 sáng/tối, ảnh và crop 4×, đo tam giác và màu kính popup so với thanh; sheet menu, tìm kiếm, Ghi chú, Từ điển, Cài đặt và kéo/cuộn mô phỏng; hồi quy popup và PDF fixture, console/pageerror rỗng. Chưa kiểm thiết bị, website và tệp của người dùng; không kiểm tất cả sheet trong lượt này.
-
-
-**2026-11-17 | v3.5.590 | Arena:**
-
-- Tóm tắt: áp dụng demo v18 vào ba popup và các sheet; dùng logo app cho Từ điển, hiệu ứng tim và hướng dẫn chung với Overlay, bỏ gợn trắng của hướng dẫn; giữ luồng dữ liệu/lưu hiện hữu.
-- File: `css/content/content.css`, `css/content/content-theme.css`, `css/content/notes.css`, `css/dashboard/settings.css`, `js/content/content.js`, `js/content/keepit-bar-css.js`, `js/ask-ai/sheet.js`, `js/reader/reader-css.js`, `js/overlay/ui/overlay-css.js`, `js/overlay/ui/overlay-ui.js`, `js/shared/heart-effects.js`, `js/shared/theme-tokens.js`, `manifest.json`, `pages/documents.html`, `docs/ui-layout.md`, `docs/modules/shared.md`.
-- Kiểm tra: Chromium 159 unpacked 1512/390 sáng/tối, ảnh/crop 4× và số đo; kiểm popup, note dài, scrollbar, logo, tim Từ điển (ba lần và toggle), Overlay với video fixture, sheet menu/tìm kiếm/Ghi chú/Từ điển/Reader/Cài đặt/Đăng nhập/AI; kéo Ghi chú/menu/Từ điển/AI, ưu tiên cuộn Ghi chú; console/pageerror rỗng trong các ca UI (AI dùng favicon fixture vì các endpoint bên ngoài trả 404/bị chặn). Chưa kiểm thiết bị thật, provider AI thực, toàn bộ sheet và dữ liệu người dùng.
-
-
-**2026-11-17 | v3.5.589 | Arena:**
-
-- Tóm tắt: gỡ giao diện và mã ghi log chọn chữ thử nghiệm; giữ nguyên dự phòng 900 ms của 3.5.588 đã được người dùng xác nhận.
-- File: `pages/popup.html`, `js/popup/popup.js`, `js/core/languages.js`, `js/content/content.js`, `js/shared/selection-toolbar.js`, `manifest.json`.
-- Kiểm tra: Chromium unpacked 1512/390 sáng/tối, ảnh popup + crop 4×, đo không còn phần log; mô phỏng chọn chữ và hồi quy sheet, console/pageerror rỗng. Chưa kiểm bản này trên Android thật.
-
-**2026-11-17 | v3.5.588 | Arena:**
-
-- Tóm tắt: dự phòng 900 ms sau touchcancel cho vùng chọn một từ không khoảng trắng, hủy khi vùng chọn thay đổi hoặc có chạm mới; giữ luồng nhiều chữ, có nguy cơ hiện sớm khi giữ tay bất động.
-- File: `js/shared/selection-toolbar.js`, `manifest.json`.
-- Kiểm tra: Chromium unpacked 1512/390 sáng/tối, ảnh và crop 4×; mô phỏng touchcancel, thay đổi vùng chọn, chạm mới, touchend, contextmenu; hồi quy sheet, popup và PDF fixture, console/pageerror rỗng. Chưa kiểm thiết bị Android thật.
-
-**2026-11-17 | v3.5.587 | Arena:**
-
-- Tóm tắt: bản thử ghi log chọn chữ chỉ khi bật, xem và sao chép trong popup; không thu chữ hoặc URL, chưa thay đổi xử lý chọn chữ.
-- File: `js/shared/selection-toolbar.js`, `js/content/content.js`, `pages/popup.html`, `js/popup/popup.js`, `js/core/languages.js`, `manifest.json`.
-- Kiểm tra: Chromium unpacked 1512/390 sáng/tối, ảnh + crop 4×, sự kiện cảm ứng mô phỏng và sao chép log; không lỗi console/pageerror, hồi quy sheet cảm ứng mô phỏng đạt. Chưa thử thiết bị cảm ứng thật.
-- **3.5.586:** tính phần dưới cùng của cả cụm chọn chữ khi xét tràn và khi lật; neo lên trên dòng đầu vùng chọn nhiều dòng. Kiểm Chromium unpacked 1512/390 sáng/tối, cụm tròn 1–4, thanh/icon, ảnh và crop 4×, đo lật lên và đủ chỗ phía dưới; hồi quy popup, Trang tối, sheet cảm ứng đạt, không ghi nhận lỗi console/pageerror trong các ca kiểm. Chưa kiểm mọi số lượng nút, trang/profile và thiết bị thật.
-
-
-**2026-11-17 | v3.5.585 | Arena.ai Agent sửa:**
-
-- Tóm tắt: tam giác `#lhn-panel` dịch theo tâm vùng chữ sau khi hộp đã được đẩy ngang; giới hạn 20 px bên trong cạnh hộp để tránh góc bo. Khi lật lên, tam giác ở cạnh dưới và vẫn trỏ về chữ. Không đổi vị trí, kích thước, cách đẩy của hộp hoặc Trang tối.
-- File: `js/content/content.js`, `manifest.json`, `PROJECT.md`.
-- Kiểm tra: extension unpacked Chromium 159, 1512/390 sáng/tối, hai mép, ảnh + crop 4× (`qa/v585-edges.log`): tâm chữ/tam giác 60,16/60,16 px bên trái và 1451,84/1451,84 px bên phải tại 1512; chữ ngắn sát mép dừng trước góc bo (`qa/v585-short.log`). Sát đáy lật lên, tâm chữ/tam giác khớp trong 0,02 px (`qa/v585-bottom.log`); bộ 4 kịch bản 72 ảnh + crop (`qa/v585-regression.log`); Trang tối bật/tắt vùng màu rực (`qa/v585-toggle.log`); console.error/pageerror rỗng. Chưa kiểm profile Chrome thật, Wikipedia trên máy người dùng, các website khác và cảm ứng trên thiết bị thật.

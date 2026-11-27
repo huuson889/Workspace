@@ -54,3 +54,5 @@ Responsive OCR integration (3.5.619) changes first-party presentation, controls,
 Presentation corrections (3.5.620) use the already approved OCR SVG geometry and first-party shared controls/materials. No third-party runtime, model or license changes.
 
 Pager field correction (3.5.621) changes first-party CSS only; no third-party runtime, asset, model or license changes.
+
+Tools-sheet OCR entry and shared toolbar glyphs (3.5.622) reuse existing first-party UI and existing glyph geometry; no new third-party dependency, model, runtime or license.

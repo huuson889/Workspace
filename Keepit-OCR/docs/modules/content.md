@@ -38,6 +38,8 @@ Content là controller duy nhất cho chọn chữ, popup dịch/Full Dictionary
 - Main sheet mở trong Documents đưa Dịch/Đọc to xuống footer cố định cạnh Cài đặt; dùng `LHN_DOCUMENTS_MAIN_ACTIONS` để gọi cùng viewer handlers, không route qua generic web `page`/`reader`. Ẩn điều khiển Ẩn/Hiện thanh chỉ trong Documents sheet.
 - Giữ keyboard/editable/composition, native Android selection-dismiss, site-disabled và source isolation; không chặn Ctrl+A hay tạo thêm cử chỉ riêng.
 
+- Lưới Công cụ Documents có `doc:ocr` khi facade `ocrAvailable()` đúng; đóng main sheet rồi gọi `ocr()` (native toolbar click), label/tooltip qua `bar_ocr` và `ocrLabel`, active qua `ocrOn`. Web/home/Reader không thêm OCR. Dùng các glyph chung `tool-*`, không giữ path bản sao.
+
 ## 5. Kiểm tra và xác minh
 
 Syntax/manifest/dependency refs; Chromium extension thật kiểm chọn chữ/styles/masters, composer save/restore/migration, native sidebar/touch, full dict/tim, AI requests và Notes deep-link/backup. Kiểm lại web không có host và homepage sau thay đổi component chung. Các QA thiết bị/Firefox chưa xác nhận vẫn ở `PROJECT.md`, không được coi mock là provider/giọng thật.
