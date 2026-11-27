@@ -20,3 +20,5 @@
 
 - User packaging rule: always commit and push ZIP deliverables to the matching GitHub folder `<source-folder>-Zip` on `main` (e.g. `Keepit-OCR/` → `Keepit-OCR-Zip/`). Cache-only links and GitHub Releases are not substitutes. Preserve versioned names; never overwrite an existing ZIP.
 - ZIP folders are omitted by the default thin checkout. Stage newly produced packages explicitly with `git add --sparse Keepit-OCR-Zip/<filename>`, commit and push; verify the remote blob before any local eviction. Do not regenerate deleted older ZIPs.
+
+- The approved responsive OCR v14 presentation is integrated into Keepit-OCR from 3.5.619 via documents-sheets.mjs, ocr-controls.mjs and documents-responsive.css. Keep the real renderer/engine/store/export/navigation and native BOTH-open flow; do not transplant the standalone demo shell or simulated progress/results. Drafts are per page within the current document, applied explicitly and cleared on document reset. HTTP shim QA is not unpacked-extension acceptance.

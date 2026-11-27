@@ -1,15 +1,14 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.618**, chỉ căn popup OCR góc dưới sát cạnh phải theo yêu cầu mới; bản gốc không đổi. Chưa nghiệm thu 100%.
-- Popup tiến độ và sửa vùng chọn dùng right:0; giữ nguyên độ rộng, vị trí dọc, layer và sidebar/resize. Dọc giữ bề rộng popup cũ bằng cách dịch ngang, không kéo rộng.
-- Engine Tesseract/eng/vie/kor cục bộ, dữ liệu và flow không đổi; PP/Fusor hoãn. Hộp thoại giữa màn hình, menu và UI khác không đổi.
-- QA HTTP: 6/6 trường hợp 1512/800/390 × theme app sáng/tối; cả hai popup sát phải, width/height/y và sidebar không đổi; popup tiến độ vẫn che Back to top đang hiện. Đây là DOM/số đo HTTP, không phải ảnh extension.
-- **Giới hạn:** chưa unpacked/CSP/permission/PNG/crop4×/pixel/profile/tệp/thiết bị thật do môi trường chặn chrome://extensions. Không dùng QA HTTP thay nghiệm thu ảnh extension; giới hạn cuộn/scan bản trước vẫn giữ.
+- **Bản test 3.5.619**: tích hợp giao diện OCR responsive đã duyệt ở standalone demo v14; không đưa canvas/kết quả/tiến độ giả vào app. Chưa nghiệm thu 100%.
+- Giữ luồng Keepit: mở tệp không tự bật OCR; bấm OCR mở cả sidebar văn bản và cài đặt; đóng cài đặt giữ sidebar. Hai nút mở lại kết quả giữ nguyên; bản nháp riêng từng trang, chỉ Áp dụng mới ghi kết quả.
+- Nút OCR sau Hỏi AI, dùng docking/Thêm thật. Các sheet dùng shared LHN_SHEET/kính Settings, scrim chỉ dim, grip chung; ô số/chọn danh sách dùng createFlowSelect. Gợi ý giữ tím/vàng và mở được ở vùng hẹp.
+- Tesseract/model eng-vie-kor, renderer, DB schema, xuất PDF và đường cuộn OCR không đổi; PP/Fusor vẫn khóa. HTTP app thật đã chạy UI, bản nháp/Apply, dropdown, cử chỉ/ngôn ngữ và OCR current/all/range trên PDF tổng hợp. Giới hạn: HTTP dùng shim extension API, không phải unpacked; chưa đủ bộ ảnh extension/PNG/crop4×/pixel/CSP/permission/profile/tệp người dùng/thiết bị thật, không dùng kiểm demo hoặc HTTP thay nghiệm thu bắt buộc.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.618: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.619: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -157,6 +156,10 @@ Sidebar trang giữ tab Highlight; Alt+X mở/toggle browser-native AI panel; H�
 
 Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện được đọc/ghi trực tiếp qua `browser.storage`; không phải mọi luồng đều đi qua Background. Trong Dashboard, `dashboard.js` điều phối Overview, Dictation và Highlights & Notes dưới một `#dashboardScroller`, shared theme và topbar; mỗi route giữ content/logic riêng, vị trí cuộn được lưu độc lập theo tab và restore cùng route cuối sau reload. Highlights & Notes chạy trong cùng document qua event bus nội bộ, nhận snapshot annotations/favorites từ Dashboard; mọi ghi/xuất/review/action quay lại handler hiện có, không thêm API/backend hoặc nguồn lưu annotation thứ hai. Dictation dùng route `dictation`; phiên và tiến độ lấy từ `js/overlay/study/shared/session-index.js`, được đối soát với record thật `dictation:<sourceId>` để phục hồi mục thiếu; YouTube/Web sessions giữ source ID và URL tương ứng, thống kê lỗi đọc từ dữ liệu đã lưu, còn tab hiển thị empty state khi chưa có dữ liệu. Hai route dự phòng Grammar/Library và code riêng chỉ phục vụ chúng đã bị xóa; các route còn lại không đổi.
 
+### OCR responsive — module trình bày dùng chung
+
+`ocr-controller.mjs` giữ engine/state, nhập `ocr-controls.mjs` (mặt nhập số trên input gốc + createFlowSelect, danh sách đầu ra) và `documents-sheets.mjs` (sheet/portal/grip/scrim/cử chỉ/rail dọc). `documents.js` vẫn sở hữu docking, điều hướng, bản dịch, rail ngang và các công cụ thật. `documents-responsive.css` chỉ trình bày các mặt đã duyệt, dùng token chung `theme-tokens.js`. Không có engine, viewer hay storage giả. `drafts` trong OCR controller chỉ là Map theo trang của tài liệu đang mở, xóa khi reset/chuyển tệp; không ghi store trước Áp dụng.
+
 ### OCR clean rebuild — ranh giới module mới
 
 `documents.js` → getter host `KeepitOcrDocumentHost` → `ocr-controller.mjs`; canvas dùng `ocrCanvas` trên renderer hiện tại, không viewer/file-store song song. `vendor/ocr` chứa Tesseract worker/core/data, preprocessing demo và PDF exporter deps. `ocr-localize.mjs` dùng catalogue `languages.js`; theme theo setting app. Store `ocr` trong DB Documents v3; purge theo index document. Lớp `.para`/`.en` quay lại controller app. CSS demo scope dưới `.keepitOcr`; chặn root ẩn bắt pointer, reset xung đột `.row`/`.vbanner`, thanh viewer dọc cao 52px theo demo. Không bê toolbar/Reader/Notes giả của demo. Tesseract retry trang lỗi một lần rồi đi tiếp; kết quả một phần đếm đúng lượt hiện tại. Đóng tài liệu đợi PDF export cleanup và chặn tải muộn; ảnh OCR tối đa 16 megapixel. Harness, bằng chứng và script tạm ngoài source. Từ 3.5.615: `.layer` chữ vẫn ở native page units; `.ocrVisualSurface` giãn kích thước và inverse-scale theo `--source-scale` để scan/word/hover/region được vẽ bằng display pixels. `.ocrWordBox` lấy rect chuẩn hóa, không outline text span đã transform; không style nested `.en`. Overlay reset padding/min-width của `.paper` app. Reverse hover khớp cụm geometry/text trước fallback offset để không sai sau vùng append. Từ 3.5.616: host `goTo` riêng OCR truyền `smooth` vào `setPage`; `scrollToPage` giữ đích tạm trong hai flow cuộn, bỏ lệnh trùng cùng đích/pixel, retarget khi resize đổi hình học. Scroll observer không đổi current về trang đi ngang qua; input người dùng nhả đích. `sizePages` không gán scrollTop đè native animation. Điều hướng khác và kiểu xem rời giữ mặc định auto.
@@ -164,6 +167,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.619 | Arena sửa:**
+
+- Tóm tắt: tích hợp standalone responsive demo v14 theo xác nhận người dùng; giữ native OCR mở cả bảng văn bản/cài đặt và đóng cài đặt không đóng bảng. OCR là nút dock bình thường sau Hỏi AI; bỏ nhóm OCR dư trong Thêm. Sheet dọc chung/rail trang thật, kính Settings và gợi ý tím-vàng, numeric input + native lists, phạm vi tự chọn range, dropdown đầu ra luôn xuống, đủ phần engine nhưng PP/Fusor vẫn tắt. Giữ hai nút mở lại kết quả và bản nháp theo trang; chỉ Apply ghi store. Không đổi runtime/model/renderer/schema/export/smooth-scroll engine.
+- File: `pages/documents.html`, `js/dashboard/documents.js`, `ocr-controller.mjs`, mới `ocr-controls.mjs`/`documents-sheets.mjs` và `css/dashboard/documents-responsive.css`; `ocr-demo.css`, `js/shared/theme-tokens.js`, `js/core/languages.js`, manifest/tài liệu. Gói ZIP đúng tên trong `Keepit-OCR-Zip` trên GitHub main.
+- Kiểm tra: HTTP trang app thật với shim extension API: 6 kích thước × sáng/tối, mở cả hai/dismiss/focus/draft/numeric/engine/rail; kiểm sâu bản nháp khác trang, store không tự ghi, Apply thật, field/popup/notice, ba ngôn ngữ và shared gestures. Tesseract thật trên PDF scan tổng hợp: current, all3 trang và range2–3, có chữ/lưu store/dọn scan; không dùng kết quả mô phỏng. Kết quả HTTP: 13 nhóm UI, 29 nhóm lifecycle/field, 14 nhóm sheet/ngôn ngữ, 2 lượt all/range đều không có cờ lỗi; current OCR có chữ/lưu1 bản ghi. Hover chuột thật5 mặt, mỗi mặt120 frame/0 dịch hình học; Escape thật đóng list trước rồi cài đặt, giữ result. Syntax6 file và unittest công cụ10/10 sạch; vendor220/220 hash khớp. Ảnh quan sát HTTP không phải ảnh extension. Chrome công cụ vẫn từ chối chrome://extensions; chưa unpacked/CSP/permission/PNG4×/pixel/profile/tệp người dùng/thiết bị thật; không nâng trạng thái nghiệm thu bắt buộc.
 
 **2026-11-26 | v3.5.618 | Arena sửa:**
 

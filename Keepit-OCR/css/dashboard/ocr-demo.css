@@ -44,7 +44,7 @@ html.dark .keepitOcr{
 .keepitOcr .vtools{display:flex;align-items:center;gap:2px;flex:none}
 .keepitOcr .vtools .vbtn{padding:0 8px;min-width:0;font-size:12.5px}
 .keepitOcr .vtools .vbtn .ic{font-size:14px;line-height:1}
-.keepitOcr #ko-vOcr{color:var(--brand);background:var(--brandSoft);border-color:var(--line2);position:relative}
+
 .keepitOcr #ko-vOcr .dot{position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 2px var(--surface)}
 .keepitOcr .vbanner,.keepitOcr .vbulb{--nt-bg:#fff8ec;--nt-line:#f3ddb8;--nt-soft:#fdeed2;--nt-ink:#a0601a}
 .keepitOcr .vbanner[data-nt="violet"],.keepitOcr .vbulb[data-nt="violet"]{--nt-bg:#eeeaff;--nt-line:#d6ccfa;--nt-soft:#e2dbff;--nt-ink:#5548cc}
@@ -323,7 +323,7 @@ html.dark .keepitOcr .selToolbar button:hover{background:#00000010}
 .keepitOcr .pager .docControls{overflow:hidden}
 .keepitOcr .ocrModal{left:0;right:0;bottom:0;top:auto;transform:translateY(10px);width:auto;max-width:none;max-height:90dvh;border-radius:22px 22px 0 0}
 .keepitOcr .ocrModal.show{transform:translateY(0)}
-.keepitOcr .ocrModal::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:9px;background:var(--line2)}
+
 .keepitOcr .ocrHead{padding-top:18px}
 .keepitOcr .ocrFoot{border-radius:0}
 .keepitOcr .ocrFoot .footNote{display:none}

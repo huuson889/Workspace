@@ -48,3 +48,5 @@ Continuous OCR navigation correction (3.5.616) uses the browser’s native smoot
 OCR sidebar width and progress-popup layering adjustment (3.5.617) changes first-party UI CSS only; no third-party dependency, runtime, model or license changes.
 
 Right-edge alignment of OCR progress and region-editing popups (3.5.618) changes first-party CSS only; no third-party runtime, model or license changes.
+
+Responsive OCR integration (3.5.619) changes first-party presentation, controls, localized labels and draft lifecycle only. No third-party runtime, model, asset or license has changed.
