@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.620**: sửa các chỗ tích hợp responsive v14 bị bỏ sót trong 3.5.619 theo ảnh extension người dùng gửi. Không coi bộ kiểm DOM 619 là bằng chứng khớp toàn bộ demo.
-- Bỏ wrapper số cũ/viền-nền kép; mặt nhập giữa 112px/co đều và tổng `/ N`; dùng đúng sáu SVG v14 trên bảng văn bản. Bỏ chấm OCR và CSS riêng; sheet dùng tiêu đề “Danh sách trang” + tổng trang thật, dịch en/vi/ko.
-- Theo xác nhận mới của người dùng, nút Nhận dạng vùng dùng nền kính/viền trung tính như Hủy ở cả trạng thái trống/có chữ; Apply vẫn tím khi khả dụng. Sửa lại layer vùng trên native bottom bar. Không đổi chức năng của ba nút.
-- Giữ Tesseract/model/renderer/DB/export/native navigation và luồng mở đồng thời settings + result, bản nháp/Apply. QA mới đối chiếu app và demo cùng kích thước, không chỉ kiểm class/trạng thái; kết quả chi tiết trong log bản này.
-- **Giới hạn:** chỉ HTTP với shim extension API. Chưa có nghiệm thu ảnh extension/pixel/crop4×/CSP/permission/profile/tệp người dùng/thiết bị thật; ảnh người dùng gửi chứng minh lỗi 619, không chứng nhận 620 đã đạt.
+- **Bản test 3.5.621**: người dùng xác nhận giao diện 620 đã ổn, yêu cầu chỉ sửa cụm số trang bị cắt và quá đen trong thanh điều hướng. Không sửa phần OCR đã chốt.
+- CSS scoped pager: ô72px với lane nhập riêng, chừa24px cho chevron; reset width/height input và min-width arrow của rule cảm ứng cũ. Giữ32px chuột/44px cảm ứng; nền dùng Settings field/line thay soft đen đặc.
+- Không sửa JavaScript, OCR/model, renderer, chuyển trang, lưu trữ hay các ô phạm vi OCR. Manifest/tài liệu/gói phát hành được đồng bộ.
+- HTTP app thật + Chrome device toolbar pointer:coarse đã tái hiện lỗi620 (text area4px, arrow44px). Sau sửa,84 nhóm coarse +84 fine không cờ lỗi hình học/list/native controls; số1/5/16 rõ, vùng chữ40px đủ đo chuỗi2000 (~31.2px). Chuột thật chọn16 trong list và quan sát16/16.
+- **Giới hạn:** đây là HTTP với shim extension API, không unpacked/ảnh extension621/pixel/crop4×/CSP/permission/thiết bị thật; người dùng chấp nhận phần UI620 không thay các điều kiện nghiệm thu còn mở.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.620: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.621: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -168,6 +168,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.621 | Arena sửa:**
+
+- Tóm tắt: chỉ sửa UI số trang ở pager theo ảnh người dùng, phần620 khác giữ nguyên. Tái hiện pointer:coarse thật qua Chrome device toolbar: input44px + padding20px mỗi bên chỉ còn4px chữ, chevron bị min-width44px; nền wrapper rgb(21,21,23) quá đen. CSS riêng pager chia lane nhập/mũi tên24px, wrapper72px, input full-height/không chồng arrow và fill/line theo shared Settings field; OCR range không đổi. Không đổi JS/engine/navigation/storage.
+- File: `css/dashboard/documents-responsive.css`, `manifest.json`, `PROJECT.md`, `README.md`, `docs/documents.md`, `THIRD_PARTY_NOTICES.md`; ZIP mới đúng thư mục `Keepit-OCR-Zip` trên main, giữ nguyên các ZIP trước.
+- Kiểm tra: HTTP với shim API extension, PDF tổng hợp16 trang thật. 84 nhóm coarse (Chrome device toolbar, matchMedia xác nhận) +84 fine, mỗi nhóm viewport1233×696/1512×900/900×600/673×696/390×844/320×640 × sáng/tối: các giá trị1/5/16, text content40px > chữ2000~31.2px, input/arrow không chồng, chiều cao30/42 bên trong32/44, list lên/có16 mục, prev/next và chọnlist5 đổi native state. Dark fill rgba255,255,255,.08 thay nền đen, light .6. Chuột thật mở/cuộn list/chọn16 và quan sát đủ16/16. Không tuyên bố nhập liên tiếp nhiều chữ số đã nghiệm thu: một lượt tool gõ16 trả1, cần kiểm riêng cơ chế cập nhật có sẵn; bản này không sửa logic. Console.error/pageerror HTTP rỗng, vendor hash220/220; cú pháp/diff sạch. Chưa unpacked/ảnh extension621/pixel/crop4×/permission/thiết bị thật; không chạy lại OCR vì không đổi engine/JS.
 
 **2026-11-26 | v3.5.620 | Arena sửa:**
 

@@ -17,7 +17,7 @@
 #ko-ocrScopePick .flow-select-trigger{width:100%;min-height:32px;height:32px;gap:4px;padding:0 8px;font-size:13px;border-radius:7px}
 #ko-ocrScopePick .flow-select-chevron{width:12px}
 #ko-ocrScopePick .flow-select-trigger:disabled{opacity:.45;cursor:default}
-.pageJump .flow-select{width:62px!important;flex:none}
+.pageJump .flow-select{width:72px!important;flex:none}
 .pageJump .flow-select-trigger{width:100%;min-height:32px;height:32px;padding:0 6px;gap:4px;border:1px solid var(--line2);border-radius:7px;background:var(--soft);font-size:12px}
 .editablePage .flow-select-trigger>span{visibility:hidden;flex:1}
 .editablePage .flow-select-trigger .flow-select-chevron{margin-left:auto}
@@ -41,6 +41,12 @@
 .editablePage>.flow-select-trigger>span{display:none}
 .editablePage>.flow-select-trigger:after{content:none}
 @media(pointer:coarse){.editablePage{height:44px}}
+/* Pager keeps a separate editing lane; old touch-input/button widths must not
+   squeeze the value or overlap the shared list chevron. OCR range is unchanged. */
+.pager .pageJump .editablePage{background:var(--kp-field);border-color:var(--kp-field-line)}
+.pager .pageJump .editablePageInput{inset:0 24px 0 0;width:calc(100% - 24px);height:100%;padding:0 3px;font-size:12px;background:transparent}
+.pager .pageJump .editablePage>.flow-select-trigger{min-width:0}
+
 
 .docsPageScrim,.docsSheetScrim{position:fixed;inset:0;background:#0006;backdrop-filter:blur(3px)}.docsPageScrim{z-index:2147483020}.docsSheetScrim{z-index:2147483000}.docsPagesSheet{position:fixed;z-index:2147483021;background:var(--surface);border:1px solid var(--line2);box-shadow:var(--shadowH);color:var(--ink);border-radius:22px;left:8px;right:8px;bottom:8px;display:flex;flex-direction:column;overflow:hidden;max-height:var(--docs-sheet-height)}#docsPagesSheet[hidden]{display:none!important}.docsPagesSheet>header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px 10px 16px;flex:none}.docsPagesSheet>header b{display:block;font-size:13px}.docsPagesSheet small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.docsPagesSheet .vbtn{height:36px}.docsPagesSheet{height:var(--docs-sheet-height);padding-bottom:var(--docs-safe)}#docsPageStrip{overflow-x:hidden;overflow-y:auto;min-height:0;flex:1;overscroll-behavior:contain}.docsPagesSheet #rail{width:100%;display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(82px,14vw,128px),1fr));align-content:start;gap:14px 12px;border:0;padding:4px 16px 16px;overflow:visible;background:none}.docsPagesSheet #rail button{width:100%;min-width:0;align-self:start}.docsPagesSheet #rail .mini-pg{min-height:0;height:auto}.docsPagesSheet #rail .mini-pg{aspect-ratio:720/1018}
 @media(orientation:portrait){
