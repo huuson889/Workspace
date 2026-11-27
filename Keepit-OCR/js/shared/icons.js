@@ -1,4 +1,9 @@
 (() => {const ICON_PATHS = {
+  // Approved file-label demo v5, option 3.
+  "file-kind-pdf": "<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\" fill=\"currentColor\" stroke=\"none\"></path><path d=\"M14 2v4a2 2 0 0 0 2 2h4\" fill=\"#fff\" fill-opacity=\".27\" stroke=\"none\"></path><path d=\"M6.4 17.5v-5h1.2a1.25 1.25 0 0 1 0 2.5H6.4m4.2 2.5v-5h.9c2.7 0 2.7 5 0 5h-.9m4.7 0v-5H18m-2.7 2.3h2.2\" stroke=\"#fff\" stroke-width=\"1.05\" transform=\"translate(12 15) scale(.88) translate(-12 -15)\"></path>",
+  "file-kind-docx": "<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\" fill=\"currentColor\" stroke=\"none\"></path><path d=\"M14 2v4a2 2 0 0 0 2 2h4\" fill=\"#fff\" fill-opacity=\".27\" stroke=\"none\"></path><path d=\"M7.5 12l2 6 2.5-5 2.5 5 2-6\" stroke=\"#fff\" stroke-width=\"1.6\"></path>",
+  "file-kind-pptx": "<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\" fill=\"currentColor\" stroke=\"none\"></path><path d=\"M14 2v4a2 2 0 0 0 2 2h4\" fill=\"#fff\" fill-opacity=\".27\" stroke=\"none\"></path><path d=\"M9 18v-7h3a2.25 2.25 0 0 1 0 4.5H9\" stroke=\"#fff\" stroke-width=\"1.6\"></path>",
+  "file-kind-image": "<rect fill=\"currentColor\" height=\"18\" rx=\"3\" stroke=\"none\" width=\"18\" x=\"3\" y=\"3\"></rect><circle cx=\"8\" cy=\"8\" fill=\"#fff\" r=\"1.5\" stroke=\"none\"></circle><path d=\"m4.5 16 3.2-3.2 3 3L16 10.5l3.5 3.5\" stroke=\"#fff\" stroke-width=\"1.5\"></path>",
   // Documents toolbar and Keepit main tools sheet share these exact glyphs.
   "tool-translate": '<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>',
   "tool-read": '<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>',

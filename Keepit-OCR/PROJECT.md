@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.622**: người dùng chấp nhận621; thêm OCR vào lưới Công cụ của main sheet Documents và đồng bộ icon thanh trên với sheet. Giữ pager621 và OCR620.
-- Sáu glyph Dịch/Đọc/Loại từ/Ghi chú/Hỏi AI/OCR dùng một nguồn `LHN_ICONS` (`tool-*`); giữ nút/handler/overflow/CSS native, không thêm nhóm OCR riêng trong Thêm.
-- OCR tile chỉ khi viewer tài liệu đang mở + controller có sẵn; gọi lại nút OCR thật qua facade, đóng main sheet rồi mở cả cài đặt và kết quả, không tự chạy nhận dạng. Không đổi engine/model/storage/navigation.
-- HTTP app thật với shim extension API:54 nhóm ở6 kích thước × sáng/tối, icon paths, entry/both-open/draft/active, ba ngôn ngữ, ảnh và thư viện; không cờ lỗi. Kiểm website riêng và thứ tự nạp shared icons ở manifest/home/dashboard/documents.
-- **Giới hạn:** không unpacked/ảnh extension622/pixel/crop4×/CSP/permission/thiết bị thật; kiểm HTTP không thay nghiệm thu đó. Không chạy lại OCR engine vì chỉ đổi entry/icon.
+- **Bản test 3.5.623**: người dùng duyệt demo nhãn v5 option3 và yêu cầu áp dụng: icon đặc màu; PDF chữ nhỏ88%, Word W, PowerPoint tệp P, Ảnh dùng mẫu option2 (nét núi ngắn).
+- Bốn glyph `file-kind-*` trong `LHN_ICONS` là nguồn chung; `fileLabel()` dựng nhãn native cho thẻ thư viện, khu chọn tệp, Đọc tiếp và viewer; import dùng cùng SVG lớn. Không nhúng demo vào app.
+- Chỉ đổi nhãn/presentation; giữ thumbnail/renderer/filter/search/import/store và OCR/menu/pager622. Trên thumbnail giữ backing kính sẵn có cho tương phản; tiêu đề viewer vẫn ẩn nhãn khi native compact.
+- HTTP shim app: nhập PDF3 trang, DOCX2 trang, PPTX2 slide và PNG tổng hợp thật, đối chiếu4 bộ path đúng demo v5;48 nhóm viewer/library/sáng-tối/i18n. Giới hạn/artefact QA tại `/home/user/qa-keepit-623`.
+- **Giới hạn:** chưa unpacked/ảnh extension623/pixel/crop4×/CSP/permission/thiết bị thật; HTTP không thay nghiệm thu đó. Không chạy lại OCR engine vì chỉ đổi nhãn.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.622: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.623: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -106,6 +106,7 @@ Có 6 entry `content_scripts`: base `document_start`/`all_frames` nạp browser 
 - Blob/metadata/progress ở `keepit-documents`. Notes/Flashcards mới ở annotations chung; legacy v314 migration giữ nội dung/ngày/anchor, idempotent và không tái tạo note đã xóa. JSON backup có Notes nhưng không blob; import rewrite đúng owned extension origin.
 - `LHN_SELECTION_TOOLBAR.installTouchSelectionBridge` là bridge touch duy nhất. `LHN_SIDEBAR.attachTouchSheet` dùng chung setup grow/scroll/drag. `js/ask-ai/sheet.js` là AI sheet đã chuyển nguyên component từ web bar, dùng cho web và Documents; parent Dashboard chuyển message top-frame cho source active.
 - `LHN_READER_API` chỉ facade của Reader gốc: không queue/UI khác; host cung cấp chữ tệp/chuyển trang/vị trí native card, pager nhường khi bar mở. AI dùng native panel/sheet và Send policy hiện có, không upload/read toàn bộ file tự động.
+- Nhãn loại tệp Documents dùng `fileLabel(type)` → `LHN_ICONS.render(file-kind-*)`; bốn glyph option3 demo v5 dùng chung cho thư viện/viewer/import, token màu scoped trong documents.css.
 - Documents main sheet đặt Dịch/Đọc to ở footer cố định cạnh Cài đặt qua `LHN_DOCUMENTS_MAIN_ACTIONS`; callbacks chia sẻ handler với viewer topbar. Điều khiển Ẩn/Hiện thanh không hiện riêng ở sheet này. OCR là tile trong lưới Công cụ, dùng facade `ocr/ocrAvailable/ocrLabel/ocrOn` gọi nút native; chỉ có khi viewer đang mở. Sáu glyph `tool-*` chia sẻ từ `LHN_ICONS` với toolbar.
 - Renderer/vendored licences/giới hạn v314 giữ nguyên; details ở `docs/documents.md` và trang module tương ứng.
 
@@ -168,6 +169,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.623 | Arena sửa:**
+
+- Tóm tắt: áp dụng demo nhãn loại tệp v5 option3 đã duyệt: icon đặc màu, PDF chữ thu88%, Word W, PowerPoint P, Ảnh dùng geometry ngắn của option2. Chuyển đúng4 SVG sang shared/icons, dùng `fileLabel()` cho library cards, supported types, Đọc tiếp và vType; import dùng cùng glyph, bỏ fold pseudo/text cũ. Nhãn chữ trung tính, mark28×32/icon18, nền/viền nhạt sáng-tối theo demo; backing kính trên thumbnail giữ tương phản, viewer không backing và giữ compact hide native. Giữ filters/search/navigation/engine/model/import/store và OCR/pager622.
+- File: `js/shared/icons.js`, `js/dashboard/documents.js`, `css/dashboard/documents.css`, `pages/documents.html`, manifest và tài liệu; ZIP mới đúng thư mục, không sửa ZIP cũ.
+- Kiểm tra: HTTP app thật với shim extension API; PDF scan3 trang, DOCX2 trang, PPTX2 slide và PNG mẫu được parser/import thật. 48 nhóm:32 viewer (4 loại ×1512/900/390/320 × sáng/tối),12 library (6 kích thước × sáng/tối), both-open OCR và3 ngôn ngữ. Geometry/attrs4 SVG bằng demo v5, màu đặc đúng, mark28×32/icon18 trong control hiện; viewer compact giữ ẩn như622, không gọi 0×0 là lỗi. Hình học tolerance0.1px do reveal animation subpixel. Library không tràn320–1512, loại/nhãn en/vi/ko đúng. Syntax/diff, vendor220 hash và test công cụ kiểm lại; không dùng HTTP thay unpacked/ảnh extension/pixel/crop4×/CSP/permission/device thật; không chạy lại nhận dạng engine.
 
 **2026-11-26 | v3.5.622 | Arena sửa:**
 
@@ -341,10 +348,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: sau khi mở rồi đóng Overlay, chỉ dùng selection Shadow DOM khi anchor thật sự thuộc shadow root; nếu không dùng selection của trang, khôi phục thanh logo chọn chữ.
 - File: `js/content/content.js`, `manifest.json`.
 - Kiểm tra: Chromium unpacked 1512/390 sáng/tối, ảnh trước/sau hai lần mở đóng Overlay; chọn phụ đề trong Overlay mở từ điển và chọn bằng chuột 1512 sáng. Fixture favicon giả lập để tránh 404, console/pageerror rỗng; chưa kiểm profile, trang, thiết bị thật.
-
-
-**2026-11-17 | v3.5.592 | Arena:**
-
-- Tóm tắt: tách đường viền popup Tô sáng và chừa vị trí chân tam giác theo neo, không còn đường viền chạy qua phần giao; giữ màu kính và tương tác.
-- File: `css/content/content-theme.css`, `js/content/content.js`, `manifest.json`.
-- Kiểm tra: Chromium unpacked 1512/390 sáng/tối, ảnh/crop 4× và số đo tại giữa, hai mép, lật popup lên; chọn màu, nhập và lưu ghi chú thật trong IndexedDB; console/pageerror rỗng. Chưa kiểm thiết bị, trang và tài liệu của người dùng.

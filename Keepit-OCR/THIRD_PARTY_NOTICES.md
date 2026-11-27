@@ -56,3 +56,5 @@ Presentation corrections (3.5.620) use the already approved OCR SVG geometry and
 Pager field correction (3.5.621) changes first-party CSS only; no third-party runtime, asset, model or license changes.
 
 Tools-sheet OCR entry and shared toolbar glyphs (3.5.622) reuse existing first-party UI and existing glyph geometry; no new third-party dependency, model, runtime or license.
+
+Filled file-kind labels (3.5.623) use the approved first-party demo v5 SVGs; no third-party dependency, asset, model, runtime or license changes.
