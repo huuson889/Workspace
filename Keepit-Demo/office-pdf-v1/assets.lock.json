@@ -1,0 +1,33 @@
+{
+  "pdfjsSourceCommit": "e22a18b8ec41d9fbcff3d8470e8fe9981891eea3",
+  "assets": {
+    "fonts/OFL.txt": {
+      "bytes": 4389,
+      "sha256": "b4fc1d55ce610f255c5712f8169543f9610536d002deb99bbc99bfbba9f8a560"
+    },
+    "fonts/Pangolin-Regular.ttf": {
+      "bytes": 593408,
+      "sha256": "cf4f0a46704c7859d4943320fce6c6d06cc7dc450ef971c3676ef36f9f482299"
+    },
+    "public/samples/keepit-sample.docx": {
+      "bytes": 38801,
+      "sha256": "e73084b92195f7f0a31811c2f2db6fa7293b6477f1ad995d2ebf70b74ca7188a"
+    },
+    "public/samples/keepit-sample.pptx": {
+      "bytes": 30401,
+      "sha256": "2ccb80056ed3a59eb38279ecc459cb6fd2f4617d44fa9d34eb7b8aaed20b8cb2"
+    },
+    "public/vendor/LICENSE-pdfjs.txt": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "public/vendor/pdf.mjs": {
+      "bytes": 430304,
+      "sha256": "2221020ea508479dcc1221f36f2731656339230097c69ba1f78802832c0ad685"
+    },
+    "public/vendor/pdf.worker.mjs": {
+      "bytes": 1244253,
+      "sha256": "51a2fd1ea47f1a9b0814e65e0c336c739c54957795ee774e8f93cb81e8028dd1"
+    }
+  }
+}

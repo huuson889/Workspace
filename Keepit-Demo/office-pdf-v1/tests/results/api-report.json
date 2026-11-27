@@ -1,0 +1,103 @@
+{
+  "rows": [
+    {
+      "name": "health engine ready",
+      "pass": true
+    },
+    {
+      "name": "upload requires explicit consent",
+      "pass": true
+    },
+    {
+      "name": "cross-site mutation rejected",
+      "pass": true
+    },
+    {
+      "name": "wrong format rejected",
+      "pass": true
+    },
+    {
+      "name": "invalid ZIP rejected",
+      "pass": true
+    },
+    {
+      "name": "private source is not a static route",
+      "pass": true
+    },
+    {
+      "name": "unknown job cannot be fetched",
+      "pass": true
+    },
+    {
+      "name": "preflight rejects path traversal",
+      "pass": true
+    },
+    {
+      "name": "preflight rejects macro",
+      "pass": true
+    },
+    {
+      "name": "preflight rejects OLE",
+      "pass": true
+    },
+    {
+      "name": "preflight rejects DTD",
+      "pass": true
+    },
+    {
+      "name": "preflight rejects external image",
+      "pass": true
+    },
+    {
+      "name": "TTL sweep removes expired payload",
+      "pass": true
+    },
+    {
+      "name": "engine Internet socket denied",
+      "pass": true
+    },
+    {
+      "name": "docx produces selectable two-page PDF",
+      "pass": true,
+      "pages": 2,
+      "pdfBytes": 52524,
+      "engineSeconds": 0.96,
+      "textCharacters": 1204
+    },
+    {
+      "name": "docx deletion returns 404",
+      "pass": true
+    },
+    {
+      "name": "pptx produces selectable two-page PDF",
+      "pass": true,
+      "pages": 2,
+      "pdfBytes": 45516,
+      "engineSeconds": 1.1,
+      "textCharacters": 314
+    },
+    {
+      "name": "pptx deletion returns 404",
+      "pass": true
+    },
+    {
+      "name": "cancel queued or running job",
+      "pass": true
+    },
+    {
+      "name": "delete is idempotent",
+      "pass": true
+    },
+    {
+      "name": "authorized original deck converts",
+      "pass": true,
+      "pages": 92,
+      "pdfBytes": 6049041,
+      "engineSeconds": 29.96,
+      "textCharacters": 18259,
+      "pagesWithText": 87
+    }
+  ],
+  "passed": true,
+  "engine": "LibreOffice 25.2.3.2 520(Build:2)"
+}

@@ -1,0 +1,36 @@
+const frame=document.getElementById('frame'),out=document.getElementById('out'),state=document.getElementById('state');
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function until(fn,ms=60000){const end=Date.now()+ms;while(Date.now()<end){if(await fn())return;await wait(100);}throw Error('Timeout');}
+let rows=[],errors=[];const check=(name,pass,extra)=>{rows.push({name,pass,...extra});out.textContent=JSON.stringify({rows,errors},null,2);};
+document.getElementById('run').onclick=async()=>{rows=[];errors=[];state.textContent='Running';try{
+await until(()=>frame.contentWindow.demoState);const w=frame.contentWindow,d=w.document,$=id=>d.getElementById(id);
+w.addEventListener('error',e=>errors.push(e.message));w.addEventListener('unhandledrejection',e=>errors.push(String(e.reason)));
+$('sampleDocx').click();await until(()=>w.demoState().chosen);
+check('selection alone does not upload',!w.demoState().jobId&&!w.demoState().busy);
+$('convert').click();check('consent dialog before upload',$('consent').open&&!w.demoState().jobId);$('consent').close('cancel');await wait(150);check('cancel consent does not upload',!w.demoState().jobId);
+$('convert').click();$('consent').close('confirm');await until(()=>!w.demoState().busy&&w.demoState().pages===2);
+check('DOCX converts to 2-page PDF',w.demoState().pages===2&&$('textLayer').textContent.includes('Một tài liệu'));
+const firstID=w.demoState().jobId;
+const paper=$('paper').getBoundingClientRect(),layer=$('textLayer').getBoundingClientRect();const spans=[...$('textLayer').querySelectorAll('span')];
+check('text layer covers canvas',Math.abs(paper.width-layer.width)<3&&Math.abs(paper.height-layer.height)<3,{paper:{x:paper.x,y:paper.y,width:paper.width,height:paper.height},layer:{x:layer.x,y:layer.y,width:layer.width,height:layer.height}});
+const text=spans.find(s=>!s.classList.contains('markedContent')&&s.textContent.includes('Bạn có thể kéo'));
+check('text span has non-zero bounds',text?.getBoundingClientRect().width>20,{span:text?{text:text.textContent,rect:text.getBoundingClientRect().toJSON(),css:text.getAttribute('style'),font:getComputedStyle(text).fontSize,transform:getComputedStyle(text).transform}:null});
+$('next').click();await until(()=>$('pageNumber').value==='2'&&$('textLayer').textContent.includes('Trang 2'));
+check('next page and new text',w.demoState().page===2&&$('next').disabled);
+$('pageNumber').value=1;$('pageNumber').dispatchEvent(new w.Event('change'));await until(()=>$('pageNumber').value==='1'&&$('textLayer').textContent.includes('Một tài liệu'));
+check('numeric page navigation',w.demoState().page===1&&$('prev').disabled);
+$('zoom').value='1.5';$('zoom').dispatchEvent(new w.Event('change'));await wait(500);check('zoom creates internal horizontal scroll',$('viewport').scrollWidth>$('viewport').clientWidth);
+$('rotate').click();await wait(500);check('rotation swaps page orientation',$('paper').clientWidth>$('paper').clientHeight);
+$('zoom').value='fit';$('zoom').dispatchEvent(new w.Event('change'));await wait(300);
+const sizes=[];for(const width of [1512,900,390]){frame.width=width;for(const dark of [false,true]){d.body.classList.toggle('dark',dark);await wait(400);sizes.push({width,dark,bodyFits:d.documentElement.scrollWidth<=d.documentElement.clientWidth+2});}}check('responsive width/theme matrix',sizes.every(x=>x.bodyFits),{sizes});
+frame.width=1280;d.body.classList.remove('dark');
+$('samplePptx').click();await until(()=>w.demoState().chosen?.endsWith('pptx'));$('convert').click();$('consent').close('confirm');await until(()=>!w.demoState().busy&&w.demoState().pages===2&&$('textLayer').textContent.includes('slide Office'));
+check('PPTX converts with real text and 2 pages',w.demoState().pages===2);
+check('opening new conversion deletes prior server PDF',(await fetch('/api/jobs/'+firstID)).status===404);
+$('next').click();await until(()=>$('textLayer').textContent.includes('Tiếng Việt'));check('PPTX second page text',w.demoState().page===2);
+const id=w.demoState().jobId;const resp=await fetch('/api/jobs/'+id+'/pdf');const b=new Uint8Array(await resp.arrayBuffer());check('PDF download endpoint is real PDF',resp.ok&&new TextDecoder().decode(b.slice(0,5))==='%PDF-');
+$('remove').click();await until(()=>!w.demoState().jobId&&!w.demoState().pages);check('delete removes server artifact',(await fetch('/api/jobs/'+id)).status===404);
+check('UI resets after delete',$('paper').hidden&&!$('empty').hidden&&$('next').disabled);
+check('no JS errors',errors.length===0);
+state.textContent='Tests finished';out.textContent=JSON.stringify({rows,errors},null,2);
+}catch(e){errors.push(e.stack);state.textContent='Tests failed';out.textContent=JSON.stringify({rows,errors},null,2);}};

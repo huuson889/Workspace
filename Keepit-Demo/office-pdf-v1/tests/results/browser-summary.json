@@ -1,0 +1,80 @@
+{
+  "type": "Summary transcribed from final Chromium QA DOM report",
+  "rows": [
+    {
+      "name": "selection alone does not upload",
+      "pass": true
+    },
+    {
+      "name": "consent dialog before upload",
+      "pass": true
+    },
+    {
+      "name": "cancel consent does not upload",
+      "pass": true
+    },
+    {
+      "name": "DOCX converts to 2-page PDF",
+      "pass": true
+    },
+    {
+      "name": "text layer covers canvas",
+      "pass": true
+    },
+    {
+      "name": "text span has non-zero bounds",
+      "pass": true
+    },
+    {
+      "name": "next page and new text",
+      "pass": true
+    },
+    {
+      "name": "numeric page navigation",
+      "pass": true
+    },
+    {
+      "name": "zoom creates internal horizontal scroll",
+      "pass": true
+    },
+    {
+      "name": "rotation swaps page orientation",
+      "pass": true
+    },
+    {
+      "name": "responsive width/theme matrix",
+      "pass": true
+    },
+    {
+      "name": "PPTX converts with real text and 2 pages",
+      "pass": true
+    },
+    {
+      "name": "opening new conversion deletes prior server PDF",
+      "pass": true
+    },
+    {
+      "name": "PPTX second page text",
+      "pass": true
+    },
+    {
+      "name": "PDF download endpoint is real PDF",
+      "pass": true
+    },
+    {
+      "name": "delete removes server artifact",
+      "pass": true
+    },
+    {
+      "name": "UI resets after delete",
+      "pass": true
+    },
+    {
+      "name": "no JS errors",
+      "pass": true
+    }
+  ],
+  "capturedJSErrors": [],
+  "manualTextDrag": "Selected Vietnamese PDF text beginning: Bạn có thể kéo chọn dòng này: Tiếng Việt có dấu",
+  "note": "Manual file upload and drag were exercised in the real browser. The final app change after this run only updates file-transfer status wording."
+}
