@@ -242,13 +242,16 @@ function refreshNotice(needsOcr){
   if (!banner || !bulb) return;
   if (needsOcr !== undefined) noticeNeeds = !!needsOcr;
   const active = !!selectedFile && host.state().document?.id === selectedFile.id;
-  const hintKey = active ? (fileKind === 'image' ? 'imageHint' : ['docx','pptx'].includes(fileKind) ? 'officeHint' : '') : '';
+  const office = active && ['docx','pptx'].includes(fileKind);
+  const hintKey = active ? (fileKind === 'image' ? 'imageHint' : office ? 'officeHint' : '') : '';
   const hint = $('fileHint');
   hint.hidden = !hintKey;
   if (hintKey) { hint.dataset.docLabel = hintKey; const text = LHN_LANGUAGES.t('docs_'+hintKey,{},document.documentElement.lang||'en'); if(hint.textContent!==text)hint.textContent=text; }
   else { delete hint.dataset.docLabel; if(hint.textContent)hint.textContent=''; }
   $('bannerText').hidden = !noticeNeeds;
-  $('bannerAct').hidden = !noticeNeeds;
+  const action = $('bannerAct'), actionLabel = ocrText(office ? 'Thu gọn' : 'Nhận dạng chữ');
+  action.hidden = !active || (!office && !noticeNeeds);
+  if(action.textContent!==actionLabel)action.textContent=actionLabel;
   const needs = active && (!!noticeNeeds || !!hintKey);
   /* Covered surfaces, narrow viewers and user preferences keep the same notice behavior. */
   const covered=modal.classList.contains('show')||!document.getElementById('vMorePanel').hidden||!document.getElementById('docsPagesSheet').hidden||(matchMedia('(orientation:portrait)').matches&&($('trPanel').classList.contains('open')||!$('regionEditor').hidden));
@@ -1170,7 +1173,7 @@ function trClampWidth(w){
 /* mở/đóng sidebar → bật/tắt khung xanh + tô sáng ngay */
 new MutationObserver(syncLayerBoxes).observe($('trPanel'), { attributes: true, attributeFilter: ['class'] });
 $('showBoxes').addEventListener('change', syncLayerBoxes);
-$('bannerAct').onclick = () => { collapseNotice(); openOcr(); };   // thu gợi ý thành bóng đèn
+$('bannerAct').onclick = () => { collapseNotice(); if(!['docx','pptx'].includes(fileKind))openOcr(); };
 $('bannerClose').onclick = () => collapseNotice();          // thu gọn thành nút đèn
 $('vBulb').onclick = () => expandNotice();                  // bấm đèn → bung lại thông báo
 ['mouseenter','focusin'].forEach(ev => $('vBanner').addEventListener(ev, () => holdNotice(true)));

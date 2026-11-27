@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.626**: người dùng xác nhận625, yêu cầu bỏ thanh vàng cố định trong viewer và chuyển nội dung vào popup Gợi ý. Bỏ hẳn vBanner cũ/logic/CSS; Office và ảnh dùng notice/bulb native sẵn có.
-- Popup ghép hint loại tệp với gợi ý OCR theo trang; Office có chữ không bị nói sai “chưa có lớp chữ” và không có CTA OCR trong gợi ý. Trang scan vẫn giữ CTA/both-open. Tên Gợi ý/title bóng đèn có en/vi/ko.
-- Giữ palette tím/vàng semantic, noAsk theo tệp, hẹn10giây/hold, nút đèn mở lại, narrow/covered/reset; không sửa engine/model/storage schema, labels624, hit-test625 hay renderer/navigation.
-- HTTP shim:71 nhóm notice trên DOCX/PPTX/ảnh/PDF native/PDF scan ×3 kích thước ×sáng-tối + i18n/lifecycle; Word/PPT kéo chọn thật vẫn có chữ. QA `/home/user/qa-keepit-626`.
-- **Giới hạn:** chưa unpacked/ảnh extension626/pixel/crop4×/CSP/permission/thiết bị thật; HTTP không thay nghiệm thu. Không chạy nhận dạng engine lại vì chỉ đổi trình bày thông báo.
+- **Bản test 3.5.627**: sửa hiểu sai626: trong popup Gợi ý của Word/PPT, vị trí CTA phải có nút Thu gọn, không ẩn nút và không mở OCR.
+- `refreshNotice()` chọn action label Thu gọn cho DOCX/PPTX (catalogue OCR en/vi/ko sẵn có); handler chỉ collapse với Office. Ảnh/PDF thiếu chữ giữ CTA Nhận dạng chữ và both-open native.
+- Giữ toàn bộ popup/timer/noAsk/bulb/semantic palette, nội dung warning626, no yellow strip, chọn chữ625 và nhãn624; không đổi engine/store/navigation/CSS/layout.
+- HTTP shim:44 nhóm (36 Office ×ngôn ngữ/size/theme;6 CTA OCR image/scan ×ngôn ngữ;noAsk/reset), bấm chuột thật Thu gọn. QA `/home/user/qa-keepit-627`.
+- **Giới hạn:** chưa unpacked/ảnh extension627/pixel/crop4×/CSP/permission/thiết bị thật; HTTP không thay nghiệm thu. Không chạy engine nhận dạng lại vì chỉ đổi nút popup.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.626: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.627: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -106,7 +106,7 @@ Có 6 entry `content_scripts`: base `document_start`/`all_frames` nạp browser 
 - Blob/metadata/progress ở `keepit-documents`. Notes/Flashcards mới ở annotations chung; legacy v314 migration giữ nội dung/ngày/anchor, idempotent và không tái tạo note đã xóa. JSON backup có Notes nhưng không blob; import rewrite đúng owned extension origin.
 - `LHN_SELECTION_TOOLBAR.installTouchSelectionBridge` là bridge touch duy nhất. `LHN_SIDEBAR.attachTouchSheet` dùng chung setup grow/scroll/drag. `js/ask-ai/sheet.js` là AI sheet đã chuyển nguyên component từ web bar, dùng cho web và Documents; parent Dashboard chuyển message top-frame cho source active.
 - `LHN_READER_API` chỉ facade của Reader gốc: không queue/UI khác; host cung cấp chữ tệp/chuyển trang/vị trí native card, pager nhường khi bar mở. AI dùng native panel/sheet và Send policy hiện có, không upload/read toàn bộ file tự động.
-- Gợi ý theo tệp/trang: OCR controller gộp officeHint/imageHint vào notice/bulb chung, không còn vBanner strip trong viewer. CTA/body OCR chỉ hiện khi needsOcr; hint/reset có gate selectedFile đúng ID.
+- Gợi ý theo tệp/trang: OCR controller gộp officeHint/imageHint vào notice/bulb chung, không còn vBanner strip trong viewer. Body OCR chỉ hiện khi needsOcr; CTA Office là Thu gọn, CTA ảnh/PDF thiếu chữ là Nhận dạng chữ; hint/reset có gate selectedFile đúng ID.
 - Nhãn loại tệp Documents dùng `fileLabel(type)` → `LHN_ICONS.render(file-kind-*)`; bốn glyph option3 demo v5 dùng chung cho thư viện/viewer/import, token màu scoped trong documents.css. Viewer gọi `fileLabel(type,true)` chỉ hiện icon với aria-label/title; supported types giữ pills chữ622.
 - Documents main sheet đặt Dịch/Đọc to ở footer cố định cạnh Cài đặt qua `LHN_DOCUMENTS_MAIN_ACTIONS`; callbacks chia sẻ handler với viewer topbar. Điều khiển Ẩn/Hiện thanh không hiện riêng ở sheet này. OCR là tile trong lưới Công cụ, dùng facade `ocr/ocrAvailable/ocrLabel/ocrOn` gọi nút native; chỉ có khi viewer đang mở. Sáu glyph `tool-*` chia sẻ từ `LHN_ICONS` với toolbar.
 - Renderer/vendored licences/giới hạn v314 giữ nguyên; details ở `docs/documents.md` và trang module tương ứng.
@@ -170,6 +170,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.627 | Arena sửa:**
+
+- Tóm tắt: sửa hiểu sai nút ở626 theo người dùng: DOCX/PPTX phải có nút Thu gọn tại vị trí Nhận dạng chữ, không ẩn CTA. Chọn label qua ocrText/cataloque cũ Thu gọn/Collapse/접기, click chỉ collapseNotice với Office, không gọi openOcr. Ảnh/PDF thiếu chữ giữ Nhận dạng chữ và both-open. Không đổi popup warning/timer/noAsk/bulb/labels/layout/selection/engine/store.
+- File: `js/dashboard/ocr-controller.mjs`, manifest và tài liệu; ZIP mới đúng thư mục, giữ mọi ZIP cũ.
+- Kiểm tra: HTTP app thật + shim,44 nhóm không cờ lỗi:36 DOCX/PPTX ×vi/en/ko ×1512/673/390 ×sáng/tối, CTA hiện/đúng chữ/nằm trong popup, bấm thu→bóng đèn/không settings/không result, mở lại;6 CTA ảnh/PDF scan ×3 ngôn ngữ vẫn mở cả2;noAsk lưu/thu và reset không rò. Chuột thật bấm nút Thu gọn trong Office popup. Node syntax/diff sạch, tools10/10, vendor220 hash; console.error/pageerror rỗng. Chưa unpacked/ảnh extension627/crop4×/pixel/CSP/permission/device/tệp người dùng; không chạy OCR engine hoặc drag selection lại vì không đổi các luồng đó.
 
 **2026-11-26 | v3.5.626 | Arena sửa:**
 
@@ -343,9 +349,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: thêm tab Cài đặt Tài liệu, bốn bố cục trang và bốn trạng thái thanh dưới; mặc định Liên tục/Tự làm mờ, lưu và đồng bộ viewer-dashboard; khi ẩn thanh có nút mở đúng tab cài đặt. Giữ hai trang trên màn hình hẹp, ảnh đơn không ghép. Không thêm trang bìa riêng.
 - File: `js/dashboard/documents.js`, `css/dashboard/documents.css`, `pages/documents.html`, `js/dashboard/dashboard.js`, `pages/dashboard.html`, `js/core/languages.js`, `manifest.json`, tài liệu liên quan.
 - Kiểm tra: Chromium extension unpacked 1512/390 sáng/tối, ảnh chi tiết 4×; PDF 5 trang bốn kiểu, cặp 1–2/3–4/trang 5, chọn chữ và lưu ghi chú trang 2 bằng chuột; DOCX/PPTX ba trang ghép và chuyển trang; nút cài đặt desktop/mobile, đồng bộ hai chiều, reload nhớ, tự ẩn với chuột và chạm giả lập. Console/pageerror rỗng ở các lượt chính; lượt ghi chú có lỗi HTTP 429 từ tài nguyên ngoài chưa xác định. Chưa xác minh ghi chú sau reload, dịch/đọc to trong bố cục mới, zoom và cuộn ngang hai trang bằng thao tác thực, ảnh đơn và cảm ứng thiết bị thật, Windows/profile thật, Android/Firefox, Office phức tạp.
-
-**2026-11-17 | v3.5.596 | Arena:**
-
-- Tóm tắt: mở ảnh mặc định Vừa rộng, giữ Vừa ảnh riêng với cách giới hạn theo chiều cao và kích thước ảnh cũ; hỗ trợ các mức zoom đến 6400% cho ảnh, DOCX, PPTX như PDF, nút + không nhảy nhỏ khi từ Vừa rộng. Dùng nhãn vi/en/ko đã có; không đổi khởi tạo Vừa rộng của định dạng tài liệu khác.
-- File: `js/dashboard/documents.js`, `pages/documents.html`, `manifest.json`, `PROJECT.md`.
-- Kiểm tra: Chromium unpacked 1512/390 sáng/tối và ảnh chi tiết phóng 4×; ảnh người dùng, PNG dọc 120×400, DOCX/PPTX mẫu, PDF scan thật; Vừa rộng/Vừa ảnh, +, 6400%, về Vừa rộng; chọn chuột text Office, PDF zoom/cuộn; nhãn vi/en/ko; console/pageerror rỗng. Chưa kiểm Windows/profile thật, Android/Firefox, Office phức tạp và hiệu năng ảnh/tài liệu lớn ở zoom tối đa. Phóng ảnh không tăng chi tiết gốc; zoom lớn có thể chậm.

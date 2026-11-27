@@ -26,7 +26,7 @@ Tài liệu dùng bố cục demo v13 nhưng phải gọi module app có sẵn c
 
 ## Hợp đồng
 
-- Không dùng thanh vàng `vBanner` cố định. `ocr-controller.refreshNotice()` gộp docs_officeHint/docs_imageHint vào `ko-fileHint` của popup/bulb native, title Gợi ý. OCR body/CTA chỉ hiện theo noticeNeeds thực; collapse/expand/noAsk không được ép true. Giữ noAsk key/timer10s/hold/narrow/covered/palette, selectedFile-ID gate để reset không rò hint khi V.doc cũ còn giữ. File hint dùng catalogue docs/data-doc-label để đổi ngôn ngữ sống không sai; PDF có chữ không phát gợi ý giả.
+- Không dùng thanh vàng `vBanner` cố định. `ocr-controller.refreshNotice()` gộp docs_officeHint/docs_imageHint vào `ko-fileHint` của popup/bulb native, title Gợi ý. OCR body chỉ hiện theo noticeNeeds thực; nút hành động DOCX/PPTX luôn là Thu gọn (ocr_collapse) và click chỉ collapseNotice; ảnh/PDF thiếu chữ giữ Nhận dạng chữ + openOcr; collapse/expand/noAsk không được ép true. Giữ noAsk key/timer10s/hold/narrow/covered/palette, selectedFile-ID gate để reset không rò hint khi V.doc cũ còn giữ. File hint dùng catalogue docs/data-doc-label để đổi ngôn ngữ sống không sai; PDF có chữ không phát gợi ý giả.
 
 - OCR `paint()` phải phân loại `nativeText` trước mọi cache-hit/không-result return. `.ocrCanvasOverlay>.layer` trống hoặc native luôn pointer-none, chỉ nonempty không-native bắt pointer để chọn chữ OCR. Kiểm elementFromPoint và kéo chuột thật trên DOCX/PPTX/PDF text và scan sau OCR; Range.selectNodeContents hoặc mở/render thành công không chứng minh user select được. Lỗi thứ tự/cache đã tồn tại trong nguồn614; không suy lịch sử lỗi chỉ từ version UI gần nhất.
 
@@ -65,7 +65,7 @@ Chromium extension thật cần kiểm selection/composer/sidebar/dictionary, no
 
 ### Nguồn và ranh giới
 
-Nền engine dùng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt; giao diện responsive v14 được người dùng duyệt tích hợp ở 3.5.619. Không đọc/đối chiếu/tái dùng mã từ các bản OCR bị người dùng loại. Mã nguồn riêng ở `Workspace/Keepit-OCR`; manifest 3.5.626 tiếp tục bản test với giới hạn đã công khai, bản 3.5.614 trước đó được người dùng cho phép đóng gói dù chưa đủ QA unpacked/ảnh bắt buộc; không phải xác nhận đạt 100%.
+Nền engine dùng `Keep-it` gốc 3.5.612 và demo OCR đã duyệt; giao diện responsive v14 được người dùng duyệt tích hợp ở 3.5.619. Không đọc/đối chiếu/tái dùng mã từ các bản OCR bị người dùng loại. Mã nguồn riêng ở `Workspace/Keepit-OCR`; manifest 3.5.627 tiếp tục bản test với giới hạn đã công khai, bản 3.5.614 trước đó được người dùng cho phép đóng gói dù chưa đủ QA unpacked/ảnh bắt buộc; không phải xác nhận đạt 100%.
 
 - `ocr-controller.mjs` lấy trực tiếp DOM/luồng OCR, hover, vùng và Tesseract preprocessing của demo, nhưng không nạp viewer hoặc các công cụ giả của demo. `ocr-demo.css` scope các declaration demo; đổi lớp tích hợp/stacking, fallback font thực tế và reset CSS gốc trùng tên. Vùng không nhận `margin-bottom:18px` của `.row` thư viện; notice không nhận căn giữa/font weight gốc. Thanh viewer dọc cao 52px theo demo; vẫn dùng các controller/nút app.
 - `KeepitOcrDocumentHost` trong `documents.js` cung cấp state/getters và cùng renderer đang mở. Renderer thêm `ocrCanvas` dùng PDFDocument/ảnh có sẵn; không fingerprint/import/parse tệp lần hai.

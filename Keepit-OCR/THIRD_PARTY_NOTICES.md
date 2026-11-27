@@ -64,3 +64,5 @@ File-label placement correction (3.5.624) reuses the same approved glyphs; no th
 Native-selection correction (3.5.625) changes first-party OCR overlay hit-testing only; no dependency, runtime, model, asset or license changes.
 
 Document hint placement (3.5.626) reuses the first-party shared suggestion popup/bulb; no dependency, model, runtime, asset or license changes.
+
+Office suggestion action correction (3.5.627) reuses existing first-party controls and localized strings; no third-party changes.
