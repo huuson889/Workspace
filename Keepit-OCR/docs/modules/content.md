@@ -21,7 +21,7 @@ Content là controller duy nhất cho chọn chữ, popup dịch/Full Dictionary
 ## 3. Luồng chính
 
 1. Manifest nạp core/helpers trước controller; cờ trên window chặn nạp lại. Source web mặc định `location.href/title`; owned context cung cấp tham chiếu tệp và root được phép chọn.
-2. Mouseup hoặc touch bridge chung lấy selection. `showOnSelect`, popup/icon, style/logo-action và các master quyết định đúng UI app. Toolbar chỉ dựng bằng shared builder; web không có context giữ đường cũ.
+2. Mouseup hoặc touch bridge chung lấy selection. `showOnSelect`, popup/icon, style/logo-action và các master quyết định đúng UI app. Toolbar chỉ dựng bằng shared builder; optional context.selectionRects(range) cho Documents cung cấp glyph-only PDF rects để tránh parent padding/transparent line filler làm neo sai. Null/không có hook giữ raw Range, không đổi selection hoặc layout/style; web không có context giữ đường cũ.
 3. Popup Ghi chú giữ quote/context/range trước khi preview thay DOM; gửi `ADD`/`UPDATE` tới annotations Background. File thêm `documentAnchor`, không gửi HTML. Lưu async của nguồn cũ không được commit preview/đóng popup mới.
 4. Restore web dùng quote/prefix/suffix; file dùng page/block/character anchors. Không tìm quote trùng lên trang khác hoặc thư viện. Response nguồn cũ bị bỏ khi source đã đổi.
 5. Sidebar đọc `GET_PAGE`, native card/edit/filter/tag/source actions dùng cùng kho ghi chú. `attachTouchSheet` là setup duy nhất cho Notes touch trên web và Documents; underlying behaviour vẫn là `LHN_SHEET`.

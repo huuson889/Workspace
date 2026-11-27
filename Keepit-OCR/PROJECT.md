@@ -1,15 +1,14 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.628**: sửa thumbnail mờ theo ảnh41/42 ở rail, cards và Continue. PDF/Office cũ120×160 (rail có fallback100px); ảnh240×320 bị phóng lớn. Nay library tối đa960×1320; rail theo width ×DPR2–3, tối thiểu240; PDF raster lại/Office vẽ text ở backing resolution mới, không sharpen ảnh cũ.
-- Cache thumbnailVersion2: import mới ghi version; mở tệp cũ tạo lại; thư viện tự nâng các thumbnail nhìn thấy bằng hàng đợi1 renderer, không cần nhập lại. Không hỏi password nền/không lưu thumbnail PDF đã giải mã; không phóng lớn ảnh nguồn nhỏ. Không đổi schema IndexedDB/file bytes/progress/notes/OCR/layout.
-- Rail bỏ canvas100px fallback; dùng cùng ensureThumbnail có kiểm resolution, giữ lazy observer cho reentry khi scroll và ResizeObserver cho đổi cỡ; cycle/engine guards chống cập nhật sai tài liệu.
-- HTTP shim:32 nhóm thumbnail +3 edge +44 regression627 đều không cờ lỗi; có rasters thật PDF/Office trước/sau và số đo1512/390 sáng/tối, không phải ảnh extension. QA `/home/user/qa-keepit-628`.
-- **Giới hạn:** chưa unpacked/ảnh extension628/crop4×/pixel/CSP/permission/thiết bị/tệp gốc người dùng; HTTP không thay nghiệm thu. Office vẫn text-preview như trước, không đổi độ trung thực renderer; scan gốc mờ không thể tự phục hồi chi tiết. Cache nét hơn có thể tốn thêm dung lượng local.
+- **Bản test 3.5.629**: người dùng xác nhận thumbnail628 ổn, gửi ảnh43 và PDF1 trang trích thật để sửa vị trí floating selection tools. Lỗi xác định: Range có thể gồm cả filler/parent padding PDF, cuối dòng thực right759.71 nhưng toolbar neo1317.94 (lệch558.23px).
+- Thêm optional owned-context selectionRects: Documents Original PDF đo từng phần text node .pdfTextLayer .en thực giao với Range, bỏ filler/aria-hidden/empty. Content positionTranslateIcon dùng hook, không có hook/null giữ raw Range cũ. Không đổi selection/endpoints/guards, toolbar design/actions, paging/scroll/layout, glyphs/thumbnail628/OCR627/store.
+- HTTP trên đúng PDF upload: before/after parent vs text boundaries; sau sửa cả2 neo759.703 (sai số<.01px so end759.711).95 nhóm responsive/zoom/theme/boundaries/nested/styles/scroll/bottom/fallback đều sạch; chuột thật chọn PDF/Word/PPT. QA `/home/user/qa-keepit-629`.
+- **Giới hạn:** HTTP app+shim không phải unpacked629/ảnh extension/pixel/crop4×/CSP/permission/touchdevice. Ảnh43 là628, không coi là ảnh nghiệm thu629. PDF trích1 trang thật đã kiểm; chưa có full78 trang/profile/browser người dùng. Không đổi vị trí hoặc hành vi thanh pager phía dưới.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.628: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.629: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -106,6 +105,7 @@ Có 6 entry `content_scripts`: base `document_start`/`all_frames` nạp browser 
 - Blob/metadata/progress ở `keepit-documents`. Notes/Flashcards mới ở annotations chung; legacy v314 migration giữ nội dung/ngày/anchor, idempotent và không tái tạo note đã xóa. JSON backup có Notes nhưng không blob; import rewrite đúng owned extension origin.
 - `LHN_SELECTION_TOOLBAR.installTouchSelectionBridge` là bridge touch duy nhất. `LHN_SIDEBAR.attachTouchSheet` dùng chung setup grow/scroll/drag. `js/ask-ai/sheet.js` là AI sheet đã chuyển nguyên component từ web bar, dùng cho web và Documents; parent Dashboard chuyển message top-frame cho source active.
 - `LHN_READER_API` chỉ facade của Reader gốc: không queue/UI khác; host cung cấp chữ tệp/chuyển trang/vị trí native card, pager nhường khi bar mở. AI dùng native panel/sheet và Send policy hiện có, không upload/read toàn bộ file tự động.
+- Floating selection anchor: Documents context.selectionRects(range) optional cung cấp glyph-only rects cho Original PDF; content positionTranslateIcon dùng hook hoặc raw Range fallback, không sửa selection source.
 - Thumbnail: renderer thumbnail(page,bounds) raster PDF/text Office theo backing resolution; library mặc định960×1320, ảnh không upscale. documents.js quản lý lazy cache-version2/queue upgrade và rail theo DPR/resize/scroll, không schema migration.
 - Gợi ý theo tệp/trang: OCR controller gộp officeHint/imageHint vào notice/bulb chung, không còn vBanner strip trong viewer. Body OCR chỉ hiện khi needsOcr; CTA Office là Thu gọn, CTA ảnh/PDF thiếu chữ là Nhận dạng chữ; hint/reset có gate selectedFile đúng ID.
 - Nhãn loại tệp Documents dùng `fileLabel(type)` → `LHN_ICONS.render(file-kind-*)`; bốn glyph option3 demo v5 dùng chung cho thư viện/viewer/import, token màu scoped trong documents.css. Viewer gọi `fileLabel(type,true)` chỉ hiện icon với aria-label/title; supported types giữ pills chữ622.
@@ -171,6 +171,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.629 | Arena sửa:**
+
+- Tóm tắt: theo ảnh43/PDF trích upload thật, sửa selection launcher lấy last raw Range rect có thể là transparent filler/parent padded paragraph: cùng câu Pam...filter., text endpoint neo759.70 nhưng parent endpoint neo1317.94 (lệch558.23px). Bổ sung owned-context selectionRects do documents.selectedPdfTextRects cung cấp: cắt range vào text nodes .pdfTextLayer .en, bỏ filler/aria-hidden/empty, lấy glyph rect sau transform. Content positionTranslateIcon ưu tiên hook/null fallback, giữ native placement/clamp/flip/styles/actions và timers. Không sửa selection/endpoint guard/filler geometry, pager/layout/scroll/navigation/OCR/glyphs/thumbnail628/store. Người dùng xác nhận thumbnail628 ổn.
+- File: `js/dashboard/documents.js`, `documents-context.js`, `js/content/content.js`, manifest và tài liệu; ZIP629 riêng không đổi ZIP cũ.
+- Kiểm tra: HTTP thật+API shim, dùng chính PDF1 trang trích của người dùng. Before/after controlled parent vs text endpoint trên cùng câu:before759.703 vs1317.938;after cả2 759.703 so text end759.711. Chuột thật chọn đúng 2 dòng PDF sau sửa; Word “Keepit file-label chec” và PPT “Keepit file” vẫn chọn, native overlaypointer-none.95 nhóm:72 width1512/900/390 ×sáng/tối ×fit/50/150 ×text/parent/partial/reverse; nested mark3textnodes;18 style0–8 ×2boundaries; scroll follows; bottom padded selection không đổi scroll;2 Office adapter null. Narrow radial safety clamp được tách khỏi lỗi anchor (vẫn giữ nút trên màn hình); không coi clamp hợp lệ là lỗi. Syntax3file/diff, vendor220hash, tools10/10; console.error/pageerror rỗng. Không phải95manual drags. Chưa unpacked629/extension screenshot/crop4×/pixel/CSP/permission/touch/profile/full78page PDF. Không test network translate/AI/notes-saving hoặc OCR engine lại; chỉ floating launcher anchor.
 
 **2026-11-26 | v3.5.628 | Arena sửa:**
 
@@ -344,9 +350,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: vẽ lại bốn icon theo ảnh mẫu và hiển thị bên cạnh từng lựa chọn trong danh sách kiểu trang của viewer; Cài đặt giữ danh sách cũ theo trao đổi. Giữ đồng bộ, nhớ lựa chọn và khóa lựa chọn không hợp lệ cho file một trang.
 - File: `js/shared/icons.js`, `js/content/content.js`, `js/dashboard/documents.js`, `pages/documents.html`, `css/dashboard/documents.css`, `manifest.json`, tài liệu.
 - Kiểm tra: Chromium extension unpacked 1512/390 sáng/tối, ảnh chi tiết phóng 4×; PDF mẫu 1 và 5 trang, chọn kiểu bằng chuột và chạm giả lập 390, đồng bộ hai chiều với Cài đặt, khóa 3 mục khi một trang; bàn phím mũi tên/Enter/Escape và reload nhớ kiểu. Danh sách đo 200×154 px chuột, 200×186 px chạm; console/pageerror rỗng. Chưa kiểm profile Windows thật, cảm ứng thiết bị thật, Android/Firefox và tài liệu Office thực. Icon được dựng lại từ ảnh nhỏ, không có file vector gốc.
-
-**2026-11-17 | v3.5.598 | Arena:**
-
-- Tóm tắt: thay icon Cài đặt tự vẽ bằng icon chung; dùng nguồn chung ở dashboard, menu, popup và các nút cài đặt liên quan. Nút Cài đặt trên viewer và trong menu tài liệu mở thẳng tab Tài liệu. File một trang hiển thị Từng trang, khóa ba kiểu khác ở viewer và cài đặt mở từ file, không ghi đè lựa chọn cho file nhiều trang.
-- File: `js/shared/icons.js`, `js/content/keepit-bar.js`, `js/dashboard/documents.js`, `js/dashboard/dashboard.js`, `js/dashboard/responsive-nav.js`, `js/popup/popup.js`, `pages/documents.html`, `pages/dashboard.html`, `pages/popup.html`, `manifest.json`, tài liệu.
-- Kiểm tra: Chromium unpacked 1512/390 sáng/tối và icon phóng 4×; file PDF mẫu 1 và 5 trang, lựa chọn và các option disabled, file nhiều trang khôi phục Hai trang, nút menu và nút trên mở tab Tài liệu desktop/mobile, viewer độc lập mobile, popup có icon chung. Nút trên 40×36 px; console/pageerror rỗng. Chưa kiểm profile Windows thật, cảm ứng thật, Android/Firefox, file Office một trang và trang web thực.

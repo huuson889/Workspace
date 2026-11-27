@@ -741,6 +741,21 @@ async function restoreMarks(){if(globalThis.LHN_CONTENT_TOOLS&&$('#viewer').clas
    Chỉ chạy một lần sau khi vẽ trang: hình học trong lớp chữ tính theo đơn vị trang, .docsSource chỉ transform scale()
    nên zoom không làm nó đổi (đo lại mỗi bước zoom sẽ làm zoom bị khựng). */
 const textBoxRect = el => (el?.querySelector?.('.en') || el).getBoundingClientRect();
+// Range boxes can include transparent PDF line fillers/padded spans. Measure selected glyph text only.
+function selectedPdfTextRects(range){
+ if(V.doc?.type!=='pdf'||V.mode!=='orig'||!range?.commonAncestorContainer||!$('#stage').contains(range.commonAncestorContainer))return null;
+ const root=range.commonAncestorContainer,rects=[];
+ const add=node=>{
+  if(!node.parentElement?.closest('.pdfTextLayer .en')||node.parentElement.closest('.lhnLineFiller,[aria-hidden="true"]')||!range.intersectsNode(node))return;
+  const part=document.createRange();part.selectNodeContents(node);
+  if(range.compareBoundaryPoints(Range.START_TO_START,part)>0)part.setStart(range.startContainer,range.startOffset);
+  if(range.compareBoundaryPoints(Range.END_TO_END,part)<0)part.setEnd(range.endContainer,range.endOffset);
+  if(!part.collapsed&&part.toString().trim())for(const r of part.getClientRects())if(r.width>0&&r.height>0)rects.push(r);
+ };
+ if(root.nodeType===Node.TEXT_NODE)add(root);
+ else{const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let node;while((node=walker.nextNode()))add(node);}
+ return rects.length?rects:null;
+}
 function fillTextLayerGaps(){
   if(!V.doc||!$('#viewer').classList.contains('show')||V.mode!=='orig')return;
   for(const layer of $$('#pageStack .pdfTextLayer')){
@@ -903,6 +918,7 @@ LHN_DOCUMENT_CONTEXT.attach({
   /* v3.5.485: PDF có span chữ nằm thẳng dưới .pdfTextLayer (không có .en/.para) → vẫn phải cho chọn chữ. */
   const node=range.startContainer.nodeType===1?range.startContainer:range.startContainer.parentElement;
   return !!node?.closest('.en')||!!node?.closest('[data-page]');},
+ selectionRects:selectedPdfTextRects,
  sentenceContext:range=>{const el=range?.startContainer?.nodeType===1?range.startContainer:range?.startContainer?.parentElement;return readerTextForBlock(el?.closest('.para'));},
  anchorFor:sourceAnchor,findRanges:annotationRanges,onAnnotations:items=>void syncAnnotationCounts(items),
  async revealAnnotation(item){const page=item?.documentAnchor?.page;if(page&&V.doc?.id===item.documentAnchor.documentId){await setPage(page);await ensurePage(page);}},

@@ -68,3 +68,5 @@ Document hint placement (3.5.626) reuses the first-party shared suggestion popup
 Office suggestion action correction (3.5.627) reuses existing first-party controls and localized strings; no third-party changes.
 
 Higher-resolution document previews (3.5.628) reuse the existing local PDF/Office/image renderers; no added libraries, models, assets, network services or license changes.
+
+PDF selection-anchor correction (3.5.629) uses first-party DOM Range geometry and the existing shared toolbar; no dependency, model, asset or license changes.
