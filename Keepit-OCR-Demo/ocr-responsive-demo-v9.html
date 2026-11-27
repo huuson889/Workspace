@@ -2,13 +2,13 @@
 <html lang="vi" translate="no">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Keepit · OCR responsive demo v8</title>
+<title>Keepit · OCR responsive demo v9</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#16161c;color:#eeeef5;font:13px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;height:100dvh;display:flex;flex-direction:column}button,select{font:inherit;color:inherit}button,select{border:1px solid #3b3949;background:#252430;border-radius:8px;min-height:34px;padding:5px 10px;cursor:pointer}button:hover,select:hover{border-color:#a69bed}button:focus-visible,select:focus-visible{outline:2px solid #b5a9ff;outline-offset:2px}header{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#1c1b24;border-bottom:1px solid #35333f;z-index:2}header strong{font-size:14px;margin-right:4px}.tag{font-size:10px;color:#c0b4ff;background:#8b7bea21;border:1px solid #8b7bea55;border-radius:5px;padding:2px 6px;letter-spacing:.08em}.grow{flex:1}.hint{color:#a9a5bb;font-size:11px}#preview{flex:1;min-height:0;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 30%,#2a273a,#15151b 75%)}#viewport{position:absolute;left:50%;top:50%;transform-origin:center;border:0;background:#08080a;box-shadow:0 20px 70px #0007}footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 16px;color:#aaa6ba;font-size:11px;border-top:1px solid #34313e}#metrics{color:#cec7e9;font-variant-numeric:tabular-nums}footer span:last-child{margin-left:auto}#statusDot{width:6px;height:6px;background:#6ed6b1;border-radius:50%;display:inline-block;margin-right:5px}
 </style>
 </head>
 <body>
-<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V8 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
+<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V9 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
 <main id="preview"><iframe id="viewport" title="Demo toàn màn hình OCR Keepit"></iframe></main>
 <footer><span id="metrics">Đang mở giao diện…</span><span><i id="statusDot"></i>Nền Documents 3.5.618 · Khung trống · Chỉ demo UI</span></footer>
 <!-- Offline demo: shared Keepit sources embedded verbatim: js/shared/theme-tokens.js, js/shared/sheet-kit.js, js/shared/icons.js. One portrait presentation adapter maps existing panels to Keepit panel geometry/glass/motion. Page lists retain native select models and createFlowSelect. Integration must import those shared modules, not fork these demo adapters. -->
@@ -1589,7 +1589,7 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 <header class="ocrHead">
 <span class="ocrIco"><span aria-hidden="true" class="logoDot"><svg aria-hidden="true" height="22" viewbox="0 0 32 32" width="22"><defs><lineargradient id="ko-kpDlg" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#4f46e5"></stop><stop offset="1" stop-color="#8b5cf6"></stop></lineargradient></defs><rect fill="url(#ko-kpDlg)" height="32" rx="8" width="32"></rect><g transform="translate(32 0) scale(-1 1)"><g transform="translate(-4.187 -2.393) scale(0.299065)"><path d="M 35 32 C 34 32 33.5 34 33.2 37 C 31.3 51 34.3 65 42 74 C 48.5 81.5 57 84.6 67 84.5 C 77.5 84.4 84.2 80.3 89.7 73.4 C 92.5 77.3 94.3 81.5 95.4 86.8 C 95.9 89.6 97.8 90.9 99.9 90.2 C 102.1 89.5 102.9 87.5 101.8 84.7 C 98.6 75.9 93.3 69.4 85.4 65.1 C 79.7 62 72.9 61.1 66.1 59.6 C 58.9 58 53.1 54.9 51.6 49.4 C 55.3 52.8 60.2 54.8 67.5 55.8 C 78.7 57.3 87.7 58.3 94.7 65 C 97.3 54.1 92 44.5 82.5 39.9 C 75.4 36.4 68 36.8 59.7 37.6 C 48.6 38.8 41.9 38.6 36.5 32.8 C 36 32.3 35.5 32 35 32 Z" fill="#fff"></path></g></g></svg></span></span>
 <div class="tt"><b id="ko-ocrTitle">Nhận dạng chữ (OCR)</b><small id="ko-ocrSub">Tài liệu mẫu.pdf · 16 trang · chỉ thử giao diện</small></div>
-<span class="ver" id="ko-ocrVer">DEMO V8</span>
+<span class="ver" id="ko-ocrVer">DEMO V9</span>
 <button aria-label="Đóng" class="vbtn" id="ko-ocrClose">✕</button>
 </header>
 <div class="ocrBody" id="ko-ocrBody">
@@ -1650,13 +1650,29 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 </select>
 </div>
 <div class="checks">
-<label><input checked="" id="ko-optTiny" type="checkbox"/><span>Bỏ vùng chữ rất nhỏ khi chữ trên trang chênh lệch rõ</span></label>
-<label><input checked="" id="ko-optLoop" type="checkbox"/><span>Dừng khi cùng một dòng lặp 12 lần</span></label>
+<label><input checked="" id="ko-optTiny" disabled type="checkbox"/><span>Bỏ vùng chữ rất nhỏ khi chữ trên trang chênh lệch rõ</span></label>
+<label><input checked="" id="ko-optLoop" disabled type="checkbox"/><span>Dừng khi cùng một dòng lặp 12 lần</span></label>
 <label><input checked="" id="ko-optTime" type="checkbox"/><span>Giới hạn 90 giây mỗi vùng</span></label>
 <label><input checked="" id="ko-optBoxes" type="checkbox"/><span>Hiện khung vùng đã nhận dạng trên trang</span></label>
 </div>
 </section>
 
+<section class="fGroup" id="ko-engineOptions">
+<h3>Tuỳ chọn engine</h3>
+<div class="fRow off" data-for="pp"><label for="ko-ppScale">Độ phân giải PDF</label><select disabled id="ko-ppScale"><option value="1.5">~108 DPI</option><option selected="" value="2">~144 DPI</option><option value="3">~216 DPI</option></select></div>
+<div class="fRow off" data-for="fusor"><label for="ko-threads">Số luồng</label><select disabled id="ko-threads"><option value="4">4 luồng</option><option value="2">2 luồng</option><option value="6">6 luồng</option><option value="1">1 luồng</option><option value="8">8 luồng</option></select></div>
+<div class="fRow off" data-for="fusor"><label for="ko-folder">Model Fusor</label><button disabled class="vbtn" id="ko-folder">Chọn thư mục model</button></div>
+<p class="fHint" id="ko-modelStatus">Chưa chọn thư mục model.</p>
+<div class="fRow off" data-for="fusor"><label for="ko-fusorMethod">Phương pháp</label><select disabled id="ko-fusorMethod"><option selected="" value="auto">Tự động · chọn theo từng ảnh</option><option value="regions">Từng vùng chữ</option><option value="full">Toàn trang</option></select></div>
+<p class="fHint" id="ko-autoHint">Tự động dò vùng trước: ít vùng → đọc cả trang; nhiều vùng cỡ chữ chênh lệch → bỏ vùng rất nhỏ; nhiều vùng đều cỡ → đọc mọi vùng.</p>
+<select disabled hidden="" id="ko-detLimit"><option value="640">640</option><option value="960">960 · nhanh</option><option selected="" value="1280">1280</option><option value="1600">1600 · chữ nhỏ</option></select>
+<select disabled hidden="" id="ko-regionLimit"><option value="640">640</option><option value="960">960</option><option selected="" value="1280">1280</option><option value="1600">1600</option></select>
+<select disabled hidden="" id="ko-regionPolicy"><option selected="" value="main">Ưu tiên chữ chính</option><option value="all">Mọi vùng phát hiện</option></select>
+<select disabled hidden="" id="ko-regionTimeout"><option value="60">60 giây</option><option selected="" value="90">90 giây</option><option value="180">180 giây</option><option value="0">Không giới hạn</option></select>
+<input checked="" hidden="" id="ko-loopGuard" type="checkbox"/>
+<div hidden="" id="ko-ppOptions"></div>
+<div hidden="" id="ko-fusorOptions"></div>
+</section>
 <select hidden="" id="ko-scope">
 <option value="current">Trang hiện tại</option>
 <option value="all">Tất cả các trang</option>
@@ -2146,7 +2162,7 @@ for(const name of ['ko-from','ko-to','pNum']){
  });
 }
 // Output and detection-resolution fields use exactly the same native list component, without numeric editing.
-for(const name of ['ko-ocrOutput','ko-ocrRes']){const select=id(name);select.setAttribute('aria-label',document.querySelector('label[for="'+name+'"]').textContent.trim());const c=LHN_ICONS.createFlowSelect(select,'down',false);c.element.classList.add('ocrResultSelect');pageSelects.set(name,c);}
+for(const name of ['ko-ocrOutput','ko-ocrRes','ko-ppScale','ko-threads','ko-fusorMethod']){const select=id(name);select.setAttribute('aria-label',document.querySelector('label[for="'+name+'"]').textContent.trim());const c=LHN_ICONS.createFlowSelect(select,'down',false);c.element.classList.add('ocrResultSelect');const trigger=c.element.querySelector('.flow-select-trigger');trigger.disabled=select.disabled;if(select.disabled){trigger.setAttribute('aria-disabled','true');c.element.inert=true;}pageSelects.set(name,c);}
 
 // The Documents flow and zoom selectors use this same shared native list, as in the app.
 for(const name of ['vFlow','vZoom'])LHN_ICONS.createFlowSelect(id(name),'up',name==='vFlow');
