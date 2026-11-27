@@ -1,0 +1,1635 @@
+{
+  "rows": [
+    {
+      "case": "real PPTX input event",
+      "count": true,
+      "noStalePDF": true,
+      "firstText": true,
+      "list": true
+    },
+    {
+      "case": "all 92 slides",
+      "count": true,
+      "noNaN": true
+    },
+    {
+      "case": "page number 13",
+      "current": true,
+      "aria": true
+    },
+    {
+      "case": "previous next",
+      "current": true
+    },
+    {
+      "case": "optional local PDF",
+      "ready": true,
+      "correctPage": true,
+      "png": true
+    },
+    {
+      "case": "PDF comparison UI",
+      "split": true
+    },
+    {
+      "case": "different arbitrary file",
+      "two": true,
+      "ownText": true,
+      "pictures": true,
+      "ellipse": true,
+      "noOldReference": true,
+      "notFixture": true
+    },
+    {
+      "case": "independent slide 2",
+      "text": true
+    },
+    {
+      "case": "bad file recover",
+      "preserved": true
+    },
+    {
+      "case": "responsive 1512 false fit",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 1512 false 150",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 1512 true fit",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 1512 true 150",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 900 false fit",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 900 false 150",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 900 true fit",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 900 true 150",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 390 false fit",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 390 false 150",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 390 true fit",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "responsive 390 true 150",
+      "bodyFits": true,
+      "controls": true
+    },
+    {
+      "case": "sample reset",
+      "sample": true,
+      "one": true,
+      "reference": true
+    }
+  ],
+  "slides": [
+    {
+      "page": 1,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 76,
+        "paths": 76,
+        "curves": 1838,
+        "groups": 8,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "WorkshopENGLISH VOCABULARY",
+      "warning": ""
+    },
+    {
+      "page": 2,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 12,
+        "paths": 12,
+        "curves": 224,
+        "groups": 1,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "CONTENTS OF THIS TEMPLATEHere’s what you’ll find in this Slidesgo template: A slide structure based on a workshop, which",
+      "warning": ""
+    },
+    {
+      "page": 3,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 21,
+        "paths": 21,
+        "curves": 863,
+        "groups": 2,
+        "textBoxes": 13,
+        "unsupported": []
+      },
+      "text": "TABLE OF CONTENTSOBJECTIVESYou can describe the topic of the section hereMETHODOLOGYYou can describe the topic of the se",
+      "warning": ""
+    },
+    {
+      "page": 4,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 20,
+        "paths": 20,
+        "curves": 424,
+        "groups": 1,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "WHO IS IN TODAY?Do you know what helps you make your point clear? Lists like this one:They’re simple You can organize yo",
+      "warning": ""
+    },
+    {
+      "page": 5,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 16,
+        "paths": 16,
+        "curves": 351,
+        "groups": 2,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "INTRODUCTIONMercury is the closest planet to the Sun and the smallest one in the Solar System—it’s only a bit larger tha",
+      "warning": ""
+    },
+    {
+      "page": 6,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 16,
+        "paths": 16,
+        "curves": 327,
+        "groups": 1,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "—SOMEONE FAMOUS“This is a quote, words full of wisdom that someone important said and can make the reader get inspired.”",
+      "warning": ""
+    },
+    {
+      "page": 7,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 6,
+        "paths": 6,
+        "curves": 59,
+        "groups": 2,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "—SOMEONE FAMOUS“This is a quote, words full of wisdom that someone important said and can make the reader get inspired.”",
+      "warning": ""
+    },
+    {
+      "page": 8,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 10,
+        "paths": 10,
+        "curves": 364,
+        "groups": 2,
+        "textBoxes": 3,
+        "unsupported": []
+      },
+      "text": "OBJECTIVESWhen viewed from Earth, Jupiter can be bright enough for its reflected light to cast visible shadows01",
+      "warning": ""
+    },
+    {
+      "page": 9,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 23,
+        "paths": 23,
+        "curves": 358,
+        "groups": 3,
+        "textBoxes": 3,
+        "unsupported": []
+      },
+      "text": "METHODOLOGYYou can enter a subtitle here if you need it02",
+      "warning": ""
+    },
+    {
+      "page": 10,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 16,
+        "paths": 16,
+        "curves": 391,
+        "groups": 5,
+        "textBoxes": 5,
+        "unsupported": []
+      },
+      "text": "CONCEPTSMERCURYMercury is the closest planet to the Sun and the smallest one in the Solar System—it’s a bit larger than ",
+      "warning": ""
+    },
+    {
+      "page": 11,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 21,
+        "paths": 21,
+        "curves": 838,
+        "groups": 5,
+        "textBoxes": 5,
+        "unsupported": []
+      },
+      "text": "TWO MAIN CONCEPTSMERCURYMercury is the closest planet to the Sun and the smallest one in the Solar SystemVENUSVenus has ",
+      "warning": ""
+    },
+    {
+      "page": 12,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 24,
+        "paths": 24,
+        "curves": 502,
+        "groups": 4,
+        "textBoxes": 10,
+        "unsupported": []
+      },
+      "text": "WHAT IS THIS TOPIC ABOUT?01MERCURYMercury is the closest planet to the Sun02VENUSVenus is the second planet from the Sun",
+      "warning": ""
+    },
+    {
+      "page": 13,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 30,
+        "paths": 30,
+        "curves": 777,
+        "groups": 7,
+        "textBoxes": 7,
+        "unsupported": []
+      },
+      "text": "MERCURYIt’s the closest planet to the SunVENUSVenus has a beautiful name MARSDespite being red, Mars is a cold placeLET’",
+      "warning": ""
+    },
+    {
+      "page": 14,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 39,
+        "paths": 39,
+        "curves": 1139,
+        "groups": 8,
+        "textBoxes": 9,
+        "unsupported": []
+      },
+      "text": "SCHEDULEMONDAYNeptune is the farthest planet from the SunTUESDAYDespite being red, Mars is actually a cold placeWEDNESDA",
+      "warning": ""
+    },
+    {
+      "page": 15,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 15,
+        "paths": 15,
+        "curves": 365,
+        "groups": 6,
+        "textBoxes": 13,
+        "unsupported": []
+      },
+      "text": "ANOTHER TYPE OF SCHEDULEMONDAYMercury is quite a small planetTHURSDAYVenus is the second planet from the SunFRIDAYMars i",
+      "warning": ""
+    },
+    {
+      "page": 16,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 17,
+        "paths": 17,
+        "curves": 342,
+        "groups": 1,
+        "textBoxes": 13,
+        "unsupported": []
+      },
+      "text": "A TIMELINE ALWAYS WORKS WELL1234MERCURYMercury is a small planetMARSMars is actually a very cold placeJUPITERJupiter is ",
+      "warning": ""
+    },
+    {
+      "page": 17,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 37,
+        "paths": 37,
+        "curves": 1316,
+        "groups": 2,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "A PICTURE IS WORTH A THOUSAND WORDS",
+      "warning": ""
+    },
+    {
+      "page": 18,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 16,
+        "paths": 16,
+        "curves": 398,
+        "groups": 5,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "A PICTURE IS WORTH A THOUSAND WORDS",
+      "warning": ""
+    },
+    {
+      "page": 19,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 35,
+        "paths": 35,
+        "curves": 798,
+        "groups": 4,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "A PICTURE ALWAYS REINFORCES THE CONCEPTUse images instead of a long text. Your audience will be happy!",
+      "warning": ""
+    },
+    {
+      "page": 20,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 24,
+        "paths": 24,
+        "curves": 626,
+        "groups": 3,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "A PICTURE ALWAYS REINFORCES THE CONCEPTImages reveal large amounts of data, so remember: use an image instead of a long ",
+      "warning": ""
+    },
+    {
+      "page": 21,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 33,
+        "paths": 33,
+        "curves": 852,
+        "groups": 5,
+        "textBoxes": 9,
+        "unsupported": []
+      },
+      "text": "EXAMPLESNEPTUNENeptune is the farthest planet from the SunVENUSVenus is the second planet from the SunMARSDespite being ",
+      "warning": ""
+    },
+    {
+      "page": 22,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 44,
+        "paths": 44,
+        "curves": 1150,
+        "groups": 6,
+        "textBoxes": 9,
+        "unsupported": []
+      },
+      "text": "MAIN CONCEPTS WE HAVE LEARNEDVENUSVenus has a beautiful nameMERCURYMercury is a very small planetMARSMars is actually a ",
+      "warning": ""
+    },
+    {
+      "page": 23,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 37,
+        "paths": 37,
+        "curves": 1152,
+        "groups": 5,
+        "textBoxes": 9,
+        "unsupported": []
+      },
+      "text": "INFOGRAPHICSNEPTUNENeptune is the farthest planet from the SunMARSDespite being red, Mars is a really cold placeVENUSVen",
+      "warning": ""
+    },
+    {
+      "page": 24,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 43,
+        "paths": 43,
+        "curves": 1191,
+        "groups": 7,
+        "textBoxes": 7,
+        "unsupported": [
+          "hình curvedConnector3",
+          "hình curvedConnector3"
+        ]
+      },
+      "text": "DO YOU KNOW WHAT THIS IS?BALLBRAINGLASSESBELLLAMPMEDAL",
+      "warning": "Slide này chưa dựng đủ: hình curvedConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 25,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 13,
+        "paths": 13,
+        "curves": 245,
+        "groups": 1,
+        "textBoxes": 8,
+        "unsupported": []
+      },
+      "text": "TIME SPENT ON EACH TOPICNEPTUNENeptune is the farthest planet from the SunMARSDespite being red, Mars is a very cold pla",
+      "warning": ""
+    },
+    {
+      "page": 26,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 11,
+        "paths": 11,
+        "curves": 191,
+        "groups": 1,
+        "textBoxes": 10,
+        "unsupported": []
+      },
+      "text": "OUR STUDENTS’ FAVORITE SUBJECTSFollow the link in the graph to modify its data and then paste the new one here. For more",
+      "warning": ""
+    },
+    {
+      "page": 27,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 7,
+        "paths": 7,
+        "curves": 182,
+        "groups": 0,
+        "textBoxes": 13,
+        "unsupported": [
+          "hình pie",
+          "hình pie",
+          "hình pie",
+          "hình pie"
+        ]
+      },
+      "text": "PERCENTAGES ABOUT OUR CLASSNEPTUNENeptune is the farthest planet from the SunMARSDespite being red, Mars is a really col",
+      "warning": "Slide này chưa dựng đủ: hình pie. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 28,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 9,
+        "paths": 9,
+        "curves": 135,
+        "groups": 2,
+        "textBoxes": 13,
+        "unsupported": [
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3"
+        ]
+      },
+      "text": "LET’S IDENTIFY THESE OBJECTSSCISSORSMercury is very smallCALCULATORVenus is a very hot planetCLOCKMars is actually cold ",
+      "warning": "Slide này chưa dựng đủ: hình curvedConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 29,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 17,
+        "paths": 17,
+        "curves": 341,
+        "groups": 9,
+        "textBoxes": 17,
+        "unsupported": [
+          "hình pie",
+          "hình pie",
+          "hình pie",
+          "hình pie"
+        ]
+      },
+      "text": "HOW ABOUT SOME PERCENTAGES?ABC40%D25%15%20%NEPTUNENeptune is the farthest planet from the SunMARSDespite being red, it’s",
+      "warning": "Slide này chưa dựng đủ: hình pie. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 30,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 7,
+        "paths": 7,
+        "curves": 102,
+        "groups": 2,
+        "textBoxes": 1,
+        "unsupported": [
+          "graphicFrame"
+        ]
+      },
+      "text": "CLASS TIMETABLE",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 31,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 28,
+        "paths": 28,
+        "curves": 488,
+        "groups": 1,
+        "textBoxes": 8,
+        "unsupported": [
+          "graphicFrame"
+        ]
+      },
+      "text": "EXAMS CALENDARNEPTUNENeptune is the farthest planet from the SunMARSDespite being red, Mars is a cold placeJUPITERIt’s t",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 32,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 5,
+        "paths": 5,
+        "curves": 67,
+        "groups": 3,
+        "textBoxes": 8,
+        "unsupported": [
+          "hình bentConnector3",
+          "hình bentConnector3"
+        ]
+      },
+      "text": "TEACHERS DIAGRAMSCHOOL PRINCIPALDEPT. 1DEPT. 2DEPT. 3Name, last nameName, last nameName, last nameName, last nameName, l",
+      "warning": "Slide này chưa dựng đủ: hình bentConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 33,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 17,
+        "paths": 17,
+        "curves": 543,
+        "groups": 1,
+        "textBoxes": 16,
+        "unsupported": [
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3"
+        ]
+      },
+      "text": "LEARNING PROCESSMERCURYMercury is very smallVENUSVenus is a very hot planetJUPITERJupiter is a very big planetSATURNSatu",
+      "warning": "Slide này chưa dựng đủ: hình curvedConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 34,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 60,
+        "paths": 60,
+        "curves": 1905,
+        "groups": 8,
+        "textBoxes": 13,
+        "unsupported": []
+      },
+      "text": "FEATURES OF THE TOPICMERCURYMercury is the closest planet to the Sun VENUSVenus is the second planet from the SunMARSDes",
+      "warning": ""
+    },
+    {
+      "page": 35,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 14,
+        "paths": 14,
+        "curves": 364,
+        "groups": 3,
+        "textBoxes": 1,
+        "unsupported": [
+          "graphicFrame",
+          "graphicFrame"
+        ]
+      },
+      "text": "FIRST AND SECOND SEMESTER GRADES",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 36,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 25,
+        "paths": 25,
+        "curves": 557,
+        "groups": 2,
+        "textBoxes": 19,
+        "unsupported": []
+      },
+      "text": "MAIN CHARACTERISTICSMERCURYIt’s the smallest planet in the Solar SystemVENUSVenus is the second planet from the SunMARSM",
+      "warning": ""
+    },
+    {
+      "page": 37,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 19,
+        "paths": 19,
+        "curves": 352,
+        "groups": 3,
+        "textBoxes": 11,
+        "unsupported": [
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3"
+        ]
+      },
+      "text": "CONCEPT BREAKDOWNMERCURYIt’s the closest planet to the SunMARSMars is actually a very cold placeJUPITERJupiter is the bi",
+      "warning": "Slide này chưa dựng đủ: hình curvedConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 38,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 16,
+        "paths": 16,
+        "curves": 310,
+        "groups": 5,
+        "textBoxes": 1,
+        "unsupported": [
+          "graphicFrame"
+        ]
+      },
+      "text": "HOMEWORK CHECKLIST",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 39,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 10,
+        "paths": 10,
+        "curves": 218,
+        "groups": 1,
+        "textBoxes": 8,
+        "unsupported": []
+      },
+      "text": "TIME SPENT ON HOMEWORKFollow the link in the graph to modify its data and then paste the new one here. For more info, cl",
+      "warning": ""
+    },
+    {
+      "page": 40,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 16,
+        "paths": 16,
+        "curves": 332,
+        "groups": 2,
+        "textBoxes": 1,
+        "unsupported": [
+          "graphicFrame",
+          "graphicFrame"
+        ]
+      },
+      "text": "VOCABULARY LESSON",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 41,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 27,
+        "paths": 27,
+        "curves": 618,
+        "groups": 6,
+        "textBoxes": 9,
+        "unsupported": []
+      },
+      "text": "RECOMMENDATIONSMERCURYMercury is the closest planet to the Sun VENUSVenus is the second planet from the SunMARSDespite b",
+      "warning": ""
+    },
+    {
+      "page": 42,
+      "stats": {
+        "pictures": 3,
+        "customShapes": 12,
+        "paths": 12,
+        "curves": 244,
+        "groups": 2,
+        "textBoxes": 7,
+        "unsupported": []
+      },
+      "text": "OUR TEACHERSTIMMY JIMMYYou can speak a bit about this person hereLIZA HARRISYou can speak a bit about this person hereSO",
+      "warning": ""
+    },
+    {
+      "page": 43,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 24,
+        "paths": 24,
+        "curves": 610,
+        "groups": 3,
+        "textBoxes": 10,
+        "unsupported": []
+      },
+      "text": "PRACTICAL EXERCISE01NEPTUNENeptune is the farthest planet from the Sun02MARSDespite being red, Mars is a cold place03JUP",
+      "warning": ""
+    },
+    {
+      "page": 44,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 32,
+        "paths": 32,
+        "curves": 717,
+        "groups": 1,
+        "textBoxes": 1,
+        "unsupported": [
+          "graphicFrame"
+        ]
+      },
+      "text": "OUR DATA",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 45,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 26,
+        "paths": 26,
+        "curves": 651,
+        "groups": 4,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "AWESOME WORDS",
+      "warning": ""
+    },
+    {
+      "page": 46,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 17,
+        "paths": 17,
+        "curves": 299,
+        "groups": 1,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "AWESOME WORDS",
+      "warning": ""
+    },
+    {
+      "page": 47,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 303,
+        "paths": 303,
+        "curves": 2161,
+        "groups": 38,
+        "textBoxes": 7,
+        "unsupported": []
+      },
+      "text": "THIS IS A MAPNEPTUNEIt’s the farthest planet from the SunMARSDespite being red, Mars is a cold placeJUPITERIt’s the bigg",
+      "warning": ""
+    },
+    {
+      "page": 48,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 404,
+        "paths": 400,
+        "curves": 957,
+        "groups": 6,
+        "textBoxes": 9,
+        "unsupported": [
+          "kích thước đường vẽ",
+          "kích thước đường vẽ",
+          "kích thước đường vẽ",
+          "kích thước đường vẽ",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3"
+        ]
+      },
+      "text": "A MORE SPECIFIC MAPMARSMars is actually a very cold placeJUPITERJupiter is the biggest planet of them allSATURNIt’s comp",
+      "warning": "Slide này chưa dựng đủ: kích thước đường vẽ, hình curvedConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 49,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 29,
+        "paths": 29,
+        "curves": 682,
+        "groups": 7,
+        "textBoxes": 1,
+        "unsupported": [
+          "graphicFrame"
+        ]
+      },
+      "text": "TOPIC CLASSIFICATION",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 50,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 10,
+        "paths": 10,
+        "curves": 207,
+        "groups": 1,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Big numbers catch your audience’s attention easily100,400,000",
+      "warning": ""
+    },
+    {
+      "page": 51,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 14,
+        "paths": 14,
+        "curves": 281,
+        "groups": 2,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "45,896Big numbers catch your audience’s attention easily",
+      "warning": ""
+    },
+    {
+      "page": 52,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 24,
+        "paths": 24,
+        "curves": 588,
+        "groups": 3,
+        "textBoxes": 10,
+        "unsupported": []
+      },
+      "text": "LET’S LEARN THE NUMBERS45FORTY-FIVESaturn is a gas giant and has several rings68SIXTY-EIGHTJupiter is the biggest planet",
+      "warning": ""
+    },
+    {
+      "page": 53,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 30,
+        "paths": 30,
+        "curves": 686,
+        "groups": 5,
+        "textBoxes": 8,
+        "unsupported": []
+      },
+      "text": "295643877214WRITE THEM IN ENGLISHFIFTY-SIX",
+      "warning": ""
+    },
+    {
+      "page": 54,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 31,
+        "paths": 31,
+        "curves": 742,
+        "groups": 8,
+        "textBoxes": 13,
+        "unsupported": []
+      },
+      "text": "SOME PERCENTAGES FOR YOUR LESSON 50%30%60%80%MERCURYMercury is the closest planet to the Sun VENUSVenus is the second pl",
+      "warning": ""
+    },
+    {
+      "page": 55,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 36,
+        "paths": 36,
+        "curves": 859,
+        "groups": 6,
+        "textBoxes": 1,
+        "unsupported": [
+          "graphicFrame"
+        ]
+      },
+      "text": "CHOOSE THE CORRECT ONE",
+      "warning": "Slide này chưa dựng đủ: graphicFrame. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 56,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 9,
+        "paths": 9,
+        "curves": 293,
+        "groups": 4,
+        "textBoxes": 10,
+        "unsupported": []
+      },
+      "text": "FIND THE RIGHT WORDSCALCULATORPENCILSTAPLERSCISSORSCOMPASSDespite being red, Mars is a actually a cold placeJupiter is t",
+      "warning": ""
+    },
+    {
+      "page": 57,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 54,
+        "paths": 54,
+        "curves": 1313,
+        "groups": 7,
+        "textBoxes": 8,
+        "unsupported": [
+          "hình bentConnector3",
+          "hình bentConnector3"
+        ]
+      },
+      "text": "HERE’S A DIAGRAMTHE SOLAR SYSTEMEARTHJUPITERMARSEarth is the only planet known to harbor lifeJupiter is the biggest plan",
+      "warning": "Slide này chưa dựng đủ: hình bentConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 58,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 37,
+        "paths": 37,
+        "curves": 754,
+        "groups": 2,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "You can replace the image on the screen with your own work. Just delete this one, add yours and center it properlyDESKTO",
+      "warning": ""
+    },
+    {
+      "page": 59,
+      "stats": {
+        "pictures": 2,
+        "customShapes": 17,
+        "paths": 17,
+        "curves": 283,
+        "groups": 2,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "MULTIMEDIA MOCKUPSYou can replace the image on the screen with your own work. Just right-click on it and select “Replace",
+      "warning": ""
+    },
+    {
+      "page": 60,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 23,
+        "paths": 23,
+        "curves": 453,
+        "groups": 2,
+        "textBoxes": 5,
+        "unsupported": []
+      },
+      "text": "CREDITS: This presentation template was created by Slidesgo, and includes icons by Flaticon, and infographics & images b",
+      "warning": ""
+    },
+    {
+      "page": 61,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 295,
+        "paths": 295,
+        "curves": 7629,
+        "groups": 60,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "ICON PACK: EDUCATION",
+      "warning": ""
+    },
+    {
+      "page": 62,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 10,
+        "paths": 10,
+        "curves": 333,
+        "groups": 12,
+        "textBoxes": 18,
+        "unsupported": [
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3"
+        ]
+      },
+      "text": "PREMIUM ALTERNATIVE INFOGRAPHICSTHE SOLAR SYSTEMMERCURY1VENUS2SATURN3JUPITER4ABCDMars is actually cold Jupiter is actual",
+      "warning": "Slide này chưa dựng đủ: hình bentConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 63,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 286,
+        "paths": 286,
+        "curves": 8366,
+        "groups": 31,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "ALTERNATIVE RESOURCES",
+      "warning": ""
+    },
+    {
+      "page": 64,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 192,
+        "paths": 192,
+        "curves": 2706,
+        "groups": 38,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "PREMIUM ALTERNATIVE RESOURCES",
+      "warning": ""
+    },
+    {
+      "page": 65,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 3,
+        "paths": 3,
+        "curves": 25,
+        "groups": 0,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Here’s an assortment of alternative resources whose style fits that of this template:PHOTOSYoung smiley girl portrait po",
+      "warning": ""
+    },
+    {
+      "page": 66,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 3,
+        "paths": 3,
+        "curves": 25,
+        "groups": 0,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "PREMIUM ALTERNATIVE RESOURCESPHOTOSChild thinking and holding notebook copy spaceGirl preparing her backpack for schoolW",
+      "warning": ""
+    },
+    {
+      "page": 67,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 2,
+        "paths": 2,
+        "curves": 13,
+        "groups": 0,
+        "textBoxes": 4,
+        "unsupported": []
+      },
+      "text": "RESOURCESPHOTOSKids with apples running on school corridorSide view of child studying at home with the help of tutorChee",
+      "warning": ""
+    },
+    {
+      "page": 68,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 3,
+        "paths": 3,
+        "curves": 25,
+        "groups": 0,
+        "textBoxes": 3,
+        "unsupported": []
+      },
+      "text": "PREMIUM RESOURCESVECTORSSketch banners for e-learning elementsBullet journal elements in pastel coloursHand drawn artist",
+      "warning": ""
+    },
+    {
+      "page": 69,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 0,
+        "paths": 0,
+        "curves": 0,
+        "groups": 0,
+        "textBoxes": 3,
+        "unsupported": []
+      },
+      "text": "As a Premium user, you can use this template without attributing Slidesgo or keeping the \"Thanks\" slide.You are allowed ",
+      "warning": ""
+    },
+    {
+      "page": 70,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 0,
+        "paths": 0,
+        "curves": 0,
+        "groups": 1,
+        "textBoxes": 10,
+        "unsupported": []
+      },
+      "text": "Fonts & colors usedThis presentation has been made using the following fonts:Pangolin(https://fonts.google.com/specimen/",
+      "warning": ""
+    },
+    {
+      "page": 71,
+      "stats": {
+        "pictures": 5,
+        "customShapes": 0,
+        "paths": 0,
+        "curves": 0,
+        "groups": 0,
+        "textBoxes": 7,
+        "unsupported": []
+      },
+      "text": "Create your Story with our illustrated concepts. Choose the style you like the most, edit its colors, pick the backgroun",
+      "warning": ""
+    },
+    {
+      "page": 72,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 266,
+        "paths": 266,
+        "curves": 882,
+        "groups": 47,
+        "textBoxes": 2,
+        "unsupported": [
+          "hình homePlate",
+          "hình chevron",
+          "hình chevron",
+          "hình chevron",
+          "hình homePlate",
+          "hình pie",
+          "hình donut",
+          "hình blockArc",
+          "hình donut",
+          "hình donut",
+          "hình donut",
+          "hình donut",
+          "hình blockArc",
+          "hình blockArc",
+          "hình blockArc",
+          "hình blockArc",
+          "hình stripedRightArrow",
+          "hình curvedRightArrow",
+          "hình curvedRightArrow"
+        ]
+      },
+      "text": "You can easily resize these resources without losing quality. To change the color, just ungroup the resource and click o",
+      "warning": "Slide này chưa dựng đủ: hình homePlate, hình chevron, hình pie, hình donut, hình blockArc, hình stripedRightArrow, hình curvedRightArrow. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 73,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 2150,
+        "paths": 2150,
+        "curves": 22163,
+        "groups": 45,
+        "textBoxes": 0,
+        "unsupported": [
+          "gradient"
+        ]
+      },
+      "text": "",
+      "warning": "Slide này chưa dựng đủ: gradient. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 74,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 229,
+        "paths": 229,
+        "curves": 1163,
+        "groups": 100,
+        "textBoxes": 0,
+        "unsupported": [
+          "hình flowChartConnector",
+          "hình flowChartConnector",
+          "hình flowChartConnector",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình flowChartConnector",
+          "hình flowChartConnector",
+          "hình flowChartConnector",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3"
+        ]
+      },
+      "text": "",
+      "warning": "Slide này chưa dựng đủ: hình flowChartConnector, hình bentConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 75,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 32,
+        "paths": 32,
+        "curves": 418,
+        "groups": 26,
+        "textBoxes": 19,
+        "unsupported": [
+          "hình round2DiagRect",
+          "hình round2DiagRect",
+          "graphicFrame",
+          "graphicFrame",
+          "graphicFrame",
+          "hình round2SameRect",
+          "hình round2SameRect",
+          "hình round2SameRect",
+          "hình round2SameRect",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "hình flowChartAlternateProcess",
+          "graphicFrame"
+        ]
+      },
+      "text": "JANUARYFEBRUARYMARCHAPRILMAYJUNEPHASE 1PHASE 2Task 1Task 2Task 1Task 2JANUARYFEBRUARYMARCHAPRILPHASE 1Task 1Task 2",
+      "warning": "Slide này chưa dựng đủ: hình round2DiagRect, graphicFrame, hình round2SameRect, hình flowChartAlternateProcess. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 76,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 258,
+        "paths": 258,
+        "curves": 2059,
+        "groups": 98,
+        "textBoxes": 0,
+        "unsupported": [
+          "hình pentagon",
+          "hình rightArrow",
+          "hình rightArrow",
+          "hình rightArrow",
+          "hình rightArrow",
+          "hình rightArrow",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector2",
+          "hình bentConnector2",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3"
+        ]
+      },
+      "text": "",
+      "warning": "Slide này chưa dựng đủ: hình pentagon, hình rightArrow, hình bentConnector3, hình bentConnector2. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 77,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 129,
+        "paths": 128,
+        "curves": 558,
+        "groups": 76,
+        "textBoxes": 0,
+        "unsupported": [
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình diamond",
+          "hình round2SameRect",
+          "hình round2SameRect",
+          "hình star5",
+          "hình star5",
+          "hình star5",
+          "hình star5",
+          "hình star5",
+          "hình heart",
+          "hình heart",
+          "hình heart",
+          "hình heart",
+          "hình heart",
+          "kích thước đường vẽ",
+          "hình downArrow"
+        ]
+      },
+      "text": "",
+      "warning": "Slide này chưa dựng đủ: hình diamond, hình round2SameRect, hình star5, hình heart, kích thước đường vẽ, hình downArrow. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 78,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 329,
+        "paths": 329,
+        "curves": 2718,
+        "groups": 79,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "You can resize these icons without losing quality.You can change the stroke and fill color; just select the icon and cli",
+      "warning": ""
+    },
+    {
+      "page": 79,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 278,
+        "paths": 278,
+        "curves": 3022,
+        "groups": 77,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Educational IconsMedical Icons",
+      "warning": ""
+    },
+    {
+      "page": 80,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 419,
+        "paths": 419,
+        "curves": 3358,
+        "groups": 85,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Business IconsTeamwork Icons",
+      "warning": ""
+    },
+    {
+      "page": 81,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 519,
+        "paths": 518,
+        "curves": 4116,
+        "groups": 95,
+        "textBoxes": 2,
+        "unsupported": [
+          "kích thước đường vẽ"
+        ]
+      },
+      "text": "Help & Support IconsAvatar Icons",
+      "warning": "Slide này chưa dựng đủ: kích thước đường vẽ. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 82,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 500,
+        "paths": 500,
+        "curves": 3127,
+        "groups": 88,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Creative Process IconsPerforming Arts Icons",
+      "warning": ""
+    },
+    {
+      "page": 83,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 270,
+        "paths": 270,
+        "curves": 2306,
+        "groups": 46,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "Nature Icons",
+      "warning": ""
+    },
+    {
+      "page": 84,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 239,
+        "paths": 239,
+        "curves": 2153,
+        "groups": 64,
+        "textBoxes": 1,
+        "unsupported": []
+      },
+      "text": "SEO & Marketing Icons",
+      "warning": ""
+    },
+    {
+      "page": 85,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 87,
+        "paths": 87,
+        "curves": 569,
+        "groups": 11,
+        "textBoxes": 18,
+        "unsupported": [
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3",
+          "hình curvedConnector3"
+        ]
+      },
+      "text": "Add the title hereText 1Text 2Text 3Text 4Text 5Text 620162017201820192020“Despite being red, Mars is actually a very co",
+      "warning": "Slide này chưa dựng đủ: hình curvedConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 86,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 0,
+        "paths": 0,
+        "curves": 0,
+        "groups": 5,
+        "textBoxes": 8,
+        "unsupported": [
+          "hình donut",
+          "hình blockArc",
+          "hình arc",
+          "hình pie",
+          "hình pie",
+          "hình pie",
+          "hình pie",
+          "hình bentConnector3",
+          "hình bentConnector3",
+          "hình bentConnector3"
+        ]
+      },
+      "text": "“Mercury is closest planet to the Sun and the smallest”“Mercury is closest planet to the Sun and the smallest”“Mercury i",
+      "warning": "Slide này chưa dựng đủ: hình donut, hình blockArc, hình arc, hình pie, hình bentConnector3. Không coi đây là bản hiển thị chính xác."
+    },
+    {
+      "page": 87,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 164,
+        "paths": 164,
+        "curves": 1426,
+        "groups": 46,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Digital MarketingPremium Icons",
+      "warning": ""
+    },
+    {
+      "page": 88,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 237,
+        "paths": 237,
+        "curves": 575,
+        "groups": 49,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Online LearningPremium Icons",
+      "warning": ""
+    },
+    {
+      "page": 89,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 228,
+        "paths": 228,
+        "curves": 1434,
+        "groups": 37,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "LaboratoryPremium Icons",
+      "warning": ""
+    },
+    {
+      "page": 90,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 300,
+        "paths": 300,
+        "curves": 2164,
+        "groups": 48,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Goals & ResultsPremium Icons",
+      "warning": ""
+    },
+    {
+      "page": 91,
+      "stats": {
+        "pictures": 0,
+        "customShapes": 255,
+        "paths": 255,
+        "curves": 666,
+        "groups": 40,
+        "textBoxes": 2,
+        "unsupported": []
+      },
+      "text": "Infographic ElementsPremium Icons",
+      "warning": ""
+    },
+    {
+      "page": 92,
+      "stats": {
+        "pictures": 1,
+        "customShapes": 0,
+        "paths": 0,
+        "curves": 0,
+        "groups": 0,
+        "textBoxes": 0,
+        "unsupported": []
+      },
+      "text": "",
+      "warning": ""
+    }
+  ],
+  "errors": []
+}

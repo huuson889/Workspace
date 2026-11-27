@@ -1,0 +1,9 @@
+{
+  "repository": "huuson889/Workspace",
+  "commit": "e22a18b8ec41d9fbcff3d8470e8fe9981891eea3",
+  "files": {
+    "office.mjs": {"path": "Keepit-OCR/vendor/office/office.mjs", "sha256": "2e3fa39c72588ee60e2176d52a1ffb8cb598780abb2087d327ee98256efb75a6"},
+    "pdf.mjs": {"path": "Keepit-OCR/vendor/pdfjs/pdf.mjs", "sha256": "2221020ea508479dcc1221f36f2731656339230097c69ba1f78802832c0ad685"},
+    "pdf.worker.mjs": {"path": "Keepit-OCR/vendor/pdfjs/pdf.worker.mjs", "sha256": "51a2fd1ea47f1a9b0814e65e0c336c739c54957795ee774e8f93cb81e8028dd1"}
+  }
+}
