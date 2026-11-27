@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.624**: sửa đúng hai vị trí theo ảnh extension623: dãy supported types trong vùng kéo-thả trở lại pills chữ PDF/DOCX/PPTX/Ảnh của622; tiêu đề viewer chỉ hiện icon, không lặp tên loại tệp.
-- `fileLabel(type,iconOnly)` giữ nhãn đầy đủ cho cards/Đọc tiếp, viewer dùng icon-only có aria-label/title theo ngôn ngữ. Glyph đặc màu option3 v5, import, layout/compact/OCR/pager không đổi.
-- Không đổi parser/import/store/filter/search/renderer/model/navigation. Bỏ hook supported-type mới của623, trả markup và căn hàng types về nguồn622 thay vì ẩn icon bằng CSS.
-- HTTP shim app:48 nhóm icon-only4 loại, supported pills6 kích thước × sáng/tối, ba ngôn ngữ, cards/Đọc tiếp và OCR both-open; QA `/home/user/qa-keepit-624`. Ảnh người dùng là extension623, không phải nghiệm thu624.
-- **Giới hạn:** chưa unpacked/ảnh extension624/pixel/crop4×/CSP/permission/thiết bị thật; HTTP không thay nghiệm thu đó. Không chạy lại OCR engine vì chỉ đổi nhãn.
+- **Bản test 3.5.625**: sửa lỗi chọn chữ Word/PPT do OCR overlay trống chặn pointer trên chữ gốc. Đoạn lỗi đã có trong nguồn OCR614 lưu trữ, vẫn ở624; không phải thay icon623/624. Chưa runtime-bisect mọi bản cũ.
+- `paint()` phân loại nativeText trước cache/return không-result; CSS cho overlay trống/native nhường hit-test, chỉ lớp OCR có spans và không-native bắt pointer. Không bỏ overlay và không vô hiệu chữ OCR scan.
+- Giữ UI/labels624, OCR engine/model/scan/region/store/export/navigation. Lần này kiểm thao tác kéo thật, không coi mở/render/Range lập trình là chứng nhận chọn chữ.
+- HTTP shim: tái hiện Word/PPT trước sửa hit div.layer/selection rỗng; sau sửa chuột thật chọn chữ có toolbar native. 48 nhóm hit-test native ở3 loại ×4 sizes ×sáng/tối ×2 trang; OCR scan thực kiểm riêng. QA `/home/user/qa-keepit-625`.
+- **Giới hạn:** chưa unpacked/ảnh extension625/pixel/crop4×/CSP/permission/thiết bị thật; HTTP không thay nghiệm thu. Office ảnh quét/không có text gốc vẫn cần OCR; không cam kết mọi tệp Office/phông phức tạp.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.624: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.625: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -169,6 +169,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.625 | Arena sửa:**
+
+- Tóm tắt: người dùng báo Word/PPT không chọn chữ; QA623/624 chỉ mở/render/nhãn đã bỏ sót kéo chọn. Tái hiện624 với locked=false/inert=false, elementFromPoint trả div.layer trống pointer:auto. paint() return khi `_ocrResult===undefined` hoặc không có r trước khi gắn nativeText, nên lớp OCR phủ chữ thật. Truy nguồn archive614 commit6584dc4 đã có cùng thứ tự/cache và CSS pointer:auto; chưa runtime-bisect mọi phiên bản. Dời phân loại nativeText trước cache/return; CSS overlay mặc định none, chỉ nonempty + không native bắt pointer. Giữ lớp OCR scan có chữ tương tác, không phá renderer/engine/region/scan/store/UI624.
+- File: `js/dashboard/ocr-controller.mjs`, `css/dashboard/ocr-demo.css`, manifest và tài liệu. ZIP mới đúng tên trong `Keepit-OCR-Zip`, giữ mọi ZIP cũ.
+- Kiểm tra: HTTP app thật + shim, DOCX/PPTX2 trang/slide và PDF native2 trang tổng hợp. Chuột thật kéo Word trước rỗng/sau “Keepit file-label chec”, PPT trước rỗng/sau “Keepit file”; toolbar native hiện. 48 nhóm hit-test ở1512/900/390/320 × sáng/tối ×2 trang, nativeText/pointer-none/hit-chữ/unlocked đều đúng; đó là phép đo hit-test, không giả là48 lượt drag. Nhận dạng Tesseract thật trên PDF scan tổng hợp để kiểm lớp OCR có chữ vẫn bắt pointer/chọn được; trạng thái cụ thể ở QA report. Syntax/diff và tools10/10, vendor hash220 kiểm lại. Chưa unpacked/ảnh extension625/crop4×/pixel/permission/profile/device/tệp người dùng; không dùng QA HTTP thay nghiệm thu.
 
 **2026-11-26 | v3.5.624 | Arena sửa:**
 
@@ -342,9 +348,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: zoom PDF tối thiểu tới 6400%, mức trần tự tăng nếu Vừa rộng lớn hơn; nút + tăng từ mức thực và bước tăng theo tỉ lệ ở mức lớn; thêm các mức zoom PDF trong danh sách. Giữ canvas nền giới hạn và vẽ canvas chi tiết riêng cho phần đang nhìn khi phóng vượt độ phân giải nền, cập nhật khi cuộn/zoom; không thay text layer.
 - File: `js/dashboard/documents.js`, `js/dashboard/documents-renderers.js`, `pages/documents.html`, `manifest.json`, `PROJECT.md`.
 - Kiểm tra: Chromium unpacked headless 1512/390 sáng/tối và ảnh chi tiết phóng 4×; PDF scan người dùng: Vừa rộng 760px → nút + 835px (1512), 6400% 3686px, vẽ vùng thấy, cuộn và về Vừa rộng; PDF hai trang có text và PDF lớp chữ người dùng chọn chuột, text còn sau 6400%; console/pageerror rỗng. Chưa kiểm Windows/profile thật, Android/Firefox, hiệu năng PDF nhiều trang nặng và màn hình DPR cao.
-
-**2026-11-17 | v3.5.594 | Arena:**
-
-- Tóm tắt: sửa PDF scan mờ do vẽ canvas theo kích thước trang PDF gốc nhỏ; vẽ theo cỡ hiển thị và DPR, cập nhật sau zoom/resize, giữ nguyên text layer; giới hạn khoảng 3,5 triệu pixel / cạnh 8192, chỉ vẽ lại trang gần vùng nhìn.
-- File: `js/dashboard/documents-renderers.js`, `js/dashboard/documents.js`, `manifest.json`, `PROJECT.md`.
-- Kiểm tra: Chromium unpacked, PDF scan người dùng và PDF 2 trang có text; ảnh sáng/tối 1512/390, canvas 760×1014 và 370×494 cho scan; zoom PDF text lên 200% và 400%, canvas giới hạn ~3,5 triệu pixel, chọn text bằng Selection API, console/pageerror rỗng. Chưa kiểm Windows/profile thật, Android/Firefox, thao tác chọn bằng chuột, hiệu năng tài liệu lớn.

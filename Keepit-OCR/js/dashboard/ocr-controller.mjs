@@ -61,8 +61,9 @@ function paint(target,page){
  const cover=root.firstElementChild;Object.assign(cover.style,{width:'100%',height:'100%',minHeight:'0',border:0,borderRadius:0,boxShadow:'none',background:'none',overflow:'hidden'});
  cover.classList.toggle('scanning',busy&&scanPage===page);
  const layer=cover.querySelector('.layer');layer.classList.toggle('boxes',$('showBoxes').checked&&$('trPanel').classList.contains('open'));
- const r=results.get(page);if(layer._ocrResult===r)return;layer._ocrResult=r;layer.replaceChildren();const boxes=cover.querySelector('.boxLayer');boxes.replaceChildren();if(!r)return;
+ // Native text must bypass the OCR hit layer even before a result exists or on a cache hit.
  const native=!!host.state().engine?.pages[page-1]?.texts?.length;layer.classList.toggle('nativeText',native);
+ const r=results.get(page);if(layer._ocrResult===r)return;layer._ocrResult=r;layer.replaceChildren();const boxes=cover.querySelector('.boxLayer');boxes.replaceChildren();if(!r)return;
  const grouping=grouped(r),mapping=new Map();grouping.forEach((g,line)=>g.items.forEach((item,i)=>mapping.set(item.index,{line,first:i===0})));
  const w=target.clientWidth,h=target.clientHeight,measure=makeCanvas(1,1).getContext('2d');
  for(const [i,box]of r.boxes.entries()){

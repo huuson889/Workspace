@@ -60,3 +60,5 @@ Tools-sheet OCR entry and shared toolbar glyphs (3.5.622) reuse existing first-p
 Filled file-kind labels (3.5.623) use the approved first-party demo v5 SVGs; no third-party dependency, asset, model, runtime or license changes.
 
 File-label placement correction (3.5.624) reuses the same approved glyphs; no third-party asset, dependency, model, runtime or license changes.
+
+Native-selection correction (3.5.625) changes first-party OCR overlay hit-testing only; no dependency, runtime, model, asset or license changes.

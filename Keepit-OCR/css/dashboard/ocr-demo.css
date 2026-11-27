@@ -430,7 +430,8 @@ html.ocrDialogOpen #lhn-sidebar-edge-toggle{visibility:hidden;pointer-events:non
 .keepitOcr .boxLayer{position:absolute;inset:0;pointer-events:none;display:none;z-index:3}
 .keepitOcr .layer.boxes+.ocrVisualSurface .boxLayer{display:block}
 .keepitOcr .ocrVisualSurface>.hl{position:absolute;inset:0;z-index:4;pointer-events:none}
-.keepitOcr .ocrCanvasOverlay>.layer{pointer-events:auto}
+.keepitOcr .ocrCanvasOverlay>.layer{pointer-events:none}
+.keepitOcr .ocrCanvasOverlay>.layer:not(:empty):not(.nativeText){pointer-events:auto}
 .keepitOcr .ocrCanvasOverlay>.layer.nativeText{pointer-events:none}
 .keepitOcr .layer>span>.en{position:static;font:inherit;line-height:inherit;color:inherit;white-space:inherit}
 .keepitOcr .ocrCanvasOverlay .regionSurface{position:absolute;inset:0;z-index:6;cursor:crosshair;touch-action:none;pointer-events:auto}
