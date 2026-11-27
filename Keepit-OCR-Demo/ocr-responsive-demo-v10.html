@@ -2,13 +2,13 @@
 <html lang="vi" translate="no">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Keepit · OCR responsive demo v9</title>
+<title>Keepit · OCR responsive demo v10</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#16161c;color:#eeeef5;font:13px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;height:100dvh;display:flex;flex-direction:column}button,select{font:inherit;color:inherit}button,select{border:1px solid #3b3949;background:#252430;border-radius:8px;min-height:34px;padding:5px 10px;cursor:pointer}button:hover,select:hover{border-color:#a69bed}button:focus-visible,select:focus-visible{outline:2px solid #b5a9ff;outline-offset:2px}header{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#1c1b24;border-bottom:1px solid #35333f;z-index:2}header strong{font-size:14px;margin-right:4px}.tag{font-size:10px;color:#c0b4ff;background:#8b7bea21;border:1px solid #8b7bea55;border-radius:5px;padding:2px 6px;letter-spacing:.08em}.grow{flex:1}.hint{color:#a9a5bb;font-size:11px}#preview{flex:1;min-height:0;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 30%,#2a273a,#15151b 75%)}#viewport{position:absolute;left:50%;top:50%;transform-origin:center;border:0;background:#08080a;box-shadow:0 20px 70px #0007}footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 16px;color:#aaa6ba;font-size:11px;border-top:1px solid #34313e}#metrics{color:#cec7e9;font-variant-numeric:tabular-nums}footer span:last-child{margin-left:auto}#statusDot{width:6px;height:6px;background:#6ed6b1;border-radius:50%;display:inline-block;margin-right:5px}
 </style>
 </head>
 <body>
-<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V9 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
+<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V10 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
 <main id="preview"><iframe id="viewport" title="Demo toàn màn hình OCR Keepit"></iframe></main>
 <footer><span id="metrics">Đang mở giao diện…</span><span><i id="statusDot"></i>Nền Documents 3.5.618 · Khung trống · Chỉ demo UI</span></footer>
 <!-- Offline demo: shared Keepit sources embedded verbatim: js/shared/theme-tokens.js, js/shared/sheet-kit.js, js/shared/icons.js. One portrait presentation adapter maps existing panels to Keepit panel geometry/glass/motion. Page lists retain native select models and createFlowSelect. Integration must import those shared modules, not fork these demo adapters. -->
@@ -1428,13 +1428,13 @@ html.dark .flow-select-list{background:var(--kp-glass-d)}
 
 /* The navigation stays in its existing place; only reuse Keepit's shared glass tokens. */
 .pager{background:var(--kp-glass-l);color:var(--kp-tx-l);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur);border:1px solid rgba(15,23,42,.08);border-radius:26px;padding:6px 8px;box-shadow:0 10px 30px rgba(15,23,42,.16)}html.dark .pager{background:var(--kp-glass-d);color:var(--kp-tx-d);border-color:rgba(255,255,255,.09);box-shadow:0 14px 36px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06)}.pager .pageMenu{border-left-color:var(--line)}.pager.simple{border-radius:26px}
-.demoPageScrim,.demoSheetScrim{position:fixed;inset:0;background:#0006;backdrop-filter:blur(3px)}.demoPageScrim{z-index:2147483020}.demoSheetScrim{z-index:2147483000}.demoPagesSheet{position:fixed;z-index:2147483021;background:var(--surface);border:1px solid var(--line2);box-shadow:var(--shadowH);color:var(--ink);border-radius:22px;left:8px;right:8px;bottom:8px;display:flex;flex-direction:column;overflow:hidden;max-height:var(--demo-sheet-height)}.demoGrab{width:36px;height:4px;background:var(--line2);border-radius:4px;margin:8px auto 0;flex:none}.demoPagesSheet>header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px 10px 16px;flex:none}.demoPagesSheet>header b{display:block;font-size:13px}.demoPagesSheet small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.demoPagesSheet .vbtn{height:36px}.demoPagesSheet{height:var(--demo-sheet-height);padding-bottom:var(--demo-safe)}#demoPageStrip{overflow-x:hidden;overflow-y:auto;min-height:0;flex:1;overscroll-behavior:contain}.demoPagesSheet #rail{width:100%;display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(82px,14vw,128px),1fr));align-content:start;gap:14px 12px;border:0;padding:4px 16px 16px;overflow:visible;background:none}.demoPagesSheet #rail button{width:100%;min-width:0;align-self:start}.demoPagesSheet #rail .demoMini{min-height:0;height:auto}.demoPagesSheet #rail .mini-pg{aspect-ratio:720/1018}
+.demoPageScrim,.demoSheetScrim{position:fixed;inset:0;background:#0006;backdrop-filter:blur(3px)}.demoPageScrim{z-index:2147483020}.demoSheetScrim{z-index:2147483000}.demoPagesSheet{position:fixed;z-index:2147483021;background:var(--surface);border:1px solid var(--line2);box-shadow:var(--shadowH);color:var(--ink);border-radius:22px;left:8px;right:8px;bottom:8px;display:flex;flex-direction:column;overflow:hidden;max-height:var(--demo-sheet-height)}.demoPagesSheet>header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px 10px 16px;flex:none}.demoPagesSheet>header b{display:block;font-size:13px}.demoPagesSheet small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.demoPagesSheet .vbtn{height:36px}.demoPagesSheet{height:var(--demo-sheet-height);padding-bottom:var(--demo-safe)}#demoPageStrip{overflow-x:hidden;overflow-y:auto;min-height:0;flex:1;overscroll-behavior:contain}.demoPagesSheet #rail{width:100%;display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(82px,14vw,128px),1fr));align-content:start;gap:14px 12px;border:0;padding:4px 16px 16px;overflow:visible;background:none}.demoPagesSheet #rail button{width:100%;min-width:0;align-self:start}.demoPagesSheet #rail .demoMini{min-height:0;height:auto}.demoPagesSheet #rail .mini-pg{aspect-ratio:720/1018}
 .demoToast{position:fixed;z-index:2147483647;left:50%;bottom:72px;transform:translateX(-50%);max-width:calc(100% - 24px);background:var(--ink);color:var(--surface);font-size:11px;padding:10px 16px;border-radius:30px;box-shadow:var(--shadowH);text-align:center;pointer-events:none;width:max-content}
-.demoSheetGrab{display:none}.demoSheetGrab,.demoGrab{touch-action:none}
+
 @media(orientation:portrait){
 #ko-ocrModal{left:8px;right:8px;bottom:8px;top:auto;width:auto;height:var(--demo-sheet-height);max-height:var(--demo-sheet-height);border-radius:22px;padding-bottom:var(--demo-safe)}#ko-ocrModal .ocrBody{flex:1}#ko-ocrModal .ocrFoot{display:grid;grid-template-columns:minmax(70px,.65fr) minmax(0,1.35fr);gap:8px;padding:12px 14px;border-radius:0}#ko-ocrModal .ocrFoot button{width:100%;height:44px;min-width:0;padding:0 10px}#ko-ocrModal .ocrFoot .footNote{display:none}
-#ko-trPanel.open{position:fixed;inset:auto 8px 8px!important;width:auto!important;height:var(--demo-sheet-height);max-height:var(--demo-sheet-height);border:1px solid var(--line2);border-radius:22px;z-index:2147483010;box-shadow:var(--shadowH);padding-bottom:var(--demo-safe)}#ko-trPanel>header{padding-top:12px;height:58px;min-height:58px}#ko-trPanel>header:before{content:"";position:absolute;top:6px;left:50%;width:34px;height:4px;transform:translateX(-50%);background:var(--line2);border-radius:4px}#ko-trPanel .trResize{display:none}#ko-trPanel .trBody{width:100%;max-width:704px;margin:auto}.demoPanelFoot{padding-bottom:10px}
-.keepitOcr .ocrProg,.keepitOcr .regionEditor{left:8px;right:8px;bottom:8px;width:auto;max-width:none;max-height:var(--demo-sheet-height);border-radius:22px;box-shadow:var(--shadowH);padding-bottom:var(--demo-safe)}.keepitOcr .ocrProg .progHead{min-height:50px}.keepitOcr .ocrProg .progBody{padding:12px 14px 14px}.keepitOcr .ocrProg .progFoot button{min-height:44px}.keepitOcr .regionEditor{overflow:auto;padding:0 14px calc(14px + var(--demo-safe));gap:10px}.keepitOcr .regionEditor .row button{min-height:44px;flex:1;white-space:normal}.keepitOcr .regionEditor textarea{resize:none;min-height:100px;touch-action:pan-y}.demoSheetGrab{display:block;width:36px;height:4px;min-height:4px;background:var(--line2);border-radius:4px;margin:9px auto 0;flex:none}.keepitOcr .regionEditor .demoSheetGrab{margin-top:9px;margin-bottom:2px}
+#ko-trPanel.open{position:fixed;inset:auto 8px 8px!important;width:auto!important;height:var(--demo-sheet-height);max-height:var(--demo-sheet-height);border:1px solid var(--line2);border-radius:22px;z-index:2147483010;box-shadow:var(--shadowH);padding-bottom:var(--demo-safe)}#ko-trPanel>header{padding-top:12px;height:58px;min-height:58px}#ko-trPanel .trResize{display:none}#ko-trPanel .trBody{width:100%;max-width:704px;margin:auto}.demoPanelFoot{padding-bottom:10px}
+.keepitOcr .ocrProg,.keepitOcr .regionEditor{left:8px;right:8px;bottom:8px;width:auto;max-width:none;max-height:var(--demo-sheet-height);border-radius:22px;box-shadow:var(--shadowH);padding-bottom:var(--demo-safe)}.keepitOcr .ocrProg .progHead{min-height:50px}.keepitOcr .ocrProg .progBody{padding:12px 14px 14px}.keepitOcr .ocrProg .progFoot button{min-height:44px}.keepitOcr .regionEditor{overflow:auto;padding:0 14px calc(14px + var(--demo-safe));gap:10px}.keepitOcr .regionEditor .row button{min-height:44px;flex:1;white-space:normal}.keepitOcr .regionEditor textarea{resize:none;min-height:100px;touch-action:pan-y}
 }
 @media(pointer:coarse){#ko-trPanel>header{height:58px;min-height:58px}#ko-trPanel>header .ibtn{width:36px;height:44px}.demoPagesSheet .vbtn{min-height:44px}.keepitOcr .ocrProg .progFoot button,.keepitOcr .regionEditor .row button{min-height:44px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -1451,7 +1451,7 @@ html.dark .flow-select-list{background:var(--kp-glass-d)}
  max-height:96dvh!important;overflow:hidden;isolation:isolate;padding-bottom:env(safe-area-inset-bottom,0px);
 }
 html.dark :is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor).kpSheet{background:var(--kp-glass-d)!important;box-shadow:none!important}
-:is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor).kpSheet.kpSheetOpen{visibility:visible;pointer-events:auto;transform:translateY(0)!important;transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s!important}
+:is(#ko-ocrModal,#demoPagesSheet,#vMorePanel,#ko-trPanel,#trPanel,#ko-ocrProg,#ko-regionEditor).kpSheet.kpSheetOpen{visibility:visible;pointer-events:auto;transform:none!important;transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s!important}
 /* OCR and page grid use one height; other sheets size naturally to their contents. */
 #ko-ocrModal.kpSheet,#demoPagesSheet.kpSheet,#ko-trPanel.kpSheet,#trPanel.kpSheet{height:92dvh!important;max-height:92dvh!important}
 #vMorePanel.kpSheet{height:auto;max-height:85dvh!important}
@@ -1472,16 +1472,27 @@ html.dark .kpSheet .ocrFoot,html.dark .kpSheet .demoPanelFoot{background:rgba(25
 #ko-ocrScrim,#moreScrim,#demoPageScrim,#demoSheetScrim{backdrop-filter:none;-webkit-backdrop-filter:none}
 
 #ko-vOcr{display:inline-flex;align-items:center;justify-content:center;gap:5px}#ko-vOcr svg{flex:none}#ko-trPanel>header .ocrActionIcon{width:16px;height:16px;flex:none}
-/* Only portrait sheet surfaces change: Keepit's shared glass/tile/line tokens replace opaque black inner cards. */
-@media(orientation:portrait){
-.kpSheet{--demo-field:var(--kp-tile-l);--demo-field-line:var(--kp-line-l);--demo-pick:color-mix(in srgb,var(--brand) 14%,transparent)}
-html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line-d);--demo-pick:color-mix(in srgb,var(--brand) 20%,transparent)}
-.keepitOcr .kpSheet :is(.fset,.langBox,.langSearch,.editablePage,.flow-select-trigger,.ocrResultSelect>.flow-select-trigger,.regionEditor textarea),.keepitOcr .kpSheet textarea,.kpSheet .demoPanelFoot button{background:var(--demo-field);border-color:var(--demo-field-line)}
-.keepitOcr .kpSheet :is(.radios label.on,.radios label:hover,.rangeRow.on,.kpick:hover){background:var(--demo-field)}
-.keepitOcr .kpSheet .kpick.on{background:var(--demo-pick)}
-.kpSheet #ko-ocrScopePick .rangeRow.on{background:var(--demo-field)}
-.kpSheet.kpSheetOpen{will-change:translate}
+/* Keepit's shared glass/tile/line tokens, for both dialog and bottom sheets. */
+.kpSheet,.kpGlass{--demo-field:var(--kp-tile-l);--demo-field-line:var(--kp-line-l);--demo-pick:color-mix(in srgb,var(--brand) 14%,transparent)}
+html.dark :is(.kpSheet,.kpGlass){--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line-d);--demo-pick:color-mix(in srgb,var(--brand) 20%,transparent)}
+.keepitOcr :is(.kpSheet,.kpGlass) :is(.fset,.langBox,.langSearch,.editablePage,.flow-select-trigger,.ocrResultSelect>.flow-select-trigger,.regionEditor textarea),.keepitOcr :is(.kpSheet,.kpGlass) textarea,.kpSheet .demoPanelFoot button{background:var(--demo-field);border-color:var(--demo-field-line)}
+.keepitOcr :is(.kpSheet,.kpGlass) :is(.radios label.on,.radios label:hover,.rangeRow.on,.kpick:hover){background:var(--demo-field)}
+.keepitOcr :is(.kpSheet,.kpGlass) .kpick.on{background:var(--demo-pick)}
+:is(.kpSheet,.kpGlass) #ko-ocrScopePick .rangeRow.on{background:var(--demo-field)}
+
 .kpDragging,.kpDragging *{user-select:none!important;-webkit-user-select:none!important}
+
+/* Center desktop glass without translate(-50%): stable text rasterization on hover. */
+#ko-ocrModal.kpGlass{background:var(--kp-glass-l);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur);box-shadow:none;border-color:var(--kp-line-l)}
+html.dark #ko-ocrModal.kpGlass{background:var(--kp-glass-d);border-color:var(--kp-line-d);box-shadow:none}
+.kpGlass :is(.ocrHead,.ocrBody,.ocrFoot){background:transparent!important}
+.kpSheetGrip{display:none}
+@media(orientation:landscape){#ko-ocrModal.kpGlass{inset:0;margin:auto;height:fit-content;transform:none;transition:opacity .16s}}
+@media(orientation:portrait){
+.kpSheet>.kpSheetGrip{display:block;flex:none;position:relative;width:40px;height:4px;min-height:4px;border-radius:2px;background:rgba(148,163,184,.55);margin:10px auto 10px;touch-action:none;cursor:grab}
+.kpSheet>.kpSheetGrip::before{content:"";position:absolute;left:-80px;right:-80px;top:-10px;bottom:-10px}
+#vMorePanel.kpSheet .moreHead{padding-top:6px}
+#ko-trPanel.kpSheet>header{padding-top:6px;height:50px;min-height:50px}
 }
 </style></head><body><div class="viewer show" id="viewer">
 <div class="vbar" id="vBar">
@@ -1497,9 +1508,7 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 <button class="vbtn" data-doc-title="wordClass" data-dock="tools" data-t="wc" title="Loại từ (Alt+G)"><svg class="i" viewbox="0 0 24 24"><path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg><span class="lbl"><span data-doc-label="wordClass">Loại từ</span></span></button>
 <button class="vbtn" data-doc-title="notes" data-dock="tools" data-t="notes" title="Ghi chú"><svg class="i" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg><span class="lbl"><span data-doc-label="notes">Ghi chú</span></span></button>
 <button class="vbtn" data-doc-title="askAI" data-dock="tools" data-t="ai" title="Hỏi AI (Alt+X)"><svg class="i" viewbox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path></svg><span class="lbl"><span data-doc-label="askAI">Hỏi AI</span></span></button>
-</div>
-<button aria-label="Cài đặt tài liệu" class="vbtn" data-doc-aria="settings" data-doc-title="settings" hidden="" id="vDocumentsSettings" type="button"><svg aria-hidden="true" class="i" data-icon="settings" viewbox="0 0 24 24"></svg></button><button aria-label="Đổi giao diện" class="vbtn" data-doc-aria="theme" data-doc-title="theme" id="vTheme" title="Đổi giao diện"><svg aria-hidden="true" class="i" id="vThemeIco" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M19 5l-1.4 1.4M6.4 17.6 5 19"></path></svg></button>
-<div class="keepitOcr"><button aria-label="Nhận dạng chữ (OCR)" class="vbtn" id="ko-vOcr" title="Nhận dạng chữ (OCR)"><svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="scan-text" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+<button aria-label="Nhận dạng chữ (OCR)" class="vbtn" data-dock="tools" aria-controls="ko-ocrModal" aria-expanded="false" id="ko-vOcr" title="Nhận dạng chữ (OCR)"><svg aria-hidden="true" class="i ocrActionIcon" data-ocr-icon="scan-text" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
 <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
 <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
@@ -1507,11 +1516,14 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 <path d="M7 8h8"/>
 <path d="M7 12h10"/>
 <path d="M7 16h6"/>
-</svg><span>OCR</span></button></div><button aria-controls="vMorePanel" aria-expanded="false" aria-label="Thêm công cụ" class="vbtn" data-doc-aria="more" data-doc-title="more" hidden="" id="vMore" title="Thêm công cụ"><svg class="i" viewbox="0 0 24 24"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg><span class="lbl"><span data-doc-label="more">Thêm</span></span></button>
+</svg><span class="lbl">OCR</span></button>
+</div>
+<button aria-label="Cài đặt tài liệu" class="vbtn" data-doc-aria="settings" data-doc-title="settings" hidden="" id="vDocumentsSettings" type="button"><svg aria-hidden="true" class="i" data-icon="settings" viewbox="0 0 24 24"></svg></button><button aria-label="Đổi giao diện" class="vbtn" data-doc-aria="theme" data-doc-title="theme" id="vTheme" title="Đổi giao diện"><svg aria-hidden="true" class="i" id="vThemeIco" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M19 5l-1.4 1.4M6.4 17.6 5 19"></path></svg></button>
+<button aria-controls="vMorePanel" aria-expanded="false" aria-label="Thêm công cụ" class="vbtn" data-doc-aria="more" data-doc-title="more" hidden="" id="vMore" title="Thêm công cụ"><svg class="i" viewbox="0 0 24 24"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg><span class="lbl"><span data-doc-label="more">Thêm</span></span></button>
 </div>
 <div class="moreScrim" hidden="" id="moreScrim"></div>
 <section aria-labelledby="moreTitle" aria-modal="true" class="morePanel" hidden="" id="vMorePanel" role="dialog">
-<header class="moreHead" id="moreHead"><span class="grab"></span><b id="moreTitle"><span data-doc-label="more">Thêm</span></b><button aria-label="Đóng công cụ" class="vbtn" data-doc-aria="close" data-doc-title="close" id="moreClose" title="Đóng"><svg class="i" viewbox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg></button></header>
+<header class="moreHead" id="moreHead"><b id="moreTitle"><span data-doc-label="more">Thêm</span></b><button aria-label="Đóng công cụ" class="vbtn" data-doc-aria="close" data-doc-title="close" id="moreClose" title="Đóng"><svg class="i" viewbox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg></button></header>
 <div class="moreBody">
 <div class="moreSetting"><span><span data-doc-label="viewMode">Chế độ xem</span></span><div class="moreSlot" id="moreMode"></div></div>
 <div class="moreSetting"><span><span data-doc-label="pageFlow">Chuyển trang</span></span><div class="moreSlot" id="moreFlow"></div></div>
@@ -1585,11 +1597,11 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 </header>
 <div class="trBody"><div class="trHover" hidden="" id="ko-trHover"></div><textarea aria-label="Văn bản nhận dạng" id="ko-text" placeholder="Văn bản nhận dạng của trang sẽ hiện ở đây. Sửa trực tiếp được."></textarea></div>
 <div class="demoPanelFoot"><span id="demoEditStatus">Nội dung minh họa · không OCR thật</span><button class="ibtn" id="demoPanelProgress">Tiến độ</button></div></aside></div></div>
-</div><div class="keepitOcr" data-ocr-root="ocrModal"><section aria-labelledby="ko-ocrTitle" aria-modal="true" class="ocrModal" id="ko-ocrModal" role="dialog">
+</div><div class="keepitOcr" data-ocr-root="ocrModal"><section aria-labelledby="ko-ocrTitle" aria-modal="true" class="ocrModal kpGlass" id="ko-ocrModal" role="dialog">
 <header class="ocrHead">
 <span class="ocrIco"><span aria-hidden="true" class="logoDot"><svg aria-hidden="true" height="22" viewbox="0 0 32 32" width="22"><defs><lineargradient id="ko-kpDlg" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#4f46e5"></stop><stop offset="1" stop-color="#8b5cf6"></stop></lineargradient></defs><rect fill="url(#ko-kpDlg)" height="32" rx="8" width="32"></rect><g transform="translate(32 0) scale(-1 1)"><g transform="translate(-4.187 -2.393) scale(0.299065)"><path d="M 35 32 C 34 32 33.5 34 33.2 37 C 31.3 51 34.3 65 42 74 C 48.5 81.5 57 84.6 67 84.5 C 77.5 84.4 84.2 80.3 89.7 73.4 C 92.5 77.3 94.3 81.5 95.4 86.8 C 95.9 89.6 97.8 90.9 99.9 90.2 C 102.1 89.5 102.9 87.5 101.8 84.7 C 98.6 75.9 93.3 69.4 85.4 65.1 C 79.7 62 72.9 61.1 66.1 59.6 C 58.9 58 53.1 54.9 51.6 49.4 C 55.3 52.8 60.2 54.8 67.5 55.8 C 78.7 57.3 87.7 58.3 94.7 65 C 97.3 54.1 92 44.5 82.5 39.9 C 75.4 36.4 68 36.8 59.7 37.6 C 48.6 38.8 41.9 38.6 36.5 32.8 C 36 32.3 35.5 32 35 32 Z" fill="#fff"></path></g></g></svg></span></span>
 <div class="tt"><b id="ko-ocrTitle">Nhận dạng chữ (OCR)</b><small id="ko-ocrSub">Tài liệu mẫu.pdf · 16 trang · chỉ thử giao diện</small></div>
-<span class="ver" id="ko-ocrVer">DEMO V9</span>
+<span class="ver" id="ko-ocrVer">DEMO V10</span>
 <button aria-label="Đóng" class="vbtn" id="ko-ocrClose">✕</button>
 </header>
 <div class="ocrBody" id="ko-ocrBody">
@@ -1686,7 +1698,7 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 <button id="ko-ocrCancel">Hủy</button>
 <button class="primary" id="ko-run">Chạy thử UI</button>
 </footer>
-</section></div><div class="keepitOcr" data-ocr-root="ocrScrim"><div class="ocrScrim" id="ko-ocrScrim"></div></div><div class="keepitOcr" data-ocr-root="ocrProg"><section aria-live="polite" class="ocrProg" id="ko-ocrProg"><div class="demoSheetGrab" aria-hidden="true"></div>
+</section></div><div class="keepitOcr" data-ocr-root="ocrScrim"><div class="ocrScrim" id="ko-ocrScrim"></div></div><div class="keepitOcr" data-ocr-root="ocrProg"><section aria-live="polite" class="ocrProg" id="ko-ocrProg">
 <header class="progHead">
 <span class="dot"></span>
 <b id="ko-progTitle">Sẵn sàng thử OCR</b>
@@ -1709,7 +1721,7 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 </div>
 </div>
 <span hidden="" id="ko-status"></span>
-</section></div><div class="keepitOcr" data-ocr-root="regionEditor"><section class="regionEditor" hidden="" id="ko-regionEditor"><div class="demoSheetGrab" aria-hidden="true"></div>
+</section></div><div class="keepitOcr" data-ocr-root="regionEditor"><section class="regionEditor" hidden="" id="ko-regionEditor">
 <div class="reHead"><b>Bổ sung vùng</b><span>Kéo trên khung trống · chỉ thử UI</span></div>
 <label for="ko-regionText">Chữ trong vùng đã chọn · mỗi dòng một hàng</label>
 <textarea id="ko-regionText" placeholder="Bấm “Nhận dạng vùng” hoặc nhập tay chữ cho vùng này…"></textarea>
@@ -1718,7 +1730,7 @@ html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line
 <button id="ko-applyRegion">Áp dụng</button>
 <button id="ko-cancelRegion">Hủy</button>
 </div>
-</section></div><div class="demoSheetScrim" id="demoSheetScrim" hidden></div><div class="demoPageScrim" id="demoPageScrim" hidden></div><section class="demoPagesSheet" id="demoPagesSheet" hidden role="dialog" aria-modal="true" aria-labelledby="demoPagesTitle"><div class="demoGrab" aria-hidden="true"></div><header id="demoPagesHead"><div><b id="demoPagesTitle">Danh sách trang</b><small id="demoPageSummary">16 trang · khung trống minh họa</small></div><button class="vbtn" id="demoPagesClose" aria-label="Đóng danh sách trang">✕</button></header><div id="demoPageStrip"></div></section><div class="demoToast" id="demoToast" role="status" hidden></div><script>// Keepit — màu kính sáng/tối DÙNG CHUNG cho thanh Keepit, menu ☰ (js/content/keepit-bar-css.js), Reader
+</section></div><div class="demoSheetScrim" id="demoSheetScrim" hidden></div><div class="demoPageScrim" id="demoPageScrim" hidden></div><section class="demoPagesSheet" id="demoPagesSheet" hidden role="dialog" aria-modal="true" aria-labelledby="demoPagesTitle"><header id="demoPagesHead"><div><b id="demoPagesTitle">Danh sách trang</b><small id="demoPageSummary">16 trang · khung trống minh họa</small></div><button class="vbtn" id="demoPagesClose" aria-label="Đóng danh sách trang">✕</button></header><div id="demoPageStrip"></div></section><div class="demoToast" id="demoToast" role="status" hidden></div><script>// Keepit — màu kính sáng/tối DÙNG CHUNG cho thanh Keepit, menu ☰ (js/content/keepit-bar-css.js), Reader
 // (js/reader/reader-css.js) và sheet/panel overlay khi bật Hiệu ứng nền (js/overlay/ui/overlay-css.js). Đổi màu ở đây là tất cả đổi theo; CSS chỉ dùng var(--kp-…), không viết lại mã màu.
 // -l = chủ đề sáng, -d = chủ đề tối. css(selector) trả về khối biến để chèn trước CSS của từng giao diện.
 (() => {
@@ -2023,7 +2035,7 @@ function placeFloats(){const top=id('vBar').getBoundingClientRect().bottom;docum
 function showProgress(){hideOcrSheet();setMore(false,false);pagesClose();activeFloat='progress';progressWanted=true;placeFloats();}
 function setMore(open,focus=true){id('vMorePanel').hidden=!open;id('moreScrim').hidden=!open;id('vMore').setAttribute('aria-expanded',String(open));id('vMore').classList.toggle('on',open);if(open){hideOcrSheet();pagesClose();}placeFloats();if(open&&focus)id('moreClose').focus();}
 // Same docking homes, measured fit, compact pass and move priority as current Documents.
-const toolbarItems=$$('#vControls > [data-dock], #vTools > [data-dock], #docControls > [data-dock]');const toolbarHomes=new Map(toolbarItems.map(el=>{const anchor=document.createComment('toolbar '+el.dataset.dock);el.after(anchor);return[el,anchor];}));const moreSlots={mode:id('moreMode'),flow:id('moreFlow'),zoom:id('moreZoom'),tools:id('moreTools')};const moveOrder=[$('[data-t="wc"]'),$('[data-t="ai"]'),$('[data-t="notes"]'),id('vMode'),$('[data-t="tts"]'),$('[data-t="translate"]')];let fitRAF=0;function fitToolbar(){fitRAF=0;const focused=document.activeElement;if(focused===id('vFlow')||focused===id('vZoom'))return;const bar=id('vBar'),title=$('.vtitle'),more=id('vMore'),dock=id('docControls');toolbarItems.forEach(el=>toolbarHomes.get(el).before(el));dock.hidden=false;pageBar.classList.remove('simple');const bottomFits=!portrait()&&!id('viewer').classList.contains('ttsOn')&&pageBar.scrollWidth<=$('.stageWrap').clientWidth-24;if(!bottomFits){moreSlots.flow.append(id('flowGroup'));moreSlots.zoom.append(id('zoomWrap'));}dock.hidden=![...dock.children].some(el=>el.dataset.dock&&el.style.display!=='none');pageBar.classList.toggle('simple',dock.hidden);bar.classList.remove('compact');more.hidden=false;const minTitle=Math.min(240,Math.max(100,bar.clientWidth*.18));const cramped=()=>title.clientWidth<minTitle||bar.scrollWidth>bar.clientWidth+1;if(cramped())bar.classList.add('compact');if(cramped()){for(const el of moveOrder){if(!cramped())break;moreSlots[el.dataset.dock].append(el);}}toolbarItems.filter(el=>el.parentNode===moreSlots.tools).forEach(el=>moreSlots.tools.append(el));more.hidden=!id('vMorePanel').querySelector('[data-dock]');placeFloats();report();}function requestFit(){if(!fitRAF)fitRAF=requestAnimationFrame(fitToolbar);}
+const toolbarItems=$$('#vControls > [data-dock], #vTools > [data-dock], #docControls > [data-dock]');const toolbarHomes=new Map(toolbarItems.map(el=>{const anchor=document.createComment('toolbar '+el.dataset.dock);el.after(anchor);return[el,anchor];}));const moreSlots={mode:id('moreMode'),flow:id('moreFlow'),zoom:id('moreZoom'),tools:id('moreTools')};const moveOrder=[$('[data-t="wc"]'),id('ko-vOcr'),$('[data-t="ai"]'),$('[data-t="notes"]'),id('vMode'),$('[data-t="tts"]'),$('[data-t="translate"]')];let fitRAF=0;function fitToolbar(){fitRAF=0;const focused=document.activeElement;if(focused===id('vFlow')||focused===id('vZoom'))return;const bar=id('vBar'),title=$('.vtitle'),more=id('vMore'),dock=id('docControls');toolbarItems.forEach(el=>toolbarHomes.get(el).before(el));dock.hidden=false;pageBar.classList.remove('simple');const bottomFits=!portrait()&&!id('viewer').classList.contains('ttsOn')&&pageBar.scrollWidth<=$('.stageWrap').clientWidth-24;if(!bottomFits){moreSlots.flow.append(id('flowGroup'));moreSlots.zoom.append(id('zoomWrap'));}dock.hidden=![...dock.children].some(el=>el.dataset.dock&&el.style.display!=='none');pageBar.classList.toggle('simple',dock.hidden);bar.classList.remove('compact');more.hidden=false;const minTitle=Math.min(240,Math.max(100,bar.clientWidth*.18));const cramped=()=>title.clientWidth<minTitle||bar.scrollWidth>bar.clientWidth+1;if(cramped())bar.classList.add('compact');if(cramped()){for(const el of moveOrder){if(!cramped())break;moreSlots[el.dataset.dock].append(el);}}toolbarItems.filter(el=>el.parentNode===moreSlots.tools).forEach(el=>moreSlots.tools.append(el));more.hidden=!id('vMorePanel').querySelector('[data-dock]');placeFloats();report();}function requestFit(){if(!fitRAF)fitRAF=requestAnimationFrame(fitToolbar);}
 const LANGS = [
   { c: 'eng', n: 'Anh', native: 'English', on: true },
   { c: 'vie', n: 'Việt', native: 'Tiếng Việt', on: true },
@@ -2052,8 +2064,8 @@ id('ko-langSearch').addEventListener('input', e => renderLangs(e.target.value));
 id('ko-langSearch').addEventListener('focus', () => id('ko-langSearch').select());
 renderLangs();
 function syncForm(){const range=$('[name="ko-scopePick"]:checked').value==='range';id('ko-from').disabled=id('ko-to').disabled=false;syncPageSelects();id('ko-wrapFrom').classList.remove('disabled');id('ko-wrapTo').classList.remove('disabled');document.querySelector('#ko-ocrScopePick .rangeRow').classList.toggle('on',range);const f=+id('ko-from').value,t=+id('ko-to').value;id('ko-run').disabled=!LANGS.some(l=>l.on)||(range&&!(Number.isInteger(f)&&Number.isInteger(t)&&f>=1&&t<=16&&f<=t));$$('#ko-ocrScopePick>label').forEach(l=>l.classList.toggle('on',!!l.querySelector(':checked')));id('ko-langSummary').textContent=LANGS.filter(l=>l.on).map(l=>l.n).join(' + ')||'chưa chọn';}
-function openOCR(){lastFocus=document.activeElement;setMore(false,false);pagesClose();hideOcrSheet();id('ko-ocrModal').classList.add('show');id('ko-ocrScrim').classList.add('show');id('viewer').inert=true;syncForm();placeFloats();id('ko-ocrClose').focus();}
-function closeOCR(){id('ko-ocrModal').classList.remove('show');id('ko-ocrScrim').classList.remove('show');id('viewer').inert=false;placeFloats();if(lastFocus?.getClientRects().length)lastFocus.focus();}
+function openOCR(){lastFocus=document.activeElement;setMore(false,false);pagesClose();hideOcrSheet();id('ko-vOcr').classList.add('on');id('ko-vOcr').setAttribute('aria-expanded','true');id('ko-ocrModal').classList.add('show');id('ko-ocrScrim').classList.add('show');id('viewer').inert=true;syncForm();placeFloats();id('ko-ocrClose').focus();}
+function closeOCR(){id('ko-vOcr').classList.remove('on');id('ko-vOcr').setAttribute('aria-expanded','false');id('ko-ocrModal').classList.remove('show');id('ko-ocrScrim').classList.remove('show');id('viewer').inert=false;placeFloats();if(lastFocus?.getClientRects().length)lastFocus.focus();else if(lastFocus===id('ko-vOcr'))id('vMore').focus();}
 function updateTextButtons(){const text=!!id('ko-text').value;id('ko-copy').disabled=id('ko-save').disabled=!text;id('ko-textApply').disabled=!text;}
 function stop(){clearInterval(timer);running=false;id('ko-progTitle').textContent='Đã dừng mô phỏng';id('ko-pTitle').textContent='Đã dừng tại '+count+'%';id('ko-stop').hidden=true;id('ko-pAgain').hidden=id('ko-pRegion').hidden=false;placeFloats();}
 function run(){syncForm();if(id('ko-run').disabled)return;closeOCR();clearInterval(timer);count=0;running=true;showProgress();id('ko-progress').value=0;id('ko-progTitle').textContent='Đang mô phỏng OCR';id('ko-ocrProg').classList.remove('done');id('ko-stop').hidden=false;id('ko-stop').disabled=false;id('ko-pAgain').hidden=id('ko-pRegion').hidden=true;id('ko-pDone').hidden=true;id('ko-pLog').textContent='Chỉ chuyển trạng thái UI. Không xử lý tài liệu.';const start=performance.now();timer=setInterval(()=>{count=Math.min(100,count+8);id('ko-progress').value=count/100;id('ko-pTitle').textContent='Tiến độ minh họa: '+count+'%';id('ko-pClock').textContent=((performance.now()-start)/1000).toFixed(1)+' giây';if(count===100){clearInterval(timer);running=false;id('ko-progTitle').textContent='Hoàn tất mô phỏng';id('ko-ocrProg').classList.add('done');id('ko-pTitle').textContent='Đã hoàn tất UI minh họa.';id('ko-stop').hidden=true;id('ko-pAgain').hidden=id('ko-pRegion').hidden=false;id('ko-text').value='VĂN BẢN MINH HỌA\n\nĐây không phải kết quả OCR.\n\nBảng văn bản dùng cùng nền Xem tài liệu Keepit hiện tại; ở màn dọc mở dạng sheet như bảng dịch.\n\nKhung tài liệu luôn trống.';updateTextButtons();}placeFloats();},220);}
@@ -2074,7 +2086,7 @@ const sheetEntries=[
 ];
 // Keepit shared sheet gestures + one presentation lifecycle for all demo sheets.
 for(const entry of sheetEntries){
- entry.el.classList.add('kpSheet');
+ entry.el.classList.add('kpSheet');const grip=document.createElement('div');grip.className='kpSheetGrip';grip.setAttribute('aria-hidden','true');entry.el.prepend(grip);
  // Root-level host prevents the viewer stacking context from trapping a sheet under its scrim.
  const nested=entry.el.closest('#viewer'),host=entry.el.parentElement.classList.contains('keepitOcr')?entry.el.parentElement:entry.el;
  const home=nested?document.createComment('Keepit sheet home '+entry.el.id):null;if(home)host.before(home);
@@ -2105,7 +2117,7 @@ document.addEventListener('pointerdown',e=>{
 },true);
 function mousePose(g){g.raf=0;if(g.mode==='drag')g.entry.el.style.setProperty('translate','0 '+Math.max(0,g.dy)+'px','important');}
 document.addEventListener('pointermove',e=>{
- const g=mouseSheet;if(!g||g.id!==e.pointerId)return;const dx=e.clientX-g.x,raw=e.clientY-g.y;
+ const g=mouseSheet;if(!g||g.id!==e.pointerId)return;if(!(e.buttons&1)){endMouseSheet({pointerId:g.id,type:'pointercancel'});return;}const dx=e.clientX-g.x,raw=e.clientY-g.y;
  if(!g.mode){if(Math.hypot(dx,raw)<6)return;if(Math.abs(dx)>Math.abs(raw)){mouseSheet=null;return;}
   const sc=g.scrollers.find(s=>raw>0?s.scrollTop>0:s.scrollTop+s.clientHeight<s.scrollHeight-1);g.mode=sc?'scroll':raw>0?'drag':'block';g.sc=sc;g.top=sc?.scrollTop||0;g.y0=e.clientY;
   if(e.isTrusted)g.entry.el.setPointerCapture(e.pointerId);
@@ -2124,7 +2136,7 @@ function endMouseSheet(e){
   requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.removeProperty('translate');el.style.removeProperty('transition');el.classList.remove('kpDragging');}));
  },close?180:220);
 }
-document.addEventListener('pointerup',endMouseSheet,true);document.addEventListener('pointercancel',endMouseSheet,true);
+document.addEventListener('pointerup',endMouseSheet,true);document.addEventListener('pointercancel',endMouseSheet,true);document.addEventListener('lostpointercapture',endMouseSheet,true);addEventListener('blur',()=>{if(mouseSheet)endMouseSheet({pointerId:mouseSheet.id,type:'pointercancel'});});
 document.addEventListener('click',e=>{if(Date.now()<suppressSheetClickUntil){e.preventDefault();e.stopImmediatePropagation();}},true);
 
 // Keep real select models and the unmodified Keepit list renderer; add only a numeric editing face.
