@@ -202,7 +202,7 @@
     return { pages, kind:'image', image:true, sourceImage:img, async ocrCanvas(){const c=window.document.createElement('canvas');const scale=Math.min(1,Math.sqrt(16000000/(img.naturalWidth*img.naturalHeight)));c.width=Math.max(1,Math.floor(img.naturalWidth*scale));c.height=Math.max(1,Math.floor(img.naturalHeight*scale));c.getContext('2d').drawImage(img,0,0,c.width,c.height);return c;}, async render(target) { const el = img.cloneNode(); el.className = 'actualImage'; el.draggable = false; target.replaceChildren(el); }, async thumbnail() { return drawImageThumb(img); }, dispose() { URL.revokeObjectURL(url); } };
   }
   function drawImageThumb(img) {
-    const canvas = document.createElement('canvas'), ratio = Math.min(240 / img.naturalWidth, 320 / img.naturalHeight, 1);
+    const canvas = document.createElement('canvas'), ratio = Math.min(960 / img.naturalWidth, 1320 / img.naturalHeight, 1);
     canvas.width = Math.max(1, Math.round(img.naturalWidth * ratio)); canvas.height = Math.max(1, Math.round(img.naturalHeight * ratio));
     canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height); return canvas.toDataURL('image/png');
   }
@@ -315,7 +315,7 @@
           }
         } finally { jobs.delete(render); jobs.delete(textLayer); }
       },
-      async thumbnail(pageNumber = 1) { const index=Math.max(1,Math.min(pages.length,Math.round(+pageNumber)||1))-1,page=await document.getPage(index+1),spec=pages[index],vp=page.getViewport({scale:Math.min(120/spec.width,160/spec.height,1)}),c=window.document.createElement('canvas');c.width=Math.max(1,Math.ceil(vp.width));c.height=Math.max(1,Math.ceil(vp.height));const render=page.render({canvasContext:c.getContext('2d'),viewport:vp});jobs.add(render);try{await render.promise;return c.toDataURL('image/png');}finally{jobs.delete(render);} },
+      async thumbnail(pageNumber = 1, {width=960,height=1320} = {}) { const index=Math.max(1,Math.min(pages.length,Math.round(+pageNumber)||1))-1,page=await document.getPage(index+1),spec=pages[index],vp=page.getViewport({scale:Math.min(width/spec.width,height/spec.height)}),c=window.document.createElement('canvas');c.width=Math.max(1,Math.ceil(vp.width));c.height=Math.max(1,Math.ceil(vp.height));const render=page.render({canvasContext:c.getContext('2d'),viewport:vp});jobs.add(render);try{await render.promise;return c.toDataURL('image/png');}finally{jobs.delete(render);} },
       dispose() { disposed = true; for (const job of jobs) { try { job.cancel(); } catch {} } jobs.clear(); void document.destroy(); }
     };
   }
@@ -360,11 +360,11 @@
       if (css) { styleNode = document.createElement('style'); styleNode.textContent = css; document.head.append(styleNode); }
       return { kind, pages,
         async render(target, page) { target.replaceChildren(nodes[page - 1].cloneNode(true)); },
-        async thumbnail(pageNumber = 1) {
+        async thumbnail(pageNumber = 1, {width=960,height=1320} = {}) {
           const spec=pages[Math.max(1,Math.min(pages.length,Math.round(+pageNumber)||1))-1]||pages[0];
-          const canvas = document.createElement('canvas'); canvas.width = 120; canvas.height = kind === 'pptx' ? 68 : 160; const ctx = canvas.getContext('2d');
+          const canvas = document.createElement('canvas'); const scale=Math.min(width/120,height/(kind==='pptx'?68:160));canvas.width=Math.ceil(120*scale);canvas.height=Math.ceil((kind==='pptx'?68:160)*scale);const ctx=canvas.getContext('2d');ctx.scale(scale,scale);const logicalHeight=kind==='pptx'?68:160;
           ctx.fillStyle = '#fff'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle = '#374151'; ctx.font = '6px sans-serif';
-          let y = 11; for (const text of spec.texts) { let line = ''; for (const word of text.split(/\s+/)) { if (ctx.measureText(line + ' ' + word).width > 104) { ctx.fillText(line,8,y); y += 8; line = word; } else line += (line ? ' ' : '') + word; if (y > canvas.height - 10) break; } ctx.fillText(line,8,y); y += 10; if (y > canvas.height - 10) break; }
+          let y = 11; for (const text of spec.texts) { let line = ''; for (const word of text.split(/\s+/)) { if (ctx.measureText(line + ' ' + word).width > 104) { ctx.fillText(line,8,y); y += 8; line = word; } else line += (line ? ' ' : '') + word; if (y > logicalHeight - 10) break; } ctx.fillText(line,8,y); y += 10; if (y > logicalHeight - 10) break; }
           return canvas.toDataURL('image/png');
         },
         dispose() { styleNode?.remove(); nodes.length = 0; }
@@ -376,5 +376,5 @@
     if (kind === 'pdf') return pdf(blob, hooks);
     return office(blob, kind, hooks);
   }
-  globalThis.KeepitDocumentRenderers = Object.freeze({ prepare });
+  globalThis.KeepitDocumentRenderers = Object.freeze({ prepare, thumbnailVersion:2 });
 })();

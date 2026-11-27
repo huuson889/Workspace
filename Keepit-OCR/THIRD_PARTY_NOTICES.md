@@ -66,3 +66,5 @@ Native-selection correction (3.5.625) changes first-party OCR overlay hit-testin
 Document hint placement (3.5.626) reuses the first-party shared suggestion popup/bulb; no dependency, model, runtime, asset or license changes.
 
 Office suggestion action correction (3.5.627) reuses existing first-party controls and localized strings; no third-party changes.
+
+Higher-resolution document previews (3.5.628) reuse the existing local PDF/Office/image renderers; no added libraries, models, assets, network services or license changes.
