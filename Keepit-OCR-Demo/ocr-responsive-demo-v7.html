@@ -2,13 +2,13 @@
 <html lang="vi" translate="no">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Keepit · OCR responsive demo v6</title>
+<title>Keepit · OCR responsive demo v7</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#16161c;color:#eeeef5;font:13px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;height:100dvh;display:flex;flex-direction:column}button,select{font:inherit;color:inherit}button,select{border:1px solid #3b3949;background:#252430;border-radius:8px;min-height:34px;padding:5px 10px;cursor:pointer}button:hover,select:hover{border-color:#a69bed}button:focus-visible,select:focus-visible{outline:2px solid #b5a9ff;outline-offset:2px}header{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#1c1b24;border-bottom:1px solid #35333f;z-index:2}header strong{font-size:14px;margin-right:4px}.tag{font-size:10px;color:#c0b4ff;background:#8b7bea21;border:1px solid #8b7bea55;border-radius:5px;padding:2px 6px;letter-spacing:.08em}.grow{flex:1}.hint{color:#a9a5bb;font-size:11px}#preview{flex:1;min-height:0;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 30%,#2a273a,#15151b 75%)}#viewport{position:absolute;left:50%;top:50%;transform-origin:center;border:0;background:#08080a;box-shadow:0 20px 70px #0007}footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 16px;color:#aaa6ba;font-size:11px;border-top:1px solid #34313e}#metrics{color:#cec7e9;font-variant-numeric:tabular-nums}footer span:last-child{margin-left:auto}#statusDot{width:6px;height:6px;background:#6ed6b1;border-radius:50%;display:inline-block;margin-right:5px}
 </style>
 </head>
 <body>
-<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V6 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
+<header><strong>Keepit <span style="font-weight:400;color:#aaa5be">/ OCR</span></strong><span class="tag">UI DEMO · V7 · NỀN DOCUMENTS</span><span class="grow"></span><label class="hint" for="device">Khung thử</label><select id="device" aria-label="Kích thước thiết bị"><option value="auto">Theo cửa sổ</option><option value="390,844">Điện thoại · 390 × 844</option><option value="768,1024">Tablet · 768 × 1024</option><option value="1512,900">Máy tính · 1512 × 900</option></select><button id="rotate" title="Đổi chiều ngang / dọc">↻ Xoay</button><button id="theme">☼ Sáng / tối</button><button id="reset">Đặt lại</button></header>
 <main id="preview"><iframe id="viewport" title="Demo toàn màn hình OCR Keepit"></iframe></main>
 <footer><span id="metrics">Đang mở giao diện…</span><span><i id="statusDot"></i>Nền Documents 3.5.618 · Khung trống · Chỉ demo UI</span></footer>
 <!-- Offline demo: shared Keepit sources embedded verbatim: js/shared/theme-tokens.js, js/shared/sheet-kit.js, js/shared/icons.js. One portrait presentation adapter maps existing panels to Keepit panel geometry/glass/motion. Page lists retain native select models and createFlowSelect. Integration must import those shared modules, not fork these demo adapters. -->
@@ -1389,7 +1389,7 @@ html,body{overflow:hidden}button,input,select,textarea{font-family:inherit}butto
 .demoPanelFoot{display:flex;gap:10px;align-items:center;padding:5px 10px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}.demoPanelFoot>span{flex:1}.demoPanelFoot button{border:0;border-radius:6px;background:var(--soft);padding:6px 9px;color:var(--brand);font-size:10px;cursor:pointer}#ko-trPanel:not(.open){border-left:0}#ko-trPanel>.trBody{padding-bottom:6px}#ko-trResize{touch-action:none}
 .keepitOcr .ocrProg,.keepitOcr .regionEditor{max-height:calc(100dvh - var(--demo-popup-bottom,8px) - var(--demo-top,46px) - 8px);bottom:var(--demo-popup-bottom,8px)}.keepitOcr .ocrProg .progBody{overflow:auto;min-height:0}.keepitOcr .ocrProg .progHead{flex:none}.keepitOcr .regionEditor{z-index:2147483001}.keepitOcr .ocrProg .progFoot button{min-height:36px}.keepitOcr .ocrProg .pLog{min-height:0;white-space:normal;margin-bottom:12px}.keepitOcr .ocrProg .stTop{min-width:0}#ko-pTitle{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#ko-pDone:empty{display:none}
 #ko-ocrModes label:has(input:disabled){opacity:.4}#ko-ocrModal{max-height:calc(100dvh - 24px)}#ko-ocrModal .ocrBody{min-height:0}#ko-ocrModal .ocrFoot{flex:none;justify-content:flex-end}#ko-ocrModal .ver{font-size:9px}#ko-text{min-height:0}
-/* Native Keepit lists: 112px endpoints on roomy screens; equal columns shrink to the real available width. */
+/* Keepit select models/list renderer, with an editable centered numeric face. */
 #ko-ocrScopePick .rangeRow{display:grid;grid-template-columns:max-content minmax(44px,112px) max-content minmax(44px,112px) max-content;justify-content:start;align-items:center;gap:6px;min-width:0;padding:4px 8px 4px 0}
 #ko-ocrScopePick .rangeRow .rlab{min-width:0;padding-right:0;white-space:nowrap;gap:7px}
 #ko-ocrScopePick .rangeRow .pageRangeSlot{display:block;min-width:0;width:100%;margin:0;padding:0}
@@ -1397,19 +1397,34 @@ html,body{overflow:hidden}button,input,select,textarea{font-family:inherit}butto
 #ko-ocrScopePick .rangeRow .to{font-size:12px;white-space:nowrap}
 #ko-ocrScopePick .rangeRow.on{background:var(--soft)}
 #ko-ocrScopePick .flow-select{width:100%!important;max-width:100%}
-#ko-ocrScopePick .flow-select-trigger{width:100%;min-height:32px;height:32px;gap:4px;padding:0 8px 0 13px;font-size:13px;border-radius:7px}
-#ko-ocrScopePick .flow-select-trigger>span{flex:1;text-align:left}
+#ko-ocrScopePick .flow-select-trigger{width:100%;min-height:32px;height:32px;gap:4px;padding:0 8px;font-size:13px;border-radius:7px}
 #ko-ocrScopePick .flow-select-chevron{width:12px}
 #ko-ocrScopePick .flow-select-trigger:disabled{opacity:.45;cursor:default}
-/* Text inset = 1px border + 13px trigger padding = 1px border + 4px list padding + 9px option padding. */
 .pageJump .flow-select{width:62px!important;flex:none}
-.pageJump .flow-select-trigger{width:100%;min-height:32px;height:32px;padding:0 6px 0 13px;gap:4px;border:1px solid var(--line2);border-radius:7px;background:var(--soft);font-size:12px}
-.pageJump .flow-select-trigger>span{flex:1;text-align:left}
-#ko-ocrScopePick .flow-select-option,.pageJump .flow-select-option{padding-left:9px}
+.pageJump .flow-select-trigger{width:100%;min-height:32px;height:32px;padding:0 6px;gap:4px;border:1px solid var(--line2);border-radius:7px;background:var(--soft);font-size:12px}
+.editablePage .flow-select-trigger>span{visibility:hidden;flex:1}
+.editablePage .flow-select-trigger .flow-select-chevron{margin-left:auto}
+.editablePage .editablePageInput{position:absolute;inset:0;z-index:1;width:100%;height:100%;min-width:0;padding:0 20px;border:1px solid transparent;border-radius:7px;background:transparent;color:inherit;text-align:center;font:inherit;font-size:13px;font-variant-numeric:tabular-nums;appearance:textfield;-moz-appearance:textfield;pointer-events:auto;box-shadow:none}
+.editablePage .editablePageInput::-webkit-inner-spin-button,.editablePage .editablePageInput::-webkit-outer-spin-button{appearance:none;margin:0}
+.editablePage .flow-select-trigger{position:relative}
+.editablePage .flow-select-trigger:after{content:"";position:absolute;right:0;top:0;bottom:0;width:24px;z-index:3}
+#ko-ocrModal .editablePageInput:focus-visible,.pager .editablePageInput:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+#ko-ocrScopePick .editablePage .flow-select-option,.pageJump .editablePage .flow-select-option{justify-content:center;text-align:center;padding-left:0;padding-right:0}
+#ko-ocrScopePick .editablePage .flow-select-option>span,.pageJump .editablePage .flow-select-option>span{text-align:center}
 .flow-select-list{box-sizing:border-box;min-width:100%;background:var(--kp-glass-l);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur)}
 html.dark .flow-select-list{background:var(--kp-glass-d)}
 #ko-ocrScopePick .flow-select-list{max-height:224px}
-@media(pointer:coarse){#ko-ocrScopePick .flow-select-trigger,.pageJump .flow-select-trigger{height:44px;min-height:44px}}
+.keepitOcr .fRow .ocrResultSelect{flex:1;min-width:0;width:100%!important}
+.keepitOcr .fRow .ocrResultSelect>.flow-select-trigger{width:100%;min-width:0;min-height:34px;height:34px;font-size:12.5px;padding:0 10px;background:var(--soft);border-radius:9px}
+.keepitOcr .fRow .ocrResultSelect .flow-select-trigger>span{flex:1;text-align:left;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+@media(pointer:coarse){#ko-ocrScopePick .flow-select-trigger,.pageJump .flow-select-trigger,.keepitOcr .fRow .ocrResultSelect>.flow-select-trigger{height:44px;min-height:44px}}
+/* The chevron is its own real 24px button; numeric editing never lives inside a button. */
+.editablePage{height:32px;border:1px solid var(--line2);border-radius:7px;background:var(--soft)}
+.editablePage .editablePageInput{border:0;font-size:13px}
+#ko-ocrScopePick .editablePage>.flow-select-trigger,.pageJump .editablePage>.flow-select-trigger{position:absolute;inset:0 0 0 auto;width:24px;height:100%;min-height:0;padding:0 5px;border:0;background:transparent;border-radius:0 7px 7px 0;z-index:2}
+.editablePage>.flow-select-trigger>span{display:none}
+.editablePage>.flow-select-trigger:after{content:none}
+@media(pointer:coarse){.editablePage{height:44px}}
 
 /* The navigation stays in its existing place; only reuse Keepit's shared glass tokens. */
 .pager{background:var(--kp-glass-l);color:var(--kp-tx-l);-webkit-backdrop-filter:var(--kp-blur);backdrop-filter:var(--kp-blur);border:1px solid rgba(15,23,42,.08);border-radius:26px;padding:6px 8px;box-shadow:0 10px 30px rgba(15,23,42,.16)}html.dark .pager{background:var(--kp-glass-d);color:var(--kp-tx-d);border-color:rgba(255,255,255,.09);box-shadow:0 14px 36px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06)}.pager .pageMenu{border-left-color:var(--line)}.pager.simple{border-radius:26px}
@@ -1457,6 +1472,17 @@ html.dark .kpSheet .ocrFoot,html.dark .kpSheet .demoPanelFoot{background:rgba(25
 #ko-ocrScrim,#moreScrim,#demoPageScrim,#demoSheetScrim{backdrop-filter:none;-webkit-backdrop-filter:none}
 
 #ko-vOcr{display:inline-flex;align-items:center;justify-content:center;gap:5px}#ko-vOcr svg{flex:none}#ko-trPanel>header .ocrActionIcon{width:16px;height:16px;flex:none}
+/* Only portrait sheet surfaces change: Keepit's shared glass/tile/line tokens replace opaque black inner cards. */
+@media(orientation:portrait){
+.kpSheet{--demo-field:var(--kp-tile-l);--demo-field-line:var(--kp-line-l);--demo-pick:color-mix(in srgb,var(--brand) 14%,transparent)}
+html.dark .kpSheet{--demo-field:var(--kp-tile-d);--demo-field-line:var(--kp-line-d);--demo-pick:color-mix(in srgb,var(--brand) 20%,transparent)}
+.keepitOcr .kpSheet :is(.fset,.langBox,.langSearch,.editablePage,.flow-select-trigger,.ocrResultSelect>.flow-select-trigger,.regionEditor textarea),.keepitOcr .kpSheet textarea,.kpSheet .demoPanelFoot button{background:var(--demo-field);border-color:var(--demo-field-line)}
+.keepitOcr .kpSheet :is(.radios label.on,.radios label:hover,.rangeRow.on,.kpick:hover){background:var(--demo-field)}
+.keepitOcr .kpSheet .kpick.on{background:var(--demo-pick)}
+.kpSheet #ko-ocrScopePick .rangeRow.on{background:var(--demo-field)}
+.kpSheet.kpSheetOpen{will-change:translate}
+.kpDragging,.kpDragging *{user-select:none!important;-webkit-user-select:none!important}
+}
 </style></head><body><div class="viewer show" id="viewer">
 <div class="vbar" id="vBar">
 <button aria-label="Về thư viện Keepit" class="vbtn" data-doc-title="back" id="vBack" title="Về thư viện"><svg aria-hidden="true" class="i" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg><span class="viewerBrand"><img alt="" aria-hidden="true" height="26" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibWFyayIgeDE9IjAiIHkxPSIxIiB4Mj0iMSIgeTI9IjAiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0ZjQ2ZTUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI1Y2Y2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0ic2hhZG93IiB4PSItMjUlIiB5PSItMTUlIiB3aWR0aD0iMTUwJSIgaGVpZ2h0PSIxNTUlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUFscGhhIiBzdGREZXZpYXRpb249IjEuNSIvPgogICAgICA8ZmVPZmZzZXQgZHk9IjIiLz4KICAgICAgPGZlQ29tcG9uZW50VHJhbnNmZXI+PGZlRnVuY0EgdHlwZT0ibGluZWFyIiBzbG9wZT0iMC4yIi8+PC9mZUNvbXBvbmVudFRyYW5zZmVyPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9InVybCgjbWFyaykiIGZpbHRlcj0idXJsKCNzaGFkb3cpIiByeD0iOCIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyIDApIHNjYWxlKC0xIDEpIj4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNC4xODcgLTIuMzkzKSBzY2FsZSgwLjI5OTA2NSkiPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTSAzNSAzMiBDIDM0IDMyIDMzLjUgMzQgMzMuMiAzNyBDIDMxLjMgNTEgMzQuMyA2NSA0MiA3NCBDIDQ4LjUgODEuNSA1NyA4NC42IDY3IDg0LjUgQyA3Ny41IDg0LjQgODQuMiA4MC4zIDg5LjcgNzMuNCBDIDkyLjUgNzcuMyA5NC4zIDgxLjUgOTUuNCA4Ni44IEMgOTUuOSA4OS42IDk3LjggOTAuOSA5OS45IDkwLjIgQyAxMDIuMSA4OS41IDEwMi45IDg3LjUgMTAxLjggODQuNyBDIDk4LjYgNzUuOSA5My4zIDY5LjQgODUuNCA2NS4xIEMgNzkuNyA2MiA3Mi45IDYxLjEgNjYuMSA1OS42IEMgNTguOSA1OCA1My4xIDU0LjkgNTEuNiA0OS40IEMgNTUuMyA1Mi44IDYwLjIgNTQuOCA2Ny41IDU1LjggQyA3OC43IDU3LjMgODcuNyA1OC4zIDk0LjcgNjUgQyA5Ny4zIDU0LjEgOTIgNDQuNSA4Mi41IDM5LjkgQyA3NS40IDM2LjQgNjggMzYuOCA1OS43IDM3LjYgQyA0OC42IDM4LjggNDEuOSAzOC42IDM2LjUgMzIuOCBDIDM2IDMyLjMgMzUuNSAzMiAzNSAzMiBaIi8+CiAgPC9nPgogIDwvZz4KPC9zdmc+Cg==" width="26"/><span>Keepit</span></span></button>
@@ -1563,7 +1589,7 @@ html.dark .kpSheet .ocrFoot,html.dark .kpSheet .demoPanelFoot{background:rgba(25
 <header class="ocrHead">
 <span class="ocrIco"><span aria-hidden="true" class="logoDot"><svg aria-hidden="true" height="22" viewbox="0 0 32 32" width="22"><defs><lineargradient id="ko-kpDlg" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#4f46e5"></stop><stop offset="1" stop-color="#8b5cf6"></stop></lineargradient></defs><rect fill="url(#ko-kpDlg)" height="32" rx="8" width="32"></rect><g transform="translate(32 0) scale(-1 1)"><g transform="translate(-4.187 -2.393) scale(0.299065)"><path d="M 35 32 C 34 32 33.5 34 33.2 37 C 31.3 51 34.3 65 42 74 C 48.5 81.5 57 84.6 67 84.5 C 77.5 84.4 84.2 80.3 89.7 73.4 C 92.5 77.3 94.3 81.5 95.4 86.8 C 95.9 89.6 97.8 90.9 99.9 90.2 C 102.1 89.5 102.9 87.5 101.8 84.7 C 98.6 75.9 93.3 69.4 85.4 65.1 C 79.7 62 72.9 61.1 66.1 59.6 C 58.9 58 53.1 54.9 51.6 49.4 C 55.3 52.8 60.2 54.8 67.5 55.8 C 78.7 57.3 87.7 58.3 94.7 65 C 97.3 54.1 92 44.5 82.5 39.9 C 75.4 36.4 68 36.8 59.7 37.6 C 48.6 38.8 41.9 38.6 36.5 32.8 C 36 32.3 35.5 32 35 32 Z" fill="#fff"></path></g></g></svg></span></span>
 <div class="tt"><b id="ko-ocrTitle">Nhận dạng chữ (OCR)</b><small id="ko-ocrSub">Tài liệu mẫu.pdf · 16 trang · chỉ thử giao diện</small></div>
-<span class="ver" id="ko-ocrVer">DEMO V6</span>
+<span class="ver" id="ko-ocrVer">DEMO V7</span>
 <button aria-label="Đóng" class="vbtn" id="ko-ocrClose">✕</button>
 </header>
 <div class="ocrBody" id="ko-ocrBody">
@@ -2037,7 +2063,7 @@ for(const entry of sheetEntries){
  const nested=entry.el.closest('#viewer'),host=entry.el.parentElement.classList.contains('keepitOcr')?entry.el.parentElement:entry.el;
  const home=nested?document.createComment('Keepit sheet home '+entry.el.id):null;if(home)host.before(home);
  const portal=()=>{if(home){if(portrait())document.body.append(host);else home.after(host);}};portal();addEventListener('resize',portal);
- LHN_SHEET.attach(entry.el,{isOpen:entry.open,close:entry.close,watch:entry.watch||entry.el});
+ LHN_SHEET.attach(entry.el,{isOpen:entry.open,close:entry.close,watch:entry.watch||entry.el,onDrag:on=>entry.el.classList.toggle('kpDragging',on)});
  const paint=()=>{const on=entry.open();if(entry.el.classList.contains('kpSheetOpen')!==on)entry.el.classList.toggle('kpSheetOpen',on);entry.el.setAttribute('aria-hidden',String(!on&&portrait()));};
  new MutationObserver(paint).observe(entry.watch||entry.el,{attributes:true,attributeFilter:['class','hidden']});
  addEventListener('resize',paint);paint();
@@ -2053,45 +2079,69 @@ for(const [name,isOpen] of [
 
 function updateSheetScrim(){id('demoSheetScrim').hidden=!portrait()||!(id('viewer').classList.contains('transOpen')||id('ko-trPanel').classList.contains('open')||id('ko-ocrProg').classList.contains('show')||!id('ko-regionEditor').hidden);}
 id('demoSheetScrim').onclick=()=>sheetEntries.find(e=>e.open())?.close();
-// Mouse support for trying the same sheets inside the desktop device preview.
-// Text editors keep selection/caret behavior; a scrolled list consumes the gesture before sheet dismissal.
+// Mouse preview adapter: same threshold and release lifecycle as LHN_SHEET; keep the offscreen pose until the close class is painted.
 let mouseSheet=null,suppressSheetClickUntil=0;
 document.addEventListener('pointerdown',e=>{
  if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('textarea,select,input:not([type=checkbox]):not([type=radio]),[contenteditable=true]'))return;
  const path=e.composedPath(),entry=sheetEntries.find(s=>s.open()&&path.includes(s.el));if(!entry)return;
- const chain=path.slice(0,path.indexOf(entry.el)+1).filter(n=>n instanceof Element);
- const scrollers=chain.filter(n=>n.scrollHeight>n.clientHeight+1&&/auto|scroll/.test(getComputedStyle(n).overflowY));
- mouseSheet={entry,id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),dy:0,mode:null,scrollers};
+ const chain=path.slice(0,path.indexOf(entry.el)+1).filter(n=>n instanceof Element),scrollers=chain.filter(n=>n.scrollHeight>n.clientHeight+1&&/auto|scroll/.test(getComputedStyle(n).overflowY));
+ mouseSheet={entry,id:e.pointerId,x:e.clientX,y:e.clientY,dy:0,mode:null,scrollers,samples:[],k:1/(entry.el.currentCSSZoom||1)};
 },true);
+function mousePose(g){g.raf=0;if(g.mode==='drag')g.entry.el.style.setProperty('translate','0 '+Math.max(0,g.dy)+'px','important');}
 document.addEventListener('pointermove',e=>{
- const g=mouseSheet;if(!g||g.id!==e.pointerId)return;const dx=e.clientX-g.x,dy=e.clientY-g.y;
- if(!g.mode){if(Math.hypot(dx,dy)<6)return;if(Math.abs(dx)>Math.abs(dy)){mouseSheet=null;return;}
-  const sc=g.scrollers.find(s=>dy>0?s.scrollTop>0:s.scrollTop+s.clientHeight<s.scrollHeight-1);
-  g.mode=sc?'scroll':dy>0?'drag':'block';g.sc=sc;g.top=sc?.scrollTop||0;
-  g.entry.el.setPointerCapture(e.pointerId);if(g.mode==='drag')g.entry.el.style.setProperty('transition','none','important');
+ const g=mouseSheet;if(!g||g.id!==e.pointerId)return;const dx=e.clientX-g.x,raw=e.clientY-g.y;
+ if(!g.mode){if(Math.hypot(dx,raw)<6)return;if(Math.abs(dx)>Math.abs(raw)){mouseSheet=null;return;}
+  const sc=g.scrollers.find(s=>raw>0?s.scrollTop>0:s.scrollTop+s.clientHeight<s.scrollHeight-1);g.mode=sc?'scroll':raw>0?'drag':'block';g.sc=sc;g.top=sc?.scrollTop||0;g.y0=e.clientY;
+  if(e.isTrusted)g.entry.el.setPointerCapture(e.pointerId);
+  if(g.mode==='drag'){g.entry.el.classList.add('kpDragging');g.entry.el.style.setProperty('transition','none','important');}
  }
- e.preventDefault();g.dy=dy;if(g.mode==='scroll')g.sc.scrollTop=g.top-dy;
- if(g.mode==='drag')g.entry.el.style.setProperty('translate','0 '+Math.max(0,dy)+'px','important');
-}, {capture:true,passive:false});
-function endMouseSheet(e){const g=mouseSheet;if(!g||e.pointerId!==g.id)return;mouseSheet=null;if(!g.mode)return;
- suppressSheetClickUntil=Date.now()+300;const el=g.entry.el;if(el.hasPointerCapture(e.pointerId))el.releasePointerCapture(e.pointerId);
- if(g.mode!=='drag')return;const distance=Math.max(0,g.dy),h=el.getBoundingClientRect().height,v=distance/Math.max(1,performance.now()-g.t),close=e.type==='pointerup'&&(distance>Math.min(110,h*.3)||(distance>30&&v>.6));
- el.style.setProperty('transition','translate .18s ease','important');el.style.setProperty('translate',close?'0 '+(h+40)+'px':'0 0','important');
- setTimeout(()=>{if(close)g.entry.close();el.style.removeProperty('transition');el.style.removeProperty('translate');},180);
+ e.preventDefault();g.dy=(e.clientY-g.y0)*g.k;g.samples.push({t:performance.now(),y:g.dy});g.samples=g.samples.filter(p=>performance.now()-p.t<100);
+ if(g.mode==='scroll')g.sc.scrollTop=g.top-raw;if(g.mode==='drag'&&!g.raf)g.raf=requestAnimationFrame(()=>mousePose(g));
+},{capture:true,passive:false});
+function endMouseSheet(e){
+ const g=mouseSheet;if(!g||e.pointerId!==g.id)return;mouseSheet=null;if(!g.mode)return;if(g.raf)cancelAnimationFrame(g.raf);mousePose(g);
+ suppressSheetClickUntil=Date.now()+300;const el=g.entry.el;if(el.hasPointerCapture(e.pointerId))el.releasePointerCapture(e.pointerId);if(g.mode!=='drag')return;
+ const distance=Math.max(0,g.dy),h=el.getBoundingClientRect().height*g.k,a=g.samples[0],b=g.samples.at(-1),v=a&&b&&b.t>a.t?(b.y-a.y)/(b.t-a.t):0,close=e.type==='pointerup'&&(distance>Math.min(110,h*.3)||(distance>24&&v>.6));
+ el.style.setProperty('transition',close?'translate .18s ease-in':'translate .2s ease','important');el.style.setProperty('translate',close?'0 '+(h+40)+'px':'0 0','important');
+ setTimeout(()=>{
+  if(close){el.style.setProperty('transition','none','important');g.entry.close();}
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.removeProperty('translate');el.style.removeProperty('transition');el.classList.remove('kpDragging');}));
+ },close?180:220);
 }
 document.addEventListener('pointerup',endMouseSheet,true);document.addEventListener('pointercancel',endMouseSheet,true);
 document.addEventListener('click',e=>{if(Date.now()<suppressSheetClickUntil){e.preventDefault();e.stopImmediatePropagation();}},true);
-// Unmodified LHN_ICONS.createFlowSelect from Keepit Documents is embedded above.
-// Page values retain real <select> models. This adapter only synchronizes disabled/selected state.
-function syncPageSelects(){for(const name of ['ko-from','ko-to']){const component=pageSelects.get(name);if(component){component.element.querySelector('.flow-select-trigger').disabled=id(name).disabled;if(id(name).disabled)component.close();}}}
+
+// Keep real select models and the unmodified Keepit list renderer; add only a numeric editing face.
+function makePagePicker(select){
+ const native=LHN_ICONS.createFlowSelect(select,select.id==='pNum'?'up':'down',false),wrap=native.element;
+ wrap.classList.add('editablePage');
+ const field=document.createElement('input');field.type='number';field.inputMode='numeric';field.min='1';field.max='16';field.step='1';field.id=select.id+'Input';field.className='editablePageInput';field.setAttribute('aria-label',select.getAttribute('aria-label'));field.setAttribute('role','combobox');field.setAttribute('aria-haspopup','listbox');field.setAttribute('aria-controls',select.id+'-options');field.autocomplete='off';wrap.append(field);
+ const button=wrap.querySelector('.flow-select-trigger');button.setAttribute('role','button');
+ const sync=()=>{field.value=select.value;field.disabled=select.disabled;button.disabled=select.disabled;field.removeAttribute('aria-invalid');};
+ const component=Object.freeze({element:wrap,close:native.close,refresh(){native.refresh();sync();}});
+ const commit=normalize=>{
+  const raw=field.value.trim(),value=Number(raw);
+  if(!raw||!Number.isInteger(value)||value<1||value>16){if(!normalize){field.setAttribute('aria-invalid','true');return;}field.value=raw&&Number.isFinite(value)?String(Math.max(1,Math.min(16,Math.round(value)))):select.value;}
+  const next=String(Number(field.value));if(next!==select.value){select.value=next;select.dispatchEvent(new Event('input',{bubbles:true}));select.dispatchEvent(new Event('change',{bubbles:true}));}else sync();
+ };
+ field.addEventListener('input',()=>commit(false));field.addEventListener('blur',()=>commit(true));
+ field.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();commit(true);native.close();}if(e.key==='Escape')sync();});
+ select.addEventListener('change',sync);
+ new MutationObserver(()=>field.setAttribute('aria-expanded',button.getAttribute('aria-expanded'))).observe(button,{attributes:true,attributeFilter:['aria-expanded']});
+ sync();field.setAttribute('aria-expanded','false');return component;
+}
+function syncPageSelects(){for(const name of ['ko-from','ko-to']){const c=pageSelects.get(name);if(c){c.element.querySelector('.flow-select-trigger').disabled=id(name).disabled;c.element.querySelector('.editablePageInput').disabled=id(name).disabled;if(id(name).disabled)c.close();}}}
 for(const name of ['ko-from','ko-to','pNum']){
- const select=id(name),component=LHN_ICONS.createFlowSelect(select,name==='pNum'?'up':'down',false);pageSelects.set(name,component);
+ const select=id(name),component=makePagePicker(select);pageSelects.set(name,component);
  select.addEventListener('change',()=>{
   if(name==='ko-from'&&+select.value>+id('ko-to').value){id('ko-to').value=select.value;pageSelects.get('ko-to').refresh();}
   if(name==='ko-to'&&+select.value<+id('ko-from').value){id('ko-from').value=select.value;pageSelects.get('ko-from').refresh();}
   syncForm();syncPageSelects();
  });
 }
+// Output and detection-resolution fields use exactly the same native list component, without numeric editing.
+for(const name of ['ko-ocrOutput','ko-ocrRes']){const select=id(name);select.setAttribute('aria-label',document.querySelector('label[for="'+name+'"]').textContent.trim());const c=LHN_ICONS.createFlowSelect(select,'down',false);c.element.classList.add('ocrResultSelect');pageSelects.set(name,c);}
+
 // The Documents flow and zoom selectors use this same shared native list, as in the app.
 for(const name of ['vFlow','vZoom'])LHN_ICONS.createFlowSelect(id(name),'up',name==='vFlow');
 // Close an open list before the containing sheet; keep other lists mutually exclusive.
