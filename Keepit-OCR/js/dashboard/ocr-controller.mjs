@@ -215,7 +215,7 @@ $('applyRegion').onclick=()=>{
 
 const rawRegionRun=$('ocrRegion').onclick;
 $('ocrRegion').onclick=()=>{completion=Promise.resolve(rawRegionRun());return completion;};
-/* ---------- Thông báo "chưa có lớp chữ": thu gọn thành nút đèn như Foxit ---------- */
+/* ---------- Document hints and OCR suggestion share the native notice/bulb. ---------- */
 const NOTICE_KEY = 'keepit.ocrNoticeOff:';     // mỗi tệp một khoá riêng
 let noticeFileKey = '', noticeCollapsed = false, noticeForcedOpen = false, noticeWasExpanded = false;
 
@@ -241,8 +241,16 @@ function refreshNotice(needsOcr){
   const banner = $('vBanner'), bulb = $('vBulb');
   if (!banner || !bulb) return;
   if (needsOcr !== undefined) noticeNeeds = !!needsOcr;
-  const needs = !!noticeNeeds;
-  /* đang nhận dạng / đã có lớp chữ / vùng xem hẹp / đã tự thu → không bung popup */
+  const active = !!selectedFile && host.state().document?.id === selectedFile.id;
+  const hintKey = active ? (fileKind === 'image' ? 'imageHint' : ['docx','pptx'].includes(fileKind) ? 'officeHint' : '') : '';
+  const hint = $('fileHint');
+  hint.hidden = !hintKey;
+  if (hintKey) { hint.dataset.docLabel = hintKey; const text = LHN_LANGUAGES.t('docs_'+hintKey,{},document.documentElement.lang||'en'); if(hint.textContent!==text)hint.textContent=text; }
+  else { delete hint.dataset.docLabel; if(hint.textContent)hint.textContent=''; }
+  $('bannerText').hidden = !noticeNeeds;
+  $('bannerAct').hidden = !noticeNeeds;
+  const needs = active && (!!noticeNeeds || !!hintKey);
+  /* Covered surfaces, narrow viewers and user preferences keep the same notice behavior. */
   const covered=modal.classList.contains('show')||!document.getElementById('vMorePanel').hidden||!document.getElementById('docsPagesSheet').hidden||(matchMedia('(orientation:portrait)').matches&&($('trPanel').classList.contains('open')||!$('regionEditor').hidden));
   const expanded = needs && !covered && !noticeCollapsed && (noticeForcedOpen || (!noAskOn()&&!noticeNarrow()));
   if (expanded && !noticeWasExpanded) pickNoticeTheme();   // mỗi lần hiện là một trong 2 màu
@@ -259,18 +267,18 @@ function holdNotice(hold){
 }
 function collapseNotice(){
   noticeCollapsed = true; noticeForcedOpen = false;
-  refreshNotice(true);
+  refreshNotice();
 }
 /* bấm nút đèn: LUÔN mở popup, kể cả tệp này đã tick “Không hiện lại” */
 function expandNotice(){
   noticeForcedOpen = true; noticeCollapsed = false;
-  refreshNotice(true);
+  refreshNotice();
 }
 function setNoAsk(on){
   try { on ? localStorage.setItem(noAskKey(), '1') : localStorage.removeItem(noAskKey()); } catch {}
   noticeForcedOpen = false;
   if (on) noticeCollapsed = true;
-  refreshNotice(true);
+  refreshNotice();
 }
 /* mở tệp khác: trạng thái thông báo tính lại theo tệp đó */
 function setNoticeFileKey(f){

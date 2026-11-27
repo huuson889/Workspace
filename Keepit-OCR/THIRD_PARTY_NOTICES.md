@@ -62,3 +62,5 @@ Filled file-kind labels (3.5.623) use the approved first-party demo v5 SVGs; no 
 File-label placement correction (3.5.624) reuses the same approved glyphs; no third-party asset, dependency, model, runtime or license changes.
 
 Native-selection correction (3.5.625) changes first-party OCR overlay hit-testing only; no dependency, runtime, model, asset or license changes.
+
+Document hint placement (3.5.626) reuses the first-party shared suggestion popup/bulb; no dependency, model, runtime, asset or license changes.

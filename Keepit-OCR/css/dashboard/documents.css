@@ -384,8 +384,7 @@ html.dark .sheet button.on{background:#25264a;color:#c0c2ff}
 .pdfAccessModal #errChoose.btnG{height:38px}
 .pdfAccessModal #errOk.btnP{min-width:104px;height:38px;justify-content:center}
 /* ---------- viewer interactions ---------- */
-.vbanner{display:none;align-items:center;gap:8px;padding:9px 16px;background:var(--orangeSoft);color:var(--orange);font-size:13px;font-weight:600;border-bottom:1px solid var(--line);flex:none}
-.vbanner.show{display:flex}
+
 .para .en{display:inline}
 .shim{display:inline-block;width:70%;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--line) 0%,var(--surface) 50%,var(--line) 100%);background-size:200% 100%;animation:shim 1s linear infinite;color:transparent;vertical-align:middle}
 @keyframes shim{to{background-position:-200% 0}}

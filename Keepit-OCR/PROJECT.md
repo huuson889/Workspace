@@ -1,15 +1,15 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.625**: sửa lỗi chọn chữ Word/PPT do OCR overlay trống chặn pointer trên chữ gốc. Đoạn lỗi đã có trong nguồn OCR614 lưu trữ, vẫn ở624; không phải thay icon623/624. Chưa runtime-bisect mọi bản cũ.
-- `paint()` phân loại nativeText trước cache/return không-result; CSS cho overlay trống/native nhường hit-test, chỉ lớp OCR có spans và không-native bắt pointer. Không bỏ overlay và không vô hiệu chữ OCR scan.
-- Giữ UI/labels624, OCR engine/model/scan/region/store/export/navigation. Lần này kiểm thao tác kéo thật, không coi mở/render/Range lập trình là chứng nhận chọn chữ.
-- HTTP shim: tái hiện Word/PPT trước sửa hit div.layer/selection rỗng; sau sửa chuột thật chọn chữ có toolbar native. 48 nhóm hit-test native ở3 loại ×4 sizes ×sáng/tối ×2 trang; OCR scan thực kiểm riêng. QA `/home/user/qa-keepit-625`.
-- **Giới hạn:** chưa unpacked/ảnh extension625/pixel/crop4×/CSP/permission/thiết bị thật; HTTP không thay nghiệm thu. Office ảnh quét/không có text gốc vẫn cần OCR; không cam kết mọi tệp Office/phông phức tạp.
+- **Bản test 3.5.626**: người dùng xác nhận625, yêu cầu bỏ thanh vàng cố định trong viewer và chuyển nội dung vào popup Gợi ý. Bỏ hẳn vBanner cũ/logic/CSS; Office và ảnh dùng notice/bulb native sẵn có.
+- Popup ghép hint loại tệp với gợi ý OCR theo trang; Office có chữ không bị nói sai “chưa có lớp chữ” và không có CTA OCR trong gợi ý. Trang scan vẫn giữ CTA/both-open. Tên Gợi ý/title bóng đèn có en/vi/ko.
+- Giữ palette tím/vàng semantic, noAsk theo tệp, hẹn10giây/hold, nút đèn mở lại, narrow/covered/reset; không sửa engine/model/storage schema, labels624, hit-test625 hay renderer/navigation.
+- HTTP shim:71 nhóm notice trên DOCX/PPTX/ảnh/PDF native/PDF scan ×3 kích thước ×sáng-tối + i18n/lifecycle; Word/PPT kéo chọn thật vẫn có chữ. QA `/home/user/qa-keepit-626`.
+- **Giới hạn:** chưa unpacked/ảnh extension626/pixel/crop4×/CSP/permission/thiết bị thật; HTTP không thay nghiệm thu. Không chạy nhận dạng engine lại vì chỉ đổi trình bày thông báo.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.625: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.626: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
 - Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
@@ -106,6 +106,7 @@ Có 6 entry `content_scripts`: base `document_start`/`all_frames` nạp browser 
 - Blob/metadata/progress ở `keepit-documents`. Notes/Flashcards mới ở annotations chung; legacy v314 migration giữ nội dung/ngày/anchor, idempotent và không tái tạo note đã xóa. JSON backup có Notes nhưng không blob; import rewrite đúng owned extension origin.
 - `LHN_SELECTION_TOOLBAR.installTouchSelectionBridge` là bridge touch duy nhất. `LHN_SIDEBAR.attachTouchSheet` dùng chung setup grow/scroll/drag. `js/ask-ai/sheet.js` là AI sheet đã chuyển nguyên component từ web bar, dùng cho web và Documents; parent Dashboard chuyển message top-frame cho source active.
 - `LHN_READER_API` chỉ facade của Reader gốc: không queue/UI khác; host cung cấp chữ tệp/chuyển trang/vị trí native card, pager nhường khi bar mở. AI dùng native panel/sheet và Send policy hiện có, không upload/read toàn bộ file tự động.
+- Gợi ý theo tệp/trang: OCR controller gộp officeHint/imageHint vào notice/bulb chung, không còn vBanner strip trong viewer. CTA/body OCR chỉ hiện khi needsOcr; hint/reset có gate selectedFile đúng ID.
 - Nhãn loại tệp Documents dùng `fileLabel(type)` → `LHN_ICONS.render(file-kind-*)`; bốn glyph option3 demo v5 dùng chung cho thư viện/viewer/import, token màu scoped trong documents.css. Viewer gọi `fileLabel(type,true)` chỉ hiện icon với aria-label/title; supported types giữ pills chữ622.
 - Documents main sheet đặt Dịch/Đọc to ở footer cố định cạnh Cài đặt qua `LHN_DOCUMENTS_MAIN_ACTIONS`; callbacks chia sẻ handler với viewer topbar. Điều khiển Ẩn/Hiện thanh không hiện riêng ở sheet này. OCR là tile trong lưới Công cụ, dùng facade `ocr/ocrAvailable/ocrLabel/ocrOn` gọi nút native; chỉ có khi viewer đang mở. Sáu glyph `tool-*` chia sẻ từ `LHN_ICONS` với toolbar.
 - Renderer/vendored licences/giới hạn v314 giữ nguyên; details ở `docs/documents.md` và trang module tương ứng.
@@ -169,6 +170,12 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.626 | Arena sửa:**
+
+- Tóm tắt: theo ảnh40, bỏ thanh vàng cố định vBanner ở Word/PPT/ảnh (DOM, CSS và applyTools), chuyển đúng officeHint/imageHint vào popup notice native. Đổi tên popup/bulb thành Gợi ý với en/vi/ko, thêm fileHint bên cạnh body OCR; chỉ hiện OCR body/action khi thật sự thiếu chữ. Giữ lifecycle/timer/noAsk/semantic glass/mở lại bằng đèn. Các nút collapse/expand/noAsk refresh trạng thái hiện tại thay ép needsOcr=true; gate selectedFile/document ID không rò hint khi đóng/đổi tệp. Không đổi glyphs/engine/store/navigation/OCR hit-test625.
+- File: `pages/documents.html`, `css/dashboard/documents.css`, `js/dashboard/documents.js`, `ocr-controller.mjs`, `js/core/languages.js`, manifest và tài liệu; ZIP riêng đúng thư mục, giữ ZIP cũ.
+- Kiểm tra: HTTP app thật + shim:71 nhóm notice trên DOCX/PPTX2 trang/slide, PNG, native PDF và scan PDF;1512×900/673×696/390×844 ×sáng-tối. Không còn DOM/thanh vàng/khoảng trống; đúng nội dung Office/ảnh/OCR, popup absolute không đẩy trang, bật/tắt body/CTA đúng, bounds/palette/close/bulb/noAsk/force-open và reset library; i18n3 ngôn ngữ; timeout10giây thực (đợi11s) và OCRboth-open/covered. Chuột thật kéo Word “Keepit file-label chec” và PPT “Keepit file” sau đổi; overlay native vẫn pointer-none. Syntax3 file, diff, vendor220 hash và tools10/10 kiểm lại; console.error/pageerror rỗng. Chưa unpacked/ảnh extension626/pixel/crop4×/CSP/permission/device/tệp người dùng; ảnh40 là625, không coi là nghiệm thu626; không chạy nhận dạng lại.
 
 **2026-11-26 | v3.5.625 | Arena sửa:**
 
@@ -342,9 +349,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: mở ảnh mặc định Vừa rộng, giữ Vừa ảnh riêng với cách giới hạn theo chiều cao và kích thước ảnh cũ; hỗ trợ các mức zoom đến 6400% cho ảnh, DOCX, PPTX như PDF, nút + không nhảy nhỏ khi từ Vừa rộng. Dùng nhãn vi/en/ko đã có; không đổi khởi tạo Vừa rộng của định dạng tài liệu khác.
 - File: `js/dashboard/documents.js`, `pages/documents.html`, `manifest.json`, `PROJECT.md`.
 - Kiểm tra: Chromium unpacked 1512/390 sáng/tối và ảnh chi tiết phóng 4×; ảnh người dùng, PNG dọc 120×400, DOCX/PPTX mẫu, PDF scan thật; Vừa rộng/Vừa ảnh, +, 6400%, về Vừa rộng; chọn chuột text Office, PDF zoom/cuộn; nhãn vi/en/ko; console/pageerror rỗng. Chưa kiểm Windows/profile thật, Android/Firefox, Office phức tạp và hiệu năng ảnh/tài liệu lớn ở zoom tối đa. Phóng ảnh không tăng chi tiết gốc; zoom lớn có thể chậm.
-
-**2026-11-17 | v3.5.595 | Arena:**
-
-- Tóm tắt: zoom PDF tối thiểu tới 6400%, mức trần tự tăng nếu Vừa rộng lớn hơn; nút + tăng từ mức thực và bước tăng theo tỉ lệ ở mức lớn; thêm các mức zoom PDF trong danh sách. Giữ canvas nền giới hạn và vẽ canvas chi tiết riêng cho phần đang nhìn khi phóng vượt độ phân giải nền, cập nhật khi cuộn/zoom; không thay text layer.
-- File: `js/dashboard/documents.js`, `js/dashboard/documents-renderers.js`, `pages/documents.html`, `manifest.json`, `PROJECT.md`.
-- Kiểm tra: Chromium unpacked headless 1512/390 sáng/tối và ảnh chi tiết phóng 4×; PDF scan người dùng: Vừa rộng 760px → nút + 835px (1512), 6400% 3686px, vẽ vùng thấy, cuộn và về Vừa rộng; PDF hai trang có text và PDF lớp chữ người dùng chọn chuột, text còn sau 6400%; console/pageerror rỗng. Chưa kiểm Windows/profile thật, Android/Firefox, hiệu năng PDF nhiều trang nặng và màn hình DPR cao.
