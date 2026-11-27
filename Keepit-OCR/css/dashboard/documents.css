@@ -89,7 +89,7 @@ html.dark .cEyebrow{color:#f08bab}
 html.dark .dzIcon{background:#25264a}
 .dz b{display:block;font-size:14.5px}
 .dz small{color:var(--muted);font-size:12.5px}
-.types{display:flex;align-items:center;gap:6px;margin-left:auto}
+.types{display:flex;gap:6px;margin-left:auto}
 .dzNote{width:250px;flex:none;color:var(--muted);font-size:12.5px;display:flex;gap:8px;align-items:flex-start}
 .dzNote svg{color:var(--green);margin-top:1px}
 /* ---------- library ---------- */

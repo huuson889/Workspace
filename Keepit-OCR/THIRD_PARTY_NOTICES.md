@@ -58,3 +58,5 @@ Pager field correction (3.5.621) changes first-party CSS only; no third-party ru
 Tools-sheet OCR entry and shared toolbar glyphs (3.5.622) reuse existing first-party UI and existing glyph geometry; no new third-party dependency, model, runtime or license.
 
 Filled file-kind labels (3.5.623) use the approved first-party demo v5 SVGs; no third-party dependency, asset, model, runtime or license changes.
+
+File-label placement correction (3.5.624) reuses the same approved glyphs; no third-party asset, dependency, model, runtime or license changes.
