@@ -15,7 +15,8 @@ Keepit includes or adapts the components below. Each component remains subject t
 
 | PDF.js | `pdfjs-dist` 5.6.205; [mozilla/pdf.js](https://github.com/mozilla/pdf.js) | Local PDF renderer, worker, CMaps, standard fonts and image decoders in `vendor/pdfjs/` | Apache-2.0; font/decoder subcomponent licences retained | [`licenses/LICENSE-pdfjs.txt`](licenses/LICENSE-pdfjs.txt); additional notices in `vendor/pdfjs/cmaps`, `standard_fonts`, `wasm` |
 | docx-preview | 0.4.1; [VolodymyrBaydalka/docxjs](https://github.com/VolodymyrBaydalka/docxjs) | Read-only local DOCX layout in `vendor/office/office.mjs` | Apache-2.0 | [`licenses/LICENSE-docx-preview.txt`](licenses/LICENSE-docx-preview.txt) |
-| pptx-to-html | `@jvmr/pptx-to-html` 1.1.2; [javier-mora/pptx-to-html](https://github.com/javier-mora/pptx-to-html) | Local PPTX pages, shapes/images/tables/charts; Office bundle | MIT | [`licenses/LICENSE-pptx-to-html.txt`](licenses/LICENSE-pptx-to-html.txt) |
+| pptx-to-html | `@jvmr/pptx-to-html` 1.1.2; [javier-mora/pptx-to-html](https://github.com/javier-mora/pptx-to-html) | Retained in the Office bundle; the PPTX rendering path uses first-party OOXML/SVG code from 3.5.630 | MIT | [`licenses/LICENSE-pptx-to-html.txt`](licenses/LICENSE-pptx-to-html.txt) |
+| Pangolin Regular | Google Fonts Pangolin project; full TTF packaged locally | `assets/fonts/Pangolin-Regular.ttf`, scoped KeepitPangolin face for direct PPTX text; does not decode compressed Office font embeddings | SIL Open Font License 1.1 | [`licenses/LICENSE-pangolin.txt`](licenses/LICENSE-pangolin.txt) |
 | JSZip | 3.10.1; [Stuk/jszip](https://github.com/Stuk/jszip) | Local OOXML ZIP reading in the Office bundle | MIT option | [`licenses/LICENSE-jszip.txt`](licenses/LICENSE-jszip.txt) |
 | DOMPurify | 3.4.18; [cure53/DOMPurify](https://github.com/cure53/DOMPurify) | Sanitises rendered Office markup before attachment | Apache-2.0 option | [`licenses/LICENSE-dompurify.txt`](licenses/LICENSE-dompurify.txt) |
 
@@ -70,3 +71,5 @@ Office suggestion action correction (3.5.627) reuses existing first-party contro
 Higher-resolution document previews (3.5.628) reuse the existing local PDF/Office/image renderers; no added libraries, models, assets, network services or license changes.
 
 PDF selection-anchor correction (3.5.629) uses first-party DOM Range geometry and the existing shared toolbar; no dependency, model, asset or license changes.
+
+Direct Office reading (3.5.630) adds a first-party OOXML/SVG renderer and the Pangolin font above. It reuses the existing JSZip/docx-preview/DOMPurify bundle; no server-side Office converter or runtime network dependency is added.

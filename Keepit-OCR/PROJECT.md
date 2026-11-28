@@ -1,17 +1,17 @@
 # Keepit - Hồ sơ dự án
 
 ## 1. Trạng thái hiện tại
-- **Bản test 3.5.629**: người dùng xác nhận thumbnail628 ổn, gửi ảnh43 và PDF1 trang trích thật để sửa vị trí floating selection tools. Lỗi xác định: Range có thể gồm cả filler/parent padding PDF, cuối dòng thực right759.71 nhưng toolbar neo1317.94 (lệch558.23px).
-- Thêm optional owned-context selectionRects: Documents Original PDF đo từng phần text node .pdfTextLayer .en thực giao với Range, bỏ filler/aria-hidden/empty. Content positionTranslateIcon dùng hook, không có hook/null giữ raw Range cũ. Không đổi selection/endpoints/guards, toolbar design/actions, paging/scroll/layout, glyphs/thumbnail628/OCR627/store.
-- HTTP trên đúng PDF upload: before/after parent vs text boundaries; sau sửa cả2 neo759.703 (sai số<.01px so end759.711).95 nhóm responsive/zoom/theme/boundaries/nested/styles/scroll/bottom/fallback đều sạch; chuột thật chọn PDF/Word/PPT. QA `/home/user/qa-keepit-629`.
-- **Giới hạn:** HTTP app+shim không phải unpacked629/ảnh extension/pixel/crop4×/CSP/permission/touchdevice. Ảnh43 là628, không coi là ảnh nghiệm thu629. PDF trích1 trang thật đã kiểm; chưa có full78 trang/profile/browser người dùng. Không đổi vị trí hoặc hành vi thanh pager phía dưới.
+- **Bản test 3.5.630:** đọc DOCX/PPTX trực tiếp trong extension, không backend chuyển PDF/LibreOffice. PDF/ảnh/OCR và UI/controller hiện tại giữ nguyên.
+- PPTX thay nhánh pptx-to-html bằng module first-party XML→SVG/chữ chọn được: custom paths/group, một số preset, raster images, layout/master/theme, notes. Metadata đủ slide; dựng hình lazy. DOCX giữ docx-preview, thêm chờ ảnh/phông và ZIP/XML guard. Đóng gói Pangolin OFL cục bộ.
+- QA32 nhóm HTTP+API/protocol shim trên mã app: dựng đủ92 slide thật; DOCX2 trang/bảng, PPTX khác/ảnh/ellipse, PDF regression, guard và original/read/paging/theme/width; chuột thật chọn chữ DOCX/PPTX, có launcher Keepit. Xem `/home/user/qa-keepit-630`.
+- **Giới hạn:** chưa unpacked630/ảnh extension/pixel/crop4×/CSP/permission/thiết bị; không chứng nhận fidelity mọi Office hoặc gọi dịch/TTS/AI/notes persistence. Office thumbnails vẫn text approximation; anchor PPTX cũ cần kiểm lại. Giữ guard không suy nghiệm thu từ HTTP.
 
 ## 2. Việc đang mở / Tiếp theo (sửa đè)
 ### OCR — chặn nghiệm thu
-- Cần người dùng thử bản 3.5.629: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
+- Cần người dùng thử bản 3.5.630: sidebar/popup, cuộn OCR và scan/khung trên PDF gây lỗi trong extension thật; HTTP đã đo nhưng chưa có nghiệm thu bằng ảnh/video extension.
 - Cần môi trường unpacked thật để kiểm CSP/worker/model/permission; Chrome công cụ hiện chặn chrome://extensions.
 - Cần PNG 1512/390 sáng/tối, crop 4× và so pixel/trạng thái với demo; mới có DOM/số đo HTTP.
-- Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors, dịch/TTS/AI và Office phức tạp. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
+- Kiểm profile/thiết bị/tệp thực, PDF xoay/mật khẩu/lớn/hỏng, clipboard, note anchors cũ/mới, dịch/TTS/AI và fidelity Office phức tạp với630. Mẫu ảnh Việt/Hàn tổng hợp đã chạy; Hàn còn lỗi đọc giống demo trên cùng byte PNG.
 - Bản test được đóng gói theo xác nhận của người dùng; chỉ nâng trạng thái nghiệm thu sau khi kiểm đủ unpacked/ảnh, không dùng phép đo HTTP thay ảnh/pixel.
 ### Cần người dùng xác nhận
 - Home/dashboard: giữ hay tắt popup giới thiệu thanh; Documents 3.5.503: thử lại mở/nhập/bôi đen để đóng lỗi 3.5.483–502; kéo-thả: xác nhận lại 3.5.491+.
@@ -168,9 +168,19 @@ Các mũi tên qua `core/messaging` là runtime messages. Settings giao diện �
 
 `documents.js` → getter host `KeepitOcrDocumentHost` → `ocr-controller.mjs`; canvas dùng `ocrCanvas` trên renderer hiện tại, không viewer/file-store song song. `vendor/ocr` chứa Tesseract worker/core/data, preprocessing demo và PDF exporter deps. `ocr-localize.mjs` dùng catalogue `languages.js`; theme theo setting app. Store `ocr` trong DB Documents v3; purge theo index document. Lớp `.para`/`.en` quay lại controller app. CSS demo scope dưới `.keepitOcr`; chặn root ẩn bắt pointer, reset xung đột `.row`/`.vbanner`, thanh viewer dọc cao 52px theo demo. Không bê toolbar/Reader/Notes giả của demo. Tesseract retry trang lỗi một lần rồi đi tiếp; kết quả một phần đếm đúng lượt hiện tại. Đóng tài liệu đợi PDF export cleanup và chặn tải muộn; ảnh OCR tối đa 16 megapixel. Harness, bằng chứng và script tạm ngoài source. Từ 3.5.615: `.layer` chữ vẫn ở native page units; `.ocrVisualSurface` giãn kích thước và inverse-scale theo `--source-scale` để scan/word/hover/region được vẽ bằng display pixels. `.ocrWordBox` lấy rect chuẩn hóa, không outline text span đã transform; không style nested `.en`. Overlay reset padding/min-width của `.paper` app. Reverse hover khớp cụm geometry/text trước fallback offset để không sai sau vùng append. Từ 3.5.616: host `goTo` riêng OCR truyền `smooth` vào `setPage`; `scrollToPage` giữ đích tạm trong hai flow cuộn, bỏ lệnh trùng cùng đích/pixel, retarget khi resize đổi hình học. Scroll observer không đổi current về trang đi ngang qua; input người dùng nhả đích. `sizePages` không gán scrollTop đè native animation. Điều hướng khác và kiểu xem rời giữ mặc định auto.
 
+### Office trực tiếp — ranh giới renderer630
+
+`documents-renderers.js` sở hữu PDF/DOCX/ảnh và preflight ZIP, lazy-import `documents-pptx.mjs` cho PPTX. Module nhận ZIP đã kiểm, hooks và callback attachBlocks, trả contract pages/render/thumbnail/dispose cũ. XML→SVG/chữ do first-party tạo bằng DOM API, không nới sanitizer của HTML Office. Metadata/text order và render dùng cùng traversal; images theo relationship từng part, cache có giới hạn. `documents.js`, context, Reader, tools, annotation store và OCR không bị thay renderer/UI giả. Font Pangolin có face riêng và OFL trong licenses. Giới hạn/fidelity/anchor cũ xem docs/documents.md.
+
 ## 5. Nhật ký
 
 Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
+
+**2026-11-26 | v3.5.630 | Arena sửa:**
+
+- Tóm tắt: theo lựa chọn người dùng, tích hợp đọc DOCX/PPTX trực tiếp, không convert PDF/server. PPTX mới đọc OOXML slide/layout/master/theme, custom path/group/preset/raster/notes và lớp chữ DOM chọn được; metadata toàn bộ slide, dựng hình lazy, cache bounded và cancel/dispose. Giữ attachBlocks/controller Dịch/Reader/Notes, file IDs/store/UI/pager/OCR và text thumbnails628. DOCX giữ local docx-preview, thêm chờ ảnh/phông và ZIP/XML/External guard. Không thay HTML sanitizer hoặc nới CSP. Đóng gói Pangolin OFL; cập nhật gợi ý Office en/vi/ko. Không nhúng mẫu/tệp người dùng vào app.
+- File: `documents-pptx.mjs` mới, `documents-renderers.js`, `documents.css`, `languages.js`, font/OFL, manifest và tài liệu. Giữ các bản ZIP trước.
+- Kiểm tra:32 nhóm HTTP app+extension API/protocol shim, PPTX gốc92slide dựng đủ; độc lập2slide có ảnh/ellipse, DOCX2trang/bảng, PDF1trang gốc, malformed/DTD/External/traversal/literal markup/soft break; native viewer, original/read/paging và1512/900/390 sáng/tối. Chuột thật chọn PPTX “Worksho” và DOCX “English text: Keep your ideas…”, launcher hiện. Không gọi mạng dịch/TTS/AI hoặc xác nhận notes persistence/anchor cũ. JS syntax, vendor220hash và tools10tests; console/pageerror rỗng trong QA. Chưa unpacked630/extension screenshots/crop4×/pixel/CSP/permission/touch/profile; không chứng nhận92slide fidelity. QA ngoài source: `/home/user/qa-keepit-630`.
 
 **2026-11-26 | v3.5.629 | Arena sửa:**
 
@@ -344,9 +354,3 @@ Nhật ký cũ: `docs/changelog/ocr-clean-base-history.md`.
 - Tóm tắt: danh sách bố cục rộng bằng nút, giữ thanh hiển thị khi danh sách mở; menu zoom dùng cùng kiểu bo góc và cuộn trong vùng có chỗ. Giữ điều khiển/lưu zoom và sở thích tài liệu, tiếp tục cho ảnh Vừa ảnh.
 - File: `js/shared/icons.js`, `js/dashboard/documents.js`, `pages/documents.html`, `css/dashboard/documents.css`, `manifest.json`, tài liệu.
 - Kiểm tra: Chromium extension unpacked 1512/390 sáng/tối, ảnh phóng 4×; danh sách/nút 144/144px desktop, 344/344px mobile; zoom desktop 114px, mobile 260px, chạm giả lập 244px với menu cuộn trong sheet. Rê và mở list 2,5s khi Tự làm mờ/Tự ẩn, đóng và rời đi mờ/ẩn lại; zoom PDF 200/6400, ảnh Vừa ảnh, file một trang khóa 3 mục, phím mũi tên/Escape, console/pageerror rỗng. Chưa kiểm profile Windows thật, cảm ứng thật, Android/Firefox và file Office thật.
-
-**2026-11-17 | v3.5.599 | Arena:**
-
-- Tóm tắt: vẽ lại bốn icon theo ảnh mẫu và hiển thị bên cạnh từng lựa chọn trong danh sách kiểu trang của viewer; Cài đặt giữ danh sách cũ theo trao đổi. Giữ đồng bộ, nhớ lựa chọn và khóa lựa chọn không hợp lệ cho file một trang.
-- File: `js/shared/icons.js`, `js/content/content.js`, `js/dashboard/documents.js`, `pages/documents.html`, `css/dashboard/documents.css`, `manifest.json`, tài liệu.
-- Kiểm tra: Chromium extension unpacked 1512/390 sáng/tối, ảnh chi tiết phóng 4×; PDF mẫu 1 và 5 trang, chọn kiểu bằng chuột và chạm giả lập 390, đồng bộ hai chiều với Cài đặt, khóa 3 mục khi một trang; bàn phím mũi tên/Enter/Escape và reload nhớ kiểu. Danh sách đo 200×154 px chuột, 200×186 px chạm; console/pageerror rỗng. Chưa kiểm profile Windows thật, cảm ứng thiết bị thật, Android/Firefox và tài liệu Office thực. Icon được dựng lại từ ảnh nhỏ, không có file vector gốc.

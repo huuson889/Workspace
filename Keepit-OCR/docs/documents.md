@@ -12,7 +12,8 @@ Tài liệu dùng bố cục demo v13 nhưng phải gọi module app có sẵn c
 | [`js/dashboard/documents.js`](../js/dashboard/documents.js) | Import, render, progress, source blocks/anchors/geometry. |
 | [`js/dashboard/documents-context.js`](../js/dashboard/documents-context.js) | Context của tệp sở hữu, adapter Reader, cập nhật nguồn và nhận AI sheet. |
 | [`js/dashboard/documents-store.js`](../js/dashboard/documents-store.js) | IndexedDB `keepit-documents`; blob và metadata. |
-| [`js/dashboard/documents-renderers.js`](../js/dashboard/documents-renderers.js) | PDF.js, Office/ảnh, ZIP guard và sanitizer. |
+| [`js/dashboard/documents-renderers.js`](../js/dashboard/documents-renderers.js) | PDF.js, DOCX/ảnh, ZIP guard, sanitizer và điểm gọi PPTX. |
+| [`js/dashboard/documents-pptx.mjs`](../js/dashboard/documents-pptx.mjs) | `preparePptx(zip,hooks,attachBlocks)`: metadata toàn bộ slide, SVG/chữ lazy theo trang, notes và dispose. |
 | [`js/content/content.js`](../js/content/content.js), [`js/reader/bilingual-reader.js`](../js/reader/bilingual-reader.js) | Chọn chữ và Reader dùng chung của app. |
 
 ## Luồng dữ liệu
@@ -42,6 +43,16 @@ Tài liệu dùng bố cục demo v13 nhưng phải gọi module app có sẵn c
 - Tôn trọng cài đặt chung; không tự tải POS model, nới quyền hoặc bypass CSP trang ngoài.
 - Gợi ý PDF từ browser (v3.5.370): khi tab đang active là PDF, cửa sổ popup Keepit nổi riêng ở góc phải trên; CTA sang view Tài liệu, nơi người dùng chọn file local. Viewer PDF mặc định không cho extension chèn DOM hoặc tự lấy blob. Nhận diện path `.pdf` trực tiếp hoặc nguồn nằm trong query `src`/`file`/`url` của viewer; không redirect/fetch.
 - Giới hạn: tệp 50 MB, ảnh 30 MB, ZIP tổng 160 MB, mỗi entry 50 MB/12.000 entry, tối đa 2.000 trang. Chưa có cloud sync hoặc backup blob.
+
+## Office trực tiếp (3.5.630)
+
+- `office()` kiểm ZIP rồi gọi `preparePptx` thay nhánh `pptxToHtml`. Module mới đọc thứ tự slide/relationships, layout/master/theme và speaker notes; metadata paragraph theo cùng thứ tự với DOM, không dùng mẫu nhúng hoặc PDF thay thế. Cache XML/DOM/ảnh có giới hạn; `dispose` bỏ cache và chặn công việc muộn. Phần dựng hình lazy theo trang, không dựng sẵn toàn bộ 92 SVG trong bước mở.
+- Đường vẽ SVG, group transforms, một số preset và ảnh PNG/JPEG/GIF/WebP; chữ là DOM first-party trong `foreignObject`, nội dung qua `textContent`. Không chèn HTML/SVG do file cung cấp; sanitizer Office vẫn cấm `foreignObject`, script/event handlers và URL ngoài như trước. `attachBlocks` dùng lại `.para/.en`, page/index/edgePositions; Reader/Dịch/Notes/context/store không có bản triển khai khác.
+- DOCX tiếp tục `docx-preview`, sanitize HTML/CSS và chờ ảnh/phông trước khi đo trang. Chặn DTD/entity, traversal và DOCX có tài nguyên ngoài không phải hyperlink trước khi dựng. Chỉ đọc nội dung cục bộ, không chạy macro, không dùng backend convert. Các lỗi giới hạn vẫn đi qua thông báo app hiện có.
+- Giới hạn mới rõ ràng: XML 8 MB/phần, PPTX 15.000 shape/300.000 điểm mỗi slide+layout+master, group depth64. Giữ ZIP160 MB/12.000 entry/50 MB entry, tệp50 MB và 2.000 trang. Giới hạn là guard, không chứng nhận chống mọi tệp độc hại.
+- `Pangolin-Regular.ttf` OFL đóng gói cục bộ, face riêng KeepitPangolin; phông khác vẫn phụ thuộc máy/fallback. Chưa hỗ trợ đầy đủ SmartArt, chart/table, animation/media, EMF/WMF/SVG nhúng, formula paths, gradient/effect/bullets và phông EOT. Không có cảnh báo không đồng nghĩa chính xác; popup Office chung nhắc giới hạn, `pages[n].warnings` chỉ chẩn đoán một phần sau render.
+- Thumbnail Office vẫn là text approximation nét cao của628 (version2), không quảng cáo là ảnh chụp bố cục. Không đổi blob/fingerprint/schema, giữ ghi chú/progress và controller gốc; thứ tự/cấu trúc text PPTX mới có thể làm anchor cũ cần kiểm tra lại, chưa nghiệm thu migration thực tế.
+- QA `/home/user/qa-keepit-630`: renderer/app thật qua HTTP + API/protocol shim, 92 slide, DOCX/table, PPTX độc lập/ảnh/ellipse, PDF regression, malformed/security fixtures; không phải extension unpacked. Chưa chứng nhận CSP, permission, note persistence, gọi dịch/TTS/AI thực hoặc pixel/crop4× trên extension.
 
 ## Xác minh
 

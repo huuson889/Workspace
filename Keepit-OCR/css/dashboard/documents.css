@@ -737,6 +737,10 @@ body{overflow:auto}
 .docsSource .para.speaking{outline:1px solid #a49cf7;outline-offset:2px;background:#bcb5ff44}
 .docsSource mark.hl{background:#ffed92a8;color:inherit;padding:0;border-radius:2px}
 .docsSource mark.hl.note{background:#90e6b388}
+@font-face{font-family:KeepitPangolin;src:url('../../assets/fonts/Pangolin-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+.docsSource .docsPptx{display:block;width:100%;height:100%;overflow:hidden;isolation:isolate}
+.docsSource .docsPptx foreignObject{overflow:hidden}
+.docsSource .docsPptx .slide-text{user-select:text;-webkit-user-select:text}
 .docsSource .slide-container,.docsSource .slide{font-family:Arial,sans-serif}
 .docSurface>.surfaceError{position:absolute;inset:0;display:grid;place-items:center;padding:20px;font-size:13px;color:#64748b;text-align:center}
 .rail button .mini-pg img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
