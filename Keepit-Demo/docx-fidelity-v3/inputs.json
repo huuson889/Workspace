@@ -19,6 +19,26 @@
     "bytes": 276320,
     "sha256": "4b43eff83f6842ddfb0c7d38167e2cc81b92d3cddaca65249eef26f788cc2294"
   },
+  "report_templates_Small Business Quarterly Report Doc.docx": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/c7e8daa1b4335ce8331d1749e1d86d2c8e998f51/Uploads/report_templates_Small%20Business%20Quarterly%20Report%20Doc.docx",
+    "bytes": 5634137,
+    "sha256": "57b76a1935c44c8d9b080260424a93e8e8a75799260f28e59e3936d2d4d416bf"
+  },
+  "report_templates_Small Business Quarterly Report Doc.pdf": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/c7e8daa1b4335ce8331d1749e1d86d2c8e998f51/Uploads/report_templates_Small%20Business%20Quarterly%20Report%20Doc.pdf",
+    "bytes": 4479979,
+    "sha256": "bded21bb20fefd9f536131e80c598204e472b4e609edc349af800155a5ad6256"
+  },
+  "report_templates_Weekly Operations Report.docx": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/c7e8daa1b4335ce8331d1749e1d86d2c8e998f51/Uploads/report_templates_Weekly%20Operations%20Report.docx",
+    "bytes": 113271,
+    "sha256": "f00163c52c3db39e409fe8e72816e2ead565ab75f3b5366529e84f5389e6bbe4"
+  },
+  "report_templates_Weekly Operations Report.pdf": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/c7e8daa1b4335ce8331d1749e1d86d2c8e998f51/Uploads/report_templates_Weekly%20Operations%20Report.pdf",
+    "bytes": 4304164,
+    "sha256": "5f69207e91d659f8708f3f594185302dfe6f24a586a665c40f4f0f16563c446c"
+  },
   "report_templates_Monthly HR Report Doc.docx": {
     "url": "https://raw.githubusercontent.com/huuson889/Workspace/94286d971c12fa4577d4872464694ab1d01a9671/Uploads/report_templates_Monthly%20HR%20Report%20Doc.docx",
     "bytes": 2568082,

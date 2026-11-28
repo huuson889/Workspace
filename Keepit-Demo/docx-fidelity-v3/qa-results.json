@@ -1,0 +1,1494 @@
+{
+  "checks": [
+    {
+      "name": "annual page count (not fidelity score)",
+      "pass": true,
+      "detail": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1123,
+          "text": "DAILY WEAR 2035 Annual Report   Prepared by: Fernandino Ortiz Date submitted: Jun 1, 2035  Executive Summary Daily Wear concluded ",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1123,
+          "text": "KPI FY2034 FY2035 YoY Change Revenue $12.8M $13.9M+8.6% Gross profit $4.7M $5.2M+10.6% Operating profit $1.9M $2.2M+15.8% Net prof",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1123,
+          "text": "Operational Excellence Management continued executing initiatives designed to improve efficiency and operational consistency acros",
+          "overflow": []
+        },
+        {
+          "page": 4,
+          "width": 794,
+          "height": 1123,
+          "text": "Customers and Branding Customer engagement remained a key strength during the year. The company's continued investment in customer",
+          "overflow": []
+        },
+        {
+          "page": 5,
+          "width": 794,
+          "height": 1123,
+          "text": "Expand higher-margin product categories Increase the contribution of premium and exclusive product lines to improve profitability ",
+          "overflow": []
+        }
+      ]
+    },
+    {
+      "name": "annual correct default profile",
+      "pass": true
+    },
+    {
+      "name": "annual actual DOCX text retained",
+      "pass": true,
+      "detail": [
+        "Executive Summary",
+        "Operational Excellence",
+        "Customers and Branding",
+        "Leadership"
+      ]
+    },
+    {
+      "name": "annual no measured body overflow",
+      "pass": true
+    },
+    {
+      "name": "annual references embedded and corresponding PDF page count",
+      "pass": true
+    },
+    {
+      "name": "Annual table row pagination active",
+      "pass": true,
+      "detail": {
+        "groups": 0,
+        "textboxes": 0,
+        "paths": 0,
+        "pictures": 6,
+        "embeddedFonts": 11,
+        "drawings": 6,
+        "tableSplits": 1
+      }
+    },
+    {
+      "name": "Annual out-of-cell duplicate inline image clipped",
+      "pass": true,
+      "detail": [
+        {
+          "paragraph": "38",
+          "visibleWidth": 221.828125,
+          "visibleHeight": 191.46875,
+          "clipPath": "inset(0px 62.2341px 0px 56.7341px)"
+        },
+        {
+          "paragraph": "57",
+          "visibleWidth": 0,
+          "visibleHeight": 41,
+          "clipPath": "inset(100%)"
+        }
+      ]
+    },
+    {
+      "name": "annual page 1 navigation",
+      "pass": true
+    },
+    {
+      "name": "annual page 1 correct reference",
+      "pass": true
+    },
+    {
+      "name": "annual page 2 navigation",
+      "pass": true
+    },
+    {
+      "name": "annual page 2 correct reference",
+      "pass": true
+    },
+    {
+      "name": "annual page 3 navigation",
+      "pass": true
+    },
+    {
+      "name": "annual page 3 correct reference",
+      "pass": true
+    },
+    {
+      "name": "annual page 4 navigation",
+      "pass": true
+    },
+    {
+      "name": "annual page 4 correct reference",
+      "pass": true
+    },
+    {
+      "name": "annual page 5 navigation",
+      "pass": true
+    },
+    {
+      "name": "annual page 5 correct reference",
+      "pass": true
+    },
+    {
+      "name": "annual 1512 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "annual 1512 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "annual 1512 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "annual 1512 light document fits",
+      "pass": true
+    },
+    {
+      "name": "annual 390 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "annual 390 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "annual 390 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "annual 390 light document fits",
+      "pass": true
+    },
+    {
+      "name": "book page count (not fidelity score)",
+      "pass": true,
+      "detail": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "English 10Date: September 12, 2035My Book Report TitleSubmitted by: Luna WalbergSubmitted to: Ms. Edith FernsbyBook titleAdd the b",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Explore a second theme. Explain what the author seems to be saying about it and why it matters to the story as a whole.Discuss a t",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Add any ﬁnal thoughts or questions for class discussion here.Add your favorite quote from the book here. It serves as a reminder o",
+          "overflow": []
+        }
+      ]
+    },
+    {
+      "name": "book correct default profile",
+      "pass": true
+    },
+    {
+      "name": "book actual DOCX text retained",
+      "pass": true,
+      "detail": [
+        "Summary",
+        "Theme",
+        "Food",
+        "favorite"
+      ]
+    },
+    {
+      "name": "book no measured body overflow",
+      "pass": true
+    },
+    {
+      "name": "book references embedded and corresponding PDF page count",
+      "pass": true
+    },
+    {
+      "name": "Book inline and anchor group text recovered",
+      "pass": true,
+      "detail": {
+        "groups": 7,
+        "textboxes": 13,
+        "paths": 10,
+        "pictures": 3,
+        "embeddedFonts": 7,
+        "drawings": 11,
+        "tabParagraphs": 4
+      }
+    },
+    {
+      "name": "book page 1 navigation",
+      "pass": true
+    },
+    {
+      "name": "book page 1 correct reference",
+      "pass": true
+    },
+    {
+      "name": "book page 2 navigation",
+      "pass": true
+    },
+    {
+      "name": "book page 2 correct reference",
+      "pass": true
+    },
+    {
+      "name": "book page 3 navigation",
+      "pass": true
+    },
+    {
+      "name": "book page 3 correct reference",
+      "pass": true
+    },
+    {
+      "name": "book 1512 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "book 1512 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "book 1512 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "book 1512 light document fits",
+      "pass": true
+    },
+    {
+      "name": "book 390 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "book 390 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "book 390 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "book 390 light document fits",
+      "pass": true
+    },
+    {
+      "name": "small page count (not fidelity score)",
+      "pass": true,
+      "detail": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Prepared by Margot ElsherKey highlights This quarter delivered steady growth across sales, customer activity, and day-to-day opera",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "MetricQ3 (present)Q2ChangeTOTAL SALES$185,000$171,000+8%COST OF GOODS SOLD$111,000$105,000+6%GROSS PROFIT$74,000$66,000+12%AVERAGE",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Business Operations OverviewStore operations remained efﬁcient throughout the quarter despite occasional supplier delays and cost ",
+          "overflow": []
+        },
+        {
+          "page": 4,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Operational highlightsSuccessesMaintained strong availability of best-selling productsImproved shelf organization and product visi",
+          "overflow": []
+        },
+        {
+          "page": 5,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Business GoalsProgress overviewThe business continued making steady progress toward its quarterly objectives. Sales growth, invent",
+          "overflow": []
+        },
+        {
+          "page": 6,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Variety Store • Small Business Quarterly Report • Q3 2035",
+          "overflow": []
+        }
+      ]
+    },
+    {
+      "name": "small correct default profile",
+      "pass": true
+    },
+    {
+      "name": "small actual DOCX text retained",
+      "pass": true,
+      "detail": [
+        "Key highlights",
+        "Inventory metrics",
+        "Business Goals"
+      ]
+    },
+    {
+      "name": "small no measured body overflow",
+      "pass": true
+    },
+    {
+      "name": "small references embedded and corresponding PDF page count",
+      "pass": true
+    },
+    {
+      "name": "Small Business floating table below heading without overlap",
+      "pass": true,
+      "detail": [
+        {
+          "text": "MetricValueInventory turnover4.6xStock a",
+          "gap": 58.59375,
+          "heading": "Inventory metrics"
+        }
+      ]
+    },
+    {
+      "name": "small page 1 navigation",
+      "pass": true
+    },
+    {
+      "name": "small page 1 correct reference",
+      "pass": true
+    },
+    {
+      "name": "small page 2 navigation",
+      "pass": true
+    },
+    {
+      "name": "small page 2 correct reference",
+      "pass": true
+    },
+    {
+      "name": "small page 3 navigation",
+      "pass": true
+    },
+    {
+      "name": "small page 3 correct reference",
+      "pass": true
+    },
+    {
+      "name": "small page 4 navigation",
+      "pass": true
+    },
+    {
+      "name": "small page 4 correct reference",
+      "pass": true
+    },
+    {
+      "name": "small page 5 navigation",
+      "pass": true
+    },
+    {
+      "name": "small page 5 correct reference",
+      "pass": true
+    },
+    {
+      "name": "small page 6 navigation",
+      "pass": true
+    },
+    {
+      "name": "small page 6 correct reference",
+      "pass": true
+    },
+    {
+      "name": "small 1512 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "small 1512 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "small 1512 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "small 1512 light document fits",
+      "pass": true
+    },
+    {
+      "name": "small 390 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "small 390 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "small 390 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "small 390 light document fits",
+      "pass": true
+    },
+    {
+      "name": "weekly page count (not fidelity score)",
+      "pass": true,
+      "detail": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Week of:Department: OperationsPrepared by: Andres SörenssonSummaryThis week at a glanceTask statusReport areaStatus/categoryValueT",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Open issues by categoryOperational performance remained steady this week, with planned work progressing well and only a small numb",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Action itemsOwner Due date Status Resolve supplier shipment delay Procurement team Jan 10, 2035 ✏️ In progress Complete new hire I",
+          "overflow": []
+        }
+      ]
+    },
+    {
+      "name": "weekly correct default profile",
+      "pass": true
+    },
+    {
+      "name": "weekly actual DOCX text retained",
+      "pass": true,
+      "detail": [
+        "Week of:",
+        "Task status",
+        "Action items"
+      ]
+    },
+    {
+      "name": "weekly no measured body overflow",
+      "pass": true
+    },
+    {
+      "name": "weekly references embedded and corresponding PDF page count",
+      "pass": true
+    },
+    {
+      "name": "Weekly shared anchor flow not vertically stacked",
+      "pass": true,
+      "detail": [
+        {
+          "paragraph": "25",
+          "reserved": 0.13333333333333333,
+          "height": 15
+        },
+        {
+          "paragraph": "28",
+          "reserved": 104,
+          "height": 104
+        },
+        {
+          "paragraph": "58",
+          "reserved": 104,
+          "height": 104
+        },
+        {
+          "paragraph": "68",
+          "reserved": 0.13333333333333333,
+          "height": 15
+        },
+        {
+          "paragraph": "102",
+          "reserved": 0.13333333333333333,
+          "height": 15
+        },
+        {
+          "paragraph": "136",
+          "reserved": 111.9540157480315,
+          "height": 40.859375
+        }
+      ]
+    },
+    {
+      "name": "Weekly unequal explicit columns recovered",
+      "pass": true,
+      "detail": [
+        {
+          "width": 77.65625,
+          "text": "Week of:"
+        },
+        {
+          "width": 486.328125,
+          "text": "Department: OperationsPrepared by: Andres Sörensson"
+        }
+      ]
+    },
+    {
+      "name": "weekly page 1 navigation",
+      "pass": true
+    },
+    {
+      "name": "weekly page 1 correct reference",
+      "pass": true
+    },
+    {
+      "name": "weekly page 2 navigation",
+      "pass": true
+    },
+    {
+      "name": "weekly page 2 correct reference",
+      "pass": true
+    },
+    {
+      "name": "weekly page 3 navigation",
+      "pass": true
+    },
+    {
+      "name": "weekly page 3 correct reference",
+      "pass": true
+    },
+    {
+      "name": "weekly 1512 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "weekly 1512 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "weekly 1512 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "weekly 1512 light document fits",
+      "pass": true
+    },
+    {
+      "name": "weekly 390 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "weekly 390 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "weekly 390 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "weekly 390 light document fits",
+      "pass": true
+    },
+    {
+      "name": "hr page count (not fidelity score)",
+      "pass": true,
+      "detail": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "  Executive Summary The organization continued to strengthen its workforce through strategic recruitment, employee development, an",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "  Recruitment Update Recruitment efforts remain on target despite increased competition for technical and creative roles.PositionD",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "MetricTotalAverage attendance rate96.4%Vacation leave applications18Sick leave applications12Emergency leave requests4Recorded tar",
+          "overflow": []
+        },
+        {
+          "page": 4,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "  Learning and Development ActivityParticipantsStatusNew employee orientation Leadership development workshopAI productivity lunch",
+          "overflow": []
+        }
+      ]
+    },
+    {
+      "name": "hr correct default profile",
+      "pass": true
+    },
+    {
+      "name": "hr actual DOCX text retained",
+      "pass": true,
+      "detail": [
+        "WEALTH BANK",
+        "Eraya",
+        "97.8%",
+        "Learning and Development"
+      ]
+    },
+    {
+      "name": "hr no measured body overflow",
+      "pass": true
+    },
+    {
+      "name": "hr references embedded and corresponding PDF page count",
+      "pass": true
+    },
+    {
+      "name": "HR approved v1 adapter statistics unchanged",
+      "pass": true,
+      "detail": {
+        "groups": 1,
+        "textboxes": 6,
+        "paths": 2,
+        "pictures": 3,
+        "embeddedFonts": 5
+      }
+    },
+    {
+      "name": "hr page 1 navigation",
+      "pass": true
+    },
+    {
+      "name": "hr page 1 correct reference",
+      "pass": true
+    },
+    {
+      "name": "hr page 2 navigation",
+      "pass": true
+    },
+    {
+      "name": "hr page 2 correct reference",
+      "pass": true
+    },
+    {
+      "name": "hr page 3 navigation",
+      "pass": true
+    },
+    {
+      "name": "hr page 3 correct reference",
+      "pass": true
+    },
+    {
+      "name": "hr page 4 navigation",
+      "pass": true
+    },
+    {
+      "name": "hr page 4 correct reference",
+      "pass": true
+    },
+    {
+      "name": "hr 1512 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "hr 1512 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "hr 1512 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 1497,
+        "client": 1497
+      }
+    },
+    {
+      "name": "hr 1512 light document fits",
+      "pass": true
+    },
+    {
+      "name": "hr 390 dark no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "hr 390 dark document fits",
+      "pass": true
+    },
+    {
+      "name": "hr 390 light no outer horizontal overflow",
+      "pass": true,
+      "detail": {
+        "scroll": 375,
+        "client": 375
+      }
+    },
+    {
+      "name": "hr 390 light document fits",
+      "pass": true
+    },
+    {
+      "name": "Zoom manual",
+      "pass": true
+    },
+    {
+      "name": "Fit page height",
+      "pass": true
+    },
+    {
+      "name": "Details opens",
+      "pass": true
+    },
+    {
+      "name": "HR can explicitly test v3 separately",
+      "pass": true
+    },
+    {
+      "name": "Return to HR stable restores exact report",
+      "pass": true
+    },
+    {
+      "name": "Original library comparison remains available",
+      "pass": true
+    },
+    {
+      "name": "Return to Book v3",
+      "pass": true
+    },
+    {
+      "name": "Synthetic shared anchors reserve max not sum",
+      "pass": true,
+      "detail": {
+        "clippedInlineImages": [],
+        "wrapParagraphs": [
+          {
+            "paragraph": "1",
+            "reserved": 60,
+            "height": 60
+          }
+        ],
+        "columns": [
+          {
+            "width": 192,
+            "text": "Left explicit column"
+          },
+          {
+            "width": 368,
+            "text": "Right explicit column"
+          }
+        ],
+        "positionedTables": [
+          {
+            "text": "MetricValueSyntheticOne",
+            "gap": 34.9375,
+            "heading": "Floating table anchor heading"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Synthetic explicit unequal columns match OOXML widths",
+      "pass": true,
+      "detail": [
+        {
+          "width": 192,
+          "text": "Left explicit column"
+        },
+        {
+          "width": 368,
+          "text": "Right explicit column"
+        }
+      ]
+    },
+    {
+      "name": "Synthetic floating table does not overlap heading",
+      "pass": true
+    },
+    {
+      "name": "Synthetic layout remains one page",
+      "pass": true
+    },
+    {
+      "name": "Independent DOCX 2 pages via File handler",
+      "pass": true,
+      "detail": [
+        {
+          "page": 1,
+          "width": 816,
+          "height": 1056,
+          "text": "Independent DOCX testLiteral markup: <img src=x onerror=alert(1)> must remain text.MetricValuePagesTwoExternal link stripped",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 816,
+          "height": 1056,
+          "text": "Second independent pageTiếng Việt: đọc DOCX trực tiếp. 한국어 테스트.",
+          "overflow": []
+        }
+      ]
+    },
+    {
+      "name": "Independent literal HTML remains text",
+      "pass": true
+    },
+    {
+      "name": "External relationships stripped",
+      "pass": true
+    },
+    {
+      "name": "No reference falsely shown for uploaded DOCX",
+      "pass": true
+    },
+    {
+      "name": "Embedded sample restored after File handler",
+      "pass": true
+    },
+    {
+      "name": "No recorded JS errors",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "qaErrors": []
+      }
+    }
+  ],
+  "reports": {
+    "annual": {
+      "stats": {
+        "groups": 0,
+        "textboxes": 0,
+        "paths": 0,
+        "pictures": 6,
+        "embeddedFonts": 11,
+        "drawings": 6,
+        "tableSplits": 1
+      },
+      "diagnostics": {
+        "clippedInlineImages": [
+          {
+            "paragraph": "38",
+            "visibleWidth": 221.828125,
+            "visibleHeight": 191.46875,
+            "clipPath": "inset(0px 62.2341px 0px 56.7341px)"
+          },
+          {
+            "paragraph": "57",
+            "visibleWidth": 0,
+            "visibleHeight": 41,
+            "clipPath": "inset(100%)"
+          }
+        ],
+        "wrapParagraphs": [
+          {
+            "paragraph": "109",
+            "reserved": 111.9540157480315,
+            "height": 111.953125
+          }
+        ],
+        "columns": [],
+        "positionedTables": []
+      },
+      "pages": 5,
+      "content": {
+        "text": "DAILY WEAR 2035 Annual Report   Prepared by: Fernandino Ortiz Date submitted: Jun 1, 2035  Executive Summary Daily Wear concluded 2035 with strong financial and operational performance, delivering sustained revenue growth while improving profitability despite ongoing macroeconomic pressures.   Strategic investments in merchandising, customer experience, and digital capabilities contributed to increased sales, stronger customer retention, and improved operating efficiency.  Overall, the business remains financially resilient and well-positioned to execute its strategic priorities in the coming year.  Financial performance The group exceeded annual financial targets, supported by improved product mix, effective pricing strategies, and disciplined expense management. Profitability improved across all operating segments while maintaining investment in strategic initiatives.  KPI FY2034 FY2035 YoY Change Revenue $12.8M $13.9M+8.6% Gross profit $4.7M $5.2M+10.6% Operating profit $1.9M $2.2M+15.8% Net profit $1.4M $1.6M+14.3%  Total transactions  $785k Average basket value  $34.20 Same-store sales growth  5.1%  Sustained year-over-year revenue growth Increased gross margin through improved merchandising Expanded customer loyalty program participation Improved inventory availability while reducing excess stock Enhanced digital customer engagement and omnichannel capabilities Continued investment in store modernization initiatives   Operational Excellence Management continued executing initiatives designed to improve efficiency and operational consistency across the retail network.  Major outcomes Improved inventory forecasting accuracy  Standardized merchandising execution across all stores  Reduced stock loss and inventory shrinkage  Upgraded retail technology infrastructure for all major storefronts  Solved persistent staffing issues at several locations Collectively, these initiatives contributed to improved productivity and customer experience while supporting margin expansion.  Customers and Branding Customer engagement remained a key strength during the year. The company's continued investment in customer experience strengthened brand loyalty and increased customer lifetime value across key market segments.  Customer satisfaction  4.8/5 Net promoter score  $34.20 Loyalty members  148,500 Repeat purchase rate  47%   Fiscal Year 2036  Management recommends continued focus on the following strategic priorities: Accelerate multi-channel retail growth Enhance the integration of physical and digital channels to provide a seamless shopping experience and drive sales across all customer touchpoints. Expand higher-margin product categories Increase the contribution of premium and exclusive product lines to improve profitability and strengthen competitive differentiation. Improve supply chain resilience and inventory efficiency Optimize sourcing, inventory planning, and logistics to ensure product availability, reduce costs, and respond effectively to market changes. Continue disciplined capital allocation Prioritize investments that deliver measurable business value while maintaining strong financial health and sustainable long-term growth. Further develop leadership capability and organizational resilience Build leadership capacity, strengthen employee development, and foster an adaptable organization that can successfully navigate future challenges and opportunities.   ",
+        "paragraphs": 110,
+        "tables": 6,
+        "tableFragments": 7
+      },
+      "warnings": [
+        "Phông thường không nhúng: Forum; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Inter Italics; ưu tiên phông hệ thống, sau đó dự phòng"
+      ],
+      "geometry": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1123,
+          "text": "DAILY WEAR 2035 Annual Report   Prepared by: Fernandino Ortiz Date submitted: Jun 1, 2035  Executive Summary Daily Wear concluded ",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1123,
+          "text": "KPI FY2034 FY2035 YoY Change Revenue $12.8M $13.9M+8.6% Gross profit $4.7M $5.2M+10.6% Operating profit $1.9M $2.2M+15.8% Net prof",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1123,
+          "text": "Operational Excellence Management continued executing initiatives designed to improve efficiency and operational consistency acros",
+          "overflow": []
+        },
+        {
+          "page": 4,
+          "width": 794,
+          "height": 1123,
+          "text": "Customers and Branding Customer engagement remained a key strength during the year. The company's continued investment in customer",
+          "overflow": []
+        },
+        {
+          "page": 5,
+          "width": 794,
+          "height": 1123,
+          "text": "Expand higher-margin product categories Increase the contribution of premium and exclusive product lines to improve profitability ",
+          "overflow": []
+        }
+      ]
+    },
+    "book": {
+      "stats": {
+        "groups": 7,
+        "textboxes": 13,
+        "paths": 10,
+        "pictures": 3,
+        "embeddedFonts": 7,
+        "drawings": 11,
+        "tabParagraphs": 4
+      },
+      "diagnostics": {
+        "clippedInlineImages": [],
+        "wrapParagraphs": [
+          {
+            "paragraph": "13",
+            "reserved": 1.3333333333333333,
+            "height": 14
+          },
+          {
+            "paragraph": "15",
+            "reserved": 1.3333333333333333,
+            "height": 14
+          },
+          {
+            "paragraph": "17",
+            "reserved": 1.3333333333333333,
+            "height": 15
+          },
+          {
+            "paragraph": "27",
+            "reserved": 26.333333333333332,
+            "height": 26.328125
+          },
+          {
+            "paragraph": "32",
+            "reserved": 26.333333333333332,
+            "height": 26.328125
+          },
+          {
+            "paragraph": "56",
+            "reserved": 26.333333333333332,
+            "height": 26.328125
+          },
+          {
+            "paragraph": "62",
+            "reserved": 26.333333333333332,
+            "height": 26.328125
+          },
+          {
+            "paragraph": "69",
+            "reserved": 111.9540157480315,
+            "height": 111.953125
+          }
+        ],
+        "columns": [],
+        "positionedTables": []
+      },
+      "pages": 3,
+      "content": {
+        "text": "English 10Date: September 12, 2035My Book Report TitleSubmitted by: Luna WalbergSubmitted to: Ms. Edith FernsbyBook titleAdd the book title hereAuthorAdd the author’s name herePublisherAdd the publisher’s name hereSummary Summarize the plot in a short paragraph. Focus on the main character, the central conﬂict, and how the story is resolved. Avoid including minor plot details.Theme analysisChoose one major theme from the book and explain how it is developed throughout the story. Use a speciﬁc scene or example to support your analysis.Theme 1Explore a second theme. Explain what the author seems to be saying about it and why it matters to the story as a whole.Discuss a third theme. Describe how it inﬂuences the characters' choices or the outcome of the story.Character breakdownCharacterRoleDescriptionAdd character nameAdd their role (protagonist, antagonist, etc.)Describe their personality, motivations, and part in the storyAdd character nameAdd their roleDescribe their personality, motivations, and part in the storyAdd character nameAdd their roleDescribe their personality, motivations, and part in the storyPersonal reflectionShare your honest thoughts on the book. Did it change how you think about something? Did you relate to a character? Explain what stayed with you and why.List one lesson or idea you're taking away from this bookList a second key takeawayList a third key takeaway (optional)Theme 3Key takeawaysFood for thoughtTheme 2Add any ﬁnal thoughts or questions for class discussion here.Add your favorite quote from the book here. It serves as a reminder of the influence words can have.- Character",
+        "paragraphs": 71,
+        "tables": 5,
+        "tableFragments": 5
+      },
+      "warnings": [
+        "Giãn dòng lớn trong textbox được xấp xỉ; chưa đạt pixel Word",
+        "Phông thường không nhúng: Georgia; ưu tiên phông hệ thống, sau đó dự phòng"
+      ],
+      "geometry": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "English 10Date: September 12, 2035My Book Report TitleSubmitted by: Luna WalbergSubmitted to: Ms. Edith FernsbyBook titleAdd the b",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Explore a second theme. Explain what the author seems to be saying about it and why it matters to the story as a whole.Discuss a t",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Add any ﬁnal thoughts or questions for class discussion here.Add your favorite quote from the book here. It serves as a reminder o",
+          "overflow": []
+        }
+      ]
+    },
+    "small": {
+      "stats": {
+        "groups": 1,
+        "textboxes": 3,
+        "paths": 0,
+        "pictures": 5,
+        "embeddedFonts": 5,
+        "drawings": 5,
+        "positionedTables": 1
+      },
+      "diagnostics": {
+        "clippedInlineImages": [
+          {
+            "paragraph": "63",
+            "visibleWidth": 273.4542236328125,
+            "visibleHeight": 174.078125,
+            "clipPath": "inset(123.711px 0px 88.9146px)"
+          },
+          {
+            "paragraph": "70",
+            "visibleWidth": 336.53125,
+            "visibleHeight": 277.84375,
+            "clipPath": "inset(307.709px 135.252px 272.912px 135.252px)"
+          },
+          {
+            "paragraph": "114",
+            "visibleWidth": 207.59375,
+            "visibleHeight": 206.90625,
+            "clipPath": "inset(52.8843px 7.69999px 74.8843px 7.69997px)"
+          }
+        ],
+        "wrapParagraphs": [
+          {
+            "paragraph": "77",
+            "reserved": 273.36,
+            "height": 273.359375
+          },
+          {
+            "paragraph": "179",
+            "reserved": 111.9540157480315,
+            "height": 64.515625
+          }
+        ],
+        "columns": [],
+        "positionedTables": [
+          {
+            "text": "MetricValueInventory turnover4.6xStock a",
+            "gap": 58.59375,
+            "heading": "Inventory metrics"
+          }
+        ]
+      },
+      "pages": 6,
+      "content": {
+        "text": "Prepared by Margot ElsherKey highlights This quarter delivered steady growth across sales, customer activity, and day-to-day operations. Increased demand for everyday essentials and seasonal merchandise contributed to higher revenue, while consistent inventory management helped keep popular products available.Promotional offers and repeat customers continued to support overall performance, resulting in a positive quarter for the business.Quarterly sales increased compared to the previous quarterCustomer trafﬁc remained strong with a healthy number of repeat shoppersInventory management improved product availability across key categoriesThe business remains on track to achieve its annual growth goalsSales PerformanceFinancial overviewSales increased steadily throughout the quarter, reﬂecting consistent customer demand and improved product availability. Promotional campaigns, seasonal merchandise, and a strong mix of everyday essentials contributed to higher revenue while operating costs remained well-managed.Overall, the business maintained positive ﬁnancial momentum and continued to build on the previous quarter’s performance.Quarterly ReportVA R I E T Y S T O R EMetricQ3 (present)Q2ChangeTOTAL SALES$185,000$171,000+8%COST OF GOODS SOLD$111,000$105,000+6%GROSS PROFIT$74,000$66,000+12%AVERAGE DAILY SALES$2,055$1,900+8%Sales insightsThe charts highlight monthly sales trends and product category performance, offering a quick snapshot of revenue growth and the products that contributed most to overall sales.MONTHLY SALES TRENDMonthly sales increased consistently throughout the quarter, with each month outperforming theprevious one.  Reliable stock availability, promotional campaigns, and steady customer traffic all contributed to the positive trend.   SALES BY PRODUCT CATEGORYHousehold items remained the strongest-performing category, reflecting steady demand for essential products. The results highlight a diverse product range that supports stable business performance.  Business Operations OverviewStore operations remained efﬁcient throughout the quarter despite occasional supplier delays and cost increases. Improvements to inventory planning and shelf organization helped maintain product availability while supporting a smoother shopping experience. Continued operational improvements contributed to stronger sales and better day-to-day efﬁciency.Inventory metricsMetricValueInventory turnover4.6xStock availability95%Out-of-stock items8New products added24Operational highlightsSuccessesMaintained strong availability of best-selling productsImproved shelf organization and product visibilityReduced restocking delays through better supplier coordinationContinued providing efﬁcient customer serviceChallengesSupplier price increases affected selected product categoriesTemporary shortages occurred for a small number of fast-moving itemsPeak shopping periods required additional stafﬁng supportCustomer InsightsCustomer engagement remained positive throughout the quarter, with repeat shoppers continuing to account for a large share of overall sales. Promotional offers, seasonal merchandise, and dependable product availability encouraged more frequent visits while helping attract new customers. Customer feedback reﬂected continued satisfaction with both service and product selection.Metric New customers Returning customers Average transaction value Customer satisfaction Value 165 492 $28 4.7 / 5 Business GoalsProgress overviewThe business continued making steady progress toward its quarterly objectives. Sales growth, inventory improvements, and strong customer satisfaction demonstrate positive momentum heading into the next quarter. Product expansion remains a key focus and is expected to strengthen future performance.Goal Increase quarterly sales Reduce stock shortages Expand product selection Improve customer satisfaction Status🔵 On track🟢 Achieved🟡 In progress🟢 AchievedLooking aheadThe business enters the next quarter with positive momentum and a strong foundation for continued growth. Priorities include expanding high-performing product categories, improving inventory forecasting, strengthening supplier relationships, and maintaining excellent customer service. Continued promotional activities and operational improvements will support customer loyalty and long-term business success.Next quarter prioritiesExpand high-performing product categoriesImprove inventory planning and forecastingStrengthen supplier relationshipsIncrease repeat customer purchases through seasonal promotionsContinue improving operational efﬁciencyVariety Store • Small Business Quarterly Report • Q3 2035",
+        "paragraphs": 180,
+        "tables": 12,
+        "tableFragments": 12
+      },
+      "warnings": [
+        "Phông thường không nhúng: Georgia; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Instrument Serif; ưu tiên phông hệ thống, sau đó dự phòng"
+      ],
+      "geometry": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Prepared by Margot ElsherKey highlights This quarter delivered steady growth across sales, customer activity, and day-to-day opera",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "MetricQ3 (present)Q2ChangeTOTAL SALES$185,000$171,000+8%COST OF GOODS SOLD$111,000$105,000+6%GROSS PROFIT$74,000$66,000+12%AVERAGE",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Business Operations OverviewStore operations remained efﬁcient throughout the quarter despite occasional supplier delays and cost ",
+          "overflow": []
+        },
+        {
+          "page": 4,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Operational highlightsSuccessesMaintained strong availability of best-selling productsImproved shelf organization and product visi",
+          "overflow": []
+        },
+        {
+          "page": 5,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Business GoalsProgress overviewThe business continued making steady progress toward its quarterly objectives. Sales growth, invent",
+          "overflow": []
+        },
+        {
+          "page": 6,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Variety Store • Small Business Quarterly Report • Q3 2035",
+          "overflow": []
+        }
+      ]
+    },
+    "weekly": {
+      "stats": {
+        "groups": 8,
+        "textboxes": 11,
+        "paths": 15,
+        "pictures": 1,
+        "embeddedFonts": 0,
+        "drawings": 18,
+        "columnSections": 1,
+        "positionedTables": 1
+      },
+      "diagnostics": {
+        "clippedInlineImages": [],
+        "wrapParagraphs": [
+          {
+            "paragraph": "25",
+            "reserved": 0.13333333333333333,
+            "height": 15
+          },
+          {
+            "paragraph": "28",
+            "reserved": 104,
+            "height": 104
+          },
+          {
+            "paragraph": "58",
+            "reserved": 104,
+            "height": 104
+          },
+          {
+            "paragraph": "68",
+            "reserved": 0.13333333333333333,
+            "height": 15
+          },
+          {
+            "paragraph": "102",
+            "reserved": 0.13333333333333333,
+            "height": 15
+          },
+          {
+            "paragraph": "136",
+            "reserved": 111.9540157480315,
+            "height": 40.859375
+          }
+        ],
+        "columns": [
+          {
+            "width": 77.65625,
+            "text": "Week of:"
+          },
+          {
+            "width": 486.328125,
+            "text": "Department: OperationsPrepared by: Andres Sörensson"
+          }
+        ],
+        "positionedTables": [
+          {
+            "text": "Highlights Task completion: Completed 18",
+            "gap": 0,
+            "heading": ""
+          }
+        ]
+      },
+      "pages": 3,
+      "content": {
+        "text": "Week of:Department: OperationsPrepared by: Andres SörenssonSummaryThis week at a glanceTask statusReport areaStatus/categoryValueTask statusCompleted69.2%In progress23.1Delayed7.7Weekly Operations Report  Fortune InsuranceJan 1, 2035Completed18Delayed6Operations2Open issues by categoryOperational performance remained steady this week, with planned work progressing well and only a small number of items requiring follow-up. While a few external dependencies remain, they are contained and actively managed, positioning the team to maintain momentum and deliver on next week’s priorities.Operational updatesHighlights Task completion: Completed 18 of 26 planned tasks (69% completion rate) Inventory: Completed the weekly inventorycount with no discrepancies Vendor contract: Finalized the contract review; final terms are ready for signature Team collaboration: Implemented the weekly team sync process to improve cross-functional visibility Customer acquisition: Exceeded the weekly target by 16% (29 vs. 25 goal) Open issues Supplier shipment: Delivery delay continues to affect material availability. IT onboarding: Equipment delivery is delaying new hire onboarding. Customer satisfaction survey: Rollout is pending approval of the updated survey template.  IT2Supplier3Operations1Finance1Action itemsOwner Due date Status Resolve supplier shipment delay Procurement team Jan 10, 2035 ✏️ In progress Complete new hire IT setup IT support Jan 9, 2035 ⏳ Pending Launch updated CSAT survey Marketing team Jan 11, 2035 ⏳ Pending Secure vendor contract signatures Procurement manager Jan 8, 2035 ✏️ In progress Finalize Q1 marketing budget Finance lead Jan 12, 2035 ⏳ Pending  Closing note This report provides a summary of weekly operational performance, key achievements, outstanding issues, and upcoming priorities. Please review assigned action items and contact the report owner with any questions or updates before next week’s report. ",
+        "paragraphs": 137,
+        "tables": 4,
+        "tableFragments": 4
+      },
+      "warnings": [
+        "Phông thường không nhúng: Times New Roman; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Calibri; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Arial; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Arial Italics; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Arial Bold; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Canva Sans; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Cambria; ưu tiên phông hệ thống, sau đó dự phòng"
+      ],
+      "geometry": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Week of:Department: OperationsPrepared by: Andres SörenssonSummaryThis week at a glanceTask statusReport areaStatus/categoryValueT",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Open issues by categoryOperational performance remained steady this week, with planned work progressing well and only a small numb",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "Action itemsOwner Due date Status Resolve supplier shipment delay Procurement team Jan 10, 2035 ✏️ In progress Complete new hire I",
+          "overflow": []
+        }
+      ]
+    },
+    "hr": {
+      "stats": {
+        "groups": 1,
+        "textboxes": 6,
+        "paths": 2,
+        "pictures": 3,
+        "embeddedFonts": 5
+      },
+      "pages": 4,
+      "content": {
+        "text": "  Executive Summary The organization continued to strengthen its workforce through strategic recruitment, employee development, and employee engagement initiatives. During the reporting period, four new employees were successfully onboarded while maintaining a healthy retention rate of 97.8%.Attendance remained stable across all departments, averaging 96.4%. Employee engagement activities received positive participation, and mandatory compliance training achieved a completion rate of 98%.Overall, workforce indicators remain positive, with no signiﬁcant risks requiring immediate executive intervention.  Workforce Breakdown June 2035July 2035Total employees9095New hires58Resignations24Terminations02Open positions123HRWEALTH BANKREPORTDate submitted: Aug 1, 2035Submitted by: Eraya Sharma  Recruitment Update Recruitment efforts remain on target despite increased competition for technical and creative roles.PositionDepartmentStatusSoftware EngineerMarketing AssociateCustomer Success SpecialistProductInitial ScreeningMarketingInterview StageOperationsOffer ExtendedApplications received: 214Initial interviews conducted: 41Final interviews completed: 12Employment offers extended: 1Offers accepted: 4Average time-to-ﬁll: 24 days  Attendance and Leave Summary Minor increases in tardiness were observed during periods of severe weather, but did not signiﬁcantly affect productivity. Department managers were advised to continue monitoring attendance trends and reinforce existing attendance policies.MetricTotalAverage attendance rate96.4%Vacation leave applications18Sick leave applications12Emergency leave requests4Recorded tardiness15Unplanned absences4  Employee Performance Preparation activities for the upcoming quarterly performance review were completed. Highlights include:14 employees received recognition for consistently exceeding performance expectations.3 employees were promoted to supervisory positions.5 employees enrolled in performance coaching programs to support skill development.Department managers completed 92% of scheduled one-on-one check-ins.Overall employee performance remains aligned with organizational objectives.\\  Learning and Development ActivityParticipantsStatusNew employee orientation Leadership development workshopAI productivity lunch and learn8Completed5Ongoing15OngoingKey outcomesMandatory compliance training reached a 98% completion rateParticipants reported improved confidence in workplace communication and digital collaborationLeadership workshop attendees identified coaching as their top development priority  Next StepsThe HR Department will prioritize the following initiatives during the next reporting period:Launch the quarterly performance evaluation cycleRoll out the updated onboarding program for new employeesIntroduce additional wellness initiatives focused on mental healthConduct manager training on effective performance conversations",
+        "paragraphs": 189,
+        "tables": 11
+      },
+      "warnings": [
+        "Giãn dòng lớn trong textbox được xấp xỉ; chưa đạt pixel Word"
+      ],
+      "geometry": [
+        {
+          "page": 1,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "  Executive Summary The organization continued to strengthen its workforce through strategic recruitment, employee development, an",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "  Recruitment Update Recruitment efforts remain on target despite increased competition for technical and creative roles.PositionD",
+          "overflow": []
+        },
+        {
+          "page": 3,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "MetricTotalAverage attendance rate96.4%Vacation leave applications18Sick leave applications12Emergency leave requests4Recorded tar",
+          "overflow": []
+        },
+        {
+          "page": 4,
+          "width": 794,
+          "height": 1122.65625,
+          "text": "  Learning and Development ActivityParticipantsStatusNew employee orientation Leadership development workshopAI productivity lunch",
+          "overflow": []
+        }
+      ]
+    },
+    "layoutRules": {
+      "stats": {
+        "groups": 0,
+        "textboxes": 0,
+        "paths": 0,
+        "pictures": 0,
+        "embeddedFonts": 0,
+        "drawings": 3,
+        "columnSections": 1,
+        "positionedTables": 1
+      },
+      "diagnostics": {
+        "clippedInlineImages": [],
+        "wrapParagraphs": [
+          {
+            "paragraph": "1",
+            "reserved": 60,
+            "height": 60
+          }
+        ],
+        "columns": [
+          {
+            "width": 192,
+            "text": "Left explicit column"
+          },
+          {
+            "width": 368,
+            "text": "Right explicit column"
+          }
+        ],
+        "positionedTables": [
+          {
+            "text": "MetricValueSyntheticOne",
+            "gap": 34.9375,
+            "heading": "Floating table anchor heading"
+          }
+        ]
+      },
+      "pages": 1,
+      "content": {
+        "text": "Synthetic layout rulesAfter three side-by-side rectanglesFloating table anchor headingMetricValueSyntheticOneLeft explicit columnRight explicit column",
+        "paragraphs": 11,
+        "tables": 1,
+        "tableFragments": 1
+      },
+      "warnings": [
+        "Phông thường không nhúng: Symbol; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Times New Roman; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Cambria; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: ＭＳ 明朝; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Calibri; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: ＭＳ ゴシック; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Courier; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Arial; ưu tiên phông hệ thống, sau đó dự phòng"
+      ],
+      "geometry": [
+        {
+          "page": 1,
+          "width": 816,
+          "height": 1056,
+          "text": "Synthetic layout rulesAfter three side-by-side rectanglesFloating table anchor headingMetricValueSyntheticOneLeft explicit columnR",
+          "overflow": []
+        }
+      ]
+    },
+    "independent": {
+      "stats": {
+        "groups": 0,
+        "textboxes": 0,
+        "paths": 0,
+        "pictures": 0,
+        "embeddedFonts": 0,
+        "drawings": 0
+      },
+      "diagnostics": {
+        "clippedInlineImages": [],
+        "wrapParagraphs": [],
+        "columns": [],
+        "positionedTables": []
+      },
+      "pages": 2,
+      "content": {
+        "text": "Independent DOCX testLiteral markup: <img src=x onerror=alert(1)> must remain text.MetricValuePagesTwoExternal link strippedSecond independent pageTiếng Việt: đọc DOCX trực tiếp. 한국어 테스트.",
+        "paragraphs": 10,
+        "tables": 1,
+        "tableFragments": 1
+      },
+      "warnings": [
+        "Đã bỏ quan hệ ngoài tệp",
+        "Phông thường không nhúng: Symbol; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Times New Roman; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Cambria; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: ＭＳ 明朝; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Calibri; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: ＭＳ ゴシック; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Courier; ưu tiên phông hệ thống, sau đó dự phòng",
+        "Phông thường không nhúng: Arial; ưu tiên phông hệ thống, sau đó dự phòng"
+      ],
+      "geometry": [
+        {
+          "page": 1,
+          "width": 816,
+          "height": 1056,
+          "text": "Independent DOCX testLiteral markup: <img src=x onerror=alert(1)> must remain text.MetricValuePagesTwoExternal link stripped",
+          "overflow": []
+        },
+        {
+          "page": 2,
+          "width": 816,
+          "height": 1056,
+          "text": "Second independent pageTiếng Việt: đọc DOCX trực tiếp. 한국어 테스트.",
+          "overflow": []
+        }
+      ]
+    }
+  },
+  "error": null,
+  "appChanged": false,
+  "environment": "Real standalone HTML in Chromium; sandboxed DOCX worker. Functional checks, NOT pixel-fidelity acceptance or extension acceptance.",
+  "errors": []
+}

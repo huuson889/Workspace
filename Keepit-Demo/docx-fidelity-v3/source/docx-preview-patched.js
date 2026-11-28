@@ -3051,9 +3051,10 @@
         }
         createSectionContent(props) {
             var elem = this.createElement("article");
+            if (globalThis.KP_ENHANCED && props.columns) elem.dataset.kpColumns = JSON.stringify(props.columns);
             if (props.columns && props.columns.numberOfColumns) {
                 elem.style.columnCount = `${props.columns.numberOfColumns}`;
-                elem.style.columnGap = props.columns.space;
+                elem.style.columnGap = globalThis.KP_ENHANCED && props.columns.columns?.length > 1 ? (props.columns.columns[0].space || props.columns.space) : props.columns.space;
                 if (props.columns.separator) {
                     elem.style.columnRule = "1px solid black";
                 }
@@ -3576,6 +3577,7 @@ section.${c}>footer { z-index: 1; }
             return this.options.renderChanges ? this.renderText(elem) : null;
         }
         renderBreak(elem) {
+            if (globalThis.KP_ENHANCED && elem.break === 'column') return this.createElement('span', { className: 'kp-column-break' });
             if (elem.break == "textWrapping") {
                 return this.createElement("br");
             }

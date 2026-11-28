@@ -4,7 +4,7 @@ Requires PyMuPDF. Missing fixtures download from the recorded immutable Git comm
 from pathlib import Path
 import argparse,base64,hashlib,json,re,urllib.request
 import pymupdf as fitz
-p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=Path.home()/'.cache/docx-fidelity-v2-inputs');p.add_argument('--output',type=Path,default=Path(__file__).resolve().parent.parent/'keepit-docx-fidelity-demo-v2.html');args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=Path.home()/'.cache/docx-fidelity-v3-inputs');p.add_argument('--output',type=Path,default=Path(__file__).resolve().parent.parent/'keepit-docx-fidelity-demo-v3.html');args=p.parse_args()
 r=Path(__file__).resolve().parent;args.inputs.mkdir(parents=True,exist_ok=True)
 def script(s):return '<script>'+s.replace('</script','<\\/script')+'</script>'
 def json_safe(x):return json.dumps(x,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
@@ -17,10 +17,10 @@ worker=prefix+''.join(script((r/name).read_text()) for name in ['jszip.min.js','
 controller=stable[stable.rfind('<script>')+8:stable.rfind('</script>')]
 worker+=script(controller)+'</body></html>'
 samples={};provenance={}
-for key,name,commit,profile in [('annual','Annual Report Summary','3b1678e57d6e01401cc8bc301ecc7554f4cecac2','enhanced'),('book','Book Report','3b1678e57d6e01401cc8bc301ecc7554f4cecac2','enhanced'),('hr','Monthly HR Report','94286d971c12fa4577d4872464694ab1d01a9671','stable')]:
+for key,name,commit,profile in [('annual','Annual Report Summary','3b1678e57d6e01401cc8bc301ecc7554f4cecac2','enhanced'),('book','Book Report','3b1678e57d6e01401cc8bc301ecc7554f4cecac2','enhanced'),('small','Small Business Quarterly Report','c7e8daa1b4335ce8331d1749e1d86d2c8e998f51','enhanced'),('weekly','Weekly Operations Report','c7e8daa1b4335ce8331d1749e1d86d2c8e998f51','enhanced'),('hr','Monthly HR Report','94286d971c12fa4577d4872464694ab1d01a9671','stable')]:
     files={}
     for ext in ['docx','pdf']:
-        filename='report_templates_'+name+' Doc.'+ext;path=args.inputs/filename
+        filename='report_templates_'+name+('' if key=='weekly' else ' Doc')+'.'+ext;path=args.inputs/filename
         url='https://raw.githubusercontent.com/huuson889/Workspace/'+commit+'/Uploads/'+urllib.parse.quote(filename)
         if not path.exists():path.write_bytes(urllib.request.urlopen(url).read())
         files[ext]=path
