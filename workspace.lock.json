@@ -4185,8 +4185,8 @@
     },
     {
       "path": "Keepit-OCR/vendor/office/README.md",
-      "blob": "92b1a4de638019f92c3574d6f704eb42f924cb15",
-      "bytes": 1757,
+      "blob": "06e7fa140b59df9d7f22b4cb75afa1f15d60fee3",
+      "bytes": 3026,
       "mode": "100644",
       "group": "ocr-assets"
     },
@@ -5631,6 +5631,17 @@
       "bytes": 10932,
       "mode": "100644",
       "group": "working"
+    },
+    {
+      "path": "Keepit-OCR/vendor/office/docx-preview-keepit.mjs",
+      "mode": "100644",
+      "group": "ocr-assets",
+      "blob": "be634a874a0cf8a42b1172e40663c63fa26b1bb5",
+      "bytes": 167030
     }
-  ]
+  ],
+  "assetUpdate": {
+    "version": "3.5.635",
+    "note": "Reviewed DOCX ESM parser and office README; remaining sourceCommit/working/original baseline is unchanged."
+  }
 }
