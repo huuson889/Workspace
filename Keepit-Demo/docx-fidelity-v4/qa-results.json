@@ -204,7 +204,7 @@
           "page": 3,
           "width": 794,
           "height": 1122.65625,
-          "text": "Add any ﬁnal thoughts or questions for class discussion here.Add your favorite quote from the book here. It serves as a reminder o",
+          "text": "Add any ﬁnal thoughts or questions for class discussion here.​​​​Add your favorite quote from the bookhere. It serves as a reminde",
           "overflow": []
         }
       ]
@@ -541,6 +541,89 @@
       "pass": true
     },
     {
+      "name": "Weekly title has exact two reference lines",
+      "pass": true,
+      "detail": {
+        "text": "WeeklyOperations Report",
+        "lines": [
+          "Weekly",
+          "Operations Report"
+        ],
+        "width": 313.05,
+        "height": 103.35,
+        "scales": [
+          0.85,
+          0.8
+        ],
+        "colours": [
+          "rgb(255, 255, 255)"
+        ]
+      }
+    },
+    {
+      "name": "Weekly title applies source horizontal scaling",
+      "pass": true,
+      "detail": [
+        0.85,
+        0.8
+      ]
+    },
+    {
+      "name": "Date has one line and correct foreground colour",
+      "pass": true,
+      "detail": {
+        "text": "Jan 1, 2035",
+        "lines": [
+          "Jan 1, 2035"
+        ],
+        "width": 75.75,
+        "height": 14.65,
+        "scales": [
+          1
+        ],
+        "colours": [
+          "rgb(153, 92, 0)"
+        ]
+      }
+    },
+    {
+      "name": "Date background uses source 10 percent alpha",
+      "pass": true,
+      "detail": [
+        {
+          "tag": "path",
+          "fill": "rgba(153,92,0,0.09999)",
+          "stroke": "none",
+          "strokeWidth": 0,
+          "radius": 0
+        }
+      ]
+    },
+    {
+      "name": "Logo has exact two reference lines",
+      "pass": true,
+      "detail": {
+        "text": "FortuneInsurance",
+        "lines": [
+          "Fortune",
+          "Insurance"
+        ],
+        "width": 51.5,
+        "height": 31,
+        "scales": [
+          0.95,
+          0.8
+        ],
+        "colours": [
+          "rgb(255, 255, 255)"
+        ]
+      }
+    },
+    {
+      "name": "Logo has painted white rounded frame",
+      "pass": true
+    },
+    {
       "name": "Weekly shared anchor flow not vertically stacked",
       "pass": true,
       "detail": [
@@ -822,7 +905,7 @@
       "pass": true
     },
     {
-      "name": "HR can explicitly test v3 separately",
+      "name": "HR can explicitly test v4 separately",
       "pass": true
     },
     {
@@ -834,13 +917,37 @@
       "pass": true
     },
     {
-      "name": "Return to Book v3",
+      "name": "Return to Book v4",
       "pass": true
     },
     {
       "name": "Synthetic shared anchors reserve max not sum",
       "pass": true,
       "detail": {
+        "textboxes": [],
+        "paints": [
+          {
+            "tag": "rect",
+            "fill": "#2266aa",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "#cc5500",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "#228844",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          }
+        ],
         "clippedInlineImages": [],
         "wrapParagraphs": [
           {
@@ -947,6 +1054,8 @@
         "tableSplits": 1
       },
       "diagnostics": {
+        "textboxes": [],
+        "paints": [],
         "clippedInlineImages": [
           {
             "paragraph": "38",
@@ -1031,6 +1140,331 @@
         "tabParagraphs": 4
       },
       "diagnostics": {
+        "textboxes": [
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 581.1023622047244,
+            "height": 320.8523622047244,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 47.102362204724415,
+            "height": 5.352362204724408,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "Theme 1",
+            "lines": [
+              "Theme 1"
+            ],
+            "width": 61.5,
+            "height": 19.75,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          },
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 49.352362204724415,
+            "height": 5.352362204724408,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "Theme 3",
+            "lines": [
+              "Theme 3"
+            ],
+            "width": 63.75,
+            "height": 19.75,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          },
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 91.35236220472441,
+            "height": 5.352362204724408,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "Key takeaways",
+            "lines": [
+              "Key takeaways"
+            ],
+            "width": 105.75,
+            "height": 19.75,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          },
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 105.60236220472441,
+            "height": 5.352362204724408,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "Food for thought",
+            "lines": [
+              "Food for thought"
+            ],
+            "width": 120,
+            "height": 19.75,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          },
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 50.102362204724415,
+            "height": 5.352362204724408,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "Theme 2",
+            "lines": [
+              "Theme 2"
+            ],
+            "width": 64.5,
+            "height": 19.75,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          },
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 581.1023622047244,
+            "height": 179.1023622047244,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "​​​Add your favorite quote from the bookhere. It serves as a reminder of theinfluence words can have.- Character",
+            "lines": [
+              "​",
+              "​",
+              "​",
+              "Add your favorite quote from the book",
+              "here. It serves as a reminder of the",
+              "influence words can have.",
+              "- Character"
+            ],
+            "width": 595.5,
+            "height": 193.5,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(70, 83, 0)"
+            ]
+          }
+        ],
+        "paints": [
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c2cb93",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "none",
+            "stroke": "#a6af7b",
+            "strokeWidth": 1,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "none",
+            "stroke": "#a6af7b",
+            "strokeWidth": 1,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "none",
+            "stroke": "#a6af7b",
+            "strokeWidth": 1,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c2cb93",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c2cb93",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c2cb93",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c2cb93",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c2cb93",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#a6af7b",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          }
+        ],
         "clippedInlineImages": [],
         "wrapParagraphs": [
           {
@@ -1079,13 +1513,12 @@
       },
       "pages": 3,
       "content": {
-        "text": "English 10Date: September 12, 2035My Book Report TitleSubmitted by: Luna WalbergSubmitted to: Ms. Edith FernsbyBook titleAdd the book title hereAuthorAdd the author’s name herePublisherAdd the publisher’s name hereSummary Summarize the plot in a short paragraph. Focus on the main character, the central conﬂict, and how the story is resolved. Avoid including minor plot details.Theme analysisChoose one major theme from the book and explain how it is developed throughout the story. Use a speciﬁc scene or example to support your analysis.Theme 1Explore a second theme. Explain what the author seems to be saying about it and why it matters to the story as a whole.Discuss a third theme. Describe how it inﬂuences the characters' choices or the outcome of the story.Character breakdownCharacterRoleDescriptionAdd character nameAdd their role (protagonist, antagonist, etc.)Describe their personality, motivations, and part in the storyAdd character nameAdd their roleDescribe their personality, motivations, and part in the storyAdd character nameAdd their roleDescribe their personality, motivations, and part in the storyPersonal reflectionShare your honest thoughts on the book. Did it change how you think about something? Did you relate to a character? Explain what stayed with you and why.List one lesson or idea you're taking away from this bookList a second key takeawayList a third key takeaway (optional)Theme 3Key takeawaysFood for thoughtTheme 2Add any ﬁnal thoughts or questions for class discussion here.Add your favorite quote from the book here. It serves as a reminder of the influence words can have.- Character",
+        "text": "English 10Date: September 12, 2035My Book Report TitleSubmitted by: Luna WalbergSubmitted to: Ms. Edith FernsbyBook titleAdd the book title hereAuthorAdd the author’s name herePublisherAdd the publisher’s name hereSummary Summarize the plot in a short paragraph. Focus on the main character, the central conﬂict, and how the story is resolved. Avoid including minor plot details.Theme analysisChoose one major theme from the book and explain how it is developed throughout the story. Use a speciﬁc scene or example to support your analysis.​​Theme 1Explore a second theme. Explain what the author seems to be saying about it and why it matters to the story as a whole.Discuss a third theme. Describe how it inﬂuences the characters' choices or the outcome of the story.Character breakdownCharacterRoleDescriptionAdd character nameAdd their role (protagonist, antagonist, etc.)Describe their personality, motivations, and part in the storyAdd character nameAdd their roleDescribe their personality, motivations, and part in the storyAdd character nameAdd their roleDescribe their personality, motivations, and part in the storyPersonal reflectionShare your honest thoughts on the book. Did it change how you think about something? Did you relate to a character? Explain what stayed with you and why.List one lesson or idea you're taking away from this bookList a second key takeawayList a third key takeaway (optional)​Theme 3​Key takeaways​Food for thought​Theme 2Add any ﬁnal thoughts or questions for class discussion here.​​​​Add your favorite quote from the bookhere. It serves as a reminder of theinfluence words can have.- Character",
         "paragraphs": 71,
         "tables": 5,
         "tableFragments": 5
       },
       "warnings": [
-        "Giãn dòng lớn trong textbox được xấp xỉ; chưa đạt pixel Word",
         "Phông thường không nhúng: Georgia; ưu tiên phông hệ thống, sau đó dự phòng"
       ],
       "geometry": [
@@ -1107,7 +1540,7 @@
           "page": 3,
           "width": 794,
           "height": 1122.65625,
-          "text": "Add any ﬁnal thoughts or questions for class discussion here.Add your favorite quote from the book here. It serves as a reminder o",
+          "text": "Add any ﬁnal thoughts or questions for class discussion here.​​​​Add your favorite quote from the bookhere. It serves as a reminde",
           "overflow": []
         }
       ]
@@ -1123,6 +1556,69 @@
         "positionedTables": 1
       },
       "diagnostics": {
+        "textboxes": [
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 581.1023622047244,
+            "height": 164.1023622047244,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "Quarterly Report",
+            "lines": [
+              "Quarterly Report"
+            ],
+            "width": 540.8543307086615,
+            "height": 100.2992125984252,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          },
+          {
+            "text": "VA R I E T Y S T O R E",
+            "lines": [
+              "VA R I E T Y S T O R E"
+            ],
+            "width": 86.95,
+            "height": 9.8,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          }
+        ],
+        "paints": [
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          }
+        ],
         "clippedInlineImages": [
           {
             "paragraph": "63",
@@ -1166,7 +1662,7 @@
       },
       "pages": 6,
       "content": {
-        "text": "Prepared by Margot ElsherKey highlights This quarter delivered steady growth across sales, customer activity, and day-to-day operations. Increased demand for everyday essentials and seasonal merchandise contributed to higher revenue, while consistent inventory management helped keep popular products available.Promotional offers and repeat customers continued to support overall performance, resulting in a positive quarter for the business.Quarterly sales increased compared to the previous quarterCustomer trafﬁc remained strong with a healthy number of repeat shoppersInventory management improved product availability across key categoriesThe business remains on track to achieve its annual growth goalsSales PerformanceFinancial overviewSales increased steadily throughout the quarter, reﬂecting consistent customer demand and improved product availability. Promotional campaigns, seasonal merchandise, and a strong mix of everyday essentials contributed to higher revenue while operating costs remained well-managed.Overall, the business maintained positive ﬁnancial momentum and continued to build on the previous quarter’s performance.Quarterly ReportVA R I E T Y S T O R EMetricQ3 (present)Q2ChangeTOTAL SALES$185,000$171,000+8%COST OF GOODS SOLD$111,000$105,000+6%GROSS PROFIT$74,000$66,000+12%AVERAGE DAILY SALES$2,055$1,900+8%Sales insightsThe charts highlight monthly sales trends and product category performance, offering a quick snapshot of revenue growth and the products that contributed most to overall sales.MONTHLY SALES TRENDMonthly sales increased consistently throughout the quarter, with each month outperforming theprevious one.  Reliable stock availability, promotional campaigns, and steady customer traffic all contributed to the positive trend.   SALES BY PRODUCT CATEGORYHousehold items remained the strongest-performing category, reflecting steady demand for essential products. The results highlight a diverse product range that supports stable business performance.  Business Operations OverviewStore operations remained efﬁcient throughout the quarter despite occasional supplier delays and cost increases. Improvements to inventory planning and shelf organization helped maintain product availability while supporting a smoother shopping experience. Continued operational improvements contributed to stronger sales and better day-to-day efﬁciency.Inventory metricsMetricValueInventory turnover4.6xStock availability95%Out-of-stock items8New products added24Operational highlightsSuccessesMaintained strong availability of best-selling productsImproved shelf organization and product visibilityReduced restocking delays through better supplier coordinationContinued providing efﬁcient customer serviceChallengesSupplier price increases affected selected product categoriesTemporary shortages occurred for a small number of fast-moving itemsPeak shopping periods required additional stafﬁng supportCustomer InsightsCustomer engagement remained positive throughout the quarter, with repeat shoppers continuing to account for a large share of overall sales. Promotional offers, seasonal merchandise, and dependable product availability encouraged more frequent visits while helping attract new customers. Customer feedback reﬂected continued satisfaction with both service and product selection.Metric New customers Returning customers Average transaction value Customer satisfaction Value 165 492 $28 4.7 / 5 Business GoalsProgress overviewThe business continued making steady progress toward its quarterly objectives. Sales growth, inventory improvements, and strong customer satisfaction demonstrate positive momentum heading into the next quarter. Product expansion remains a key focus and is expected to strengthen future performance.Goal Increase quarterly sales Reduce stock shortages Expand product selection Improve customer satisfaction Status🔵 On track🟢 Achieved🟡 In progress🟢 AchievedLooking aheadThe business enters the next quarter with positive momentum and a strong foundation for continued growth. Priorities include expanding high-performing product categories, improving inventory forecasting, strengthening supplier relationships, and maintaining excellent customer service. Continued promotional activities and operational improvements will support customer loyalty and long-term business success.Next quarter prioritiesExpand high-performing product categoriesImprove inventory planning and forecastingStrengthen supplier relationshipsIncrease repeat customer purchases through seasonal promotionsContinue improving operational efﬁciencyVariety Store • Small Business Quarterly Report • Q3 2035",
+        "text": "Prepared by Margot ElsherKey highlights This quarter delivered steady growth across sales, customer activity, and day-to-day operations. Increased demand for everyday essentials and seasonal merchandise contributed to higher revenue, while consistent inventory management helped keep popular products available.Promotional offers and repeat customers continued to support overall performance, resulting in a positive quarter for the business.Quarterly sales increased compared to the previous quarterCustomer trafﬁc remained strong with a healthy number of repeat shoppersInventory management improved product availability across key categoriesThe business remains on track to achieve its annual growth goalsSales PerformanceFinancial overviewSales increased steadily throughout the quarter, reﬂecting consistent customer demand and improved product availability. Promotional campaigns, seasonal merchandise, and a strong mix of everyday essentials contributed to higher revenue while operating costs remained well-managed.Overall, the business maintained positive ﬁnancial momentum and continued to build on the previous quarter’s performance.​Quarterly ReportVA R I E T Y S T O R EMetricQ3 (present)Q2ChangeTOTAL SALES$185,000$171,000+8%COST OF GOODS SOLD$111,000$105,000+6%GROSS PROFIT$74,000$66,000+12%AVERAGE DAILY SALES$2,055$1,900+8%Sales insightsThe charts highlight monthly sales trends and product category performance, offering a quick snapshot of revenue growth and the products that contributed most to overall sales.MONTHLY SALES TRENDMonthly sales increased consistently throughout the quarter, with each month outperforming theprevious one.  Reliable stock availability, promotional campaigns, and steady customer traffic all contributed to the positive trend.   SALES BY PRODUCT CATEGORYHousehold items remained the strongest-performing category, reflecting steady demand for essential products. The results highlight a diverse product range that supports stable business performance.  Business Operations OverviewStore operations remained efﬁcient throughout the quarter despite occasional supplier delays and cost increases. Improvements to inventory planning and shelf organization helped maintain product availability while supporting a smoother shopping experience. Continued operational improvements contributed to stronger sales and better day-to-day efﬁciency.Inventory metricsMetricValueInventory turnover4.6xStock availability95%Out-of-stock items8New products added24Operational highlightsSuccessesMaintained strong availability of best-selling productsImproved shelf organization and product visibilityReduced restocking delays through better supplier coordinationContinued providing efﬁcient customer serviceChallengesSupplier price increases affected selected product categoriesTemporary shortages occurred for a small number of fast-moving itemsPeak shopping periods required additional stafﬁng supportCustomer InsightsCustomer engagement remained positive throughout the quarter, with repeat shoppers continuing to account for a large share of overall sales. Promotional offers, seasonal merchandise, and dependable product availability encouraged more frequent visits while helping attract new customers. Customer feedback reﬂected continued satisfaction with both service and product selection.Metric New customers Returning customers Average transaction value Customer satisfaction Value 165 492 $28 4.7 / 5 Business GoalsProgress overviewThe business continued making steady progress toward its quarterly objectives. Sales growth, inventory improvements, and strong customer satisfaction demonstrate positive momentum heading into the next quarter. Product expansion remains a key focus and is expected to strengthen future performance.Goal Increase quarterly sales Reduce stock shortages Expand product selection Improve customer satisfaction Status🔵 On track🟢 Achieved🟡 In progress🟢 AchievedLooking aheadThe business enters the next quarter with positive momentum and a strong foundation for continued growth. Priorities include expanding high-performing product categories, improving inventory forecasting, strengthening supplier relationships, and maintaining excellent customer service. Continued promotional activities and operational improvements will support customer loyalty and long-term business success.Next quarter prioritiesExpand high-performing product categoriesImprove inventory planning and forecastingStrengthen supplier relationshipsIncrease repeat customer purchases through seasonal promotionsContinue improving operational efﬁciencyVariety Store • Small Business Quarterly Report • Q3 2035",
         "paragraphs": 180,
         "tables": 12,
         "tableFragments": 12
@@ -1232,6 +1728,353 @@
         "positionedTables": 1
       },
       "diagnostics": {
+        "textboxes": [
+          {
+            "text": "WeeklyOperations Report",
+            "lines": [
+              "Weekly",
+              "Operations Report"
+            ],
+            "width": 313.05,
+            "height": 103.35,
+            "scales": [
+              0.85,
+              0.8
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          },
+          {
+            "text": "​",
+            "lines": [
+              "​"
+            ],
+            "width": 100.43787401574802,
+            "height": 45.334960629921255,
+            "scales": [],
+            "colours": []
+          },
+          {
+            "text": "FortuneInsurance",
+            "lines": [
+              "Fortune",
+              "Insurance"
+            ],
+            "width": 51.5,
+            "height": 31,
+            "scales": [
+              0.95,
+              0.8
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          },
+          {
+            "text": "Jan 1, 2035",
+            "lines": [
+              "Jan 1, 2035"
+            ],
+            "width": 75.75,
+            "height": 14.65,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(153, 92, 0)"
+            ]
+          },
+          {
+            "text": "Completed18",
+            "lines": [
+              "Completed",
+              "18"
+            ],
+            "width": 171.75,
+            "height": 78,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          },
+          {
+            "text": "Delayed6",
+            "lines": [
+              "Delayed",
+              "6"
+            ],
+            "width": 172.5,
+            "height": 78,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          },
+          {
+            "text": "Operations2",
+            "lines": [
+              "Operations",
+              "2"
+            ],
+            "width": 171.75,
+            "height": 78,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          },
+          {
+            "text": "IT2",
+            "lines": [
+              "IT",
+              "2"
+            ],
+            "width": 126,
+            "height": 78,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          },
+          {
+            "text": "Supplier3",
+            "lines": [
+              "Supplier",
+              "3"
+            ],
+            "width": 126,
+            "height": 78,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(255, 255, 255)"
+            ]
+          },
+          {
+            "text": "Operations1",
+            "lines": [
+              "Operations",
+              "1"
+            ],
+            "width": 126,
+            "height": 78,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          },
+          {
+            "text": "Finance1",
+            "lines": [
+              "Finance",
+              "1"
+            ],
+            "width": 126,
+            "height": 78,
+            "scales": [
+              1
+            ],
+            "colours": [
+              "rgb(0, 0, 0)"
+            ]
+          }
+        ],
+        "paints": [
+          {
+            "tag": "path",
+            "fill": "#663d00",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "#ffffff",
+            "strokeWidth": 1.25,
+            "radius": 8.756001888188976
+          },
+          {
+            "tag": "path",
+            "fill": "#ffffff",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#ffffff",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#ffffff",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "rgba(153,92,0,0.09999)",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "none",
+            "stroke": "#ffd491",
+            "strokeWidth": 0.9998950131233596,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#995c00",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c87900",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#ffd491",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#995c00",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#c87900",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#ffd491",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "#ffedd4",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "none",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "none",
+            "stroke": "#ffd491",
+            "strokeWidth": 0.9998950131233596,
+            "radius": 0
+          },
+          {
+            "tag": "path",
+            "fill": "none",
+            "stroke": "#ffd491",
+            "strokeWidth": 0.9998950131233596,
+            "radius": 0
+          }
+        ],
         "clippedInlineImages": [],
         "wrapParagraphs": [
           {
@@ -1285,7 +2128,7 @@
       },
       "pages": 3,
       "content": {
-        "text": "Week of:Department: OperationsPrepared by: Andres SörenssonSummaryThis week at a glanceTask statusReport areaStatus/categoryValueTask statusCompleted69.2%In progress23.1Delayed7.7Weekly Operations Report  Fortune InsuranceJan 1, 2035Completed18Delayed6Operations2Open issues by categoryOperational performance remained steady this week, with planned work progressing well and only a small number of items requiring follow-up. While a few external dependencies remain, they are contained and actively managed, positioning the team to maintain momentum and deliver on next week’s priorities.Operational updatesHighlights Task completion: Completed 18 of 26 planned tasks (69% completion rate) Inventory: Completed the weekly inventorycount with no discrepancies Vendor contract: Finalized the contract review; final terms are ready for signature Team collaboration: Implemented the weekly team sync process to improve cross-functional visibility Customer acquisition: Exceeded the weekly target by 16% (29 vs. 25 goal) Open issues Supplier shipment: Delivery delay continues to affect material availability. IT onboarding: Equipment delivery is delaying new hire onboarding. Customer satisfaction survey: Rollout is pending approval of the updated survey template.  IT2Supplier3Operations1Finance1Action itemsOwner Due date Status Resolve supplier shipment delay Procurement team Jan 10, 2035 ✏️ In progress Complete new hire IT setup IT support Jan 9, 2035 ⏳ Pending Launch updated CSAT survey Marketing team Jan 11, 2035 ⏳ Pending Secure vendor contract signatures Procurement manager Jan 8, 2035 ✏️ In progress Finalize Q1 marketing budget Finance lead Jan 12, 2035 ⏳ Pending  Closing note This report provides a summary of weekly operational performance, key achievements, outstanding issues, and upcoming priorities. Please review assigned action items and contact the report owner with any questions or updates before next week’s report. ",
+        "text": "Week of:Department: OperationsPrepared by: Andres SörenssonSummaryThis week at a glanceTask statusReport areaStatus/categoryValueTask statusCompleted69.2%In progress23.1Delayed7.7WeeklyOperations Report​FortuneInsuranceJan 1, 2035Completed18Delayed6Operations2Open issues by categoryOperational performance remained steady this week, with planned work progressing well and only a small number of items requiring follow-up. While a few external dependencies remain, they are contained and actively managed, positioning the team to maintain momentum and deliver on next week’s priorities.Operational updatesHighlights Task completion: Completed 18 of 26 planned tasks (69% completion rate) Inventory: Completed the weekly inventorycount with no discrepancies Vendor contract: Finalized the contract review; final terms are ready for signature Team collaboration: Implemented the weekly team sync process to improve cross-functional visibility Customer acquisition: Exceeded the weekly target by 16% (29 vs. 25 goal) Open issues Supplier shipment: Delivery delay continues to affect material availability. IT onboarding: Equipment delivery is delaying new hire onboarding. Customer satisfaction survey: Rollout is pending approval of the updated survey template.  IT2Supplier3Operations1Finance1Action itemsOwner Due date Status Resolve supplier shipment delay Procurement team Jan 10, 2035 ✏️ In progress Complete new hire IT setup IT support Jan 9, 2035 ⏳ Pending Launch updated CSAT survey Marketing team Jan 11, 2035 ⏳ Pending Secure vendor contract signatures Procurement manager Jan 8, 2035 ✏️ In progress Finalize Q1 marketing budget Finance lead Jan 12, 2035 ⏳ Pending  Closing note This report provides a summary of weekly operational performance, key achievements, outstanding issues, and upcoming priorities. Please review assigned action items and contact the report owner with any questions or updates before next week’s report. ",
         "paragraphs": 137,
         "tables": 4,
         "tableFragments": 4
@@ -1383,6 +2226,30 @@
         "positionedTables": 1
       },
       "diagnostics": {
+        "textboxes": [],
+        "paints": [
+          {
+            "tag": "rect",
+            "fill": "#2266aa",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "#cc5500",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          },
+          {
+            "tag": "rect",
+            "fill": "#228844",
+            "stroke": "none",
+            "strokeWidth": 0,
+            "radius": 0
+          }
+        ],
         "clippedInlineImages": [],
         "wrapParagraphs": [
           {
@@ -1446,6 +2313,8 @@
         "drawings": 0
       },
       "diagnostics": {
+        "textboxes": [],
+        "paints": [],
         "clippedInlineImages": [],
         "wrapParagraphs": [],
         "columns": [],

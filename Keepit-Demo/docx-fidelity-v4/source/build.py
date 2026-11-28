@@ -4,7 +4,7 @@ Requires PyMuPDF. Missing fixtures download from the recorded immutable Git comm
 from pathlib import Path
 import argparse,base64,hashlib,json,re,urllib.request
 import pymupdf as fitz
-p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=Path.home()/'.cache/docx-fidelity-v3-inputs');p.add_argument('--output',type=Path,default=Path(__file__).resolve().parent.parent/'keepit-docx-fidelity-demo-v3.html');args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=Path.home()/'.cache/docx-fidelity-v4-inputs');p.add_argument('--output',type=Path,default=Path(__file__).resolve().parent.parent/'keepit-docx-fidelity-demo-v4.html');args=p.parse_args()
 r=Path(__file__).resolve().parent;args.inputs.mkdir(parents=True,exist_ok=True)
 def script(s):return '<script>'+s.replace('</script','<\\/script')+'</script>'
 def json_safe(x):return json.dumps(x,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')

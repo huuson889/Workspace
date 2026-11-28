@@ -1,8 +1,8 @@
 {
-  "file": "keepit-docx-fidelity-demo-v3.html",
-  "bytes": 24781882,
-  "sha256": "7b24611e90b7764b44ee5f7b54c04a468af1fc7c55bbcf98c415690b291f6f61",
-  "checks": 131,
+  "file": "keepit-docx-fidelity-demo-v4.html",
+  "bytes": 24788404,
+  "sha256": "7d25143cf1d2e9d0efe31e173ff4e1857e3b32b9776958060a40e2fcb1110a76",
+  "checks": 137,
   "pixelFidelityAccepted": false,
   "appVersionUnchanged": "3.5.634",
   "stableWorkerSha256": "2563897e4b5592cc21f4aa5e9267c2c93bad43fbe241ab1b9951d9a821edaeb9"
