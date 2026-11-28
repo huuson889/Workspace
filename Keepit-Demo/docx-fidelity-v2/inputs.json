@@ -1,0 +1,32 @@
+{
+  "report_templates_Annual Report Summary Doc.docx": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/3b1678e57d6e01401cc8bc301ecc7554f4cecac2/Uploads/report_templates_Annual%20Report%20Summary%20Doc.docx",
+    "bytes": 3924656,
+    "sha256": "f66f55855c9659d9bf2096a66af784cd4a598ed7b536deceeb552aed40300368"
+  },
+  "report_templates_Annual Report Summary Doc.pdf": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/3b1678e57d6e01401cc8bc301ecc7554f4cecac2/Uploads/report_templates_Annual%20Report%20Summary%20Doc.pdf",
+    "bytes": 284428,
+    "sha256": "b7ec43e6e0b19f5541d5cd1494096b754ec05bdf05a7d1059dbe1337d2c13273"
+  },
+  "report_templates_Book Report Doc.docx": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/3b1678e57d6e01401cc8bc301ecc7554f4cecac2/Uploads/report_templates_Book%20Report%20Doc.docx",
+    "bytes": 2566856,
+    "sha256": "dcfc6f7a7127475b1a1b686922eda7ad36f39ab103bf56db615bd6d41016eacd"
+  },
+  "report_templates_Book Report Doc.pdf": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/3b1678e57d6e01401cc8bc301ecc7554f4cecac2/Uploads/report_templates_Book%20Report%20Doc.pdf",
+    "bytes": 276320,
+    "sha256": "4b43eff83f6842ddfb0c7d38167e2cc81b92d3cddaca65249eef26f788cc2294"
+  },
+  "report_templates_Monthly HR Report Doc.docx": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/94286d971c12fa4577d4872464694ab1d01a9671/Uploads/report_templates_Monthly%20HR%20Report%20Doc.docx",
+    "bytes": 2568082,
+    "sha256": "52af949a3927649215b06835bd862bef64a9367de2f7d39413e972344597722b"
+  },
+  "report_templates_Monthly HR Report Doc.pdf": {
+    "url": "https://raw.githubusercontent.com/huuson889/Workspace/94286d971c12fa4577d4872464694ab1d01a9671/Uploads/report_templates_Monthly%20HR%20Report%20Doc.pdf",
+    "bytes": 267303,
+    "sha256": "858482655302b2999c8a11b138b54d6d719b8ccc060e4050cc071f8c3eeba27f"
+  }
+}
